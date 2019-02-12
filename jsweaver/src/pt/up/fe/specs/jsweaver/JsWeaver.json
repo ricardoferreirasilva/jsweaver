@@ -1,0 +1,280 @@
+{
+   "root": "project",
+   "rootAlias": "",
+   "children": [
+      {
+         "type": "joinpoint",
+         "name": "joinpoint",
+         "extends": ""      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the node",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "file",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Absolute path of the program file.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "path"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the node",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "project",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the functions",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "functions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the node",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "file",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      }]
+}

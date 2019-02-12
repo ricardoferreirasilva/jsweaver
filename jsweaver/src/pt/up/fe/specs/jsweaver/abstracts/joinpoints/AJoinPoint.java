@@ -1,0 +1,132 @@
+package pt.up.fe.specs.jsweaver.abstracts.joinpoints;
+
+import org.lara.interpreter.weaver.interf.JoinPoint;
+import com.google.gson.JsonObject;
+import java.util.List;
+import org.lara.interpreter.weaver.interf.events.Stage;
+import java.util.Optional;
+import org.lara.interpreter.exception.AttributeException;
+import pt.up.fe.specs.jsweaver.JsWeaver;
+
+/**
+ * Abstract class containing the global attributes and default action exception.
+ * This class is overwritten when the weaver generator is executed.
+ * @author Lara Weaver Generator
+ */
+public abstract class AJoinPoint extends JoinPoint {
+
+    /**
+     * 
+     */
+    @Override
+    public boolean same(JoinPoint iJoinPoint) {
+        if (this.get_class().equals(iJoinPoint.get_class())) {
+        
+                return this.compareNodes((AJoinPoint) iJoinPoint);
+            }
+            return false;
+    }
+
+    /**
+     * Compares the two join points based on their node reference of the used compiler/parsing tool.<br>
+     * This is the default implementation for comparing two join points. <br>
+     * <b>Note for developers:</b> A weaver may override this implementation in the editable abstract join point, so
+     * the changes are made for all join points, or override this method in specific join points.
+     */
+    public boolean compareNodes(AJoinPoint aJoinPoint) {
+        return this.getNode().equals(aJoinPoint.getNode());
+    }
+
+    /**
+     * Returns the tree node reference of this join point.<br><b>NOTE</b>This method is essentially used to compare two join points
+     * @return Tree node reference
+     */
+    public abstract JsonObject getNode();
+
+    /**
+     * 
+     */
+    @Override
+    public void defImpl(String attribute, Object value) {
+        switch(attribute){
+        default: throw new UnsupportedOperationException("Join point "+get_class()+": attribute '"+attribute+"' cannot be defined");
+        }
+    }
+
+    /**
+     * 
+     */
+    @Override
+    protected void fillWithAttributes(List<String> attributes) {
+        //Attributes available for all join points
+        attributes.add("root");
+        attributes.add("type");
+    }
+
+    /**
+     * Returns the 'project' joinpoint
+     */
+    public abstract AJoinPoint getRootImpl();
+
+    /**
+     * Returns the 'project' joinpoint
+     */
+    public final Object getRoot() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "root", Optional.empty());
+        	}
+        	AJoinPoint result = this.getRootImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "root", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "root", e);
+        }
+    }
+
+    /**
+     * The type of the node
+     */
+    public abstract String getTypeImpl();
+
+    /**
+     * The type of the node
+     */
+    public final Object getType() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "type", Optional.empty());
+        	}
+        	String result = this.getTypeImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "type", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "type", e);
+        }
+    }
+
+    /**
+     * Defines if this joinpoint is an instanceof a given joinpoint class
+     * @return True if this join point is an instanceof the given class
+     */
+    @Override
+    public boolean instanceOf(String joinpointClass) {
+        boolean isInstance = get_class().equals(joinpointClass);
+        if(isInstance) {
+        	return true;
+        }
+        return super.instanceOf(joinpointClass);
+    }
+
+    /**
+     * Returns the Weaving Engine this join point pertains to.
+     */
+    @Override
+    public JsWeaver getWeaverEngine() {
+        return JsWeaver.getJsWeaver();
+    }
+}
