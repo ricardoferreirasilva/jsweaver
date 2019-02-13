@@ -9,6 +9,8 @@ import org.jmock.util.NotImplementedException;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jsweaver.abstracts.AJsWeaverJoinPoint;
+import pt.up.fe.specs.jsweaver.joinpoints.JsDeclaration;
+import pt.up.fe.specs.jsweaver.joinpoints.JsFile;
 import pt.up.fe.specs.jsweaver.joinpoints.JsProject;
 
 public class JsJoinpoints {
@@ -17,6 +19,8 @@ public class JsJoinpoints {
     static {
         MAPPINGS = new HashMap<>();
         MAPPINGS.put("Project", JsProject::new);
+        MAPPINGS.put("Program", JsFile::new);
+        MAPPINGS.put("VariableDeclarator", JsDeclaration::new);
     }
 
     public static AJsWeaverJoinPoint create(JsonObject node) {

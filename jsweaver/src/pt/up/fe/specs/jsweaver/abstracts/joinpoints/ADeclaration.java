@@ -3,49 +3,43 @@ package pt.up.fe.specs.jsweaver.abstracts.joinpoints;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
-import java.util.List;
 import pt.up.fe.specs.jsweaver.abstracts.AJsWeaverJoinPoint;
+import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AFile
+ * Auto-Generated class for join point ADeclaration
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AFile extends AJsWeaverJoinPoint {
+public abstract class ADeclaration extends AJsWeaverJoinPoint {
 
     /**
-     * Absolute path of the program file.
+     * ID of the declaration (variable name).
      */
-    public abstract String getPathImpl();
+    public abstract String getIdImpl();
 
     /**
-     * Absolute path of the program file.
+     * ID of the declaration (variable name).
      */
-    public final Object getPath() {
+    public final Object getId() {
         try {
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "path", Optional.empty());
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "id", Optional.empty());
         	}
-        	String result = this.getPathImpl();
+        	String result = this.getIdImpl();
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "path", Optional.ofNullable(result));
+        		eventTrigger().triggerAttribute(Stage.END, this, "id", Optional.ofNullable(result));
         	}
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
-        	throw new AttributeException(get_class(), "path", e);
+        	throw new AttributeException(get_class(), "id", e);
         }
     }
-
-    /**
-     * Method used by the lara interpreter to select declarations
-     * @return 
-     */
-    public abstract List<? extends ADeclaration> selectDeclaration();
 
     /**
      * 
@@ -54,9 +48,6 @@ public abstract class AFile extends AJsWeaverJoinPoint {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "declaration": 
-        		joinPointList = selectDeclaration();
-        		break;
         	default:
         		joinPointList = super.select(selectName);
         		break;
@@ -80,7 +71,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
-        attributes.add("path");
+        attributes.add("id");
     }
 
     /**
@@ -89,7 +80,6 @@ public abstract class AFile extends AJsWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("declaration");
     }
 
     /**
@@ -106,13 +96,13 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      */
     @Override
     public final String get_class() {
-        return "file";
+        return "declaration";
     }
     /**
      * 
      */
-    protected enum FileAttributes {
-        PATH("path"),
+    protected enum DeclarationAttributes {
+        ID("id"),
         TYPE("type"),
         ROOT("root");
         private String name;
@@ -120,13 +110,13 @@ public abstract class AFile extends AJsWeaverJoinPoint {
         /**
          * 
          */
-        private FileAttributes(String name){
+        private DeclarationAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<FileAttributes> fromString(String name) {
+        public static Optional<DeclarationAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -134,7 +124,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(FileAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(DeclarationAttributes::name).collect(Collectors.toList());
         }
 
         /**

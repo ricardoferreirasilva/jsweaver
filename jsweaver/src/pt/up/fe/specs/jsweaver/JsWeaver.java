@@ -10,11 +10,11 @@ import org.lara.interpreter.weaver.options.WeaverOption;
 import org.lara.language.specification.LanguageSpecification;
 import org.suikasoft.jOptions.Interfaces.DataStore;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jsast.Parser;
 import pt.up.fe.specs.jsweaver.abstracts.weaver.AJsWeaver;
-import pt.up.fe.specs.util.SpecsIo;
 
 /**
  * Weaver Implementation for JsWeaver<br>
@@ -53,25 +53,41 @@ public class JsWeaver extends AJsWeaver {
     public boolean begin(List<File> sources, File outputDir, DataStore args) {
         System.out.println("Begin");
         Parser parser = new Parser();
+        JsonArray totalPrograms = new JsonArray();
         for (File source : sources) {
-            System.out.println("File '" + source + "': " + SpecsIo.read(source));
+            if (source.exists()) {
+                if (source.isDirectory()) {
+                    try {
+                        JsonArray programs = Parser.parseFolder(source.toPath());
+                        totalPrograms.addAll(programs);
+                    } catch (Exception error) {
+                        throw new RuntimeException("Could not parse source.", error);
+                    }
+                } else if (source.isFile()) {
+                    try {
+                        JsonArray programs = Parser.parseFile(source);
+                        totalPrograms.addAll(programs);
+                    } catch (Exception error) {
+                        throw new RuntimeException("Could not parse source.", error);
+                    }
+                } else {
+                    System.out.println("Source type not supported.");
+                }
+            } else {
+                System.out.println("Source :" + source + " does not exist.");
+            }
         }
-        File firstFolder = sources.get(0);
-        System.out.println(firstFolder.toPath().toString());
-        try {
-            System.out.println("PATH: " + firstFolder.toPath());
-            project = parser.parseSourceCode(firstFolder.toPath());
-            System.out.println(project);
-        } catch (Exception error) {
-            throw new RuntimeException("Could not parse source.", error);
-        }
+        JsonObject root = new JsonObject();
+        root.addProperty("type", "Project");
+        root.add("programs", totalPrograms);
+        System.out.println("ROOT: " + root);
+        this.project = root;
         return true;
     }
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return super.getName();
+        return "Jackdaw v0.1";
     }
 
     /**
@@ -80,9 +96,8 @@ public class JsWeaver extends AJsWeaver {
      * @return an instance of the join point root/program
      */
     public JoinPoint select() {
+        System.out.println("HERE");
         return JsJoinpoints.create(project);
-        // return new <AProject implementation>;
-        // throw new UnsupportedOperationException("Method select for JsWeaver is not yet implemented");
     }
 
     /**

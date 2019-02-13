@@ -1,51 +1,26 @@
 package pt.up.fe.specs.jsweaver.abstracts.joinpoints;
 
-import org.lara.interpreter.weaver.interf.events.Stage;
-import java.util.Optional;
-import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
 import pt.up.fe.specs.jsweaver.abstracts.AJsWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AFile
+ * Auto-Generated class for join point AFunction
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AFile extends AJsWeaverJoinPoint {
+public abstract class AFunction extends AJsWeaverJoinPoint {
 
     /**
-     * Absolute path of the program file.
-     */
-    public abstract String getPathImpl();
-
-    /**
-     * Absolute path of the program file.
-     */
-    public final Object getPath() {
-        try {
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "path", Optional.empty());
-        	}
-        	String result = this.getPathImpl();
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "path", Optional.ofNullable(result));
-        	}
-        	return result!=null?result:getUndefinedValue();
-        } catch(Exception e) {
-        	throw new AttributeException(get_class(), "path", e);
-        }
-    }
-
-    /**
-     * Method used by the lara interpreter to select declarations
+     * Method used by the lara interpreter to select scopes
      * @return 
      */
-    public abstract List<? extends ADeclaration> selectDeclaration();
+    public abstract List<? extends AScope> selectScope();
 
     /**
      * 
@@ -54,8 +29,8 @@ public abstract class AFile extends AJsWeaverJoinPoint {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "declaration": 
-        		joinPointList = selectDeclaration();
+        	case "scope": 
+        		joinPointList = selectScope();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -80,7 +55,6 @@ public abstract class AFile extends AJsWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
-        attributes.add("path");
     }
 
     /**
@@ -89,7 +63,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("declaration");
+        selects.add("scope");
     }
 
     /**
@@ -106,13 +80,12 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      */
     @Override
     public final String get_class() {
-        return "file";
+        return "function";
     }
     /**
      * 
      */
-    protected enum FileAttributes {
-        PATH("path"),
+    protected enum FunctionAttributes {
         TYPE("type"),
         ROOT("root");
         private String name;
@@ -120,13 +93,13 @@ public abstract class AFile extends AJsWeaverJoinPoint {
         /**
          * 
          */
-        private FileAttributes(String name){
+        private FunctionAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<FileAttributes> fromString(String name) {
+        public static Optional<FunctionAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -134,7 +107,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(FileAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(FunctionAttributes::name).collect(Collectors.toList());
         }
 
         /**

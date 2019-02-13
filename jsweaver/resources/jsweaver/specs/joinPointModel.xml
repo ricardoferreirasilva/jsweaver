@@ -8,6 +8,10 @@
 	</joinpoint>
 	
 	<joinpoint class="file">
+		<select class="declaration"/>
+	</joinpoint>
+	
+	<joinpoint class="declaration">
 	</joinpoint>
 
 </joinpoints>
