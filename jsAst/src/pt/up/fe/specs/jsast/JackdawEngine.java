@@ -1,7 +1,10 @@
 package pt.up.fe.specs.jsast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,7 +24,7 @@ import com.google.gson.JsonParser;
 
 import ast.JsAstResources;
 
-public class Parser {
+public class JackdawEngine {
     public static JsonObject parseSourceCode(Path folderPath) throws IOException, ScriptException, JSONException {
         JsonParser parser = new JsonParser();
         Path esprimaPath = Paths.get("src/esprima/esprima.js");
@@ -137,6 +140,32 @@ public class Parser {
         JsonObject program = jsonTree.getAsJsonObject();
         JsonArray statements = program.get("body").getAsJsonArray();
         return statements;
+    }
+
+    public static void exportPrograms(JsonArray programs, File outputDir) throws ScriptException {
+        JsonParser parser = new JsonParser();
+        System.out.println("Outputing files to " + outputDir.getPath());
+        ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
+        for (JsonElement program : programs) {
+            JsonObject programObject = program.getAsJsonObject();
+            String programString = programObject.toString();
+            javascriptEngine.put("AST_STRING", programString);
+            javascriptEngine.eval(JsAstResources.GENERATE_JAVASCRIPT.read());
+            String generatedText = (String) javascriptEngine.get("GENERATED_JS");
+
+            String path = programObject.get("path").getAsString();
+            File file = new File(path);
+
+            try {
+                PrintWriter writer = new PrintWriter(outputDir.getAbsolutePath() + "\\" + file.getName(), "UTF-8");
+                writer.print(generatedText);
+                writer.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private static String getFileExtension(File file) {

@@ -6,7 +6,9 @@ public enum JsAstResources implements ResourceProvider {
 
     ESPRIMA("esprima/esprima.js"),
     ESPRIMA_WALK("esprima/esprima-walk.js"),
-    PARSE_JAVASCRIPT("javascript/parseJavascript.js");
+    ESCODEGEN("esprima/escodegen.browser.js"),
+    PARSE_JAVASCRIPT("javascript/parseJavascript.js"),
+    GENERATE_JAVASCRIPT("javascript/generateJavascript.js");
 
     // private final WebResourceProvider webResource;
     private final String resource;

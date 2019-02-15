@@ -7,7 +7,7 @@ import org.lara.interpreter.weaver.interf.JoinPoint;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import pt.up.fe.specs.jsast.Parser;
+import pt.up.fe.specs.jsast.JackdawEngine;
 import pt.up.fe.specs.jsweaver.abstracts.joinpoints.AJoinPoint;
 
 /**
@@ -16,7 +16,6 @@ import pt.up.fe.specs.jsweaver.abstracts.joinpoints.AJoinPoint;
  * @author Lara Weaver Generator
  */
 public abstract class AJsWeaverJoinPoint extends AJoinPoint {
-    Parser parser = new Parser();
 
     /**
      * Compares the two join points based on their node reference of the used compiler/parsing tool.<br>
@@ -46,7 +45,7 @@ public abstract class AJsWeaverJoinPoint extends AJoinPoint {
         System.out.println("POSITON:" + position);
         System.out.println("CODE:" + code);
         try {
-            JsonArray statements = parser.parseInsertedCode(code);
+            JsonArray statements = JackdawEngine.parseInsertedCode(code);
             System.out.println(statements);
         } catch (ScriptException error) {
             throw new RuntimeException("Could not parse inserted code.", error);

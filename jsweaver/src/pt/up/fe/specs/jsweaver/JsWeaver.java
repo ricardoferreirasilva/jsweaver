@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
+import javax.script.ScriptException;
+
 import org.lara.interpreter.weaver.interf.AGear;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import org.lara.interpreter.weaver.options.WeaverOption;
@@ -13,7 +15,7 @@ import org.suikasoft.jOptions.Interfaces.DataStore;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import pt.up.fe.specs.jsast.Parser;
+import pt.up.fe.specs.jsast.JackdawEngine;
 import pt.up.fe.specs.jsweaver.abstracts.weaver.AJsWeaver;
 
 /**
@@ -28,6 +30,7 @@ import pt.up.fe.specs.jsweaver.abstracts.weaver.AJsWeaver;
 public class JsWeaver extends AJsWeaver {
 
     private JsonObject project;
+    private File outputDir;
 
     /**
      * Warns the lara interpreter if the weaver accepts a folder as the application or only one file at a time.
@@ -51,36 +54,38 @@ public class JsWeaver extends AJsWeaver {
      * @return true if the file type is valid
      */
     public boolean begin(List<File> sources, File outputDir, DataStore args) {
-        System.out.println("Begin");
-        Parser parser = new Parser();
+        if (outputDir.isDirectory() && outputDir.isDirectory()) {
+            this.outputDir = outputDir;
+        } else {
+            throw new RuntimeException("Specified output directory is not valid.");
+        }
         JsonArray totalPrograms = new JsonArray();
         for (File source : sources) {
             if (source.exists()) {
                 if (source.isDirectory()) {
                     try {
-                        JsonArray programs = Parser.parseFolder(source.toPath());
+                        JsonArray programs = JackdawEngine.parseFolder(source.toPath());
                         totalPrograms.addAll(programs);
                     } catch (Exception error) {
                         throw new RuntimeException("Could not parse source.", error);
                     }
                 } else if (source.isFile()) {
                     try {
-                        JsonArray programs = Parser.parseFile(source);
+                        JsonArray programs = JackdawEngine.parseFile(source);
                         totalPrograms.addAll(programs);
                     } catch (Exception error) {
                         throw new RuntimeException("Could not parse source.", error);
                     }
                 } else {
-                    System.out.println("Source type not supported.");
+                    throw new RuntimeException("Source type not supported.");
                 }
             } else {
-                System.out.println("Source :" + source + " does not exist.");
+                throw new RuntimeException("Source does not exist.");
             }
         }
         JsonObject root = new JsonObject();
         root.addProperty("type", "Project");
         root.add("programs", totalPrograms);
-        System.out.println("ROOT: " + root);
         this.project = root;
         return true;
     }
@@ -96,7 +101,6 @@ public class JsWeaver extends AJsWeaver {
      * @return an instance of the join point root/program
      */
     public JoinPoint select() {
-        System.out.println("HERE");
         return JsJoinpoints.create(project);
     }
 
@@ -106,7 +110,12 @@ public class JsWeaver extends AJsWeaver {
      * @return if close was successful
      */
     public boolean close() {
-        System.out.println("Close");
+        JsonArray programs = this.project.get("programs").getAsJsonArray();
+        try {
+            JackdawEngine.exportPrograms(programs, this.outputDir);
+        } catch (ScriptException e) {
+            throw new RuntimeException("Error while outputing Javascript.", e);
+        }
         return true;
     }
 
