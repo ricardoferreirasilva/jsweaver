@@ -87,6 +87,8 @@ public class JsWeaver extends AJsWeaver {
         root.addProperty("type", "Project");
         root.add("programs", totalPrograms);
         this.project = root;
+        JsonArray queryResult = ExtractorEngine.queryNode(root, "VariableDeclaration", true);
+        System.out.println("RESULT: " + queryResult);
         return true;
     }
 

@@ -11,9 +11,6 @@ public class JseaverLauncher {
     public static void main(String[] args) {
         SpecsSystem.programStandardInit();
 
-        // System.out.println("Press any key to proceed");
-        // SpecsIo.read();
- 
         boolean success = execute(args);
 
         // Only exit if GUI is not running
@@ -25,8 +22,8 @@ public class JseaverLauncher {
 
     }
 
-	private static boolean execute(String[] args) {
+    private static boolean execute(String[] args) {
         return LaraLauncher.launch(args, new JsWeaver());
 
-	}
+    }
 }

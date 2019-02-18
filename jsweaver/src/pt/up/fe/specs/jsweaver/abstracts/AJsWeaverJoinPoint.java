@@ -31,7 +31,6 @@ public abstract class AJsWeaverJoinPoint extends AJoinPoint {
     @Override
     public AJoinPoint getRootImpl() {
         return null;
-        // return getNode().getRoot();
     }
 
     @Override
@@ -46,7 +45,6 @@ public abstract class AJsWeaverJoinPoint extends AJoinPoint {
         System.out.println("CODE:" + code);
         try {
             JsonArray statements = JackdawEngine.parseInsertedCode(code);
-            System.out.println(statements);
         } catch (ScriptException error) {
             throw new RuntimeException("Could not parse inserted code.", error);
         }

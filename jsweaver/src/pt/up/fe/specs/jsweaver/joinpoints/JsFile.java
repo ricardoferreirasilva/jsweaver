@@ -1,11 +1,14 @@
 package pt.up.fe.specs.jsweaver.joinpoints;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jsweaver.ExtractorEngine;
+import pt.up.fe.specs.jsweaver.JsJoinpoints;
 import pt.up.fe.specs.jsweaver.abstracts.joinpoints.ADeclaration;
 import pt.up.fe.specs.jsweaver.abstracts.joinpoints.AFile;
 
@@ -31,7 +34,14 @@ public class JsFile extends AFile {
     @Override
     public List<? extends ADeclaration> selectDeclaration() {
         JsonArray statements = fileJSON.get("body").getAsJsonArray();
-        return ExtractorEngine.getAllDeclarations(statements);
+
+        List<ADeclaration> results = new ArrayList<ADeclaration>();
+        JsonArray declarators = ExtractorEngine.queryNode(fileJSON, "VariableDeclarator", true);
+        for (JsonElement declarator : declarators) {
+            ADeclaration declarationJoinPoint = (ADeclaration) JsJoinpoints.create(declarator.getAsJsonObject());
+            results.add(declarationJoinPoint);
+        }
+        return results;
     }
 
 }
