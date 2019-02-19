@@ -20,7 +20,7 @@ public class JsJoinpoints {
         MAPPINGS = new HashMap<>();
         MAPPINGS.put("Project", JsProject::new);
         MAPPINGS.put("Program", JsFile::new);
-        MAPPINGS.put("VariableDeclarator", JsDeclaration::new);
+        MAPPINGS.put("VariableDeclaration", JsDeclaration::new);
     }
 
     public static AJackdawWeaverJoinPoint create(JsonObject node) {

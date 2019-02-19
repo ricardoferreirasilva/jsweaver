@@ -19,25 +19,25 @@ import java.util.Arrays;
 public abstract class ADeclaration extends AJackdawWeaverJoinPoint {
 
     /**
-     * ID of the declaration (variable name).
+     * Kind of declaration.
      */
-    public abstract String getIdImpl();
+    public abstract String getKindImpl();
 
     /**
-     * ID of the declaration (variable name).
+     * Kind of declaration.
      */
-    public final Object getId() {
+    public final Object getKind() {
         try {
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "id", Optional.empty());
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "kind", Optional.empty());
         	}
-        	String result = this.getIdImpl();
+        	String result = this.getKindImpl();
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "id", Optional.ofNullable(result));
+        		eventTrigger().triggerAttribute(Stage.END, this, "kind", Optional.ofNullable(result));
         	}
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
-        	throw new AttributeException(get_class(), "id", e);
+        	throw new AttributeException(get_class(), "kind", e);
         }
     }
 
@@ -71,7 +71,7 @@ public abstract class ADeclaration extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
-        attributes.add("id");
+        attributes.add("kind");
     }
 
     /**
@@ -102,7 +102,7 @@ public abstract class ADeclaration extends AJackdawWeaverJoinPoint {
      * 
      */
     protected enum DeclarationAttributes {
-        ID("id"),
+        KIND("kind"),
         TYPE("type"),
         PARENT("parent"),
         ROOT("root");

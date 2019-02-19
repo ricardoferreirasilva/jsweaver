@@ -102,11 +102,11 @@
          "children": [
                {
                   "type": "attribute",
-                  "tooltip": "ID of the declaration (variable name).",
+                  "tooltip": "Kind of declaration.",
                   "children": [
                            {
                               "type": "String",
-                              "name": "id"
+                              "name": "kind"
                            }]
                },
                {

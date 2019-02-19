@@ -33,10 +33,8 @@ public class JsFile extends AFile {
 
     @Override
     public List<? extends ADeclaration> selectDeclaration() {
-        JsonArray statements = fileJSON.get("body").getAsJsonArray();
-
         List<ADeclaration> results = new ArrayList<ADeclaration>();
-        JsonArray declarators = JackdawQueryEngine.queryNode(fileJSON, "VariableDeclarator", true);
+        JsonArray declarators = JackdawQueryEngine.queryNode(fileJSON, "VariableDeclaration", true);
         for (JsonElement declarator : declarators) {
             ADeclaration declarationJoinPoint = (ADeclaration) JsJoinpoints.create(declarator.getAsJsonObject());
             results.add(declarationJoinPoint);

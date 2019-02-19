@@ -19,7 +19,7 @@
 		<attribute name="path" type="string" tooltip="Absolute path of the program file." />
 	</artifact>
 	<artifact class="declaration">
-		<attribute name="id" type="string" tooltip="ID of the declaration (variable name)." />
+		<attribute name="kind" type="string" tooltip="Kind of declaration." />
 	</artifact>
 	
 

@@ -17,10 +17,9 @@ public class JsDeclaration extends ADeclaration {
     }
 
     @Override
-    public String getIdImpl() {
-        JsonObject id = this.declarationJSON.get("id").getAsJsonObject();
-        String id_name = id.get("name").getAsString();
-        return id_name;
+    public String getKindImpl() {
+        String kind = this.declarationJSON.get("kind").getAsString();
+        return kind;
     }
 
 }

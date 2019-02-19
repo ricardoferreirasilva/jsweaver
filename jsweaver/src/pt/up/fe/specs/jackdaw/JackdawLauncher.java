@@ -6,7 +6,7 @@ import larai.LaraI;
 import pt.up.fe.specs.util.SpecsLogs;
 import pt.up.fe.specs.util.SpecsSystem;
 
-public class JseaverLauncher {
+public class JackdawLauncher {
 
     public static void main(String[] args) {
         SpecsSystem.programStandardInit();
