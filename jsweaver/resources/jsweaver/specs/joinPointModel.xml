@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <joinpoints root_class="project">
 
+
+
 	<!-- PROJECT -->
 	<!-- Represents the complete program and is the topmost joint point in the hierarchy.  -->
 	<joinpoint class="project">
@@ -13,5 +15,7 @@
 	
 	<joinpoint class="declaration">
 	</joinpoint>
+	
+	
 
 </joinpoints>

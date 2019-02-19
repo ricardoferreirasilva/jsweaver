@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import org.jmock.util.NotImplementedException;
-
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jsweaver.abstracts.AJsWeaverJoinPoint;
 import pt.up.fe.specs.jsweaver.joinpoints.JsDeclaration;
 import pt.up.fe.specs.jsweaver.joinpoints.JsFile;
+import pt.up.fe.specs.jsweaver.joinpoints.JsGeneric;
 import pt.up.fe.specs.jsweaver.joinpoints.JsProject;
+import pt.up.fe.specs.util.SpecsLogs;
 
 public class JsJoinpoints {
 
@@ -28,7 +28,9 @@ public class JsJoinpoints {
 
         Function<JsonObject, AJsWeaverJoinPoint> mapper = MAPPINGS.get(type);
         if (mapper == null) {
-            throw new NotImplementedException("Join point mappings not implemented for type '" + type + "'");
+            SpecsLogs.debug(() -> "Creating generic join point for node of type '" + type + "'");
+            return new JsGeneric(node);
+            // throw new NotImplementedException("Join point mappings not implemented for type '" + type + "'");
         }
 
         return mapper.apply(node);

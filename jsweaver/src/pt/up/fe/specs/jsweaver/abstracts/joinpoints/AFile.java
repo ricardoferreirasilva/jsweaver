@@ -51,7 +51,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    public final List<? extends JoinPoint> select(String selectName) {
+    public List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
         	case "declaration": 
@@ -68,7 +68,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    public final void defImpl(String attribute, Object value) {
+    public void defImpl(String attribute, Object value) {
         switch(attribute){
         default: throw new UnsupportedOperationException("Join point "+get_class()+": attribute '"+attribute+"' cannot be defined");
         }
@@ -78,7 +78,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    protected final void fillWithAttributes(List<String> attributes) {
+    protected void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
         attributes.add("path");
     }
@@ -87,7 +87,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    protected final void fillWithSelects(List<String> selects) {
+    protected void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
         selects.add("declaration");
     }
@@ -96,7 +96,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    protected final void fillWithActions(List<String> actions) {
+    protected void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
     }
 
@@ -105,7 +105,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * @return The join point type
      */
     @Override
-    public final String get_class() {
+    public String get_class() {
         return "file";
     }
     /**

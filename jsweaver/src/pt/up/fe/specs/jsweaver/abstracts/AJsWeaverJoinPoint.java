@@ -45,6 +45,9 @@ public abstract class AJsWeaverJoinPoint extends AJoinPoint {
     @Override
     public AJoinPoint getParentImpl() {
         JsonObject parentNode = ParentMapper.getParent(this.getNode());
+
+        parentNode.get("type").getAsString();
+
         AJoinPoint parentJoinpoint = (AJoinPoint) JsJoinpoints.create(parentNode);
         return parentJoinpoint;
     }

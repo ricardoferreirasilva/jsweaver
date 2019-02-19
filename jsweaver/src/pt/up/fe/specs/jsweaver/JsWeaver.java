@@ -1,6 +1,7 @@
 package pt.up.fe.specs.jsweaver;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,6 +18,9 @@ import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jsast.JackdawEngine;
 import pt.up.fe.specs.jsweaver.abstracts.weaver.AJsWeaver;
+import pt.up.fe.specs.jsweaver.api.LaraCoreApi;
+import pt.up.fe.specs.util.SpecsLogs;
+import pt.up.fe.specs.util.providers.ResourceProvider;
 
 /**
  * Weaver Implementation for JsWeaver<br>
@@ -54,6 +58,8 @@ public class JsWeaver extends AJsWeaver {
      * @return true if the file type is valid
      */
     public boolean begin(List<File> sources, File outputDir, DataStore args) {
+        SpecsLogs.test("TEST!");
+
         if (outputDir.isDirectory() && outputDir.isDirectory()) {
             this.outputDir = outputDir;
         } else {
@@ -93,6 +99,16 @@ public class JsWeaver extends AJsWeaver {
         JsonArray queryResult = JackdawQueryEngine.queryNode(root, "VariableDeclaration", true);
         System.out.println("RESULT: " + queryResult);
         return true;
+    }
+
+    @Override
+    public List<ResourceProvider> getAspectsAPI() {
+        List<ResourceProvider> apis = new ArrayList<>();
+
+        apis.addAll(ResourceProvider.getResourcesFromEnum(LaraCoreApi.class));
+
+        return apis;
+
     }
 
     @Override
