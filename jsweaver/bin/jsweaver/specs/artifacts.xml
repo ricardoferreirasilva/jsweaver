@@ -6,6 +6,7 @@
 	<!-- These properties are shared by all joinpoints -->
 	<global>
 		<attribute name="root" type="joinpoint" tooltip="Returns the 'project' joinpoint" />
+		<attribute name="parent" type="joinpoint" tooltip="Returns the 'parent' node of this joinpoint" />
 		<attribute name="type" type="string" tooltip="The type of the node" />
 	</global>
 	

@@ -33,6 +33,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the 'project' joinpoint",
                   "children": [
                            {
@@ -126,6 +135,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the 'project' joinpoint",
                   "children": [
                            {
@@ -215,6 +233,15 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
                            }]
                },
                {
@@ -313,6 +340,15 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
                            }]
                },
                {

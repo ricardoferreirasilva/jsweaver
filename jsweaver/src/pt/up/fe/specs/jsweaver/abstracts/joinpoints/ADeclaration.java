@@ -104,6 +104,7 @@ public abstract class ADeclaration extends AJsWeaverJoinPoint {
     protected enum DeclarationAttributes {
         ID("id"),
         TYPE("type"),
+        PARENT("parent"),
         ROOT("root");
         private String name;
 

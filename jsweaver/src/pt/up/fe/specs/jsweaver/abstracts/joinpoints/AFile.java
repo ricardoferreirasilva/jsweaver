@@ -114,6 +114,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
     protected enum FileAttributes {
         PATH("path"),
         TYPE("type"),
+        PARENT("parent"),
         ROOT("root");
         private String name;
 

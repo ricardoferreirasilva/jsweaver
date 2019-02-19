@@ -11,7 +11,7 @@ import com.google.gson.JsonObject;
 import pt.up.fe.specs.jsweaver.abstracts.joinpoints.ADeclaration;
 
 // Class that hosts several functions to extract AST elements from JSON.
-public class ExtractorEngine {
+public class JackdawQueryEngine {
 
     // Extract VariableDeclarators from a list of statements.
     public static List<? extends ADeclaration> getAllDeclarations(JsonArray statements) {

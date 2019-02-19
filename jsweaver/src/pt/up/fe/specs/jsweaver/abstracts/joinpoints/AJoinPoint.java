@@ -60,6 +60,7 @@ public abstract class AJoinPoint extends JoinPoint {
     protected void fillWithAttributes(List<String> attributes) {
         //Attributes available for all join points
         attributes.add("root");
+        attributes.add("parent");
         attributes.add("type");
     }
 
@@ -83,6 +84,29 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "root", e);
+        }
+    }
+
+    /**
+     * Returns the 'parent' node of this joinpoint
+     */
+    public abstract AJoinPoint getParentImpl();
+
+    /**
+     * Returns the 'parent' node of this joinpoint
+     */
+    public final Object getParent() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "parent", Optional.empty());
+        	}
+        	AJoinPoint result = this.getParentImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "parent", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "parent", e);
         }
     }
 

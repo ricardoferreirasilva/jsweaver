@@ -8,6 +8,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jsast.JackdawEngine;
+import pt.up.fe.specs.jsweaver.JsJoinpoints;
+import pt.up.fe.specs.jsweaver.ParentMapper;
 import pt.up.fe.specs.jsweaver.abstracts.joinpoints.AJoinPoint;
 
 /**
@@ -30,12 +32,21 @@ public abstract class AJsWeaverJoinPoint extends AJoinPoint {
 
     @Override
     public AJoinPoint getRootImpl() {
-        return null;
+        JsonObject rootObject = ParentMapper.getRoot(this.getNode());
+        AJoinPoint rootJoinpoint = (AJoinPoint) JsJoinpoints.create(rootObject);
+        return rootJoinpoint;
     }
 
     @Override
     public String getTypeImpl() {
         return getNode().get("type").getAsString();
+    }
+
+    @Override
+    public AJoinPoint getParentImpl() {
+        JsonObject parentNode = ParentMapper.getParent(this.getNode());
+        AJoinPoint parentJoinpoint = (AJoinPoint) JsJoinpoints.create(parentNode);
+        return parentJoinpoint;
     }
 
     @Override

@@ -125,6 +125,7 @@ public abstract class AProject extends AJsWeaverJoinPoint {
     protected enum ProjectAttributes {
         FUNCTIONS("functions"),
         TYPE("type"),
+        PARENT("parent"),
         ROOT("root");
         private String name;
 

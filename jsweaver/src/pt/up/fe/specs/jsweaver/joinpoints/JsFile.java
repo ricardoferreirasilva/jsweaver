@@ -7,7 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import pt.up.fe.specs.jsweaver.ExtractorEngine;
+import pt.up.fe.specs.jsweaver.JackdawQueryEngine;
 import pt.up.fe.specs.jsweaver.JsJoinpoints;
 import pt.up.fe.specs.jsweaver.abstracts.joinpoints.ADeclaration;
 import pt.up.fe.specs.jsweaver.abstracts.joinpoints.AFile;
@@ -36,7 +36,7 @@ public class JsFile extends AFile {
         JsonArray statements = fileJSON.get("body").getAsJsonArray();
 
         List<ADeclaration> results = new ArrayList<ADeclaration>();
-        JsonArray declarators = ExtractorEngine.queryNode(fileJSON, "VariableDeclarator", true);
+        JsonArray declarators = JackdawQueryEngine.queryNode(fileJSON, "VariableDeclarator", true);
         for (JsonElement declarator : declarators) {
             ADeclaration declarationJoinPoint = (ADeclaration) JsJoinpoints.create(declarator.getAsJsonObject());
             results.add(declarationJoinPoint);
