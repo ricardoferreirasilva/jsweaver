@@ -2,13 +2,11 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import com.google.gson.JsonObject;
-
-import pt.up.fe.specs.jackdaw.JackdawWeaver;
-
 import java.util.List;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
+import pt.up.fe.specs.jackdaw.JackdawWeaver;
 
 /**
  * Abstract class containing the global attributes and default action exception.
@@ -153,6 +151,6 @@ public abstract class AJoinPoint extends JoinPoint {
      */
     @Override
     public JackdawWeaver getWeaverEngine() {
-        return JackdawWeaver.getJsWeaver();
+        return JackdawWeaver.getJackdawWeaver();
     }
 }

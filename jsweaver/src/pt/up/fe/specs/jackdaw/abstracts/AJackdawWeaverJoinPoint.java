@@ -17,7 +17,7 @@ import pt.up.fe.specs.jsast.JackdawEngine;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AJsWeaverJoinPoint extends AJoinPoint {
+public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 
     /**
      * Compares the two join points based on their node reference of the used compiler/parsing tool.<br>

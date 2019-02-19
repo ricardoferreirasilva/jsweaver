@@ -26,7 +26,7 @@ import pt.up.fe.specs.util.providers.ResourceProvider;
  * Weaver Implementation for JackdawWeaver<br>
  * Since the generated abstract classes are always overwritten, their implementation should be done by extending those
  * abstract classes with user-defined classes.<br>
- * The abstract class {@link pt.up.fe.specs.jackdaw.abstracts.AJsWeaverJoinPoint} can be used to add user-defined
+ * The abstract class {@link pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint} can be used to add user-defined
  * methods and fields which the user intends to add for all join points and are not intended to be used in LARA aspects.
  * 
  * @author Lara Weaver Generator
@@ -152,7 +152,7 @@ public class JackdawWeaver extends AJsWeaver {
     /**
      * Returns Weaving Engine as a JackdawWeaver
      */
-    public static JackdawWeaver getJsWeaver() {
+    public static JackdawWeaver getJackdawWeaver() {
         return (JackdawWeaver) getWeaverStatic();
     }
 

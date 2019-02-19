@@ -1,13 +1,10 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
 import org.lara.interpreter.weaver.interf.events.Stage;
-
-import pt.up.fe.specs.jackdaw.abstracts.AJsWeaverJoinPoint;
-
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
-
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -19,7 +16,7 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AFile extends AJsWeaverJoinPoint {
+public abstract class AFile extends AJackdawWeaverJoinPoint {
 
     /**
      * Absolute path of the program file.
@@ -54,7 +51,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    public List<? extends JoinPoint> select(String selectName) {
+    public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
         	case "declaration": 
@@ -71,7 +68,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    public void defImpl(String attribute, Object value) {
+    public final void defImpl(String attribute, Object value) {
         switch(attribute){
         default: throw new UnsupportedOperationException("Join point "+get_class()+": attribute '"+attribute+"' cannot be defined");
         }
@@ -81,7 +78,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    protected void fillWithAttributes(List<String> attributes) {
+    protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
         attributes.add("path");
     }
@@ -90,7 +87,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    protected void fillWithSelects(List<String> selects) {
+    protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
         selects.add("declaration");
     }
@@ -99,7 +96,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * 
      */
     @Override
-    protected void fillWithActions(List<String> actions) {
+    protected final void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
     }
 
@@ -108,7 +105,7 @@ public abstract class AFile extends AJsWeaverJoinPoint {
      * @return The join point type
      */
     @Override
-    public String get_class() {
+    public final String get_class() {
         return "file";
     }
     /**

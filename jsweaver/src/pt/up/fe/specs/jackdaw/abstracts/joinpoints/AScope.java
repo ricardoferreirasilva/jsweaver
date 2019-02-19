@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.lara.interpreter.weaver.interf.JoinPoint;
 
-import pt.up.fe.specs.jackdaw.abstracts.AJsWeaverJoinPoint;
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,7 +17,7 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AScope extends AJsWeaverJoinPoint {
+public abstract class AScope extends AJackdawWeaverJoinPoint {
 
     /**
      * Method used by the lara interpreter to select functions

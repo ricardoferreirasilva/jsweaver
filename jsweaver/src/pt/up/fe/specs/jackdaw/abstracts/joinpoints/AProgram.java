@@ -3,7 +3,7 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 
-import pt.up.fe.specs.jackdaw.abstracts.AJsWeaverJoinPoint;
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,7 +16,7 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AProgram extends AJsWeaverJoinPoint {
+public abstract class AProgram extends AJackdawWeaverJoinPoint {
 
     /**
      * 

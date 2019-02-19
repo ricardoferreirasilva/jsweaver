@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * The implementation of the abstract methods is mandatory!
  * @author Lara C.
  */
-public abstract class AJsWeaver extends WeaverEngine {
+public abstract class AJackdawWeaver extends WeaverEngine {
 
     /**
      * Get the list of available actions in the weaver

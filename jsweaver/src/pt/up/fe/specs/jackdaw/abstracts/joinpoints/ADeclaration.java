@@ -1,12 +1,9 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
 import org.lara.interpreter.weaver.interf.events.Stage;
-
-import pt.up.fe.specs.jackdaw.abstracts.AJsWeaverJoinPoint;
-
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
-
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
@@ -19,7 +16,7 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class ADeclaration extends AJsWeaverJoinPoint {
+public abstract class ADeclaration extends AJackdawWeaverJoinPoint {
 
     /**
      * ID of the declaration (variable name).
