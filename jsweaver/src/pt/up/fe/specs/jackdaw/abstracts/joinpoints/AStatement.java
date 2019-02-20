@@ -1,61 +1,45 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
-import org.lara.interpreter.weaver.interf.events.Stage;
-import java.util.Optional;
-import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AFile
+ * Auto-Generated class for join point AStatement
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AFile extends AJackdawWeaverJoinPoint {
+public abstract class AStatement extends AJackdawWeaverJoinPoint {
 
     /**
-     * Absolute path of the program file.
-     */
-    public abstract String getPathImpl();
-
-    /**
-     * Absolute path of the program file.
-     */
-    public final Object getPath() {
-        try {
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "path", Optional.empty());
-        	}
-        	String result = this.getPathImpl();
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "path", Optional.ofNullable(result));
-        	}
-        	return result!=null?result:getUndefinedValue();
-        } catch(Exception e) {
-        	throw new AttributeException(get_class(), "path", e);
-        }
-    }
-
-    /**
-     * Method used by the lara interpreter to select statements
+     * Method used by the lara interpreter to select expressionStatements
      * @return 
      */
-    public abstract List<? extends AStatement> selectStatement();
+    public abstract List<? extends AExpressionStatement> selectExpressionStatement();
+
+    /**
+     * Method used by the lara interpreter to select declarations
+     * @return 
+     */
+    public abstract List<? extends ADeclaration> selectDeclaration();
 
     /**
      * 
      */
     @Override
-    public final List<? extends JoinPoint> select(String selectName) {
+    public List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "statement": 
-        		joinPointList = selectStatement();
+        	case "expressionStatement": 
+        		joinPointList = selectExpressionStatement();
+        		break;
+        	case "declaration": 
+        		joinPointList = selectDeclaration();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -68,7 +52,7 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
      * 
      */
     @Override
-    public final void defImpl(String attribute, Object value) {
+    public void defImpl(String attribute, Object value) {
         switch(attribute){
         default: throw new UnsupportedOperationException("Join point "+get_class()+": attribute '"+attribute+"' cannot be defined");
         }
@@ -78,25 +62,25 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
      * 
      */
     @Override
-    protected final void fillWithAttributes(List<String> attributes) {
+    protected void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
-        attributes.add("path");
     }
 
     /**
      * 
      */
     @Override
-    protected final void fillWithSelects(List<String> selects) {
+    protected void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("statement");
+        selects.add("expressionStatement");
+        selects.add("declaration");
     }
 
     /**
      * 
      */
     @Override
-    protected final void fillWithActions(List<String> actions) {
+    protected void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
     }
 
@@ -105,14 +89,13 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
      * @return The join point type
      */
     @Override
-    public final String get_class() {
-        return "file";
+    public String get_class() {
+        return "statement";
     }
     /**
      * 
      */
-    protected enum FileAttributes {
-        PATH("path"),
+    protected enum StatementAttributes {
         PARENT("parent"),
         TYPE("type"),
         FIELD("field"),
@@ -122,13 +105,13 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
         /**
          * 
          */
-        private FileAttributes(String name){
+        private StatementAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<FileAttributes> fromString(String name) {
+        public static Optional<StatementAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -136,7 +119,7 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(FileAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(StatementAttributes::name).collect(Collectors.toList());
         }
 
         /**

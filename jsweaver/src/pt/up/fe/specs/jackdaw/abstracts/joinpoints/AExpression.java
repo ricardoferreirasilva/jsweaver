@@ -1,39 +1,36 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
 import java.util.List;
-
-import org.lara.interpreter.weaver.interf.JoinPoint;
-
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
-
+import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AFunction
+ * Auto-Generated class for join point AExpression
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AFunction extends AJackdawWeaverJoinPoint {
+public abstract class AExpression extends AJackdawWeaverJoinPoint {
 
     /**
-     * Method used by the lara interpreter to select scopes
+     * Method used by the lara interpreter to select callExpressions
      * @return 
      */
-    public abstract List<? extends AScope> selectScope();
+    public abstract List<? extends ACallExpression> selectCallExpression();
 
     /**
      * 
      */
     @Override
-    public final List<? extends JoinPoint> select(String selectName) {
+    public List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "scope": 
-        		joinPointList = selectScope();
+        	case "callExpression": 
+        		joinPointList = selectCallExpression();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -46,7 +43,7 @@ public abstract class AFunction extends AJackdawWeaverJoinPoint {
      * 
      */
     @Override
-    public final void defImpl(String attribute, Object value) {
+    public void defImpl(String attribute, Object value) {
         switch(attribute){
         default: throw new UnsupportedOperationException("Join point "+get_class()+": attribute '"+attribute+"' cannot be defined");
         }
@@ -56,7 +53,7 @@ public abstract class AFunction extends AJackdawWeaverJoinPoint {
      * 
      */
     @Override
-    protected final void fillWithAttributes(List<String> attributes) {
+    protected void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
     }
 
@@ -64,16 +61,16 @@ public abstract class AFunction extends AJackdawWeaverJoinPoint {
      * 
      */
     @Override
-    protected final void fillWithSelects(List<String> selects) {
+    protected void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("scope");
+        selects.add("callExpression");
     }
 
     /**
      * 
      */
     @Override
-    protected final void fillWithActions(List<String> actions) {
+    protected void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
     }
 
@@ -82,27 +79,29 @@ public abstract class AFunction extends AJackdawWeaverJoinPoint {
      * @return The join point type
      */
     @Override
-    public final String get_class() {
-        return "function";
+    public String get_class() {
+        return "expression";
     }
     /**
      * 
      */
-    protected enum FunctionAttributes {
+    protected enum ExpressionAttributes {
+        PARENT("parent"),
         TYPE("type"),
+        FIELD("field"),
         ROOT("root");
         private String name;
 
         /**
          * 
          */
-        private FunctionAttributes(String name){
+        private ExpressionAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<FunctionAttributes> fromString(String name) {
+        public static Optional<ExpressionAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -110,7 +109,7 @@ public abstract class AFunction extends AJackdawWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(FunctionAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(ExpressionAttributes::name).collect(Collectors.toList());
         }
 
         /**

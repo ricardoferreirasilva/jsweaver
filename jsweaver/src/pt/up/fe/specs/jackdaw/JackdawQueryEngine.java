@@ -3,6 +3,7 @@ package pt.up.fe.specs.jackdaw;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.function.Predicate;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -31,6 +32,11 @@ public class JackdawQueryEngine {
         return list;
     }
 
+    /** 
+     * 
+     * 
+     * 
+     * **/
     public static void jsonIterate(JsonObject jsonObj) {
         for (Entry<String, JsonElement> key : jsonObj.entrySet()) {
             String keyName = key.getKey();
@@ -40,8 +46,12 @@ public class JackdawQueryEngine {
 
     }
 
-    // Search for an object by its type in level 1 deepness.
+    // Searches all nodes with a certain type or types.
     public static JsonArray queryNode(JsonObject node, String type, Boolean indirectDescendents) {
+        return queryNode(node, typeToTest -> type.equals(typeToTest), indirectDescendents);
+    }
+
+    public static JsonArray queryNode(JsonObject node, Predicate<String> typeTester, Boolean indirectDescendents) {
         JsonArray foundElements = new JsonArray();
         String startingType = node.get("type").getAsString();
 
@@ -51,11 +61,13 @@ public class JackdawQueryEngine {
             // System.out.println("key: " + keyName + " value: " + keyValue);
 
             if (keyValue.isJsonObject()) {
-                if (keyValue.getAsJsonObject().get("type").getAsString().equals(type)) {
+                // if (keyValue.getAsJsonObject().get("type").getAsString().equals(type)) {
+                if (typeTester.test(keyValue.getAsJsonObject().get("type").getAsString())) {
                     foundElements.add(keyValue);
                 } else {
                     if (indirectDescendents) {
-                        foundElements.addAll(queryNode(keyValue.getAsJsonObject(), type, false));
+                        // foundElements.addAll(queryNode(keyValue.getAsJsonObject(), type, false));
+                        foundElements.addAll(queryNode(keyValue.getAsJsonObject(), typeTester, false));
                     }
                 }
 
@@ -63,11 +75,11 @@ public class JackdawQueryEngine {
                 JsonArray elements = keyValue.getAsJsonArray();
                 for (JsonElement singleElement : elements) {
                     if (singleElement.isJsonObject()) {
-                        if (singleElement.getAsJsonObject().get("type").getAsString().equals(type)) {
+                        if (typeTester.test(singleElement.getAsJsonObject().get("type").getAsString())) {
                             foundElements.add(singleElement);
                         } else {
                             if (indirectDescendents) {
-                                foundElements.addAll(queryNode(singleElement.getAsJsonObject(), type, false));
+                                foundElements.addAll(queryNode(singleElement.getAsJsonObject(), typeTester, false));
                             }
                         }
                     }

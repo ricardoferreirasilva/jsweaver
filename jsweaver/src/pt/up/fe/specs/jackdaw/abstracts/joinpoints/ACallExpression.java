@@ -3,73 +3,92 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
+import javax.script.Bindings;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point ADeclaration
+ * Auto-Generated class for join point ACallExpression
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class ADeclaration extends AStatement {
+public abstract class ACallExpression extends AExpression {
 
-    protected AStatement aStatement;
+    protected AExpression aExpression;
 
     /**
      * 
      */
-    public ADeclaration(AStatement aStatement){
-        this.aStatement = aStatement;
+    public ACallExpression(AExpression aExpression){
+        this.aExpression = aExpression;
     }
     /**
-     * Kind of declaration.
+     * Identifier of this expression call.
      */
-    public abstract String getKindImpl();
+    public abstract AJoinPoint getCalleeImpl();
 
     /**
-     * Kind of declaration.
+     * Identifier of this expression call.
      */
-    public final Object getKind() {
+    public final Object getCallee() {
         try {
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "kind", Optional.empty());
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "callee", Optional.empty());
         	}
-        	String result = this.getKindImpl();
+        	AJoinPoint result = this.getCalleeImpl();
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "kind", Optional.ofNullable(result));
+        		eventTrigger().triggerAttribute(Stage.END, this, "callee", Optional.ofNullable(result));
         	}
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
-        	throw new AttributeException(get_class(), "kind", e);
+        	throw new AttributeException(get_class(), "callee", e);
         }
     }
 
     /**
-     * Method used by the lara interpreter to select declarators
-     * @return 
+     * Get value on attribute arguments
+     * @return the attribute's value
      */
-    public abstract List<? extends ADeclarator> selectDeclarator();
+    public abstract AJoinPoint[] getArgumentsArrayImpl();
 
     /**
-     * Method used by the lara interpreter to select expressionStatements
-     * @return 
+     * Arguments of this expression call.
      */
-    @Override
-    public List<? extends AExpressionStatement> selectExpressionStatement() {
-        return this.aStatement.selectExpressionStatement();
+    public Bindings getArgumentsImpl() {
+        AJoinPoint[] aJoinPointArrayImpl0 = getArgumentsArrayImpl();
+        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
+        return nativeArray0;
     }
 
     /**
-     * Method used by the lara interpreter to select declarations
+     * Arguments of this expression call.
+     */
+    public final Object getArguments() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "arguments", Optional.empty());
+        	}
+        	Bindings result = this.getArgumentsImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "arguments", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "arguments", e);
+        }
+    }
+
+    /**
+     * Method used by the lara interpreter to select callExpressions
      * @return 
      */
     @Override
-    public List<? extends ADeclaration> selectDeclaration() {
-        return this.aStatement.selectDeclaration();
+    public List<? extends ACallExpression> selectCallExpression() {
+        return this.aExpression.selectCallExpression();
     }
 
     /**
@@ -79,7 +98,7 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     public void insertImpl(String position, String code) {
-        this.aStatement.insertImpl(position, code);
+        this.aExpression.insertImpl(position, code);
     }
 
     /**
@@ -87,15 +106,15 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     public String toString() {
-        return this.aStatement.toString();
+        return this.aExpression.toString();
     }
 
     /**
      * 
      */
     @Override
-    public Optional<? extends AStatement> getSuper() {
-        return Optional.of(this.aStatement);
+    public Optional<? extends AExpression> getSuper() {
+        return Optional.of(this.aExpression);
     }
 
     /**
@@ -105,17 +124,11 @@ public abstract class ADeclaration extends AStatement {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "declarator": 
-        		joinPointList = selectDeclarator();
-        		break;
-        	case "expressionStatement": 
-        		joinPointList = selectExpressionStatement();
-        		break;
-        	case "declaration": 
-        		joinPointList = selectDeclaration();
+        	case "callExpression": 
+        		joinPointList = selectCallExpression();
         		break;
         	default:
-        		joinPointList = this.aStatement.select(selectName);
+        		joinPointList = this.aExpression.select(selectName);
         		break;
         }
         return joinPointList;
@@ -136,8 +149,9 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
-        this.aStatement.fillWithAttributes(attributes);
-        attributes.add("kind");
+        this.aExpression.fillWithAttributes(attributes);
+        attributes.add("callee");
+        attributes.add("arguments");
     }
 
     /**
@@ -145,8 +159,7 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     protected final void fillWithSelects(List<String> selects) {
-        this.aStatement.fillWithSelects(selects);
-        selects.add("declarator");
+        this.aExpression.fillWithSelects(selects);
     }
 
     /**
@@ -154,7 +167,7 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     protected final void fillWithActions(List<String> actions) {
-        this.aStatement.fillWithActions(actions);
+        this.aExpression.fillWithActions(actions);
     }
 
     /**
@@ -163,7 +176,7 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     public final String get_class() {
-        return "declaration";
+        return "callExpression";
     }
 
     /**
@@ -176,13 +189,14 @@ public abstract class ADeclaration extends AStatement {
         if(isInstance) {
         	return true;
         }
-        return this.aStatement.instanceOf(joinpointClass);
+        return this.aExpression.instanceOf(joinpointClass);
     }
     /**
      * 
      */
-    protected enum DeclarationAttributes {
-        KIND("kind"),
+    protected enum CallExpressionAttributes {
+        CALLEE("callee"),
+        ARGUMENTS("arguments"),
         PARENT("parent"),
         TYPE("type"),
         FIELD("field"),
@@ -192,13 +206,13 @@ public abstract class ADeclaration extends AStatement {
         /**
          * 
          */
-        private DeclarationAttributes(String name){
+        private CallExpressionAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<DeclarationAttributes> fromString(String name) {
+        public static Optional<CallExpressionAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -206,7 +220,7 @@ public abstract class ADeclaration extends AStatement {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(DeclarationAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(CallExpressionAttributes::name).collect(Collectors.toList());
         }
 
         /**

@@ -5,15 +5,43 @@
 
 	<!-- PROJECT -->
 	<!-- Represents the complete program and is the topmost joint point in the hierarchy.  -->
-	<joinpoint class="project">
+	<joinpoint class="project" tooltip="the root of the project">
 		<select class="file"/>
 	</joinpoint>
+
 	
 	<joinpoint class="file">
-		<select class="declaration"/>
+		<select class="statement"/>
 	</joinpoint>
 	
-	<joinpoint class="declaration">
+	<joinpoint class="statement">
+		<select class="expressionStatement"/>
+		<select class="declaration"/>
+	</joinpoint>	
+	
+	<joinpoint class="declaration" extends="statement">
+		<select class="declarator"/>
+	</joinpoint>
+	
+	<joinpoint class="expressionStatement" extends="statement">
+		<select class="expression"/>
+	</joinpoint>
+	
+	<joinpoint class="expression">
+		<select class="callExpression"/>
+	</joinpoint>
+	
+		
+	<joinpoint class="declarator">
+	</joinpoint>
+	
+	<joinpoint class="identifier">
+	</joinpoint>
+	
+	<joinpoint class="literal">
+	</joinpoint>
+	
+	<joinpoint class="callExpression" extends="expression">
 	</joinpoint>
 	
 	

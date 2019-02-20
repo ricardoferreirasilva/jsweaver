@@ -14,7 +14,7 @@ import java.util.Arrays;
  * Auto-Generated class for join point AProject
  * This class is overwritten by the Weaver Generator.
  * 
- * 
+ * the root of the project
  * @author Lara Weaver Generator
  */
 public abstract class AProject extends AJackdawWeaverJoinPoint {
@@ -124,8 +124,9 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
      */
     protected enum ProjectAttributes {
         FUNCTIONS("functions"),
-        TYPE("type"),
         PARENT("parent"),
+        TYPE("type"),
+        FIELD("field"),
         ROOT("root");
         private String name;
 

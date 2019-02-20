@@ -55,8 +55,6 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
     @Override
     public void insertImpl(String position, String code) {
 
-        System.out.println("POSITON:" + position);
-        System.out.println("CODE:" + code);
         try {
             JsonArray statements = JackdawEngine.parseInsertedCode(code);
         } catch (ScriptException error) {
@@ -66,9 +64,12 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 
     @Override
     public <T extends JoinPoint> void insertImpl(String position, T JoinPoint) {
-        System.out.println("POSITON:" + position);
         JsonObject joinpoint = (JsonObject) JoinPoint.getNode();
-        System.out.println(joinpoint);
-        // super.insertImpl(position, JoinPoint);
+    }
+
+    @Override
+    public Object fieldImpl(String fieldName) {
+        getNode().get(fieldName);
+        return null;
     }
 }

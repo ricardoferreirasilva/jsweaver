@@ -62,6 +62,7 @@ public abstract class AJoinPoint extends JoinPoint {
         attributes.add("root");
         attributes.add("parent");
         attributes.add("type");
+        attributes.add("field(String fieldName)");
     }
 
     /**
@@ -130,6 +131,33 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "type", e);
+        }
+    }
+
+    /**
+     * 
+     * @param fieldName
+     * @return 
+     */
+    public abstract Object fieldImpl(String fieldName);
+
+    /**
+     * 
+     * @param fieldName
+     * @return 
+     */
+    public final Object field(String fieldName) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "field", Optional.empty(), fieldName);
+        	}
+        	Object result = this.fieldImpl(fieldName);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "field", Optional.ofNullable(result), fieldName);
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "field", e);
         }
     }
 

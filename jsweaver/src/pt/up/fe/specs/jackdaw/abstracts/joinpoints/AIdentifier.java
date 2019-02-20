@@ -1,29 +1,45 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
-import java.util.List;
-
-import org.lara.interpreter.weaver.interf.JoinPoint;
-
-import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
-
+import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
+import org.lara.interpreter.exception.AttributeException;
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
+import java.util.List;
+import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AScope
+ * Auto-Generated class for join point AIdentifier
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AScope extends AJackdawWeaverJoinPoint {
+public abstract class AIdentifier extends AJackdawWeaverJoinPoint {
 
     /**
-     * Method used by the lara interpreter to select functions
-     * @return 
+     * Name of the identifier.
      */
-    public abstract List<? extends AFunction> selectFunction();
+    public abstract String getNameImpl();
+
+    /**
+     * Name of the identifier.
+     */
+    public final Object getName() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "name", Optional.empty());
+        	}
+        	String result = this.getNameImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "name", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "name", e);
+        }
+    }
 
     /**
      * 
@@ -32,9 +48,6 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "function": 
-        		joinPointList = selectFunction();
-        		break;
         	default:
         		joinPointList = super.select(selectName);
         		break;
@@ -58,6 +71,7 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
+        attributes.add("name");
     }
 
     /**
@@ -66,7 +80,6 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("function");
     }
 
     /**
@@ -83,26 +96,29 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
      */
     @Override
     public final String get_class() {
-        return "scope";
+        return "identifier";
     }
     /**
      * 
      */
-    protected enum ScopeAttributes {
+    protected enum IdentifierAttributes {
+        NAME("name"),
+        PARENT("parent"),
         TYPE("type"),
+        FIELD("field"),
         ROOT("root");
         private String name;
 
         /**
          * 
          */
-        private ScopeAttributes(String name){
+        private IdentifierAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<ScopeAttributes> fromString(String name) {
+        public static Optional<IdentifierAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -110,7 +126,7 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(ScopeAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(IdentifierAttributes::name).collect(Collectors.toList());
         }
 
         /**

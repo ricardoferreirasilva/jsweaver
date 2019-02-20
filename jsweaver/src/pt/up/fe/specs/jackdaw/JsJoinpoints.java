@@ -7,9 +7,14 @@ import java.util.function.Function;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
+import pt.up.fe.specs.jackdaw.joinpoints.JsCallExpression;
 import pt.up.fe.specs.jackdaw.joinpoints.JsDeclaration;
+import pt.up.fe.specs.jackdaw.joinpoints.JsDeclarator;
+import pt.up.fe.specs.jackdaw.joinpoints.JsExpressionStatement;
 import pt.up.fe.specs.jackdaw.joinpoints.JsFile;
 import pt.up.fe.specs.jackdaw.joinpoints.JsGeneric;
+import pt.up.fe.specs.jackdaw.joinpoints.JsIdentifier;
+import pt.up.fe.specs.jackdaw.joinpoints.JsLiteral;
 import pt.up.fe.specs.jackdaw.joinpoints.JsProject;
 import pt.up.fe.specs.util.SpecsLogs;
 
@@ -21,6 +26,11 @@ public class JsJoinpoints {
         MAPPINGS.put("Project", JsProject::new);
         MAPPINGS.put("Program", JsFile::new);
         MAPPINGS.put("VariableDeclaration", JsDeclaration::new);
+        MAPPINGS.put("VariableDeclarator", JsDeclarator::new);
+        MAPPINGS.put("Identifier", JsIdentifier::new);
+        MAPPINGS.put("Literal", JsLiteral::new);
+        MAPPINGS.put("ExpressionStatement", JsExpressionStatement::new);
+        MAPPINGS.put("CallExpression", JsCallExpression::new);
     }
 
     public static AJackdawWeaverJoinPoint create(JsonObject node) {

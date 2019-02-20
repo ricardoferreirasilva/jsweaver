@@ -19,7 +19,6 @@ import com.google.gson.JsonObject;
 import pt.up.fe.specs.jackdaw.abstracts.weaver.AJsWeaver;
 import pt.up.fe.specs.jackdaw.api.LaraCoreApi;
 import pt.up.fe.specs.jsast.JackdawEngine;
-import pt.up.fe.specs.util.SpecsLogs;
 import pt.up.fe.specs.util.providers.ResourceProvider;
 
 /**
@@ -58,7 +57,6 @@ public class JackdawWeaver extends AJsWeaver {
      * @return true if the file type is valid
      */
     public boolean begin(List<File> sources, File outputDir, DataStore args) {
-        SpecsLogs.test("TEST!");
 
         if (outputDir.isDirectory() && outputDir.isDirectory()) {
             this.outputDir = outputDir;
@@ -93,11 +91,7 @@ public class JackdawWeaver extends AJsWeaver {
         root.addProperty("type", "Project");
         root.add("programs", totalPrograms);
         this.project = root;
-
-        JsonObject rootCopy = root;
-        JackdawUtilities.formParents(rootCopy);
-        JsonArray queryResult = JackdawQueryEngine.queryNode(root, "VariableDeclaration", true);
-        System.out.println("RESULT: " + queryResult);
+        JackdawUtilities.formParents(this.project);
         return true;
     }
 

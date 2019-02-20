@@ -8,6 +8,13 @@
 		<attribute name="root" type="joinpoint" tooltip="Returns the 'project' joinpoint" />
 		<attribute name="parent" type="joinpoint" tooltip="Returns the 'parent' node of this joinpoint" />
 		<attribute name="type" type="string" tooltip="The type of the node" />
+
+		<attribute name="field" type="Object"
+			tooltip="Returns the value of the given field">
+			<parameter name="fieldName" type="String" />
+		</attribute>
+
+
 	</global>
 	
 	<!-- PROGRAM -->
@@ -18,8 +25,33 @@
 	<artifact class="file">
 		<attribute name="path" type="string" tooltip="Absolute path of the program file." />
 	</artifact>
+	<artifact class="statement">
+	</artifact>
+	
+	<artifact class="expression">
+	</artifact>
+	
 	<artifact class="declaration">
 		<attribute name="kind" type="string" tooltip="Kind of declaration." />
+	</artifact>
+	<artifact class="declarator">
+		<attribute name="id" type="joinpoint" tooltip="Identifier of this declarator." />
+		<attribute name="init" type="joinpoint" tooltip="Initialization of this declarator." />
+	</artifact>
+	<artifact class="identifier">
+		<attribute name="name" type="string" tooltip="Name of the identifier." />
+	</artifact>
+	<artifact class="literal">
+		<attribute name="raw" type="string" tooltip="Raw value of this literal." />
+	</artifact>
+
+	<artifact class="expressionStatement">
+		<attribute name="directive" type="string" tooltip="Directive of this expression statement." />
+	</artifact>
+	
+	<artifact class="callExpression">
+		<attribute name="callee" type="joinpoint" tooltip="Identifier of this expression call." />
+		<attribute name="arguments" type="joinpoint[]" tooltip="Arguments of this expression call." />
 	</artifact>
 	
 

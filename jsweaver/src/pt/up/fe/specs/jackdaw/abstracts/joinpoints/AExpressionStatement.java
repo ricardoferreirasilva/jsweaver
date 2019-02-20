@@ -9,50 +9,50 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point ADeclaration
+ * Auto-Generated class for join point AExpressionStatement
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class ADeclaration extends AStatement {
+public abstract class AExpressionStatement extends AStatement {
 
     protected AStatement aStatement;
 
     /**
      * 
      */
-    public ADeclaration(AStatement aStatement){
+    public AExpressionStatement(AStatement aStatement){
         this.aStatement = aStatement;
     }
     /**
-     * Kind of declaration.
+     * Directive of this expression statement.
      */
-    public abstract String getKindImpl();
+    public abstract String getDirectiveImpl();
 
     /**
-     * Kind of declaration.
+     * Directive of this expression statement.
      */
-    public final Object getKind() {
+    public final Object getDirective() {
         try {
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "kind", Optional.empty());
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "directive", Optional.empty());
         	}
-        	String result = this.getKindImpl();
+        	String result = this.getDirectiveImpl();
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "kind", Optional.ofNullable(result));
+        		eventTrigger().triggerAttribute(Stage.END, this, "directive", Optional.ofNullable(result));
         	}
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
-        	throw new AttributeException(get_class(), "kind", e);
+        	throw new AttributeException(get_class(), "directive", e);
         }
     }
 
     /**
-     * Method used by the lara interpreter to select declarators
+     * Method used by the lara interpreter to select expressions
      * @return 
      */
-    public abstract List<? extends ADeclarator> selectDeclarator();
+    public abstract List<? extends AExpression> selectExpression();
 
     /**
      * Method used by the lara interpreter to select expressionStatements
@@ -105,8 +105,8 @@ public abstract class ADeclaration extends AStatement {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "declarator": 
-        		joinPointList = selectDeclarator();
+        	case "expression": 
+        		joinPointList = selectExpression();
         		break;
         	case "expressionStatement": 
         		joinPointList = selectExpressionStatement();
@@ -137,7 +137,7 @@ public abstract class ADeclaration extends AStatement {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         this.aStatement.fillWithAttributes(attributes);
-        attributes.add("kind");
+        attributes.add("directive");
     }
 
     /**
@@ -146,7 +146,7 @@ public abstract class ADeclaration extends AStatement {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         this.aStatement.fillWithSelects(selects);
-        selects.add("declarator");
+        selects.add("expression");
     }
 
     /**
@@ -163,7 +163,7 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     public final String get_class() {
-        return "declaration";
+        return "expressionStatement";
     }
 
     /**
@@ -181,8 +181,8 @@ public abstract class ADeclaration extends AStatement {
     /**
      * 
      */
-    protected enum DeclarationAttributes {
-        KIND("kind"),
+    protected enum ExpressionStatementAttributes {
+        DIRECTIVE("directive"),
         PARENT("parent"),
         TYPE("type"),
         FIELD("field"),
@@ -192,13 +192,13 @@ public abstract class ADeclaration extends AStatement {
         /**
          * 
          */
-        private DeclarationAttributes(String name){
+        private ExpressionStatementAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<DeclarationAttributes> fromString(String name) {
+        public static Optional<ExpressionStatementAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -206,7 +206,7 @@ public abstract class ADeclaration extends AStatement {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(DeclarationAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(ExpressionStatementAttributes::name).collect(Collectors.toList());
         }
 
         /**
