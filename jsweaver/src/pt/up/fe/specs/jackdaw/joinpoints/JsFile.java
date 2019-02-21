@@ -10,7 +10,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.JackdawQueryEngine;
-import pt.up.fe.specs.jackdaw.JsJoinpoints;
+import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFile;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AStatement;
 
@@ -38,7 +38,7 @@ public class JsFile extends AFile {
         List<AStatement> results = new ArrayList<AStatement>();
         JsonArray statements = JackdawQueryEngine.queryNode(node, type -> JsStatement.isStatement(type), true);
         for (JsonElement statement : statements) {
-            AStatement declarationJoinPoint = (AStatement) JsJoinpoints.create(statement.getAsJsonObject());
+            AStatement declarationJoinPoint = (AStatement) JoinpointCreator.create(statement.getAsJsonObject());
             results.add(declarationJoinPoint);
         }
         return results;
@@ -48,7 +48,7 @@ public class JsFile extends AFile {
         List<T> results = new ArrayList<T>();
         JsonArray statements = JackdawQueryEngine.queryNode(node, type -> JsStatement.isStatement(type), true);
         for (JsonElement statement : statements) {
-            T declarationJoinPoint = jpClass.cast(JsJoinpoints.create(statement.getAsJsonObject()));
+            T declarationJoinPoint = jpClass.cast(JoinpointCreator.create(statement.getAsJsonObject()));
             results.add(declarationJoinPoint);
         }
         return results;

@@ -1,13 +1,16 @@
 package pt.up.fe.specs.jackdaw.abstracts;
 
+import java.util.List;
+
 import javax.script.ScriptException;
 
 import org.lara.interpreter.weaver.interf.JoinPoint;
+import org.lara.interpreter.weaver.interf.SelectOp;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import pt.up.fe.specs.jackdaw.JsJoinpoints;
+import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.ParentMapper;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 import pt.up.fe.specs.jsast.JackdawEngine;
@@ -33,7 +36,7 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
     @Override
     public AJoinPoint getRootImpl() {
         JsonObject rootObject = ParentMapper.getRoot(this.getNode());
-        AJoinPoint rootJoinpoint = (AJoinPoint) JsJoinpoints.create(rootObject);
+        AJoinPoint rootJoinpoint = (AJoinPoint) JoinpointCreator.create(rootObject);
         return rootJoinpoint;
     }
 
@@ -48,7 +51,7 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 
         parentNode.get("type").getAsString();
 
-        AJoinPoint parentJoinpoint = (AJoinPoint) JsJoinpoints.create(parentNode);
+        AJoinPoint parentJoinpoint = (AJoinPoint) JoinpointCreator.create(parentNode);
         return parentJoinpoint;
     }
 
@@ -71,5 +74,13 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
     public Object fieldImpl(String fieldName) {
         getNode().get(fieldName);
         return null;
+    }
+
+    /**
+     * Generic select function, used by the default select implementations.
+     */
+    public <T extends AJoinPoint> List<? extends T> select(Class<T> joinPointClass, SelectOp op) {
+        throw new RuntimeException(
+                "Generic select function not implemented yet. Implement it in order to use the default implementations of select");
     }
 }

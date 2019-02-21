@@ -7,6 +7,7 @@ import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
 import pt.up.fe.specs.jackdaw.JackdawWeaver;
+import org.lara.interpreter.weaver.interf.SelectOp;
 
 /**
  * Abstract class containing the global attributes and default action exception.
@@ -181,4 +182,9 @@ public abstract class AJoinPoint extends JoinPoint {
     public JackdawWeaver getWeaverEngine() {
         return JackdawWeaver.getJackdawWeaver();
     }
+
+    /**
+     * Generic select function, used by the default select implementations.
+     */
+    public abstract <T extends AJoinPoint> List<? extends T> select(Class<T> joinPointClass, SelectOp op);
 }

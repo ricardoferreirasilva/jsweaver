@@ -8,7 +8,7 @@ import java.util.Set;
 
 import com.google.gson.JsonObject;
 
-import pt.up.fe.specs.jackdaw.JsJoinpoints;
+import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ACallExpression;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpression;
@@ -45,7 +45,7 @@ public class JsExpression extends AExpression {
     }
 
     private <T extends AExpression> List<T> getExpression(Class<T> expressionClass) {
-        AJackdawWeaverJoinPoint stmt = JsJoinpoints.create(node);
+        AJackdawWeaverJoinPoint stmt = JoinpointCreator.create(node);
         return expressionClass.isInstance(stmt) ? Arrays.asList(expressionClass.cast(stmt))
                 : Collections.emptyList();
     }

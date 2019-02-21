@@ -8,7 +8,7 @@ import java.util.Set;
 
 import com.google.gson.JsonObject;
 
-import pt.up.fe.specs.jackdaw.JsJoinpoints;
+import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclaration;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpressionStatement;
@@ -51,7 +51,7 @@ public class JsStatement extends AStatement {
     }
 
     private <T extends AStatement> List<T> getStatement(Class<T> stmtClass) {
-        AJackdawWeaverJoinPoint stmt = JsJoinpoints.create(node);
+        AJackdawWeaverJoinPoint stmt = JoinpointCreator.create(node);
         return stmtClass.isInstance(stmt) ? Arrays.asList(stmtClass.cast(stmt))
                 : Collections.emptyList();
     }

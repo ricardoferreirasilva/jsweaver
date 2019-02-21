@@ -49,10 +49,26 @@
 		<attribute name="directive" type="string" tooltip="Directive of this expression statement." />
 	</artifact>
 	
+	<artifact class="ifStatement">
+	</artifact>
+	
 	<artifact class="callExpression">
 		<attribute name="callee" type="joinpoint" tooltip="Identifier of this expression call." />
 		<attribute name="arguments" type="joinpoint[]" tooltip="Arguments of this expression call." />
 	</artifact>
+	
+	<artifact class="memberExpression">
+		<attribute name="computed" type="boolean" tooltip="If the member expression is computed or not." />
+		<attribute name="object" type="joinpoint" tooltip="Expression of the matching object." />
+		<attribute name="property" type="joinpoint" tooltip="Expression of the object property." />
+	</artifact>
+	
+	<artifact class="binaryExpression">
+		<attribute name="operator" type="string" tooltip="Operator of the binary expression." />
+		<attribute name="left" type="joinpoint" tooltip="Left part of the binary expression." />
+		<attribute name="right" type="joinpoint" tooltip="Expression of the binary expression." />
+	</artifact>
+	
 	
 
 

@@ -4,6 +4,7 @@ import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
+import org.lara.interpreter.weaver.interf.SelectOp;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
@@ -42,10 +43,12 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
     }
 
     /**
-     * Method used by the lara interpreter to select statements
+     * Default implementation of the method used by the lara interpreter to select statements
      * @return 
      */
-    public abstract List<? extends AStatement> selectStatement();
+    public List<? extends AStatement> selectStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AStatement.class, SelectOp.DESCENDANTS);
+    }
 
     /**
      * 

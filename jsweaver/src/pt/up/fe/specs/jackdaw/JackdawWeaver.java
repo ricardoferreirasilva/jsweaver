@@ -116,7 +116,7 @@ public class JackdawWeaver extends AJsWeaver {
      * @return an instance of the join point root/program
      */
     public JoinPoint select() {
-        return JsJoinpoints.create(project);
+        return JoinpointCreator.create(project);
     }
 
     /**

@@ -4,6 +4,7 @@ import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
+import org.lara.interpreter.weaver.interf.SelectOp;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -49,10 +50,12 @@ public abstract class ADeclaration extends AStatement {
     }
 
     /**
-     * Method used by the lara interpreter to select declarators
+     * Default implementation of the method used by the lara interpreter to select declarators
      * @return 
      */
-    public abstract List<? extends ADeclarator> selectDeclarator();
+    public List<? extends ADeclarator> selectDeclarator() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclarator.class, SelectOp.DESCENDANTS);
+    }
 
     /**
      * Method used by the lara interpreter to select expressionStatements

@@ -1,64 +1,90 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
-import javax.script.Bindings;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
-import java.util.List;
-import org.lara.interpreter.weaver.interf.SelectOp;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
+import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AProject
+ * Auto-Generated class for join point AMemberExpression
  * This class is overwritten by the Weaver Generator.
  * 
- * the root of the project
+ * 
  * @author Lara Weaver Generator
  */
-public abstract class AProject extends AJackdawWeaverJoinPoint {
+public abstract class AMemberExpression extends AJackdawWeaverJoinPoint {
 
     /**
-     * Get value on attribute functions
-     * @return the attribute's value
+     * If the member expression is computed or not.
      */
-    public abstract AJoinPoint[] getFunctionsArrayImpl();
+    public abstract Boolean getComputedImpl();
 
     /**
-     * Returns the functions
+     * If the member expression is computed or not.
      */
-    public Bindings getFunctionsImpl() {
-        AJoinPoint[] aJoinPointArrayImpl0 = getFunctionsArrayImpl();
-        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
-        return nativeArray0;
-    }
-
-    /**
-     * Returns the functions
-     */
-    public final Object getFunctions() {
+    public final Object getComputed() {
         try {
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "functions", Optional.empty());
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "computed", Optional.empty());
         	}
-        	Bindings result = this.getFunctionsImpl();
+        	Boolean result = this.getComputedImpl();
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "functions", Optional.ofNullable(result));
+        		eventTrigger().triggerAttribute(Stage.END, this, "computed", Optional.ofNullable(result));
         	}
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
-        	throw new AttributeException(get_class(), "functions", e);
+        	throw new AttributeException(get_class(), "computed", e);
         }
     }
 
     /**
-     * Default implementation of the method used by the lara interpreter to select files
-     * @return 
+     * Expression of the matching object.
      */
-    public List<? extends AFile> selectFile() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFile.class, SelectOp.DESCENDANTS);
+    public abstract AJoinPoint getObjectImpl();
+
+    /**
+     * Expression of the matching object.
+     */
+    public final Object getObject() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "object", Optional.empty());
+        	}
+        	AJoinPoint result = this.getObjectImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "object", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "object", e);
+        }
+    }
+
+    /**
+     * Expression of the object property.
+     */
+    public abstract AJoinPoint getPropertyImpl();
+
+    /**
+     * Expression of the object property.
+     */
+    public final Object getProperty() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "property", Optional.empty());
+        	}
+        	AJoinPoint result = this.getPropertyImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "property", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "property", e);
+        }
     }
 
     /**
@@ -68,9 +94,6 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "file": 
-        		joinPointList = selectFile();
-        		break;
         	default:
         		joinPointList = super.select(selectName);
         		break;
@@ -94,7 +117,9 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
-        attributes.add("functions");
+        attributes.add("computed");
+        attributes.add("object");
+        attributes.add("property");
     }
 
     /**
@@ -103,7 +128,6 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("file");
     }
 
     /**
@@ -120,13 +144,15 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
      */
     @Override
     public final String get_class() {
-        return "project";
+        return "memberExpression";
     }
     /**
      * 
      */
-    protected enum ProjectAttributes {
-        FUNCTIONS("functions"),
+    protected enum MemberExpressionAttributes {
+        COMPUTED("computed"),
+        OBJECT("object"),
+        PROPERTY("property"),
         PARENT("parent"),
         TYPE("type"),
         FIELD("field"),
@@ -136,13 +162,13 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
         /**
          * 
          */
-        private ProjectAttributes(String name){
+        private MemberExpressionAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<ProjectAttributes> fromString(String name) {
+        public static Optional<MemberExpressionAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -150,7 +176,7 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(ProjectAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(MemberExpressionAttributes::name).collect(Collectors.toList());
         }
 
         /**

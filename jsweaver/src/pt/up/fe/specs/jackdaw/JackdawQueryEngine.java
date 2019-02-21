@@ -24,7 +24,7 @@ public class JackdawQueryEngine {
                 JsonArray declarations = statement.get("declarations").getAsJsonArray();
                 for (JsonElement declaration : declarations) {
                     JsonObject declarationObject = declaration.getAsJsonObject();
-                    ADeclaration declarationJoinPoint = (ADeclaration) JsJoinpoints.create(declarationObject);
+                    ADeclaration declarationJoinPoint = (ADeclaration) JoinpointCreator.create(declarationObject);
                     list.add(declarationJoinPoint);
                 }
             }

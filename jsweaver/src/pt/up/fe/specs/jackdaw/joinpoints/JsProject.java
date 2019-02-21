@@ -7,7 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import pt.up.fe.specs.jackdaw.JsJoinpoints;
+import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFile;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AProject;
@@ -33,7 +33,7 @@ public class JsProject extends AProject {
         JsonArray files = project.get("programs").getAsJsonArray();
         for (JsonElement file : files) {
             JsonObject fileJSON = file.getAsJsonObject();
-            AFile fileJointPoint = (AFile) JsJoinpoints.create(fileJSON);
+            AFile fileJointPoint = (AFile) JoinpointCreator.create(fileJSON);
             list.add(fileJointPoint);
         }
         return list;

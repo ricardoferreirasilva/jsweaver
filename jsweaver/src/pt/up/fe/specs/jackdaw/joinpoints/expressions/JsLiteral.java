@@ -1,4 +1,4 @@
-package pt.up.fe.specs.jackdaw.joinpoints;
+package pt.up.fe.specs.jackdaw.joinpoints.expressions;
 
 import com.google.gson.JsonObject;
 

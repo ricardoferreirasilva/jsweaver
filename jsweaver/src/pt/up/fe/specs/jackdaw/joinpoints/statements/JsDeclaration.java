@@ -1,4 +1,4 @@
-package pt.up.fe.specs.jackdaw.joinpoints;
+package pt.up.fe.specs.jackdaw.joinpoints.statements;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.JackdawQueryEngine;
-import pt.up.fe.specs.jackdaw.JsJoinpoints;
+import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclaration;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclarator;
+import pt.up.fe.specs.jackdaw.joinpoints.JsStatement;
 
 public class JsDeclaration extends ADeclaration {
     private final JsonObject node;
@@ -36,7 +37,7 @@ public class JsDeclaration extends ADeclaration {
         List<ADeclarator> results = new ArrayList<ADeclarator>();
         JsonArray declarators = JackdawQueryEngine.queryNode(node, "VariableDeclarator", true);
         for (JsonElement declarator : declarators) {
-            ADeclarator declaratorJoinpoint = (ADeclarator) JsJoinpoints.create(declarator.getAsJsonObject());
+            ADeclarator declaratorJoinpoint = (ADeclarator) JoinpointCreator.create(declarator.getAsJsonObject());
             results.add(declaratorJoinpoint);
         }
         return results;

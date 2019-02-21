@@ -1,6 +1,7 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
 import java.util.List;
+import org.lara.interpreter.weaver.interf.SelectOp;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.Optional;
@@ -17,16 +18,20 @@ import java.util.Arrays;
 public abstract class AStatement extends AJackdawWeaverJoinPoint {
 
     /**
-     * Method used by the lara interpreter to select expressionStatements
+     * Default implementation of the method used by the lara interpreter to select expressionStatements
      * @return 
      */
-    public abstract List<? extends AExpressionStatement> selectExpressionStatement();
+    public List<? extends AExpressionStatement> selectExpressionStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpressionStatement.class, SelectOp.DESCENDANTS);
+    }
 
     /**
-     * Method used by the lara interpreter to select declarations
+     * Default implementation of the method used by the lara interpreter to select declarations
      * @return 
      */
-    public abstract List<? extends ADeclaration> selectDeclaration();
+    public List<? extends ADeclaration> selectDeclaration() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclaration.class, SelectOp.DESCENDANTS);
+    }
 
     /**
      * 

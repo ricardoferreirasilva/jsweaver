@@ -19,6 +19,9 @@
 		<select class="declaration"/>
 	</joinpoint>	
 	
+	<joinpoint class="ifStatement" extends="statement">
+	</joinpoint>
+	
 	<joinpoint class="declaration" extends="statement">
 		<select class="declarator"/>
 	</joinpoint>
@@ -44,6 +47,11 @@
 	<joinpoint class="callExpression" extends="expression">
 	</joinpoint>
 	
+	<joinpoint class="memberExpression">
+	</joinpoint>
+	
+	<joinpoint class="binaryExpression">
+	</joinpoint>
 	
 
 </joinpoints>
