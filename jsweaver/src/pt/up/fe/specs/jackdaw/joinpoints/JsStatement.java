@@ -12,6 +12,7 @@ import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclaration;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpressionStatement;
+import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIfStatement;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AStatement;
 
 public class JsStatement extends AStatement {
@@ -48,6 +49,11 @@ public class JsStatement extends AStatement {
     @Override
     public List<? extends ADeclaration> selectDeclaration() {
         return getStatement(ADeclaration.class);
+    }
+
+    @Override
+    public List<? extends AIfStatement> selectIfStatement() {
+        return getStatement(AIfStatement.class);
     }
 
     private <T extends AStatement> List<T> getStatement(Class<T> stmtClass) {

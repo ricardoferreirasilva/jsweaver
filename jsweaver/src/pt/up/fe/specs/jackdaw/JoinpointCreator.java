@@ -17,6 +17,7 @@ import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsLiteral;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsMemberExpression;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsDeclaration;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsExpressionStatement;
+import pt.up.fe.specs.jackdaw.joinpoints.statements.JsIfStatement;
 import pt.up.fe.specs.util.SpecsLogs;
 
 public class JoinpointCreator {
@@ -33,6 +34,7 @@ public class JoinpointCreator {
         MAPPINGS.put("ExpressionStatement", JsExpressionStatement::new);
         MAPPINGS.put("CallExpression", JsCallExpression::new);
         MAPPINGS.put("MemberExpression", JsMemberExpression::new);
+        MAPPINGS.put("IfStatement", JsIfStatement::new);
     }
 
     public static AJackdawWeaverJoinPoint create(JsonObject node) {

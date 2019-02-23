@@ -50,6 +50,7 @@
 	</artifact>
 	
 	<artifact class="ifStatement">
+		<attribute name="test" type="joinpoint" tooltip="Test expression of this ifStatement" />
 	</artifact>
 	
 	<artifact class="callExpression">
