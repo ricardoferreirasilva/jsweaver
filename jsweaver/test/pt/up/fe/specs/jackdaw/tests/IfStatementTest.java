@@ -7,7 +7,7 @@ import org.junit.Test;
 import pt.up.fe.specs.jackdaw.JackdawTester;
 import pt.up.fe.specs.util.SpecsSystem;
 
-public class JackdawTest {
+public class IfStatementTest {
 
     @BeforeClass
     public static void setupOnce() {
@@ -28,11 +28,6 @@ public class JackdawTest {
 
     @Test
     public void testFile() {
-        newTester().test("File.lara", "file.js");
-    }
-
-    @Test
-    public void testIf() {
         newTester().test("IfStatementTest.lara", "test-ifStatement.js");
     }
 

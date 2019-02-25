@@ -154,6 +154,8 @@ public abstract class ABinaryExpression extends AJackdawWeaverJoinPoint {
         LEFT("left"),
         RIGHT("right"),
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

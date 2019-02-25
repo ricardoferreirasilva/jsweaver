@@ -14,6 +14,9 @@
 			<parameter name="fieldName" type="String" />
 		</attribute>
 
+		<attribute name="joinPointName" type="String" tooltip="The name of the join point"/>
+		<attribute name="ast" type="String" tooltip="The ast corresponding to this node"/>
+
 
 	</global>
 	

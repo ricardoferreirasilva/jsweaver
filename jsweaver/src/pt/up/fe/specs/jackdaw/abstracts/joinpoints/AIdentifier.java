@@ -104,6 +104,8 @@ public abstract class AIdentifier extends AJackdawWeaverJoinPoint {
     protected enum IdentifierAttributes {
         NAME("name"),
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

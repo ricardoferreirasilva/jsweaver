@@ -198,6 +198,8 @@ public abstract class ACallExpression extends AExpression {
         CALLEE("callee"),
         ARGUMENTS("arguments"),
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

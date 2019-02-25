@@ -64,6 +64,8 @@ public abstract class AJoinPoint extends JoinPoint {
         attributes.add("parent");
         attributes.add("type");
         attributes.add("field(String fieldName)");
+        attributes.add("joinPointName");
+        attributes.add("ast");
     }
 
     /**
@@ -159,6 +161,52 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "field", e);
+        }
+    }
+
+    /**
+     * The name of the join point
+     */
+    public abstract String getJoinPointNameImpl();
+
+    /**
+     * The name of the join point
+     */
+    public final Object getJoinPointName() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "joinPointName", Optional.empty());
+        	}
+        	String result = this.getJoinPointNameImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "joinPointName", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "joinPointName", e);
+        }
+    }
+
+    /**
+     * The ast corresponding to this node
+     */
+    public abstract String getAstImpl();
+
+    /**
+     * The ast corresponding to this node
+     */
+    public final Object getAst() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "ast", Optional.empty());
+        	}
+        	String result = this.getAstImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "ast", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "ast", e);
         }
     }
 

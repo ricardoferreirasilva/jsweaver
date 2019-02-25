@@ -1,12 +1,14 @@
 package pt.up.fe.specs.jackdaw;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
+import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 import pt.up.fe.specs.jackdaw.joinpoints.JsDeclarator;
 import pt.up.fe.specs.jackdaw.joinpoints.JsFile;
 import pt.up.fe.specs.jackdaw.joinpoints.JsGeneric;
@@ -52,6 +54,12 @@ public class JoinpointCreator {
         }
 
         return mapper.apply(node);
+    }
+
+    public static <T extends AJoinPoint> List<T> createFromField(JsonObject node, String fieldName,
+            Class<T> targetClass) {
+
+        return JackdawQueryEngine.queryNodeGeneric(node, fieldName, targetClass, false);
     }
 
 }

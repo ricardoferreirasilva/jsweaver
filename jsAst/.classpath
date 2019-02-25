@@ -4,6 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/SpecsUtils"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jOptions"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/gson_lib"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=jsAst&amp;ivyXmlPath=ivy.xml&amp;confs=*"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

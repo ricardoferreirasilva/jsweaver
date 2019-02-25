@@ -154,6 +154,8 @@ public abstract class AMemberExpression extends AJackdawWeaverJoinPoint {
         OBJECT("object"),
         PROPERTY("property"),
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

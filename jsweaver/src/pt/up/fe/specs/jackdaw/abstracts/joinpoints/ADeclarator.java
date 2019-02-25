@@ -129,6 +129,8 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
         ID("id"),
         INIT("init"),
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

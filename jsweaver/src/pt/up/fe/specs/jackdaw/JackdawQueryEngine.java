@@ -1,6 +1,7 @@
 package pt.up.fe.specs.jackdaw;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
@@ -10,6 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclaration;
+import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 
 // Class that hosts several functions to extract AST elements from JSON.
 public class JackdawQueryEngine {
@@ -53,8 +55,6 @@ public class JackdawQueryEngine {
 
     public static JsonArray queryNode(JsonObject node, Predicate<String> typeTester, Boolean indirectDescendents) {
         JsonArray foundElements = new JsonArray();
-        String startingType = node.get("type").getAsString();
-
         for (Entry<String, JsonElement> key : node.entrySet()) {
             String keyName = key.getKey();
             JsonElement keyValue = key.getValue();
@@ -67,7 +67,7 @@ public class JackdawQueryEngine {
                 } else {
                     if (indirectDescendents) {
                         // foundElements.addAll(queryNode(keyValue.getAsJsonObject(), type, false));
-                        foundElements.addAll(queryNode(keyValue.getAsJsonObject(), typeTester, false));
+                        foundElements.addAll(queryNode(keyValue.getAsJsonObject(), typeTester, true));
                     }
                 }
 
@@ -79,7 +79,7 @@ public class JackdawQueryEngine {
                             foundElements.add(singleElement);
                         } else {
                             if (indirectDescendents) {
-                                foundElements.addAll(queryNode(singleElement.getAsJsonObject(), typeTester, false));
+                                foundElements.addAll(queryNode(singleElement.getAsJsonObject(), typeTester, true));
                             }
                         }
                     }
@@ -87,6 +87,69 @@ public class JackdawQueryEngine {
                 }
             }
         }
+        return foundElements;
+    }
+
+    public static <T extends AJoinPoint> List<T> queryNodeGeneric(JsonObject node, Class<T> joinPointClass,
+            Boolean indirectDescendents) {
+
+        List<T> foundElements = new ArrayList<>();
+
+        // JsonArray foundElements = new JsonArray();
+        for (Entry<String, JsonElement> key : node.entrySet()) {
+            foundElements.addAll(queryNodeGeneric(node, key.getKey(), joinPointClass, indirectDescendents));
+        }
+
+        return foundElements;
+    }
+
+    public static <T extends AJoinPoint> List<T> queryNodeGeneric(JsonObject node, String fieldName,
+            Class<T> joinPointClass, Boolean indirectDescendents) {
+        List<T> foundElements = new ArrayList<>();
+
+        // JsonArray foundElements = new JsonArray();
+
+        // String keyName = key.getKey();
+        JsonElement keyValue = node.get(fieldName);
+
+        if (keyValue == null) {
+            Collections.emptyList();
+        }
+
+        // JsonElement keyValue = key.getValue();
+        // System.out.println("key: " + keyName + " value: " + keyValue);
+
+        if (keyValue.isJsonObject()) {
+            // if (keyValue.getAsJsonObject().get("type").getAsString().equals(type)) {
+            AJoinPoint childNode = JoinpointCreator.create(keyValue.getAsJsonObject());
+            if (joinPointClass.isInstance(childNode)) {
+                foundElements.add(joinPointClass.cast(childNode));
+                if (indirectDescendents) {
+                    // foundElements.addAll(queryNode(keyValue.getAsJsonObject(), type, false));
+                    foundElements
+                            .addAll(queryNodeGeneric(keyValue.getAsJsonObject(), joinPointClass, indirectDescendents));
+                }
+            }
+
+        } else if (keyValue.isJsonArray()) {
+            JsonArray elements = keyValue.getAsJsonArray();
+            for (JsonElement singleElement : elements) {
+                if (singleElement.isJsonObject()) {
+                    AJoinPoint childNode = JoinpointCreator.create(singleElement.getAsJsonObject());
+                    if (joinPointClass.isInstance(childNode)) {
+                        foundElements.add(joinPointClass.cast(childNode));
+                        if (indirectDescendents) {
+                            foundElements
+                                    .addAll(queryNodeGeneric(singleElement.getAsJsonObject(), joinPointClass,
+                                            indirectDescendents));
+                        }
+                    }
+
+                }
+
+            }
+        }
+
         return foundElements;
     }
 

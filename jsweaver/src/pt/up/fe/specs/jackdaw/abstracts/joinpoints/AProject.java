@@ -12,7 +12,7 @@ import java.util.Arrays;
  * Auto-Generated class for join point AProject
  * This class is overwritten by the Weaver Generator.
  * 
- * the root of the project
+ * Represents the complete program and is the topmost joint point in the hierarchy.
  * @author Lara Weaver Generator
  */
 public abstract class AProject extends AJackdawWeaverJoinPoint {
@@ -90,6 +90,8 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
      */
     protected enum ProjectAttributes {
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

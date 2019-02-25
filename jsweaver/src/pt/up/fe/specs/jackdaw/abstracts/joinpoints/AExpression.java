@@ -90,6 +90,8 @@ public abstract class AExpression extends AJackdawWeaverJoinPoint {
      */
     protected enum ExpressionAttributes {
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

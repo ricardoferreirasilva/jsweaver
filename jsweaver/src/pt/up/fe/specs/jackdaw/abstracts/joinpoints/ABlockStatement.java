@@ -1,53 +1,70 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
-import org.lara.interpreter.weaver.interf.events.Stage;
-import java.util.Optional;
-import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.SelectOp;
-import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
+import java.util.Optional;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AFile
+ * Auto-Generated class for join point ABlockStatement
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AFile extends AJackdawWeaverJoinPoint {
+public abstract class ABlockStatement extends AStatement {
+
+    protected AStatement aStatement;
 
     /**
-     * Absolute path of the program file.
+     * 
      */
-    public abstract String getPathImpl();
-
-    /**
-     * Absolute path of the program file.
-     */
-    public final Object getPath() {
-        try {
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "path", Optional.empty());
-        	}
-        	String result = this.getPathImpl();
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "path", Optional.ofNullable(result));
-        	}
-        	return result!=null?result:getUndefinedValue();
-        } catch(Exception e) {
-        	throw new AttributeException(get_class(), "path", e);
-        }
+    public ABlockStatement(AStatement aStatement){
+        this.aStatement = aStatement;
     }
-
     /**
      * Default implementation of the method used by the lara interpreter to select scopes
      * @return 
      */
     public List<? extends AScope> selectScope() {
         return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AScope.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Method used by the lara interpreter to select blockStatements
+     * @return 
+     */
+    @Override
+    public List<? extends ABlockStatement> selectBlockStatement() {
+        return this.aStatement.selectBlockStatement();
+    }
+
+    /**
+     * 
+     * @param position 
+     * @param code 
+     */
+    @Override
+    public void insertImpl(String position, String code) {
+        this.aStatement.insertImpl(position, code);
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public String toString() {
+        return this.aStatement.toString();
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public Optional<? extends AStatement> getSuper() {
+        return Optional.of(this.aStatement);
     }
 
     /**
@@ -60,8 +77,11 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
         	case "scope": 
         		joinPointList = selectScope();
         		break;
+        	case "blockStatement": 
+        		joinPointList = selectBlockStatement();
+        		break;
         	default:
-        		joinPointList = super.select(selectName);
+        		joinPointList = this.aStatement.select(selectName);
         		break;
         }
         return joinPointList;
@@ -82,8 +102,7 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
-        super.fillWithAttributes(attributes);
-        attributes.add("path");
+        this.aStatement.fillWithAttributes(attributes);
     }
 
     /**
@@ -91,7 +110,7 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithSelects(List<String> selects) {
-        super.fillWithSelects(selects);
+        this.aStatement.fillWithSelects(selects);
         selects.add("scope");
     }
 
@@ -100,7 +119,7 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithActions(List<String> actions) {
-        super.fillWithActions(actions);
+        this.aStatement.fillWithActions(actions);
     }
 
     /**
@@ -109,13 +128,25 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
      */
     @Override
     public final String get_class() {
-        return "file";
+        return "blockStatement";
+    }
+
+    /**
+     * Defines if this joinpoint is an instanceof a given joinpoint class
+     * @return True if this join point is an instanceof the given class
+     */
+    @Override
+    public final boolean instanceOf(String joinpointClass) {
+        boolean isInstance = get_class().equals(joinpointClass);
+        if(isInstance) {
+        	return true;
+        }
+        return this.aStatement.instanceOf(joinpointClass);
     }
     /**
      * 
      */
-    protected enum FileAttributes {
-        PATH("path"),
+    protected enum BlockStatementAttributes {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
@@ -127,13 +158,13 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
         /**
          * 
          */
-        private FileAttributes(String name){
+        private BlockStatementAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<FileAttributes> fromString(String name) {
+        public static Optional<BlockStatementAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -141,7 +172,7 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(FileAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(BlockStatementAttributes::name).collect(Collectors.toList());
         }
 
         /**

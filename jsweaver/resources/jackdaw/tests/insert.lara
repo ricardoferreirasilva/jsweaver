@@ -1,0 +1,9 @@
+aspectdef InsertTest
+
+	select functionDeclaration{name==="foo"} end
+	apply
+		$functionDeclaration.insert before "// Comment before foo";
+		$functionDeclaration.insert after "// Comment after foo";
+		$functionDeclaration.insert replace "// Foo was here";
+	end
+end

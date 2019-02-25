@@ -144,7 +144,7 @@ public class JackdawEngine {
 
     public static void exportPrograms(JsonArray programs, File outputDir) throws ScriptException {
         JsonParser parser = new JsonParser();
-        System.out.println("Outputing files to " + outputDir.getPath());
+        // System.out.println("Outputing files to " + outputDir.getPath());
         ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
         for (JsonElement program : programs) {
             JsonObject programObject = program.getAsJsonObject();
