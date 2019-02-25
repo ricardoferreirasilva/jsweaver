@@ -1,13 +1,10 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
-import javax.script.Bindings;
-import org.lara.interpreter.weaver.interf.events.Stage;
-import java.util.Optional;
-import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.SelectOp;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
@@ -19,39 +16,6 @@ import java.util.Arrays;
  * @author Lara Weaver Generator
  */
 public abstract class AProject extends AJackdawWeaverJoinPoint {
-
-    /**
-     * Get value on attribute functions
-     * @return the attribute's value
-     */
-    public abstract AJoinPoint[] getFunctionsArrayImpl();
-
-    /**
-     * Returns the functions
-     */
-    public Bindings getFunctionsImpl() {
-        AJoinPoint[] aJoinPointArrayImpl0 = getFunctionsArrayImpl();
-        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
-        return nativeArray0;
-    }
-
-    /**
-     * Returns the functions
-     */
-    public final Object getFunctions() {
-        try {
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "functions", Optional.empty());
-        	}
-        	Bindings result = this.getFunctionsImpl();
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "functions", Optional.ofNullable(result));
-        	}
-        	return result!=null?result:getUndefinedValue();
-        } catch(Exception e) {
-        	throw new AttributeException(get_class(), "functions", e);
-        }
-    }
 
     /**
      * Default implementation of the method used by the lara interpreter to select files
@@ -94,7 +58,6 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
-        attributes.add("functions");
     }
 
     /**
@@ -126,7 +89,6 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
      * 
      */
     protected enum ProjectAttributes {
-        FUNCTIONS("functions"),
         PARENT("parent"),
         TYPE("type"),
         FIELD("field"),

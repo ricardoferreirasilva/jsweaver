@@ -9,7 +9,6 @@ import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFile;
-import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AProject;
 
 public class JsProject extends AProject {
@@ -18,12 +17,6 @@ public class JsProject extends AProject {
 
     public JsProject(JsonObject project) {
         this.project = project;
-    }
-
-    @Override
-    public AJoinPoint[] getFunctionsArrayImpl() {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     @Override

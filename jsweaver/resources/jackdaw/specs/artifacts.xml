@@ -19,7 +19,6 @@
 	
 	<!-- PROGRAM -->
 	<artifact class="project">
-		<attribute name="functions" type="joinpoint[]" tooltip="Returns the functions" />
 	</artifact>
 	
 	<artifact class="file">
@@ -34,6 +33,15 @@
 	<artifact class="declaration">
 		<attribute name="kind" type="string" tooltip="Kind of declaration." />
 	</artifact>
+	
+	<artifact class="functionDeclaration">
+		<attribute name="id" type="joinpoint" tooltip="Identifier of this function." />
+		<attribute name="params" type="joinpoint[]" tooltip="Parameters of this function." />
+		<attribute name="async" type="boolean" tooltip="If the function is async." />
+		<attribute name="generator" type="boolean" tooltip="" />
+		<attribute name="expression" type="boolean" tooltip="" />
+	</artifact>
+	
 	<artifact class="declarator">
 		<attribute name="id" type="joinpoint" tooltip="Identifier of this declarator." />
 		<attribute name="init" type="joinpoint" tooltip="Initialization of this declarator." />
