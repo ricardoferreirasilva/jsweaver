@@ -4,30 +4,72 @@
 
 
 	<!-- PROJECT -->
-	<!-- Represents the complete program and is the topmost joint point in the hierarchy.  -->
-	<joinpoint class="project" tooltip="the root of the project">
+	<!--  -->
+	<joinpoint class="project" tooltip="Represents the complete program and is the topmost joint point in the hierarchy.">
 		<select class="file"/>
 	</joinpoint>
 
 	
 	<joinpoint class="file">
-		<select class="statement"/>
+		<select class="scope"/>
 	</joinpoint>
 	
-	<joinpoint class="statement">
+
+	<!-- Addd all types of statements. -->
+	<joinpoint class="scope" tooltip="Represents a code region.">
+		<select class="statement"/>
+		<select class="ifStatement"/>
 		<select class="expressionStatement"/>
+		<select alias="if" class="ifStatement"/>
+		<select class="functionDeclaration"/>
+		<select class="classDeclaration"/>
+		<select alias="class" class="classDeclaration"/>
+		<select class="blockStatement"/>
 		<select class="declaration"/>
+		<select class="methodDefinition"/>
+		<!-- Expressions -->
+		<select class="assignmentExpression"/>
+	</joinpoint>
+
+	 
+	<joinpoint class="statement">
+		<select class="blockStatement"/>
+		<select class="classBody"/>
 	</joinpoint>	
 	
-	<joinpoint class="ifStatement" extends="statement">
+	<joinpoint class="ifStatement">
+		<select alias="then" class="scope"/>
+		<select alias="else" class="scope"/>
 	</joinpoint>
 	
-	<joinpoint class="declaration" extends="statement">
+	<joinpoint class="functionDeclaration">
+			<select class="blockStatement"/>
+	</joinpoint>
+	<joinpoint class="methodDefinition">
+		<select class="functionExpression"/>
+	</joinpoint>
+	
+	<joinpoint class="classDeclaration">
+		<select class="classBody"/>
+	</joinpoint>
+	
+	
+	<joinpoint class="declaration">
 		<select class="declarator"/>
 	</joinpoint>
 	
-	<joinpoint class="expressionStatement" extends="statement">
-		<select class="expression"/>
+	<joinpoint class="blockStatement" extends="statement">
+		<select class="scope"/>
+	</joinpoint>
+	
+	<joinpoint class="classBody">
+		<select class="scope"/>
+	</joinpoint>
+	
+	
+	<joinpoint class="expressionStatement">
+		<select class="callExpression"/>
+		<select class="assignmentExpression"/>
 	</joinpoint>
 	
 	<joinpoint class="expression">
@@ -50,8 +92,16 @@
 	<joinpoint class="memberExpression">
 	</joinpoint>
 	
+	<joinpoint class="functionExpression">
+		<select class="blockStatement"/>
+	</joinpoint>
+	
 	<joinpoint class="binaryExpression">
 	</joinpoint>
+	
+	<joinpoint class="assignmentExpression">
+	</joinpoint>
+	
 	
 
 </joinpoints>

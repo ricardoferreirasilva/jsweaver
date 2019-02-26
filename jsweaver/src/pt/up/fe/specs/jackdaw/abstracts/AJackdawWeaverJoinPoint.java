@@ -1,5 +1,6 @@
 package pt.up.fe.specs.jackdaw.abstracts;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.script.ScriptException;
@@ -10,9 +11,12 @@ import org.lara.interpreter.weaver.interf.SelectOp;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import pt.up.fe.specs.jackdaw.JackdawInserter;
+import pt.up.fe.specs.jackdaw.JackdawQueryEngine;
 import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.ParentMapper;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
+import pt.up.fe.specs.jackdaw.joinpoints.JsScope;
 import pt.up.fe.specs.jsast.JackdawEngine;
 
 /**
@@ -60,6 +64,8 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 
         try {
             JsonArray statements = JackdawEngine.parseInsertedCode(code);
+            JackdawInserter.insertStatements(this.getNode(), statements, position);
+
         } catch (ScriptException error) {
             throw new RuntimeException("Could not parse inserted code.", error);
         }
@@ -68,6 +74,9 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
     @Override
     public <T extends JoinPoint> void insertImpl(String position, T JoinPoint) {
         JsonObject joinpoint = (JsonObject) JoinPoint.getNode();
+        System.out.println(joinpoint);
+        JackdawInserter.insertJoinPoint(this.getNode(), joinpoint, position);
+
     }
 
     @Override
@@ -80,7 +89,25 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
      * Generic select function, used by the default select implementations.
      */
     public <T extends AJoinPoint> List<? extends T> select(Class<T> joinPointClass, SelectOp op) {
-        throw new RuntimeException(
-                "Generic select function not implemented yet. Implement it in order to use the default implementations of select");
+
+        // For scopes.
+        if (joinPointClass.getSimpleName().equals("AScope")) {
+            return Arrays.asList(joinPointClass.cast(new JsScope(getNode())));
+        }
+
+        return JackdawQueryEngine.queryNodeGeneric(getNode(), joinPointClass, true);
+
     }
+
+    @Override
+    public String getJoinPointNameImpl() {
+        return getJoinPointType();
+    }
+
+    @Override
+    public String getAstImpl() {
+        return getNode().toString();
+    }
+
+    // Test
 }

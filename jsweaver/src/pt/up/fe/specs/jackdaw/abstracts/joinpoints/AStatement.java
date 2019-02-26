@@ -18,19 +18,19 @@ import java.util.Arrays;
 public abstract class AStatement extends AJackdawWeaverJoinPoint {
 
     /**
-     * Default implementation of the method used by the lara interpreter to select expressionStatements
+     * Default implementation of the method used by the lara interpreter to select blockStatements
      * @return 
      */
-    public List<? extends AExpressionStatement> selectExpressionStatement() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpressionStatement.class, SelectOp.DESCENDANTS);
+    public List<? extends ABlockStatement> selectBlockStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ABlockStatement.class, SelectOp.DESCENDANTS);
     }
 
     /**
-     * Default implementation of the method used by the lara interpreter to select declarations
+     * Default implementation of the method used by the lara interpreter to select classBodys
      * @return 
      */
-    public List<? extends ADeclaration> selectDeclaration() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclaration.class, SelectOp.DESCENDANTS);
+    public List<? extends AClassBody> selectClassBody() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AClassBody.class, SelectOp.DESCENDANTS);
     }
 
     /**
@@ -40,11 +40,11 @@ public abstract class AStatement extends AJackdawWeaverJoinPoint {
     public List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "expressionStatement": 
-        		joinPointList = selectExpressionStatement();
+        	case "blockStatement": 
+        		joinPointList = selectBlockStatement();
         		break;
-        	case "declaration": 
-        		joinPointList = selectDeclaration();
+        	case "classBody": 
+        		joinPointList = selectClassBody();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -77,8 +77,8 @@ public abstract class AStatement extends AJackdawWeaverJoinPoint {
     @Override
     protected void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("expressionStatement");
-        selects.add("declaration");
+        selects.add("blockStatement");
+        selects.add("classBody");
     }
 
     /**
@@ -102,6 +102,8 @@ public abstract class AStatement extends AJackdawWeaverJoinPoint {
      */
     protected enum StatementAttributes {
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.SelectOp;
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -16,16 +17,8 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class ADeclaration extends AStatement {
+public abstract class ADeclaration extends AJackdawWeaverJoinPoint {
 
-    protected AStatement aStatement;
-
-    /**
-     * 
-     */
-    public ADeclaration(AStatement aStatement){
-        this.aStatement = aStatement;
-    }
     /**
      * Kind of declaration.
      */
@@ -58,50 +51,6 @@ public abstract class ADeclaration extends AStatement {
     }
 
     /**
-     * Method used by the lara interpreter to select expressionStatements
-     * @return 
-     */
-    @Override
-    public List<? extends AExpressionStatement> selectExpressionStatement() {
-        return this.aStatement.selectExpressionStatement();
-    }
-
-    /**
-     * Method used by the lara interpreter to select declarations
-     * @return 
-     */
-    @Override
-    public List<? extends ADeclaration> selectDeclaration() {
-        return this.aStatement.selectDeclaration();
-    }
-
-    /**
-     * 
-     * @param position 
-     * @param code 
-     */
-    @Override
-    public void insertImpl(String position, String code) {
-        this.aStatement.insertImpl(position, code);
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public String toString() {
-        return this.aStatement.toString();
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public Optional<? extends AStatement> getSuper() {
-        return Optional.of(this.aStatement);
-    }
-
-    /**
      * 
      */
     @Override
@@ -111,14 +60,8 @@ public abstract class ADeclaration extends AStatement {
         	case "declarator": 
         		joinPointList = selectDeclarator();
         		break;
-        	case "expressionStatement": 
-        		joinPointList = selectExpressionStatement();
-        		break;
-        	case "declaration": 
-        		joinPointList = selectDeclaration();
-        		break;
         	default:
-        		joinPointList = this.aStatement.select(selectName);
+        		joinPointList = super.select(selectName);
         		break;
         }
         return joinPointList;
@@ -139,7 +82,7 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
-        this.aStatement.fillWithAttributes(attributes);
+        super.fillWithAttributes(attributes);
         attributes.add("kind");
     }
 
@@ -148,7 +91,7 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     protected final void fillWithSelects(List<String> selects) {
-        this.aStatement.fillWithSelects(selects);
+        super.fillWithSelects(selects);
         selects.add("declarator");
     }
 
@@ -157,7 +100,7 @@ public abstract class ADeclaration extends AStatement {
      */
     @Override
     protected final void fillWithActions(List<String> actions) {
-        this.aStatement.fillWithActions(actions);
+        super.fillWithActions(actions);
     }
 
     /**
@@ -168,25 +111,14 @@ public abstract class ADeclaration extends AStatement {
     public final String get_class() {
         return "declaration";
     }
-
-    /**
-     * Defines if this joinpoint is an instanceof a given joinpoint class
-     * @return True if this join point is an instanceof the given class
-     */
-    @Override
-    public final boolean instanceOf(String joinpointClass) {
-        boolean isInstance = get_class().equals(joinpointClass);
-        if(isInstance) {
-        	return true;
-        }
-        return this.aStatement.instanceOf(joinpointClass);
-    }
     /**
      * 
      */
     protected enum DeclarationAttributes {
         KIND("kind"),
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");

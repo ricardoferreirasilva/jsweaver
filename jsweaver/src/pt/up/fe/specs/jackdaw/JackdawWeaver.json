@@ -33,6 +33,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -42,6 +51,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -64,7 +82,158 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "assignmentExpression",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Left part of the binary expression.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "left"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Operator of the binary expression.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "operator"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Expression of the binary expression.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "right"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -166,6 +335,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -175,6 +353,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -197,12 +384,151 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
                               "name": "type"
                            }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "blockStatement",
+         "extends": "statement"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "scope",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "blockStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "classBody",
+                  "alias": ""
                },
                {
                   "type": "action",
@@ -290,6 +616,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -299,6 +634,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -321,7 +665,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -372,8 +716,284 @@
       },
       {
          "type": "joinpoint",
+         "name": "classBody",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "scope",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "classDeclaration",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Identifier of this class",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "id"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "superclass of this class",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "superclass"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "classBody",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
          "name": "declaration",
-         "extends": "statement"      ,
+         "extends": "joinpoint"      ,
          "children": [
                {
                   "type": "attribute",
@@ -410,6 +1030,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -419,6 +1048,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -441,7 +1079,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -451,16 +1089,6 @@
                {
                   "type": "select",
                   "clazz": "declarator",
-                  "alias": ""
-               },
-               {
-                  "type": "select",
-                  "clazz": "declaration",
-                  "alias": ""
-               },
-               {
-                  "type": "select",
-                  "clazz": "expressionStatement",
                   "alias": ""
                },
                {
@@ -549,6 +1177,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -558,6 +1195,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -580,7 +1226,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -655,6 +1301,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -664,6 +1319,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -686,7 +1350,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -738,7 +1402,7 @@
       {
          "type": "joinpoint",
          "name": "expressionStatement",
-         "extends": "statement"      ,
+         "extends": "joinpoint"      ,
          "children": [
                {
                   "type": "attribute",
@@ -775,6 +1439,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -784,6 +1457,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -806,7 +1488,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -815,17 +1497,12 @@
                },
                {
                   "type": "select",
-                  "clazz": "expression",
+                  "clazz": "assignmentExpression",
                   "alias": ""
                },
                {
                   "type": "select",
-                  "clazz": "declaration",
-                  "alias": ""
-               },
-               {
-                  "type": "select",
-                  "clazz": "expressionStatement",
+                  "clazz": "callExpression",
                   "alias": ""
                },
                {
@@ -905,6 +1582,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -914,6 +1600,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -936,7 +1631,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -945,7 +1640,355 @@
                },
                {
                   "type": "select",
-                  "clazz": "statement",
+                  "clazz": "scope",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "functionDeclaration",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "If the function is async.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "async"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "expression"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "generator"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Identifier of this function.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "id"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Parameters of this function.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "params"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "blockStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "functionExpression",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "If the function is async.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "async"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "expression"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "generator"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Identifier of this function.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "id"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Parameters of this function.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "params"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "blockStatement",
                   "alias": ""
                },
                {
@@ -1025,6 +2068,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1034,6 +2086,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -1056,7 +2117,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -1103,8 +2164,17 @@
       {
          "type": "joinpoint",
          "name": "ifStatement",
-         "extends": "statement"      ,
+         "extends": "joinpoint"      ,
          "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Test expression of this ifStatement",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "test"
+                           }]
+               },
                {
                   "type": "attribute",
                   "children": [
@@ -1131,6 +2201,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1140,6 +2219,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -1162,7 +2250,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -1171,13 +2259,13 @@
                },
                {
                   "type": "select",
-                  "clazz": "declaration",
-                  "alias": ""
+                  "clazz": "scope",
+                  "alias": "then"
                },
                {
                   "type": "select",
-                  "clazz": "expressionStatement",
-                  "alias": ""
+                  "clazz": "scope",
+                  "alias": "else"
                },
                {
                   "type": "action",
@@ -1256,6 +2344,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1265,6 +2362,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -1287,7 +2393,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -1389,6 +2495,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1398,6 +2513,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -1420,7 +2544,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -1466,17 +2590,43 @@
       },
       {
          "type": "joinpoint",
-         "name": "project",
+         "name": "methodDefinition",
          "extends": "joinpoint"      ,
-         "tooltip": "the root of the project",
          "children": [
                {
                   "type": "attribute",
-                  "tooltip": "Returns the functions",
+                  "tooltip": "If the method is computed.",
                   "children": [
                            {
-                              "type": "joinpoint[]",
-                              "name": "functions"
+                              "type": "boolean",
+                              "name": "computed"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Key of this method.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "key"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The kind of method.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "kind"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "If the method is static.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "static"
                            }]
                },
                {
@@ -1505,6 +2655,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1514,6 +2673,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -1536,7 +2704,137 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "functionExpression",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "project",
+         "extends": "joinpoint"      ,
+         "tooltip": "Represents the complete program and is the topmost joint point in the hierarchy.",
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -1546,6 +2844,186 @@
                {
                   "type": "select",
                   "clazz": "file",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "scope",
+         "extends": "joinpoint"      ,
+         "tooltip": "Represents a code region.",
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "assignmentExpression",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "blockStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "classDeclaration",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "classDeclaration",
+                  "alias": "class"
+               },
+               {
+                  "type": "select",
+                  "clazz": "declaration",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "expressionStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "functionDeclaration",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "ifStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "ifStatement",
+                  "alias": "if"
+               },
+               {
+                  "type": "select",
+                  "clazz": "methodDefinition",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "statement",
                   "alias": ""
                },
                {
@@ -1616,6 +3094,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1625,6 +3112,15 @@
                            {
                               "type": "String",
                               "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
                            }]
                },
                {
@@ -1647,7 +3143,7 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "The type of the node",
+                  "tooltip": "The type of the join point",
                   "children": [
                            {
                               "type": "String",
@@ -1656,12 +3152,12 @@
                },
                {
                   "type": "select",
-                  "clazz": "declaration",
+                  "clazz": "blockStatement",
                   "alias": ""
                },
                {
                   "type": "select",
-                  "clazz": "expressionStatement",
+                  "clazz": "classBody",
                   "alias": ""
                },
                {

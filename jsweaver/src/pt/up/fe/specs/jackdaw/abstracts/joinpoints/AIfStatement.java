@@ -1,7 +1,11 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
-import java.util.List;
+import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
+import org.lara.interpreter.exception.AttributeException;
+import java.util.List;
+import org.lara.interpreter.weaver.interf.SelectOp;
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -13,58 +17,45 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AIfStatement extends AStatement {
-
-    protected AStatement aStatement;
+public abstract class AIfStatement extends AJackdawWeaverJoinPoint {
 
     /**
-     * 
+     * Test expression of this ifStatement
      */
-    public AIfStatement(AStatement aStatement){
-        this.aStatement = aStatement;
-    }
+    public abstract AJoinPoint getTestImpl();
+
     /**
-     * Method used by the lara interpreter to select expressionStatements
+     * Test expression of this ifStatement
+     */
+    public final Object getTest() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "test", Optional.empty());
+        	}
+        	AJoinPoint result = this.getTestImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "test", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "test", e);
+        }
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select thens
      * @return 
      */
-    @Override
-    public List<? extends AExpressionStatement> selectExpressionStatement() {
-        return this.aStatement.selectExpressionStatement();
+    public List<? extends AScope> selectThen() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AScope.class, SelectOp.DESCENDANTS);
     }
 
     /**
-     * Method used by the lara interpreter to select declarations
+     * Default implementation of the method used by the lara interpreter to select elses
      * @return 
      */
-    @Override
-    public List<? extends ADeclaration> selectDeclaration() {
-        return this.aStatement.selectDeclaration();
-    }
-
-    /**
-     * 
-     * @param position 
-     * @param code 
-     */
-    @Override
-    public void insertImpl(String position, String code) {
-        this.aStatement.insertImpl(position, code);
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public String toString() {
-        return this.aStatement.toString();
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public Optional<? extends AStatement> getSuper() {
-        return Optional.of(this.aStatement);
+    public List<? extends AScope> selectElse() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AScope.class, SelectOp.DESCENDANTS);
     }
 
     /**
@@ -74,14 +65,14 @@ public abstract class AIfStatement extends AStatement {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "expressionStatement": 
-        		joinPointList = selectExpressionStatement();
+        	case "then": 
+        		joinPointList = selectThen();
         		break;
-        	case "declaration": 
-        		joinPointList = selectDeclaration();
+        	case "else": 
+        		joinPointList = selectElse();
         		break;
         	default:
-        		joinPointList = this.aStatement.select(selectName);
+        		joinPointList = super.select(selectName);
         		break;
         }
         return joinPointList;
@@ -102,7 +93,8 @@ public abstract class AIfStatement extends AStatement {
      */
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
-        this.aStatement.fillWithAttributes(attributes);
+        super.fillWithAttributes(attributes);
+        attributes.add("test");
     }
 
     /**
@@ -110,7 +102,9 @@ public abstract class AIfStatement extends AStatement {
      */
     @Override
     protected final void fillWithSelects(List<String> selects) {
-        this.aStatement.fillWithSelects(selects);
+        super.fillWithSelects(selects);
+        selects.add("then");
+        selects.add("else");
     }
 
     /**
@@ -118,7 +112,7 @@ public abstract class AIfStatement extends AStatement {
      */
     @Override
     protected final void fillWithActions(List<String> actions) {
-        this.aStatement.fillWithActions(actions);
+        super.fillWithActions(actions);
     }
 
     /**
@@ -129,24 +123,14 @@ public abstract class AIfStatement extends AStatement {
     public final String get_class() {
         return "ifStatement";
     }
-
-    /**
-     * Defines if this joinpoint is an instanceof a given joinpoint class
-     * @return True if this join point is an instanceof the given class
-     */
-    @Override
-    public final boolean instanceOf(String joinpointClass) {
-        boolean isInstance = get_class().equals(joinpointClass);
-        if(isInstance) {
-        	return true;
-        }
-        return this.aStatement.instanceOf(joinpointClass);
-    }
     /**
      * 
      */
     protected enum IfStatementAttributes {
+        TEST("test"),
         PARENT("parent"),
+        JOINPOINTNAME("joinPointName"),
+        AST("ast"),
         TYPE("type"),
         FIELD("field"),
         ROOT("root");
