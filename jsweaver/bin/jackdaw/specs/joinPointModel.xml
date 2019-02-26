@@ -27,7 +27,6 @@
 		<select class="blockStatement"/>
 		<select class="declaration"/>
 		<select class="methodDefinition"/>
-		
 		<!-- Expressions -->
 		<select class="assignmentExpression"/>
 	</joinpoint>
