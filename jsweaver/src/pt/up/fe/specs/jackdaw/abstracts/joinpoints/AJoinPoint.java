@@ -115,12 +115,12 @@ public abstract class AJoinPoint extends JoinPoint {
     }
 
     /**
-     * The type of the node
+     * The type of the join point
      */
     public abstract String getTypeImpl();
 
     /**
-     * The type of the node
+     * The type of the join point
      */
     public final Object getType() {
         try {
@@ -165,12 +165,12 @@ public abstract class AJoinPoint extends JoinPoint {
     }
 
     /**
-     * The name of the join point
+     * The name of the join point.
      */
     public abstract String getJoinPointNameImpl();
 
     /**
-     * The name of the join point
+     * The name of the join point.
      */
     public final Object getJoinPointName() {
         try {
@@ -188,12 +188,12 @@ public abstract class AJoinPoint extends JoinPoint {
     }
 
     /**
-     * The ast corresponding to this node
+     * The ast corresponding to this join point
      */
     public abstract String getAstImpl();
 
     /**
-     * The ast corresponding to this node
+     * The ast corresponding to this join point
      */
     public final Object getAst() {
         try {

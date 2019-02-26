@@ -36,4 +36,9 @@ public class JackdawTest {
         newTester().test("IfStatementTest.lara", "test-ifStatement.js");
     }
 
+    @Test
+    public void testInsert() {
+        newTester().test("Insert.lara", "insert.js");
+    }
+
 }

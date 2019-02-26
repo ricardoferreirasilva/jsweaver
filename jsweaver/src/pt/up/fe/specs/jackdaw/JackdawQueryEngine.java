@@ -119,7 +119,7 @@ public class JackdawQueryEngine {
         // JsonElement keyValue = key.getValue();
         // System.out.println("key: " + keyName + " value: " + keyValue);
 
-        if (keyValue.isJsonObject()) {
+        if (keyValue.isJsonObject() && validFieldName(fieldName)) {
             // if (keyValue.getAsJsonObject().get("type").getAsString().equals(type)) {
             AJoinPoint childNode = JoinpointCreator.create(keyValue.getAsJsonObject());
             if (joinPointClass.isInstance(childNode)) {
@@ -173,5 +173,14 @@ public class JackdawQueryEngine {
             }
         }
         return false;
+    }
+
+    private static Boolean validFieldName(String fieldName) {
+        switch (fieldName) {
+        case "loc":
+            return false;
+        default:
+            return true;
+        }
     }
 }

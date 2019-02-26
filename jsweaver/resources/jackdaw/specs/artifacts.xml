@@ -7,15 +7,15 @@
 	<global>
 		<attribute name="root" type="joinpoint" tooltip="Returns the 'project' joinpoint" />
 		<attribute name="parent" type="joinpoint" tooltip="Returns the 'parent' node of this joinpoint" />
-		<attribute name="type" type="string" tooltip="The type of the node" />
+		<attribute name="type" type="string" tooltip="The type of the join point" />
 
 		<attribute name="field" type="Object"
 			tooltip="Returns the value of the given field">
 			<parameter name="fieldName" type="String" />
 		</attribute>
 
-		<attribute name="joinPointName" type="String" tooltip="The name of the join point"/>
-		<attribute name="ast" type="String" tooltip="The ast corresponding to this node"/>
+		<attribute name="joinPointName" type="String" tooltip="The name of the join point."/>
+		<attribute name="ast" type="String" tooltip="The ast corresponding to this join point"/>
 
 
 	</global>
@@ -44,6 +44,12 @@
 		<attribute name="generator" type="boolean" tooltip="" />
 		<attribute name="expression" type="boolean" tooltip="" />
 	</artifact>
+	
+	<artifact class="classDeclaration">
+		<attribute name="id" type="joinpoint" tooltip="Identifier of this class" />
+		<attribute name="superclass" type="joinpoint" tooltip="superclass of this class" />
+	</artifact>
+	
 	
 	<artifact class="declarator">
 		<attribute name="id" type="joinpoint" tooltip="Identifier of this declarator." />
