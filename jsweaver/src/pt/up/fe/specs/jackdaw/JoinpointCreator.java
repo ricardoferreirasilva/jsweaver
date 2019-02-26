@@ -13,6 +13,7 @@ import pt.up.fe.specs.jackdaw.joinpoints.JsDeclarator;
 import pt.up.fe.specs.jackdaw.joinpoints.JsFile;
 import pt.up.fe.specs.jackdaw.joinpoints.JsGeneric;
 import pt.up.fe.specs.jackdaw.joinpoints.JsProject;
+import pt.up.fe.specs.jackdaw.joinpoints.classes.JsClassBody;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsCallExpression;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsIdentifier;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsLiteral;
@@ -40,6 +41,7 @@ public class JoinpointCreator {
         MAPPINGS.put("Literal", JsLiteral::new);
         MAPPINGS.put("ExpressionStatement", JsExpressionStatement::new);
         MAPPINGS.put("BlockStatement", JsBlockStatement::new);
+        MAPPINGS.put("ClassBody", JsClassBody::new);
         MAPPINGS.put("CallExpression", JsCallExpression::new);
         MAPPINGS.put("MemberExpression", JsMemberExpression::new);
         MAPPINGS.put("IfStatement", JsIfStatement::new);

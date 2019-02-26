@@ -1,76 +1,28 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
-import org.lara.interpreter.weaver.interf.events.Stage;
-import java.util.Optional;
-import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.SelectOp;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AClassDeclaration
+ * Auto-Generated class for join point AClassBody
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AClassDeclaration extends AJackdawWeaverJoinPoint {
+public abstract class AClassBody extends AJackdawWeaverJoinPoint {
 
     /**
-     * Identifier of this class
-     */
-    public abstract AJoinPoint getIdImpl();
-
-    /**
-     * Identifier of this class
-     */
-    public final Object getId() {
-        try {
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "id", Optional.empty());
-        	}
-        	AJoinPoint result = this.getIdImpl();
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "id", Optional.ofNullable(result));
-        	}
-        	return result!=null?result:getUndefinedValue();
-        } catch(Exception e) {
-        	throw new AttributeException(get_class(), "id", e);
-        }
-    }
-
-    /**
-     * superclass of this class
-     */
-    public abstract AJoinPoint getSuperclassImpl();
-
-    /**
-     * superclass of this class
-     */
-    public final Object getSuperclass() {
-        try {
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "superclass", Optional.empty());
-        	}
-        	AJoinPoint result = this.getSuperclassImpl();
-        	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "superclass", Optional.ofNullable(result));
-        	}
-        	return result!=null?result:getUndefinedValue();
-        } catch(Exception e) {
-        	throw new AttributeException(get_class(), "superclass", e);
-        }
-    }
-
-    /**
-     * Default implementation of the method used by the lara interpreter to select classBodys
+     * Default implementation of the method used by the lara interpreter to select scopes
      * @return 
      */
-    public List<? extends AClassBody> selectClassBody() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AClassBody.class, SelectOp.DESCENDANTS);
+    public List<? extends AScope> selectScope() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AScope.class, SelectOp.DESCENDANTS);
     }
 
     /**
@@ -80,8 +32,8 @@ public abstract class AClassDeclaration extends AJackdawWeaverJoinPoint {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "classBody": 
-        		joinPointList = selectClassBody();
+        	case "scope": 
+        		joinPointList = selectScope();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -106,8 +58,6 @@ public abstract class AClassDeclaration extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
-        attributes.add("id");
-        attributes.add("superclass");
     }
 
     /**
@@ -116,7 +66,7 @@ public abstract class AClassDeclaration extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("classBody");
+        selects.add("scope");
     }
 
     /**
@@ -133,14 +83,12 @@ public abstract class AClassDeclaration extends AJackdawWeaverJoinPoint {
      */
     @Override
     public final String get_class() {
-        return "classDeclaration";
+        return "classBody";
     }
     /**
      * 
      */
-    protected enum ClassDeclarationAttributes {
-        ID("id"),
-        SUPERCLASS("superclass"),
+    protected enum ClassBodyAttributes {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
@@ -152,13 +100,13 @@ public abstract class AClassDeclaration extends AJackdawWeaverJoinPoint {
         /**
          * 
          */
-        private ClassDeclarationAttributes(String name){
+        private ClassBodyAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<ClassDeclarationAttributes> fromString(String name) {
+        public static Optional<ClassBodyAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -166,7 +114,7 @@ public abstract class AClassDeclaration extends AJackdawWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(ClassDeclarationAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(ClassBodyAttributes::name).collect(Collectors.toList());
         }
 
         /**

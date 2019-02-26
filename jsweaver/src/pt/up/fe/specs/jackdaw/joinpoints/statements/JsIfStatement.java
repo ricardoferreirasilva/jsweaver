@@ -12,7 +12,6 @@ import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIfStatement;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AScope;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AStatement;
-import pt.up.fe.specs.jackdaw.joinpoints.JsStatement;
 import pt.up.fe.specs.util.SpecsCheck;
 
 public class JsIfStatement extends AIfStatement {
@@ -20,7 +19,6 @@ public class JsIfStatement extends AIfStatement {
     private final JsonObject node;
 
     public JsIfStatement(JsonObject node) {
-        super(new JsStatement(node));
         this.node = node;
     }
 

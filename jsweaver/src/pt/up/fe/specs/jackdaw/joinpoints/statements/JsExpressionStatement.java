@@ -12,14 +12,12 @@ import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpression;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpressionStatement;
 import pt.up.fe.specs.jackdaw.joinpoints.JsExpression;
-import pt.up.fe.specs.jackdaw.joinpoints.JsStatement;
 
 public class JsExpressionStatement extends AExpressionStatement {
 
     private final JsonObject node;
 
     public JsExpressionStatement(JsonObject node) {
-        super(new JsStatement(node));
 
         this.node = node;
     }
