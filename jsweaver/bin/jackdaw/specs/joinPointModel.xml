@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<joinpoints root_class="project">
+
+
+
+	<!-- PROJECT -->
+	<!--  -->
+	<joinpoint class="project" tooltip="Represents the complete program and is the topmost joint point in the hierarchy.">
+		<select class="file"/>
+	</joinpoint>
+
+	
+	<joinpoint class="file">
+		<select class="scope"/>
+	</joinpoint>
+	
+
+	<!-- Addd all types of statements. -->
+	<joinpoint class="scope" tooltip="Represents a code region.">
+		<select class="statement"/>
+		<select class="ifStatement"/>
+		<select alias="if" class="ifStatement"/>
+		<select class="functionDeclaration"/>
+		<select class="classDeclaration"/>
+		<select alias="class" class="classDeclaration"/>
+		<select class="blockStatement"/>
+		<select class="declaration"/>
+		
+	</joinpoint>
+
+	 
+	<joinpoint class="statement">
+		<select class="blockStatement"/>
+		<select class="classBody"/>
+	</joinpoint>	
+	
+	<joinpoint class="ifStatement">
+		<select alias="then" class="scope"/>
+		<select alias="else" class="scope"/>
+	</joinpoint>
+	
+	<joinpoint class="functionDeclaration">
+			<select class="blockStatement"/>
+	</joinpoint>
+	<joinpoint class="classDeclaration">
+		<select class="classBody"/>
+	</joinpoint>
+	
+	
+	<joinpoint class="declaration">
+		<select class="declarator"/>
+	</joinpoint>
+	
+	<joinpoint class="blockStatement" extends="statement">
+		<select class="scope"/>
+	</joinpoint>
+	
+	<joinpoint class="classBody">
+		<select class="scope"/>
+	</joinpoint>
+	
+	
+	<joinpoint class="expressionStatement">
+		<select class="expression"/>
+	</joinpoint>
+	
+	<joinpoint class="expression">
+		<select class="callExpression"/>
+	</joinpoint>
+	
+		
+	<joinpoint class="declarator">
+	</joinpoint>
+	
+	<joinpoint class="identifier">
+	</joinpoint>
+	
+	<joinpoint class="literal">
+	</joinpoint>
+	
+	<joinpoint class="callExpression" extends="expression">
+	</joinpoint>
+	
+	<joinpoint class="memberExpression">
+	</joinpoint>
+	
+	<joinpoint class="binaryExpression">
+	</joinpoint>
+	
+	
+
+</joinpoints>

@@ -15,7 +15,6 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import org.json.JSONException;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -25,7 +24,7 @@ import com.google.gson.JsonParser;
 import ast.JsAstResources;
 
 public class JackdawEngine {
-    public static JsonObject parseSourceCode(Path folderPath) throws IOException, ScriptException, JSONException {
+    public static JsonObject parseSourceCode(Path folderPath) throws IOException, ScriptException {
         JsonParser parser = new JsonParser();
         Path esprimaPath = Paths.get("src/esprima/esprima.js");
         Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();
@@ -65,7 +64,7 @@ public class JackdawEngine {
 
     }
 
-    public static JsonArray parseFolder(Path folderPath) throws IOException, ScriptException, JSONException {
+    public static JsonArray parseFolder(Path folderPath) throws IOException, ScriptException {
         JsonParser parser = new JsonParser();
         Path esprimaPath = Paths.get("src/esprima/esprima.js");
         Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();
@@ -100,7 +99,7 @@ public class JackdawEngine {
 
     }
 
-    public static JsonArray parseFile(File source) throws IOException, ScriptException, JSONException {
+    public static JsonArray parseFile(File source) throws IOException, ScriptException {
         JsonParser parser = new JsonParser();
         Path esprimaPath = Paths.get("src/esprima/esprima.js");
         Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();

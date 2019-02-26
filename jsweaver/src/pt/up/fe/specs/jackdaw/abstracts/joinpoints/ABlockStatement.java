@@ -42,6 +42,15 @@ public abstract class ABlockStatement extends AStatement {
     }
 
     /**
+     * Method used by the lara interpreter to select classBodys
+     * @return 
+     */
+    @Override
+    public List<? extends AClassBody> selectClassBody() {
+        return this.aStatement.selectClassBody();
+    }
+
+    /**
      * 
      * @param position 
      * @param code 
@@ -79,6 +88,9 @@ public abstract class ABlockStatement extends AStatement {
         		break;
         	case "blockStatement": 
         		joinPointList = selectBlockStatement();
+        		break;
+        	case "classBody": 
+        		joinPointList = selectClassBody();
         		break;
         	default:
         		joinPointList = this.aStatement.select(selectName);
