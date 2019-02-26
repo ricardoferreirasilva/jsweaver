@@ -19,13 +19,17 @@
 	<joinpoint class="scope" tooltip="Represents a code region.">
 		<select class="statement"/>
 		<select class="ifStatement"/>
+		<select class="expressionStatement"/>
 		<select alias="if" class="ifStatement"/>
 		<select class="functionDeclaration"/>
 		<select class="classDeclaration"/>
 		<select alias="class" class="classDeclaration"/>
 		<select class="blockStatement"/>
 		<select class="declaration"/>
+		<select class="methodDefinition"/>
 		
+		<!-- Expressions -->
+		<select class="assignmentExpression"/>
 	</joinpoint>
 
 	 
@@ -42,6 +46,10 @@
 	<joinpoint class="functionDeclaration">
 			<select class="blockStatement"/>
 	</joinpoint>
+	<joinpoint class="methodDefinition">
+		<select class="functionExpression"/>
+	</joinpoint>
+	
 	<joinpoint class="classDeclaration">
 		<select class="classBody"/>
 	</joinpoint>
@@ -61,7 +69,8 @@
 	
 	
 	<joinpoint class="expressionStatement">
-		<select class="expression"/>
+		<select class="callExpression"/>
+		<select class="assignmentExpression"/>
 	</joinpoint>
 	
 	<joinpoint class="expression">
@@ -84,7 +93,14 @@
 	<joinpoint class="memberExpression">
 	</joinpoint>
 	
+	<joinpoint class="functionExpression">
+		<select class="blockStatement"/>
+	</joinpoint>
+	
 	<joinpoint class="binaryExpression">
+	</joinpoint>
+	
+	<joinpoint class="assignmentExpression">
 	</joinpoint>
 	
 	

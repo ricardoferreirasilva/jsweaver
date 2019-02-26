@@ -16,7 +16,7 @@
 
 		<attribute name="joinPointName" type="String" tooltip="The name of the join point."/>
 		<attribute name="ast" type="String" tooltip="The ast corresponding to this join point"/>
-
+		
 
 	</global>
 	
@@ -49,7 +49,12 @@
 		<attribute name="id" type="joinpoint" tooltip="Identifier of this class" />
 		<attribute name="superclass" type="joinpoint" tooltip="superclass of this class" />
 	</artifact>
-	
+	<artifact class="methodDefinition">
+		<attribute name="key" type="joinpoint" tooltip="Key of this method." />
+		<attribute name="computed" type="boolean" tooltip="If the method is computed." />
+		<attribute name="static" type="boolean" tooltip="If the method is static." />
+		<attribute name="kind" type="string" tooltip="The kind of method." />
+	</artifact>
 	
 	<artifact class="declarator">
 		<attribute name="id" type="joinpoint" tooltip="Identifier of this declarator." />
@@ -85,6 +90,19 @@
 		<attribute name="operator" type="string" tooltip="Operator of the binary expression." />
 		<attribute name="left" type="joinpoint" tooltip="Left part of the binary expression." />
 		<attribute name="right" type="joinpoint" tooltip="Expression of the binary expression." />
+	</artifact>
+	<artifact class="assignmentExpression">
+		<attribute name="operator" type="string" tooltip="Operator of the binary expression." />
+		<attribute name="left" type="joinpoint" tooltip="Left part of the binary expression." />
+		<attribute name="right" type="joinpoint" tooltip="Expression of the binary expression." />
+	</artifact>
+	
+	<artifact class="functionExpression">
+		<attribute name="id" type="joinpoint" tooltip="Identifier of this function." />
+		<attribute name="params" type="joinpoint[]" tooltip="Parameters of this function." />
+		<attribute name="async" type="boolean" tooltip="If the function is async." />
+		<attribute name="generator" type="boolean" tooltip="" />
+		<attribute name="expression" type="boolean" tooltip="" />
 	</artifact>
 	
 	

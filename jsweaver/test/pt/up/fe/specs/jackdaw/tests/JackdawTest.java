@@ -41,4 +41,9 @@ public class JackdawTest {
         newTester().test("Insert.lara", "insert.js");
     }
 
+    @Test
+    public void classTest() {
+        newTester().test("Class.lara", "class.js");
+    }
+
 }

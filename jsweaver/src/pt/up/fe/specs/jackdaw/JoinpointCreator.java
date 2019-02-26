@@ -14,7 +14,10 @@ import pt.up.fe.specs.jackdaw.joinpoints.JsFile;
 import pt.up.fe.specs.jackdaw.joinpoints.JsGeneric;
 import pt.up.fe.specs.jackdaw.joinpoints.JsProject;
 import pt.up.fe.specs.jackdaw.joinpoints.classes.JsClassBody;
+import pt.up.fe.specs.jackdaw.joinpoints.classes.JsMethodDefinition;
+import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsAssignmentExpression;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsCallExpression;
+import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsFunctionExpression;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsIdentifier;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsLiteral;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsMemberExpression;
@@ -35,14 +38,17 @@ public class JoinpointCreator {
         MAPPINGS.put("Program", JsFile::new);
         MAPPINGS.put("VariableDeclaration", JsDeclaration::new);
         MAPPINGS.put("FunctionDeclaration", JsFunctionDeclaration::new);
+        MAPPINGS.put("FunctionExpression", JsFunctionExpression::new);
         MAPPINGS.put("ClassDeclaration", JsClassDeclaration::new);
         MAPPINGS.put("VariableDeclarator", JsDeclarator::new);
+        MAPPINGS.put("MethodDefinition", JsMethodDefinition::new);
         MAPPINGS.put("Identifier", JsIdentifier::new);
         MAPPINGS.put("Literal", JsLiteral::new);
         MAPPINGS.put("ExpressionStatement", JsExpressionStatement::new);
         MAPPINGS.put("BlockStatement", JsBlockStatement::new);
         MAPPINGS.put("ClassBody", JsClassBody::new);
         MAPPINGS.put("CallExpression", JsCallExpression::new);
+        MAPPINGS.put("AssignmentExpression", JsAssignmentExpression::new);
         MAPPINGS.put("MemberExpression", JsMemberExpression::new);
         MAPPINGS.put("IfStatement", JsIfStatement::new);
     }

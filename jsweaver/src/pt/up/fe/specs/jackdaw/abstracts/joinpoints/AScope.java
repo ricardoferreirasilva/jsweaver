@@ -34,6 +34,14 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select expressionStatements
+     * @return 
+     */
+    public List<? extends AExpressionStatement> selectExpressionStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpressionStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * Default implementation of the method used by the lara interpreter to select ifs
      * @return 
      */
@@ -82,6 +90,22 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select methodDefinitions
+     * @return 
+     */
+    public List<? extends AMethodDefinition> selectMethodDefinition() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AMethodDefinition.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select assignmentExpressions
+     * @return 
+     */
+    public List<? extends AAssignmentExpression> selectAssignmentExpression() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AAssignmentExpression.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * 
      */
     @Override
@@ -93,6 +117,9 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         		break;
         	case "ifStatement": 
         		joinPointList = selectIfStatement();
+        		break;
+        	case "expressionStatement": 
+        		joinPointList = selectExpressionStatement();
         		break;
         	case "if": 
         		joinPointList = selectIf();
@@ -111,6 +138,12 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         		break;
         	case "declaration": 
         		joinPointList = selectDeclaration();
+        		break;
+        	case "methodDefinition": 
+        		joinPointList = selectMethodDefinition();
+        		break;
+        	case "assignmentExpression": 
+        		joinPointList = selectAssignmentExpression();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -145,12 +178,15 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         super.fillWithSelects(selects);
         selects.add("statement");
         selects.add("ifStatement");
+        selects.add("expressionStatement");
         selects.add("if");
         selects.add("functionDeclaration");
         selects.add("classDeclaration");
         selects.add("class");
         selects.add("blockStatement");
         selects.add("declaration");
+        selects.add("methodDefinition");
+        selects.add("assignmentExpression");
     }
 
     /**
