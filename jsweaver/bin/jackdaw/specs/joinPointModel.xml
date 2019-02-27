@@ -41,7 +41,9 @@
 		<select alias="then" class="scope"/>
 		<select alias="else" class="scope"/>
 	</joinpoint>
-	
+	<joinpoint class="whileStatement">
+			<select class="blockStatement"/>
+	</joinpoint>
 	<joinpoint class="functionDeclaration">
 			<select class="blockStatement"/>
 	</joinpoint>

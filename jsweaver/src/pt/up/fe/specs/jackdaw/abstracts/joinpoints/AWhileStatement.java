@@ -11,21 +11,21 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point AIfStatement
+ * Auto-Generated class for join point AWhileStatement
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AIfStatement extends AJackdawWeaverJoinPoint {
+public abstract class AWhileStatement extends AJackdawWeaverJoinPoint {
 
     /**
-     * Test expression of this if statement
+     * Test expression of this while statement.
      */
     public abstract AJoinPoint getTestImpl();
 
     /**
-     * Test expression of this if statement
+     * Test expression of this while statement.
      */
     public final Object getTest() {
         try {
@@ -43,19 +43,11 @@ public abstract class AIfStatement extends AJackdawWeaverJoinPoint {
     }
 
     /**
-     * Default implementation of the method used by the lara interpreter to select thens
+     * Default implementation of the method used by the lara interpreter to select blockStatements
      * @return 
      */
-    public List<? extends AScope> selectThen() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AScope.class, SelectOp.DESCENDANTS);
-    }
-
-    /**
-     * Default implementation of the method used by the lara interpreter to select elses
-     * @return 
-     */
-    public List<? extends AScope> selectElse() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AScope.class, SelectOp.DESCENDANTS);
+    public List<? extends ABlockStatement> selectBlockStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ABlockStatement.class, SelectOp.DESCENDANTS);
     }
 
     /**
@@ -65,11 +57,8 @@ public abstract class AIfStatement extends AJackdawWeaverJoinPoint {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "then": 
-        		joinPointList = selectThen();
-        		break;
-        	case "else": 
-        		joinPointList = selectElse();
+        	case "blockStatement": 
+        		joinPointList = selectBlockStatement();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -103,8 +92,7 @@ public abstract class AIfStatement extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("then");
-        selects.add("else");
+        selects.add("blockStatement");
     }
 
     /**
@@ -121,12 +109,12 @@ public abstract class AIfStatement extends AJackdawWeaverJoinPoint {
      */
     @Override
     public final String get_class() {
-        return "ifStatement";
+        return "whileStatement";
     }
     /**
      * 
      */
-    protected enum IfStatementAttributes {
+    protected enum WhileStatementAttributes {
         TEST("test"),
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
@@ -139,13 +127,13 @@ public abstract class AIfStatement extends AJackdawWeaverJoinPoint {
         /**
          * 
          */
-        private IfStatementAttributes(String name){
+        private WhileStatementAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<IfStatementAttributes> fromString(String name) {
+        public static Optional<WhileStatementAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -153,7 +141,7 @@ public abstract class AIfStatement extends AJackdawWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(IfStatementAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(WhileStatementAttributes::name).collect(Collectors.toList());
         }
 
         /**
