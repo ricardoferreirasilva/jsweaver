@@ -45,5 +45,9 @@ public class JackdawTest {
     public void classTest() {
         newTester().test("Class.lara", "class.js");
     }
+    @Test
+    public void testWhile() {
+        newTester().test("WhileStatement.lara", "whileStatement.js");
+    }
 
 }

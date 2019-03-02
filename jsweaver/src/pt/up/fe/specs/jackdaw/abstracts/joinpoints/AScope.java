@@ -26,19 +26,35 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
-     * Default implementation of the method used by the lara interpreter to select ifStatements
-     * @return 
-     */
-    public List<? extends AIfStatement> selectIfStatement() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIfStatement.class, SelectOp.DESCENDANTS);
-    }
-
-    /**
      * Default implementation of the method used by the lara interpreter to select expressionStatements
      * @return 
      */
     public List<? extends AExpressionStatement> selectExpressionStatement() {
         return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpressionStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select whileStatements
+     * @return 
+     */
+    public List<? extends AWhileStatement> selectWhileStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AWhileStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select whiles
+     * @return 
+     */
+    public List<? extends AWhileStatement> selectWhile() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AWhileStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select ifStatements
+     * @return 
+     */
+    public List<? extends AIfStatement> selectIfStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIfStatement.class, SelectOp.DESCENDANTS);
     }
 
     /**
@@ -115,11 +131,17 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         	case "statement": 
         		joinPointList = selectStatement();
         		break;
-        	case "ifStatement": 
-        		joinPointList = selectIfStatement();
-        		break;
         	case "expressionStatement": 
         		joinPointList = selectExpressionStatement();
+        		break;
+        	case "whileStatement": 
+        		joinPointList = selectWhileStatement();
+        		break;
+        	case "while": 
+        		joinPointList = selectWhile();
+        		break;
+        	case "ifStatement": 
+        		joinPointList = selectIfStatement();
         		break;
         	case "if": 
         		joinPointList = selectIf();
@@ -177,8 +199,10 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
         selects.add("statement");
-        selects.add("ifStatement");
         selects.add("expressionStatement");
+        selects.add("whileStatement");
+        selects.add("while");
+        selects.add("ifStatement");
         selects.add("if");
         selects.add("functionDeclaration");
         selects.add("classDeclaration");

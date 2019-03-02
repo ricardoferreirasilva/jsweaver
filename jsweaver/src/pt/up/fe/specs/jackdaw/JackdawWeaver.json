@@ -3027,6 +3027,16 @@
                   "alias": ""
                },
                {
+                  "type": "select",
+                  "clazz": "whileStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "whileStatement",
+                  "alias": "while"
+               },
+               {
                   "type": "action",
                   "children": [
                            {

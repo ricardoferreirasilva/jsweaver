@@ -18,9 +18,14 @@
 	<!-- Addd all types of statements. -->
 	<joinpoint class="scope" tooltip="Represents a code region.">
 		<select class="statement"/>
-		<select class="ifStatement"/>
 		<select class="expressionStatement"/>
+		
+		<select class="whileStatement"/>
+		<select alias="while" class="whileStatement"/>
+		
+		<select class="ifStatement"/>
 		<select alias="if" class="ifStatement"/>
+		
 		<select class="functionDeclaration"/>
 		<select class="classDeclaration"/>
 		<select alias="class" class="classDeclaration"/>
