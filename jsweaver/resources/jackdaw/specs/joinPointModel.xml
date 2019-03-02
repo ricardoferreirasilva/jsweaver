@@ -26,6 +26,9 @@
 		<select class="ifStatement"/>
 		<select alias="if" class="ifStatement"/>
 		
+		<select class="forStatement"/>
+		<select alias="for" class="forStatement"/>
+		
 		<select class="functionDeclaration"/>
 		<select class="classDeclaration"/>
 		<select alias="class" class="classDeclaration"/>
@@ -47,6 +50,9 @@
 		<select alias="else" class="scope"/>
 	</joinpoint>
 	<joinpoint class="whileStatement">
+			<select class="blockStatement"/>
+	</joinpoint>
+	<joinpoint class="forStatement">
 			<select class="blockStatement"/>
 	</joinpoint>
 	<joinpoint class="functionDeclaration">

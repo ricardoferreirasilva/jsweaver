@@ -77,6 +77,13 @@
 	<artifact class="whileStatement">
 		<attribute name="test" type="joinpoint" tooltip="Test expression of this while statement." />
 	</artifact>
+	
+	<artifact class="forStatement">
+		<attribute name="init" type="joinpoint" tooltip="Initialization expression of this for statement." />
+		<attribute name="test" type="joinpoint" tooltip="Test expression of this for statement." />
+		<attribute name="update" type="joinpoint" tooltip="Update expression of this for statement." />
+	</artifact>
+	
 	<artifact class="callExpression">
 		<attribute name="callee" type="joinpoint" tooltip="Identifier of this expression call." />
 		<attribute name="arguments" type="joinpoint[]" tooltip="Arguments of this expression call." />

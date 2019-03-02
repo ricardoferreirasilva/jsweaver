@@ -66,6 +66,22 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select forStatements
+     * @return 
+     */
+    public List<? extends AForStatement> selectForStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AForStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select fors
+     * @return 
+     */
+    public List<? extends AForStatement> selectFor() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AForStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * Default implementation of the method used by the lara interpreter to select functionDeclarations
      * @return 
      */
@@ -146,6 +162,12 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         	case "if": 
         		joinPointList = selectIf();
         		break;
+        	case "forStatement": 
+        		joinPointList = selectForStatement();
+        		break;
+        	case "for": 
+        		joinPointList = selectFor();
+        		break;
         	case "functionDeclaration": 
         		joinPointList = selectFunctionDeclaration();
         		break;
@@ -204,6 +226,8 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         selects.add("while");
         selects.add("ifStatement");
         selects.add("if");
+        selects.add("forStatement");
+        selects.add("for");
         selects.add("functionDeclaration");
         selects.add("classDeclaration");
         selects.add("class");
