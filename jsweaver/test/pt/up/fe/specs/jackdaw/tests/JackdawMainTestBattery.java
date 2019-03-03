@@ -7,7 +7,7 @@ import org.junit.Test;
 import pt.up.fe.specs.jackdaw.JackdawTester;
 import pt.up.fe.specs.util.SpecsSystem;
 
-public class JackdawTest {
+public class JackdawMainTestBattery {
 
     @BeforeClass
     public static void setupOnce() {
@@ -48,6 +48,10 @@ public class JackdawTest {
     @Test
     public void testWhile() {
         newTester().test("WhileStatement.lara", "whileStatement.js");
+    }
+    @Test
+    public void testFor() {
+        newTester().test("ForStatement.lara", "for.js");
     }
 
 }

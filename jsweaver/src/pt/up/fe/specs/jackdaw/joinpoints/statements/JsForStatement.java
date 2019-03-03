@@ -19,13 +19,13 @@ public class JsForStatement extends AForStatement {
 
 	@Override
 	public AJoinPoint getTestImpl() {
-		if(this.node.has("test")) return JoinpointCreator.create(this.node.get("init").getAsJsonObject());
+		if(this.node.has("test")) return JoinpointCreator.create(this.node.get("test").getAsJsonObject());
 		else return null;
 	}
 
 	@Override
 	public AJoinPoint getUpdateImpl() {
-		if(this.node.has("update")) return JoinpointCreator.create(this.node.get("init").getAsJsonObject());
+		if(this.node.has("update")) return JoinpointCreator.create(this.node.get("update").getAsJsonObject());
 		else return null;
 	}
 
