@@ -22,6 +22,7 @@ import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsFunctionExpression;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsIdentifier;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsLiteral;
 import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsMemberExpression;
+import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsUpdateExpression;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsBlockStatement;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsClassDeclaration;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsDeclaration;
@@ -55,6 +56,7 @@ public class JoinpointCreator {
         MAPPINGS.put("CallExpression", JsCallExpression::new);
         MAPPINGS.put("BinaryExpression", JsBinaryExpression::new);
         MAPPINGS.put("AssignmentExpression", JsAssignmentExpression::new);
+        MAPPINGS.put("UpdateExpression", JsUpdateExpression::new);
         MAPPINGS.put("MemberExpression", JsMemberExpression::new);
         MAPPINGS.put("IfStatement", JsIfStatement::new);
     }

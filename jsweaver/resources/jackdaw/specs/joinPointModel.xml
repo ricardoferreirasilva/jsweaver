@@ -105,6 +105,9 @@
 	<joinpoint class="memberExpression">
 	</joinpoint>
 	
+	<joinpoint class="updateExpression">
+	</joinpoint>
+	
 	<joinpoint class="functionExpression">
 		<select class="blockStatement"/>
 	</joinpoint>

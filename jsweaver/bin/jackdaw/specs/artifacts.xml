@@ -106,6 +106,12 @@
 		<attribute name="right" type="joinpoint" tooltip="Expression of the binary expression." />
 	</artifact>
 	
+	<artifact class="updateExpression">
+		<attribute name="operator" type="string" tooltip="Operator of this update expression." />
+		<attribute name="argument" type="joinpoint" tooltip="Argument of this update expression." />
+			<attribute name="prefix" type="boolean" tooltip="If the operator of this update expression is a prefix." />
+	</artifact>
+	
 	<artifact class="functionExpression">
 		<attribute name="id" type="joinpoint" tooltip="Identifier of this function." />
 		<attribute name="params" type="joinpoint[]" tooltip="Parameters of this function." />
