@@ -60,9 +60,11 @@
 		<attribute name="id" type="joinpoint" tooltip="Identifier of this declarator." />
 		<attribute name="init" type="joinpoint" tooltip="Initialization of this declarator." />
 	</artifact>
+	
 	<artifact class="identifier">
 		<attribute name="name" type="string" tooltip="Name of the identifier." />
 	</artifact>
+	
 	<artifact class="literal">
 		<attribute name="raw" type="string" tooltip="Raw value of this literal." />
 	</artifact>
@@ -82,6 +84,10 @@
 		<attribute name="init" type="joinpoint" tooltip="Initialization expression of this for statement." />
 		<attribute name="test" type="joinpoint" tooltip="Test expression of this for statement." />
 		<attribute name="update" type="joinpoint" tooltip="Update expression of this for statement." />
+	</artifact>
+	
+	<artifact class="switchStatement">
+		<attribute name="discriminant" type="joinpoint" tooltip="Discriminant value of this switch statement." />
 	</artifact>
 	
 	<artifact class="callExpression">

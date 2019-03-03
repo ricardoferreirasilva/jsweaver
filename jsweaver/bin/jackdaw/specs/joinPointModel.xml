@@ -29,6 +29,9 @@
 		<select class="forStatement"/>
 		<select alias="for" class="forStatement"/>
 		
+		<select class="switchStatement"/>
+		<select alias="switch" class="switchStatement"/>
+		
 		<select class="functionDeclaration"/>
 		<select class="classDeclaration"/>
 		<select alias="class" class="classDeclaration"/>
@@ -52,12 +55,18 @@
 	<joinpoint class="whileStatement">
 			<select class="blockStatement"/>
 	</joinpoint>
+	
 	<joinpoint class="forStatement">
 			<select class="blockStatement"/>
 	</joinpoint>
+	<joinpoint class="switchStatement">
+		
+	</joinpoint>
+	
 	<joinpoint class="functionDeclaration">
 			<select class="blockStatement"/>
 	</joinpoint>
+	
 	<joinpoint class="methodDefinition">
 		<select class="functionExpression"/>
 	</joinpoint>
