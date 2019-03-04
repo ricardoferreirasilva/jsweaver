@@ -10,13 +10,11 @@ import com.google.gson.JsonObject;
 import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ACallExpression;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
-import pt.up.fe.specs.jackdaw.joinpoints.JsExpression;
 
 public class JsCallExpression extends ACallExpression {
     private final JsonObject node;
 
     public JsCallExpression(JsonObject node) {
-        super(new JsExpression(node));
         this.node = node;
     }
 

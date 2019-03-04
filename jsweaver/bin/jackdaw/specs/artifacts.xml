@@ -29,10 +29,7 @@
 	</artifact>
 	<artifact class="statement">
 	</artifact>
-	
-	<artifact class="expression">
-	</artifact>
-	
+
 	<artifact class="declaration">
 		<attribute name="kind" type="string" tooltip="Kind of declaration." />
 	</artifact>

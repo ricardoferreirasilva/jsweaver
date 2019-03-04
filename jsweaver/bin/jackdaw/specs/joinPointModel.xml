@@ -112,13 +112,12 @@
 	
 	<joinpoint class="expressionStatement">
 		<select class="callExpression"/>
+		<select alias="call" class="callExpression"/>
 		<select class="assignmentExpression"/>
+		<select class="updateExpression"/>
 	</joinpoint>
 	
-	<joinpoint class="expression">
-		<select class="callExpression"/>
-	</joinpoint>
-	
+
 		
 	<joinpoint class="declarator">
 	</joinpoint>
@@ -129,7 +128,7 @@
 	<joinpoint class="literal">
 	</joinpoint>
 	
-	<joinpoint class="callExpression" extends="expression">
+	<joinpoint class="callExpression">
 	</joinpoint>
 	
 	<joinpoint class="memberExpression">

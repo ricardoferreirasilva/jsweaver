@@ -51,11 +51,27 @@ public abstract class AExpressionStatement extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select calls
+     * @return 
+     */
+    public List<? extends ACallExpression> selectCall() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ACallExpression.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * Default implementation of the method used by the lara interpreter to select assignmentExpressions
      * @return 
      */
     public List<? extends AAssignmentExpression> selectAssignmentExpression() {
         return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AAssignmentExpression.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select updateExpressions
+     * @return 
+     */
+    public List<? extends AUpdateExpression> selectUpdateExpression() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AUpdateExpression.class, SelectOp.DESCENDANTS);
     }
 
     /**
@@ -68,8 +84,14 @@ public abstract class AExpressionStatement extends AJackdawWeaverJoinPoint {
         	case "callExpression": 
         		joinPointList = selectCallExpression();
         		break;
+        	case "call": 
+        		joinPointList = selectCall();
+        		break;
         	case "assignmentExpression": 
         		joinPointList = selectAssignmentExpression();
+        		break;
+        	case "updateExpression": 
+        		joinPointList = selectUpdateExpression();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -104,7 +126,9 @@ public abstract class AExpressionStatement extends AJackdawWeaverJoinPoint {
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
         selects.add("callExpression");
+        selects.add("call");
         selects.add("assignmentExpression");
+        selects.add("updateExpression");
     }
 
     /**
