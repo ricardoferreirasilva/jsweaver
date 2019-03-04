@@ -90,6 +90,10 @@
 		<attribute name="discriminant" type="joinpoint" tooltip="Discriminant value of this switch statement." />
 	</artifact>
 	
+	<artifact class="switchCase">
+		<attribute name="test" type="joinpoint" tooltip="Test value of this switch case." />
+	</artifact>
+	
 	<artifact class="callExpression">
 		<attribute name="callee" type="joinpoint" tooltip="Identifier of this expression call." />
 		<attribute name="arguments" type="joinpoint[]" tooltip="Arguments of this expression call." />

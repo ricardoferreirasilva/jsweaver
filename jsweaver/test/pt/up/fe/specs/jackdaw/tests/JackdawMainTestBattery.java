@@ -53,5 +53,9 @@ public class JackdawMainTestBattery {
     public void testFor() {
         newTester().test("ForStatement.lara", "for.js");
     }
+    @Test
+    public void testSwitch() {
+        newTester().test("Switch.lara", "switch.js");
+    }
 
 }

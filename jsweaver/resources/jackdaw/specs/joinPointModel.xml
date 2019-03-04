@@ -59,8 +59,14 @@
 	<joinpoint class="forStatement">
 			<select class="blockStatement"/>
 	</joinpoint>
+	
 	<joinpoint class="switchStatement">
-		
+		<select class="switchCase"/>
+		<select alias="case" class="switchCase"/>
+	</joinpoint>
+	
+	<joinpoint class="switchCase">
+			<select class="scope"/>
 	</joinpoint>
 	
 	<joinpoint class="functionDeclaration">

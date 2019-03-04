@@ -11,51 +11,43 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 
 /**
- * Auto-Generated class for join point ASwitchStatement
+ * Auto-Generated class for join point ASwitchCase
  * This class is overwritten by the Weaver Generator.
  * 
  * 
  * @author Lara Weaver Generator
  */
-public abstract class ASwitchStatement extends AJackdawWeaverJoinPoint {
+public abstract class ASwitchCase extends AJackdawWeaverJoinPoint {
 
     /**
-     * Discriminant value of this switch statement.
+     * Test value of this switch case.
      */
-    public abstract AJoinPoint getDiscriminantImpl();
+    public abstract AJoinPoint getTestImpl();
 
     /**
-     * Discriminant value of this switch statement.
+     * Test value of this switch case.
      */
-    public final Object getDiscriminant() {
+    public final Object getTest() {
         try {
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "discriminant", Optional.empty());
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "test", Optional.empty());
         	}
-        	AJoinPoint result = this.getDiscriminantImpl();
+        	AJoinPoint result = this.getTestImpl();
         	if(hasListeners()) {
-        		eventTrigger().triggerAttribute(Stage.END, this, "discriminant", Optional.ofNullable(result));
+        		eventTrigger().triggerAttribute(Stage.END, this, "test", Optional.ofNullable(result));
         	}
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
-        	throw new AttributeException(get_class(), "discriminant", e);
+        	throw new AttributeException(get_class(), "test", e);
         }
     }
 
     /**
-     * Default implementation of the method used by the lara interpreter to select switchCases
+     * Default implementation of the method used by the lara interpreter to select scopes
      * @return 
      */
-    public List<? extends ASwitchCase> selectSwitchCase() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ASwitchCase.class, SelectOp.DESCENDANTS);
-    }
-
-    /**
-     * Default implementation of the method used by the lara interpreter to select cases
-     * @return 
-     */
-    public List<? extends ASwitchCase> selectCase() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ASwitchCase.class, SelectOp.DESCENDANTS);
+    public List<? extends AScope> selectScope() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AScope.class, SelectOp.DESCENDANTS);
     }
 
     /**
@@ -65,11 +57,8 @@ public abstract class ASwitchStatement extends AJackdawWeaverJoinPoint {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "switchCase": 
-        		joinPointList = selectSwitchCase();
-        		break;
-        	case "case": 
-        		joinPointList = selectCase();
+        	case "scope": 
+        		joinPointList = selectScope();
         		break;
         	default:
         		joinPointList = super.select(selectName);
@@ -94,7 +83,7 @@ public abstract class ASwitchStatement extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
-        attributes.add("discriminant");
+        attributes.add("test");
     }
 
     /**
@@ -103,8 +92,7 @@ public abstract class ASwitchStatement extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("switchCase");
-        selects.add("case");
+        selects.add("scope");
     }
 
     /**
@@ -121,13 +109,13 @@ public abstract class ASwitchStatement extends AJackdawWeaverJoinPoint {
      */
     @Override
     public final String get_class() {
-        return "switchStatement";
+        return "switchCase";
     }
     /**
      * 
      */
-    protected enum SwitchStatementAttributes {
-        DISCRIMINANT("discriminant"),
+    protected enum SwitchCaseAttributes {
+        TEST("test"),
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
@@ -139,13 +127,13 @@ public abstract class ASwitchStatement extends AJackdawWeaverJoinPoint {
         /**
          * 
          */
-        private SwitchStatementAttributes(String name){
+        private SwitchCaseAttributes(String name){
             this.name = name;
         }
         /**
          * Return an attribute enumeration item from a given attribute name
          */
-        public static Optional<SwitchStatementAttributes> fromString(String name) {
+        public static Optional<SwitchCaseAttributes> fromString(String name) {
             return Arrays.asList(values()).stream().filter(attr -> attr.name.equals(name)).findAny();
         }
 
@@ -153,7 +141,7 @@ public abstract class ASwitchStatement extends AJackdawWeaverJoinPoint {
          * Return a list of attributes in String format
          */
         public static List<String> getNames() {
-            return Arrays.asList(values()).stream().map(SwitchStatementAttributes::name).collect(Collectors.toList());
+            return Arrays.asList(values()).stream().map(SwitchCaseAttributes::name).collect(Collectors.toList());
         }
 
         /**

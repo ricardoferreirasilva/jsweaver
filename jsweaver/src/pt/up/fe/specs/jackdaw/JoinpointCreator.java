@@ -9,29 +9,10 @@ import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
-import pt.up.fe.specs.jackdaw.joinpoints.JsDeclarator;
-import pt.up.fe.specs.jackdaw.joinpoints.JsFile;
-import pt.up.fe.specs.jackdaw.joinpoints.JsGeneric;
-import pt.up.fe.specs.jackdaw.joinpoints.JsProject;
-import pt.up.fe.specs.jackdaw.joinpoints.classes.JsClassBody;
-import pt.up.fe.specs.jackdaw.joinpoints.classes.JsMethodDefinition;
-import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsAssignmentExpression;
-import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsBinaryExpression;
-import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsCallExpression;
-import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsFunctionExpression;
-import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsIdentifier;
-import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsLiteral;
-import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsMemberExpression;
-import pt.up.fe.specs.jackdaw.joinpoints.expressions.JsUpdateExpression;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsBlockStatement;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsClassDeclaration;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsDeclaration;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsExpressionStatement;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsForStatement;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsFunctionDeclaration;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsIfStatement;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsSwitchStatement;
-import pt.up.fe.specs.jackdaw.joinpoints.statements.JsWhileStatement;
+import pt.up.fe.specs.jackdaw.joinpoints.*;
+import pt.up.fe.specs.jackdaw.joinpoints.classes.*;
+import pt.up.fe.specs.jackdaw.joinpoints.expressions.*;
+import pt.up.fe.specs.jackdaw.joinpoints.statements.*;
 import pt.up.fe.specs.util.SpecsLogs;
 
 public class JoinpointCreator {
@@ -52,6 +33,7 @@ public class JoinpointCreator {
         MAPPINGS.put("ExpressionStatement", JsExpressionStatement::new);
         MAPPINGS.put("WhileStatement", JsWhileStatement::new);
         MAPPINGS.put("SwitchStatement", JsSwitchStatement::new);
+        MAPPINGS.put("SwitchCase", JsSwitchCase::new);
         MAPPINGS.put("ForStatement", JsForStatement::new);
         MAPPINGS.put("BlockStatement", JsBlockStatement::new);
         MAPPINGS.put("ClassBody", JsClassBody::new);
