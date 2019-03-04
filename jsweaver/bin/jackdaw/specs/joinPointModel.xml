@@ -29,12 +29,17 @@
 		<select class="forStatement"/>
 		<select alias="for" class="forStatement"/>
 		
+		<select class="tryStatement"/>
+		<select alias="try" class="tryStatement"/>
+		
 		<select class="switchStatement"/>
 		<select alias="switch" class="switchStatement"/>
 		
 		<select class="functionDeclaration"/>
+		
 		<select class="classDeclaration"/>
 		<select alias="class" class="classDeclaration"/>
+		
 		<select class="blockStatement"/>
 		<select class="declaration"/>
 		<select class="methodDefinition"/>
@@ -63,6 +68,16 @@
 	<joinpoint class="switchStatement">
 		<select class="switchCase"/>
 		<select alias="case" class="switchCase"/>
+	</joinpoint>
+	
+	<joinpoint class="tryStatement">
+		<select alias="block" class="scope"/>
+		<select class="catchClause"/>
+		<select alias="catch" class="catchClause"/>
+	</joinpoint>
+	
+	<joinpoint class="catchClause">
+		<select class="blockStatement"/>
 	</joinpoint>
 	
 	<joinpoint class="switchCase">

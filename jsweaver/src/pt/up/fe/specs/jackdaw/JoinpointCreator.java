@@ -33,6 +33,8 @@ public class JoinpointCreator {
         MAPPINGS.put("ExpressionStatement", JsExpressionStatement::new);
         MAPPINGS.put("WhileStatement", JsWhileStatement::new);
         MAPPINGS.put("SwitchStatement", JsSwitchStatement::new);
+        MAPPINGS.put("TryStatement", JsTryStatement::new);
+        MAPPINGS.put("CatchClause", JsCatchClause::new);
         MAPPINGS.put("SwitchCase", JsSwitchCase::new);
         MAPPINGS.put("ForStatement", JsForStatement::new);
         MAPPINGS.put("BlockStatement", JsBlockStatement::new);

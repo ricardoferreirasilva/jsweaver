@@ -57,5 +57,9 @@ public class JackdawMainTestBattery {
     public void testSwitch() {
         newTester().test("Switch.lara", "switch.js");
     }
+    @Test
+    public void testTryCatch() {
+        newTester().test("Try.lara", "try.js");
+    }
 
 }

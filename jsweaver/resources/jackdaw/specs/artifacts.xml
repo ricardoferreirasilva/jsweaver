@@ -94,6 +94,10 @@
 		<attribute name="test" type="joinpoint" tooltip="Test value of this switch case." />
 	</artifact>
 	
+	<artifact class="catchClause">
+		<attribute name="param" type="joinpoint" tooltip="Parameter of this catch clause." />
+	</artifact>
+	
 	<artifact class="callExpression">
 		<attribute name="callee" type="joinpoint" tooltip="Identifier of this expression call." />
 		<attribute name="arguments" type="joinpoint[]" tooltip="Arguments of this expression call." />

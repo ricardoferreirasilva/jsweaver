@@ -716,6 +716,144 @@
       },
       {
          "type": "joinpoint",
+         "name": "catchClause",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Parameter of this catch clause.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "param"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "blockStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
          "name": "classBody",
          "extends": "joinpoint"      ,
          "children": [
@@ -3204,6 +3342,16 @@
                },
                {
                   "type": "select",
+                  "clazz": "tryStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "tryStatement",
+                  "alias": "try"
+               },
+               {
+                  "type": "select",
                   "clazz": "whileStatement",
                   "alias": ""
                },
@@ -3626,6 +3774,145 @@
                   "type": "select",
                   "clazz": "switchCase",
                   "alias": "case"
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "tryStatement",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "catchClause",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "catchClause",
+                  "alias": "catch"
+               },
+               {
+                  "type": "select",
+                  "clazz": "scope",
+                  "alias": "block"
                },
                {
                   "type": "action",
