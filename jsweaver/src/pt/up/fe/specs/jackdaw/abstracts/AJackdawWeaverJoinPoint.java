@@ -1,5 +1,6 @@
 package pt.up.fe.specs.jackdaw.abstracts;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -107,6 +108,10 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
     @Override
     public String getAstImpl() {
         return getNode().toString();
+    }
+    @Override
+    public AJoinPoint[] getChildrenArrayImpl() {
+    	  return JackdawQueryEngine.getChildren(getNode());
     }
 
     // Test

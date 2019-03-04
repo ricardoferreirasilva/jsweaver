@@ -61,5 +61,10 @@ public class JackdawMainTestBattery {
     public void testTryCatch() {
         newTester().test("Try.lara", "try.js");
     }
+    @Test
+    public void testExpressionStatements() {
+        newTester().test("ExpressionStatements.lara", "expression.js");
+    }
+    
 
 }

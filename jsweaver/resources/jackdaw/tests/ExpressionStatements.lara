@@ -1,0 +1,7 @@
+aspectdef FileTest
+
+	select file.expressionStatement end
+	apply
+		println($expressionStatement.children);
+	end
+end

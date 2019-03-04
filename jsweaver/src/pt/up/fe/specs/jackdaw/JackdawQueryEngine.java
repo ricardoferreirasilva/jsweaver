@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclaration;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 
+
 // Class that hosts several functions to extract AST elements from JSON.
 public class JackdawQueryEngine {
 
@@ -174,7 +175,32 @@ public class JackdawQueryEngine {
         }
         return false;
     }
+    public static AJoinPoint[] getChildren(JsonObject parent) {
+    	  List<AJoinPoint> children = new ArrayList<AJoinPoint>();
+          for (Entry<String, JsonElement> key : parent.entrySet()) {
+              String keyName = key.getKey();
+              JsonElement keyValue = key.getValue();
+              if (keyValue.isJsonObject()) {
+                  if (keyValue.getAsJsonObject().has("type")) {
+                	  children.add(JoinpointCreator.create(keyValue.getAsJsonObject()));
+                  }
 
+              } 
+              else if (keyValue.isJsonArray()) {
+                  JsonArray elements = keyValue.getAsJsonArray();
+                  for (JsonElement singleElement : elements) {
+                      if (singleElement.isJsonObject()) {
+                    	  if (singleElement.getAsJsonObject().has("type")) {
+                        	  children.add(JoinpointCreator.create(singleElement.getAsJsonObject()));
+                          }
+                      }
+                  }
+              }
+          }
+	      AJoinPoint[] childrenJoinpoints = children.toArray(new AJoinPoint[children.size()]);
+	      return childrenJoinpoints;
+    	
+    }
     private static Boolean validFieldName(String fieldName) {
         switch (fieldName) {
         case "loc":

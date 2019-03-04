@@ -42,6 +42,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -189,6 +198,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -344,6 +362,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -464,6 +491,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -625,6 +661,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -758,6 +803,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -883,6 +937,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -1034,6 +1097,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1168,6 +1240,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -1319,6 +1400,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1448,6 +1538,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -1605,6 +1704,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1757,6 +1865,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -1935,6 +2052,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2109,6 +2235,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2247,6 +2382,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2376,6 +2520,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -2519,6 +2672,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -2670,6 +2832,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -2834,6 +3005,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2964,6 +3144,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -3090,6 +3279,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -3313,6 +3511,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -3456,6 +3663,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -3594,6 +3810,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -3724,6 +3949,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
@@ -3894,6 +4128,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -4023,6 +4266,15 @@
                            {
                               "type": "String",
                               "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
                            }]
                },
                {
