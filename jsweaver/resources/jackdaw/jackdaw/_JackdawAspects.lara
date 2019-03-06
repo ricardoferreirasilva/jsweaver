@@ -1,0 +1,8 @@
+aspectdef GetRoot
+	output rootJp end
+	
+	select project end
+	apply
+		rootJp = $project;
+	end
+end

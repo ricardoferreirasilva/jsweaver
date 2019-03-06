@@ -1,0 +1,12 @@
+import jackdaw._JackdawAspects;
+
+/**
+ * @class
+ */
+var Jackdaw = {};
+
+Jackdaw.getRoot = function() {
+	var rootOutput = call GetRoot();
+	
+	return rootOutput.rootJp;
+}

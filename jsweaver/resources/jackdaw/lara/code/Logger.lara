@@ -1,10 +1,48 @@
 import lara.code.LoggerBase;
 
 /**
+ * Appends a variable.
+ */
+Logger.prototype.appendVar = function(variable) {
+    return this._append_private(variable, this.Type.LITERAL);
+}
+
+/**
+ * Appends a variable.
+ */
+Logger.prototype.variable = function(variable) {
+    return this.appendVar(variable);
+}
+
+/**
  * Adds code that prints the message built up to that point with the append() functions.
  *
- * TODO: Improve this comment, add JSDoc tags
  */
 Logger.prototype.log = function($jp, insertBefore) {
-	throw "Logger.log: not yet implemented";
+	if(this.filename !== undefined) {
+		println("Logging to files is not supported yet");
+		return;
+	}
+
+    var message = this.currentElements.map(function(element) {
+		if(element.type === this.Type.NORMAL) {
+			return '"' + element.content + '"';
+		}
+        
+		return element.content;
+    }, this).join(" + ");
+
+	var logCode = %{console.log([[message]]);}%;
+	//var logCode = _console_print(message);
+
+	println("LOG CODE: " + logCode);
+	if(insertBefore) {
+		$jp.insert before logCode;
+	} else {
+		$jp.insert after logCode;	
+	}
 }
+
+codedef _console_print(message) %{
+console.log([[message]]);
+}% end

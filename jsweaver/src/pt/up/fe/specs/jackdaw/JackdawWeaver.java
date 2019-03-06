@@ -18,6 +18,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.abstracts.weaver.AJsWeaver;
+import pt.up.fe.specs.jackdaw.api.JackdawLaraApi;
 import pt.up.fe.specs.jackdaw.api.LaraCoreApi;
 import pt.up.fe.specs.jsast.JackdawEngine;
 import pt.up.fe.specs.util.providers.ResourceProvider;
@@ -106,6 +107,7 @@ public class JackdawWeaver extends AJsWeaver {
 		List<ResourceProvider> apis = new ArrayList<>();
 
 		apis.addAll(ResourceProvider.getResourcesFromEnum(LaraCoreApi.class));
+		apis.addAll(ResourceProvider.getResourcesFromEnum(JackdawLaraApi.class));
 
 		return apis;
 
