@@ -11,11 +11,21 @@ import lara._JavaTypes;
  */
 Timer.prototype.time = function($start, prefix, $end) {
 	var uuid = _JavaTypes.getUuid().randomUUID().toString();
-	println(uuid);
-	
-	var timerStart = 'console.time("' + uuid + '")';
-	var timerEnd = 'console.timeEnd("' + uuid + '")';
-		println(timerStart);
-	$start.insert before timerStart;
-	$end.insert after timerEnd;
+    if (prefix === undefined) {
+        var timerStart = 'console.time("' + uuid + '")';
+		var timerEnd = 'console.timeEnd("' + uuid + '")';
+		$start.insert before timerStart;
+		$end.insert after timerEnd;
+		return;
+    }
+    else
+    {
+    	if(prefix.length != 0){
+			var timerStart = 'console.time("' + prefix + '")';
+			var timerEnd = 'console.timeEnd("' + prefix + '")';
+			println(timerStart);
+			$start.insert before timerStart;
+			$end.insert after timerEnd;
+    	}
+    }
 }
