@@ -1,6 +1,5 @@
 package pt.up.fe.specs.jackdaw.abstracts;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,98 +20,102 @@ import pt.up.fe.specs.jackdaw.joinpoints.JsScope;
 import pt.up.fe.specs.jsast.JackdawEngine;
 
 /**
- * Abstract class which can be edited by the developer. This class will not be overwritten.
+ * Abstract class which can be edited by the developer. This class will not be
+ * overwritten.
  * 
  * @author Lara Weaver Generator
  */
 public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 
-    /**
-     * Compares the two join points based on their node reference of the used compiler/parsing tool.<br>
-     * This is the default implementation for comparing two join points. <br>
-     * <b>Note for developers:</b> A weaver may override this implementation in the editable abstract join point, so the
-     * changes are made for all join points, or override this method in specific join points.
-     */
-    @Override
-    public boolean compareNodes(AJoinPoint aJoinPoint) {
-        return this.getNode().equals(aJoinPoint.getNode());
-    }
+	/**
+	 * Compares the two join points based on their node reference of the used
+	 * compiler/parsing tool.<br>
+	 * This is the default implementation for comparing two join points. <br>
+	 * <b>Note for developers:</b> A weaver may override this implementation in the
+	 * editable abstract join point, so the changes are made for all join points, or
+	 * override this method in specific join points.
+	 */
+	@Override
+	public boolean compareNodes(AJoinPoint aJoinPoint) {
+		return this.getNode().equals(aJoinPoint.getNode());
+	}
 
-    @Override
-    public AJoinPoint getRootImpl() {
-        JsonObject rootObject = ParentMapper.getRoot(this.getNode());
-        AJoinPoint rootJoinpoint = (AJoinPoint) JoinpointCreator.create(rootObject);
-        return rootJoinpoint;
-    }
+	@Override
+	public AJoinPoint getRootImpl() {
+		JsonObject rootObject = ParentMapper.getRoot(this.getNode());
+		AJoinPoint rootJoinpoint = (AJoinPoint) JoinpointCreator.create(rootObject);
+		return rootJoinpoint;
+	}
 
-    @Override
-    public String getTypeImpl() {
-        return getNode().get("type").getAsString();
-    }
+	@Override
+	public String getTypeImpl() {
+		return getNode().get("type").getAsString();
+	}
 
-    @Override
-    public AJoinPoint getParentImpl() {
-        JsonObject parentNode = ParentMapper.getParent(this.getNode());
+	@Override
+	public AJoinPoint getParentImpl() {
+		JsonObject parentNode = ParentMapper.getParent(this.getNode());
 
-        parentNode.get("type").getAsString();
+		parentNode.get("type").getAsString();
 
-        AJoinPoint parentJoinpoint = (AJoinPoint) JoinpointCreator.create(parentNode);
-        return parentJoinpoint;
-    }
+		AJoinPoint parentJoinpoint = (AJoinPoint) JoinpointCreator.create(parentNode);
+		return parentJoinpoint;
+	}
 
-    @Override
-    public void insertImpl(String position, String code) {
+	@Override
+	public void insertImpl(String position, String code) {
 
-        try {
-            JsonArray statements = JackdawEngine.parseInsertedCode(code);
-            JackdawInserter.insertStatements(this.getNode(), statements, position);
+		try {
+			JsonArray statements = JackdawEngine.parseInsertedCode(code);
+			JackdawInserter.insertStatements(this.getNode(), statements, position);
 
-        } catch (ScriptException error) {
-            throw new RuntimeException("Could not parse inserted code.", error);
-        }
-    }
+		} catch (ScriptException error) {
+			throw new RuntimeException("Could not parse inserted code.", error);
+		}
+	}
 
-    @Override
-    public <T extends JoinPoint> void insertImpl(String position, T JoinPoint) {
-        JsonObject joinpoint = (JsonObject) JoinPoint.getNode();
-        System.out.println(joinpoint);
-        JackdawInserter.insertJoinPoint(this.getNode(), joinpoint, position);
+	@Override
+	public <T extends JoinPoint> void insertImpl(String position, T JoinPoint) {
+		JsonObject joinpoint = (JsonObject) JoinPoint.getNode();
+		System.out.println(joinpoint);
+		JackdawInserter.insertJoinPoint(this.getNode(), joinpoint, position);
 
-    }
+	}
 
-    @Override
-    public Object fieldImpl(String fieldName) {
-        getNode().get(fieldName);
-        return null;
-    }
+	@Override
+	public Object fieldImpl(String fieldName) {
+		getNode().get(fieldName);
+		return null;
+	}
 
-    /**
-     * Generic select function, used by the default select implementations.
-     */
-    public <T extends AJoinPoint> List<? extends T> select(Class<T> joinPointClass, SelectOp op) {
+	/**
+	 * Generic select function, used by the default select implementations.
+	 */
+	public <T extends AJoinPoint> List<? extends T> select(Class<T> joinPointClass, SelectOp op) {
 
-        // For scopes.
-        if (joinPointClass.getSimpleName().equals("AScope")) {
-            return Arrays.asList(joinPointClass.cast(new JsScope(getNode())));
-        }
+		// For scopes.
+		if (joinPointClass.getSimpleName().equals("AScope")) {
+			return Arrays.asList(joinPointClass.cast(new JsScope(getNode())));
+		}
 
-        return JackdawQueryEngine.queryNodeGeneric(getNode(), joinPointClass, true);
+		return JackdawQueryEngine.queryNodeGeneric(getNode(), joinPointClass, true);
 
-    }
+	}
 
-    @Override
-    public String getJoinPointNameImpl() {
-        return getJoinPointType();
-    }
+	@Override
+	public String getJoinPointNameImpl() {
+		return getJoinPointType();
+	}
 
-    @Override
-    public String getAstImpl() {
-        return getNode().toString();
-    }
-    @Override
-    public AJoinPoint[] getChildrenArrayImpl() {
-    	  return JackdawQueryEngine.getChildren(getNode());
-    }
+	@Override
+	public String getAstImpl() {
+		return getNode().toString();
+	}
 
-    // Test
+	@Override
+	public AJoinPoint[] getChildrenArrayImpl() {
+		return JackdawQueryEngine.getChildren(getNode());
+	}
+
+	// Test
 }

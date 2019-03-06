@@ -1,4 +1,5 @@
 import lara.code.TimerBase;
+import lara._JavaTypes;
 
 /**
  * Times the code of a given section.
@@ -9,5 +10,12 @@ import lara.code.TimerBase;
  * @return name of the variable where the time is stored
  */
 Timer.prototype.time = function($start, prefix, $end) {
-	throw "Timer.time: not yet implemented";
+	var uuid = _JavaTypes.getUuid().randomUUID().toString();
+	println(uuid);
+	
+	var timerStart = 'console.time("' + uuid + '")';
+	var timerEnd = 'console.timeEnd("' + uuid + '")';
+		println(timerStart);
+	$start.insert before timerStart;
+	$end.insert after timerEnd;
 }
