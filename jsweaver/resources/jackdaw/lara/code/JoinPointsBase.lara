@@ -20,8 +20,21 @@ JoinPoints.prototype.root = function() {
  * 
  * @return {$jp[]} the children of the given node
  */
-JoinPoints.prototype.children = function($jp) {
-	return $jp.children;
+JoinPoints.prototype.children = function($jp,jpType) {
+	var unfilteredJps = $jp.children;
+	if(jpType == undefined){
+		return unfilteredJps;
+	}
+	else{
+		var filteredJps = [];
+	    for(var $jp of unfilteredJps) {
+	        if($jp.type == jpType) {
+	          	filteredJps.push($jp);
+	        }
+	
+	    }
+	    return filteredJps;
+	}
 }
 
 
@@ -32,6 +45,19 @@ JoinPoints.prototype.children = function($jp) {
  * 
  * @return {$jp[]} the descendants of the given node
  */
-JoinPoints.prototype.descendants = function($jp) {
-	return $jp.descendants;
+JoinPoints.prototype.descendants = function($jp,jpType) {
+	var unfilteredJps = $jp.descendants;
+	if(jpType == undefined){
+		return unfilteredJps;
+	}
+	else{
+		var filteredJps = [];
+	    for(var $jp of unfilteredJps) {
+	        if($jp.type == jpType) {
+	          	filteredJps.push($jp);
+	        }
+	
+	    }
+	    return filteredJps;
+	}
 }
