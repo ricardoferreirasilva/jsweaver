@@ -197,7 +197,8 @@ public abstract class AMethodDefinition extends AJackdawWeaverJoinPoint {
         FIELD("field"),
         CHILDREN("children"),
         ROOT("root"),
-        TYPE("type");
+        TYPE("type"),
+        DESCENDANTS("descendants");
         private String name;
 
         /**

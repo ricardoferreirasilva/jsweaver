@@ -68,6 +68,7 @@ public abstract class AJoinPoint extends JoinPoint {
         attributes.add("joinPointName");
         attributes.add("ast");
         attributes.add("children");
+        attributes.add("descendants");
     }
 
     /**
@@ -219,7 +220,7 @@ public abstract class AJoinPoint extends JoinPoint {
     public abstract AJoinPoint[] getChildrenArrayImpl();
 
     /**
-     * Children joinpoints of this joinpoint.
+     * Children (direct nodes) joinpoints of this joinpoint.
      */
     public Bindings getChildrenImpl() {
         AJoinPoint[] aJoinPointArrayImpl0 = getChildrenArrayImpl();
@@ -228,7 +229,7 @@ public abstract class AJoinPoint extends JoinPoint {
     }
 
     /**
-     * Children joinpoints of this joinpoint.
+     * Children (direct nodes) joinpoints of this joinpoint.
      */
     public final Object getChildren() {
         try {
@@ -242,6 +243,39 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "children", e);
+        }
+    }
+
+    /**
+     * Get value on attribute descendants
+     * @return the attribute's value
+     */
+    public abstract AJoinPoint[] getDescendantsArrayImpl();
+
+    /**
+     * Children joinpoints (indirect nodes) of this joinpoint.
+     */
+    public Bindings getDescendantsImpl() {
+        AJoinPoint[] aJoinPointArrayImpl0 = getDescendantsArrayImpl();
+        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
+        return nativeArray0;
+    }
+
+    /**
+     * Children joinpoints (indirect nodes) of this joinpoint.
+     */
+    public final Object getDescendants() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "descendants", Optional.empty());
+        	}
+        	Bindings result = this.getDescendantsImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "descendants", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "descendants", e);
         }
     }
 

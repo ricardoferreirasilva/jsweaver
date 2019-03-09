@@ -16,7 +16,8 @@
 
 		<attribute name="joinPointName" type="String" tooltip="The name of the join point."/>
 		<attribute name="ast" type="String" tooltip="The ast corresponding to this join point"/>
-		<attribute name="children" type="joinpoint[]" tooltip="Children joinpoints of this joinpoint."/>
+		<attribute name="children" type="joinpoint[]" tooltip="Children (direct nodes) joinpoints of this joinpoint."/>
+		<attribute name="descendants" type="joinpoint[]" tooltip="Children joinpoints (indirect nodes) of this joinpoint."/>
 	</global>
 	
 	<!-- PROGRAM -->

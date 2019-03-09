@@ -42,11 +42,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -202,11 +211,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -362,11 +380,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -495,11 +522,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -661,11 +697,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -803,11 +848,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -941,11 +995,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -1097,11 +1160,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -1244,11 +1316,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -1400,11 +1481,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -1542,11 +1632,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -1704,11 +1803,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -1869,11 +1977,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -2052,11 +2169,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -2235,11 +2361,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -2382,11 +2517,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -2524,11 +2668,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -2676,11 +2829,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -2836,11 +2998,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -3005,11 +3176,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -3144,11 +3324,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -3283,11 +3472,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -3511,11 +3709,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -3663,11 +3870,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -3810,11 +4026,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -3953,11 +4178,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -4128,11 +4362,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {
@@ -4270,11 +4513,20 @@
                },
                {
                   "type": "attribute",
-                  "tooltip": "Children joinpoints of this joinpoint.",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
                   "children": [
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
                            }]
                },
                {

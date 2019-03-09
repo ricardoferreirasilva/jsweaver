@@ -201,6 +201,41 @@ public class JackdawQueryEngine {
 	      return childrenJoinpoints;
     	
     }
+    public static AJoinPoint[] getDescendants(JsonObject parent) {
+  	  List<AJoinPoint> children = new ArrayList<AJoinPoint>();
+        for (Entry<String, JsonElement> key : parent.entrySet()) {
+            String keyName = key.getKey();
+            JsonElement keyValue = key.getValue();
+            if (keyValue.isJsonObject()) {
+                if (keyValue.getAsJsonObject().has("type")) {
+              	  children.add(JoinpointCreator.create(keyValue.getAsJsonObject()));
+              	  AJoinPoint[] descendants = getDescendants(keyValue.getAsJsonObject());
+              	  for(AJoinPoint descendant : descendants) {
+              		  children.add(descendant);
+              	  }
+              	  
+                }
+
+            } 
+            else if (keyValue.isJsonArray()) {
+                JsonArray elements = keyValue.getAsJsonArray();
+                for (JsonElement singleElement : elements) {
+                    if (singleElement.isJsonObject()) {
+                  	  if (singleElement.getAsJsonObject().has("type")) {
+                      	  children.add(JoinpointCreator.create(singleElement.getAsJsonObject()));
+                      	AJoinPoint[] descendants = getDescendants(singleElement.getAsJsonObject());
+                    	  for(AJoinPoint descendant : descendants) {
+                    		  children.add(descendant);
+                    	  }
+                        }
+                    }
+                }
+            }
+        }
+	      AJoinPoint[] childrenJoinpoints = children.toArray(new AJoinPoint[children.size()]);
+	      return childrenJoinpoints;
+  	
+  }
     private static Boolean validFieldName(String fieldName) {
         switch (fieldName) {
         case "loc":

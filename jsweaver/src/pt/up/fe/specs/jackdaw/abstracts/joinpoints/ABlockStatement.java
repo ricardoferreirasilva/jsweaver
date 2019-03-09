@@ -165,7 +165,8 @@ public abstract class ABlockStatement extends AStatement {
         FIELD("field"),
         CHILDREN("children"),
         ROOT("root"),
-        TYPE("type");
+        TYPE("type"),
+        DESCENDANTS("descendants");
         private String name;
 
         /**

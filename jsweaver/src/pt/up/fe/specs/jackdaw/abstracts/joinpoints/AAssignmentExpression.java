@@ -159,7 +159,8 @@ public abstract class AAssignmentExpression extends AJackdawWeaverJoinPoint {
         FIELD("field"),
         CHILDREN("children"),
         ROOT("root"),
-        TYPE("type");
+        TYPE("type"),
+        DESCENDANTS("descendants");
         private String name;
 
         /**

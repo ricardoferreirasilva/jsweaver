@@ -1,0 +1,37 @@
+import jackdaw._JackdawAspects;
+
+/**
+ * Object which provides low-level join point-related methods.
+ * @constructor
+ */
+function JoinPoints() {
+}
+
+/**
+ * 
+ * @return {$jp} the current root node of the AST
+ */
+JoinPoints.prototype.root = function() {
+	var rootOutput = call GetRoot();
+	return rootOutput.rootJp;
+}
+
+/**
+ * 
+ * @return {$jp[]} the children of the given node
+ */
+JoinPoints.prototype.children = function($jp) {
+	return $jp.children;
+}
+
+
+
+
+
+/**
+ * 
+ * @return {$jp[]} the descendants of the given node
+ */
+JoinPoints.prototype.descendants = function($jp) {
+	return $jp.descendants;
+}
