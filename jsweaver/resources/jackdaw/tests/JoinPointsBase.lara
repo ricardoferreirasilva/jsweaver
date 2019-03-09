@@ -1,0 +1,13 @@
+import lara.code.JoinPointsBase;
+aspectdef FileTest
+
+	var jps = new JoinPoints();
+	select project end
+	apply
+		var root = jps.root();
+		var children = jps.children(root);
+		var file = children[0];
+		var descendants = jps.descendants(file);
+		println(descendants.length);
+	end
+end
