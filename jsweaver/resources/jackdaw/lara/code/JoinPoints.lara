@@ -26,14 +26,7 @@ JoinPoints.prototype.children = function($jp,jpType) {
 		return unfilteredJps;
 	}
 	else{
-		var filteredJps = [];
-	    for(var $jp of unfilteredJps) {
-	        if($jp.type == jpType) {
-	          	filteredJps.push($jp);
-	        }
-	
-	    }
-	    return filteredJps;
+		return this._filterNodes(unfilteredJps,jpType);
 	}
 }
 
@@ -51,13 +44,20 @@ JoinPoints.prototype.descendants = function($jp,jpType) {
 		return unfilteredJps;
 	}
 	else{
-		var filteredJps = [];
-	    for(var $jp of unfilteredJps) {
-	        if($jp.type == jpType) {
-	          	filteredJps.push($jp);
-	        }
-	
-	    }
-	    return filteredJps;
+		return this._filterNodes(unfilteredJps,jpType);
 	}
+}
+
+JoinPoints.prototype._filterNodes = function($jps, jpType) {
+
+	var filteredJps = [];
+	
+	for(var $jp of $jps) {
+	 	if($jp.type == jpType) {
+          	filteredJps.push($jp);
+        }
+	}
+	
+	return filteredJps;
+
 }

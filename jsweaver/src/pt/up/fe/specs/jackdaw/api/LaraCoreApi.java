@@ -5,7 +5,7 @@ import org.lara.interpreter.weaver.utils.LaraResourceProvider;
 public enum LaraCoreApi implements LaraResourceProvider {
 
 	// Code
-	LOGGER("code/Logger.lara"), TIMER("code/Timer.lara"), JOINPOINTSBASE("code/JoinPointsBase.lara");;
+	LOGGER("code/Logger.lara"), TIMER("code/Timer.lara"), JOINPOINTS("code/JoinPoints.lara");;
 
 	private final String resource;
 

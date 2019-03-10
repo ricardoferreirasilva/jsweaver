@@ -67,7 +67,7 @@ public class JackdawMainTestBattery {
     }
     @Test
     public void joinPointsBase() {
-        newTester().test("JoinPointsBase.lara", "joinpointsbase.js");
+        newTester().test("JoinPoints.lara", "joinpoints.js");
     }
     
 

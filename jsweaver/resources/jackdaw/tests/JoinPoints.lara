@@ -1,4 +1,4 @@
-import lara.code.JoinPointsBase;
+import lara.code.JoinPoints;
 aspectdef FileTest
 
 	var jps = new JoinPoints();
