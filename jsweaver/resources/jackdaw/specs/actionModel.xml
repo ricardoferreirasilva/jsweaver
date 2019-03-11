@@ -3,4 +3,7 @@
 	<action name="rename" class="identifier" tooltip="Rename this identifier.">
 		<parameter name="name" type="string" />
 	</action>
+	<action name="refactor" class="declarator" tooltip="Refactor this declarator.">
+		<parameter name="name" type="string" />
+	</action>
 </actions>

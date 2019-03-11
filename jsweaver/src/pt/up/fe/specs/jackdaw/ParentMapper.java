@@ -16,7 +16,6 @@ public class ParentMapper {
     public static JsonObject getParent(JsonObject child) {
         return parentMap.get(child);
     }
-
     public static JsonObject getRoot(JsonObject node) {
         Boolean foundRoot = false;
 
@@ -27,6 +26,8 @@ public class ParentMapper {
         }
         while (!foundRoot) {
             JsonObject parent = getParent(node);
+            //System.out.println(node);
+            //System.out.println(parent);
             if (parent.has("type") && parent.get("type").getAsString().equals("Project")) {
                 foundRoot = true;
                 return parent;
@@ -36,5 +37,12 @@ public class ParentMapper {
 
         }
         return null;
+    }
+    public static void printMap() {
+    	for (JsonObject key: parentMap.keySet()){
+    		System.out.println(key);
+
+		} 
+    	
     }
 }

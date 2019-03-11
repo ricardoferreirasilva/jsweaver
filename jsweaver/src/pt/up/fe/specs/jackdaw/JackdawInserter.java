@@ -9,14 +9,14 @@ public class JackdawInserter {
     public static void insertStatements(JsonObject node, JsonArray newElements, String position) {
         // First find insertable zone
         Boolean zoneFound = false;
-        if (nodeIsInsertable(node)) {
+        if (JackdawUtilities.nodeIsInsertable(node)) {
             zoneFound = true;
             insertIntoBody(node, newElements, position);
         } else {
             while (!zoneFound) {
                 JsonObject anchorNode = node;
                 node = ParentMapper.getParent(node);
-                if (nodeIsInsertable(node)) {
+                if (JackdawUtilities.nodeIsInsertable(node)) {
                     zoneFound = true;
                     insertIntoBody(node, anchorNode, newElements, position);
                     break;
@@ -28,14 +28,14 @@ public class JackdawInserter {
     public static void insertJoinPoint(JsonObject node, JsonObject newNode, String position) {
         // First find insertable zone
         Boolean zoneFound = false;
-        if (nodeIsInsertable(node)) {
+        if (JackdawUtilities.nodeIsInsertable(node)) {
             zoneFound = true;
             insertIntoBody(node, newNode, position);
         } else {
             while (!zoneFound) {
                 JsonObject anchorNode = node;
                 node = ParentMapper.getParent(node);
-                if (nodeIsInsertable(node)) {
+                if (JackdawUtilities.nodeIsInsertable(node)) {
                     zoneFound = true;
                     insertIntoBody(node, anchorNode, newNode, position);
                     break;
@@ -137,12 +137,6 @@ public class JackdawInserter {
 
     }
 
-    private static boolean nodeIsInsertable(JsonObject node) {
-        String type = node.get("type").getAsString();
-        if (type.equals("Program") || type.equals("Program")) {
-            return true;
-        } else
-            return false;
-    }
+
 
 }

@@ -1,5 +1,6 @@
 package pt.up.fe.specs.jackdaw;
 
+import java.util.HashMap;
 import java.util.Map.Entry;
 
 import com.google.gson.JsonArray;
@@ -7,7 +8,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class JackdawUtilities {
-
+	public static void reformParents(JsonObject node) {
+		ParentMapper.parentMap = new HashMap();
+		formParents(node);
+	}
     public static void formParents(JsonObject node) {
         for (Entry<String, JsonElement> key : node.entrySet()) {
             String keyName = key.getKey();
@@ -28,5 +32,20 @@ public class JackdawUtilities {
                 }
             }
         }
+        System.out.println();
     }
+    public static boolean nodeIsInsertable(JsonObject node) {
+  
+    	if(node.has("type")){
+    		  String type = node.get("type").getAsString();
+    	        if (type.equals("Program") || type.equals("BlockStatement")) {
+    	            return true;
+    	        } else
+    	            return false;
+    	}
+    	else {
+    		return false;
+    	}
+    }
+    
 }

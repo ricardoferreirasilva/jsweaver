@@ -99,7 +99,7 @@ public class JackdawWeaver extends AJsWeaver {
 		root.addProperty("type", "Project");
 		root.add("programs", totalPrograms);
 		this.project = root;
-		JackdawUtilities.formParents(this.project);
+		JackdawUtilities.reformParents(this.project);
 		return true;
 	}
 

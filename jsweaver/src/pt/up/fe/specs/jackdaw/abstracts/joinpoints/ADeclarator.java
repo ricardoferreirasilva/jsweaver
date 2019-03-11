@@ -3,6 +3,7 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
+import org.lara.interpreter.exception.ActionException;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
@@ -65,6 +66,32 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Refactor this declarator.
+     * @param name 
+     */
+    public void refactorImpl(String name) {
+        throw new UnsupportedOperationException(get_class()+": Action refactor not implemented ");
+    }
+
+    /**
+     * Refactor this declarator.
+     * @param name 
+     */
+    public final void refactor(String name) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.BEGIN, "refactor", this, Optional.empty(), name);
+        	}
+        	this.refactorImpl(name);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.END, "refactor", this, Optional.empty(), name);
+        	}
+        } catch(Exception e) {
+        	throw new ActionException(get_class(), "refactor", e);
+        }
+    }
+
+    /**
      * 
      */
     @Override
@@ -112,6 +139,7 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
+        actions.add("void refactor(string)");
     }
 
     /**
