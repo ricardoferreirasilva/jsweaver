@@ -120,6 +120,4 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 	public AJoinPoint[] getDescendantsArrayImpl() {
 		return JackdawQueryEngine.getDescendants(getNode());
 	}
-
-	// Test
 }

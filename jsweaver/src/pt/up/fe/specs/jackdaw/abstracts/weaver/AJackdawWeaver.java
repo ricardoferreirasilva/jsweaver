@@ -21,7 +21,7 @@ public abstract class AJackdawWeaver extends WeaverEngine {
      */
     @Override
     public final List<String> getActions() {
-        String[] weaverActions= {};
+        String[] weaverActions= {"rename"};
         return Arrays.asList(weaverActions);
     }
 

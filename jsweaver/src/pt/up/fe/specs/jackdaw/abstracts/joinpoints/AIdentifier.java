@@ -3,6 +3,7 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
+import org.lara.interpreter.exception.ActionException;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
@@ -38,6 +39,32 @@ public abstract class AIdentifier extends AJackdawWeaverJoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "name", e);
+        }
+    }
+
+    /**
+     * Rename this identifier.
+     * @param name 
+     */
+    public void renameImpl(String name) {
+        throw new UnsupportedOperationException(get_class()+": Action rename not implemented ");
+    }
+
+    /**
+     * Rename this identifier.
+     * @param name 
+     */
+    public final void rename(String name) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.BEGIN, "rename", this, Optional.empty(), name);
+        	}
+        	this.renameImpl(name);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.END, "rename", this, Optional.empty(), name);
+        	}
+        } catch(Exception e) {
+        	throw new ActionException(get_class(), "rename", e);
         }
     }
 
@@ -88,6 +115,7 @@ public abstract class AIdentifier extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
+        actions.add("void rename(string)");
     }
 
     /**

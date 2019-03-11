@@ -2584,6 +2584,20 @@
                },
                {
                   "type": "action",
+                  "tooltip": "Rename this identifier.",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "rename"
+                           },
+                           {
+                              "type": "String",
+                              "name": "name",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
                   "children": [
                            {
                               "type": "void",

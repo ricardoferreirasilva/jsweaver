@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
 <actions>
-	
+	<action name="rename" class="identifier" tooltip="Rename this identifier.">
+		<parameter name="name" type="string" />
+	</action>
 </actions>

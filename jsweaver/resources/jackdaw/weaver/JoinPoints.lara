@@ -1,3 +1,4 @@
+import weaver.JoinPointsBase;
 import jackdaw._JackdawAspects;
 
 /**

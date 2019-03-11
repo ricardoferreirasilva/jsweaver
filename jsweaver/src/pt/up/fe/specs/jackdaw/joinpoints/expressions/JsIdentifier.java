@@ -21,5 +21,11 @@ public class JsIdentifier extends AIdentifier {
     public JsonObject getNode() {
         return this.node;
     }
-
+    @Override
+    public void renameImpl(String name) {
+    	String oldName = this.node.get("name").getAsString();
+    	this.node.addProperty("name", name);
+    	System.out.println(oldName + " -->" + name);
+    }
+    
 }
