@@ -1963,11 +1963,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "If the loop is innermost.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "isInnermost"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The kind of the loop",
                   "children": [
                            {
                               "type": "LoopKind",
                               "name": "kind"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Loop nest nevel.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "nestedLevel"
                            }]
                },
                {
@@ -2980,11 +2998,29 @@
          "children": [
                {
                   "type": "attribute",
+                  "tooltip": "If the loop is innermost.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "isInnermost"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The kind of the loop",
                   "children": [
                            {
                               "type": "LoopKind",
                               "name": "kind"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Loop nest nevel.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "nestedLevel"
                            }]
                },
                {
@@ -4683,11 +4719,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "If the loop is innermost.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "isInnermost"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The kind of the loop",
                   "children": [
                            {
                               "type": "LoopKind",
                               "name": "kind"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Loop nest nevel.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "nestedLevel"
                            }]
                },
                {

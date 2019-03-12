@@ -43,6 +43,52 @@ public abstract class ALoop extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * If the loop is innermost.
+     */
+    public abstract Boolean getIsInnermostImpl();
+
+    /**
+     * If the loop is innermost.
+     */
+    public final Object getIsInnermost() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "isInnermost", Optional.empty());
+        	}
+        	Boolean result = this.getIsInnermostImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "isInnermost", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "isInnermost", e);
+        }
+    }
+
+    /**
+     * Loop nest nevel.
+     */
+    public abstract Integer getNestedLevelImpl();
+
+    /**
+     * Loop nest nevel.
+     */
+    public final Object getNestedLevel() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "nestedLevel", Optional.empty());
+        	}
+        	Integer result = this.getNestedLevelImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "nestedLevel", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "nestedLevel", e);
+        }
+    }
+
+    /**
      * 
      */
     @Override
@@ -73,6 +119,8 @@ public abstract class ALoop extends AJackdawWeaverJoinPoint {
     protected void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
         attributes.add("kind");
+        attributes.add("isInnermost");
+        attributes.add("nestedLevel");
     }
 
     /**
@@ -104,6 +152,8 @@ public abstract class ALoop extends AJackdawWeaverJoinPoint {
      */
     protected enum LoopAttributes {
         KIND("kind"),
+        ISINNERMOST("isInnermost"),
+        NESTEDLEVEL("nestedLevel"),
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),

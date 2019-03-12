@@ -81,6 +81,8 @@
 	
 	<artifact class="loop">
 		<attribute name="kind" type="LoopKind" tooltip="The kind of the loop"/>
+		<attribute name="isInnermost" type="boolean" tooltip="If the loop is innermost."/>
+		<attribute name="nestedLevel" type="int" tooltip="Loop nest nevel."/>
 	</artifact>
 		
 	

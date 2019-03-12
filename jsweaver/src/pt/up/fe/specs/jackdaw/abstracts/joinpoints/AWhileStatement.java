@@ -68,6 +68,24 @@ public abstract class AWhileStatement extends ALoop {
     }
 
     /**
+     * Get value on attribute isInnermost
+     * @return the attribute's value
+     */
+    @Override
+    public Boolean getIsInnermostImpl() {
+        return this.aLoop.getIsInnermostImpl();
+    }
+
+    /**
+     * Get value on attribute nestedLevel
+     * @return the attribute's value
+     */
+    @Override
+    public Integer getNestedLevelImpl() {
+        return this.aLoop.getNestedLevelImpl();
+    }
+
+    /**
      * 
      * @param position 
      * @param code 
@@ -173,6 +191,8 @@ public abstract class AWhileStatement extends ALoop {
     protected enum WhileStatementAttributes {
         TEST("test"),
         KIND("kind"),
+        ISINNERMOST("isInnermost"),
+        NESTEDLEVEL("nestedLevel"),
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
