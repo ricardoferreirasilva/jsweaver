@@ -1547,6 +1547,11 @@
                            }]
                },
                {
+                  "type": "select",
+                  "clazz": "identifier",
+                  "alias": ""
+               },
+               {
                   "type": "action",
                   "tooltip": "Refactor this declarator.",
                   "children": [
@@ -1927,7 +1932,7 @@
       {
          "type": "joinpoint",
          "name": "forStatement",
-         "extends": "joinpoint"      ,
+         "extends": "loop"      ,
          "children": [
                {
                   "type": "attribute",
@@ -1954,6 +1959,15 @@
                            {
                               "type": "joinpoint",
                               "name": "update"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The kind of the loop",
+                  "children": [
+                           {
+                              "type": "LoopKind",
+                              "name": "kind"
                            }]
                },
                {
@@ -2602,7 +2616,7 @@
                   "children": [
                            {
                               "type": "void",
-                              "name": "rename"
+                              "name": "setName"
                            },
                            {
                               "type": "String",
@@ -2820,6 +2834,157 @@
                            {
                               "type": "String",
                               "name": "raw"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "loop",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "The kind of the loop",
+                  "children": [
+                           {
+                              "type": "LoopKind",
+                              "name": "kind"
                            }]
                },
                {
@@ -3612,6 +3777,11 @@
                },
                {
                   "type": "select",
+                  "clazz": "functionDeclaration",
+                  "alias": "function"
+               },
+               {
+                  "type": "select",
                   "clazz": "ifStatement",
                   "alias": ""
                },
@@ -3619,6 +3789,11 @@
                   "type": "select",
                   "clazz": "ifStatement",
                   "alias": "if"
+               },
+               {
+                  "type": "select",
+                  "clazz": "loop",
+                  "alias": ""
                },
                {
                   "type": "select",
@@ -4495,7 +4670,7 @@
       {
          "type": "joinpoint",
          "name": "whileStatement",
-         "extends": "joinpoint"      ,
+         "extends": "loop"      ,
          "children": [
                {
                   "type": "attribute",
@@ -4504,6 +4679,15 @@
                            {
                               "type": "joinpoint",
                               "name": "test"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The kind of the loop",
+                  "children": [
+                           {
+                              "type": "LoopKind",
+                              "name": "kind"
                            }]
                },
                {
@@ -4646,6 +4830,20 @@
                               "name": "value",
                               "defaultValue": ""
                            }]
+               }]
+      },
+      {
+         "type": "enum",
+         "name": "LoopKind"
+         ,
+         "children": [
+               {
+                  "string": "null",
+                  "value": "FOR"
+               },
+               {
+                  "string": "null",
+                  "value": "WHILE"
                }]
       }]
 }

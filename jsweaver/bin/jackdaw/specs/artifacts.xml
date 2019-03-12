@@ -59,7 +59,9 @@
 	</artifact>
 	
 	<artifact class="identifier">
-		<attribute name="name" type="string" tooltip="Name of the identifier." />
+		<attribute name="name" type="string" tooltip="Name of the identifier.">
+			<def/>
+		</attribute>
 	</artifact>
 	
 	<artifact class="literal">
@@ -76,6 +78,11 @@
 	<artifact class="whileStatement">
 		<attribute name="test" type="joinpoint" tooltip="Test expression of this while statement." />
 	</artifact>
+	
+	<artifact class="loop">
+		<attribute name="kind" type="LoopKind" tooltip="The kind of the loop"/>
+	</artifact>
+		
 	
 	<artifact class="forStatement">
 		<attribute name="init" type="joinpoint" tooltip="Initialization expression of this for statement." />
@@ -131,6 +138,12 @@
 		<attribute name="expression" type="boolean" tooltip="" />
 	</artifact>
 	
+	
+	<!-- ENUMS -->
+	<enum name="LoopKind">	
+		<value name="FOR"/>
+		<value name="WHILE"/>
+	</enum>
 	
 
 

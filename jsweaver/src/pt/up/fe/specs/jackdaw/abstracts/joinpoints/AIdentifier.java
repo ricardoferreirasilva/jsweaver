@@ -43,28 +43,35 @@ public abstract class AIdentifier extends AJackdawWeaverJoinPoint {
     }
 
     /**
-     * Rename this identifier.
-     * @param name 
+     * 
      */
-    public void renameImpl(String name) {
-        throw new UnsupportedOperationException(get_class()+": Action rename not implemented ");
+    public void defNameImpl(String value) {
+        throw new UnsupportedOperationException("Join point "+get_class()+": Action def name with type String not implemented ");
     }
 
     /**
      * Rename this identifier.
      * @param name 
      */
-    public final void rename(String name) {
+    public void setNameImpl(String name) {
+        throw new UnsupportedOperationException(get_class()+": Action setName not implemented ");
+    }
+
+    /**
+     * Rename this identifier.
+     * @param name 
+     */
+    public final void setName(String name) {
         try {
         	if(hasListeners()) {
-        		eventTrigger().triggerAction(Stage.BEGIN, "rename", this, Optional.empty(), name);
+        		eventTrigger().triggerAction(Stage.BEGIN, "setName", this, Optional.empty(), name);
         	}
-        	this.renameImpl(name);
+        	this.setNameImpl(name);
         	if(hasListeners()) {
-        		eventTrigger().triggerAction(Stage.END, "rename", this, Optional.empty(), name);
+        		eventTrigger().triggerAction(Stage.END, "setName", this, Optional.empty(), name);
         	}
         } catch(Exception e) {
-        	throw new ActionException(get_class(), "rename", e);
+        	throw new ActionException(get_class(), "setName", e);
         }
     }
 
@@ -88,6 +95,13 @@ public abstract class AIdentifier extends AJackdawWeaverJoinPoint {
     @Override
     public final void defImpl(String attribute, Object value) {
         switch(attribute){
+        case "name": {
+        	if(value instanceof String){
+        		this.defNameImpl((String)value);
+        		return;
+        	}
+        	this.unsupportedTypeForDef(attribute, value);
+        }
         default: throw new UnsupportedOperationException("Join point "+get_class()+": attribute '"+attribute+"' cannot be defined");
         }
     }
@@ -115,7 +129,7 @@ public abstract class AIdentifier extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
-        actions.add("void rename(string)");
+        actions.add("void setName(string)");
     }
 
     /**

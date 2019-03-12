@@ -66,6 +66,14 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select loops
+     * @return 
+     */
+    public List<? extends ALoop> selectLoop() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ALoop.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * Default implementation of the method used by the lara interpreter to select forStatements
      * @return 
      */
@@ -118,6 +126,14 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
      * @return 
      */
     public List<? extends AFunctionDeclaration> selectFunctionDeclaration() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFunctionDeclaration.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select functions
+     * @return 
+     */
+    public List<? extends AFunctionDeclaration> selectFunction() {
         return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFunctionDeclaration.class, SelectOp.DESCENDANTS);
     }
 
@@ -194,6 +210,9 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         	case "if": 
         		joinPointList = selectIf();
         		break;
+        	case "loop": 
+        		joinPointList = selectLoop();
+        		break;
         	case "forStatement": 
         		joinPointList = selectForStatement();
         		break;
@@ -214,6 +233,9 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         		break;
         	case "functionDeclaration": 
         		joinPointList = selectFunctionDeclaration();
+        		break;
+        	case "function": 
+        		joinPointList = selectFunction();
         		break;
         	case "classDeclaration": 
         		joinPointList = selectClassDeclaration();
@@ -270,6 +292,7 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         selects.add("while");
         selects.add("ifStatement");
         selects.add("if");
+        selects.add("loop");
         selects.add("forStatement");
         selects.add("for");
         selects.add("tryStatement");
@@ -277,6 +300,7 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         selects.add("switchStatement");
         selects.add("switch");
         selects.add("functionDeclaration");
+        selects.add("function");
         selects.add("classDeclaration");
         selects.add("class");
         selects.add("blockStatement");

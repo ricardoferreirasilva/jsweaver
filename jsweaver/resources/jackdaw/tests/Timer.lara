@@ -1,0 +1,27 @@
+import lara.Io;
+import jackdaw.Jackdaw;
+import lara.code.Logger;
+import lara.code.Timer;
+
+aspectdef FileTest
+
+	var timer = new Timer();
+	select file end
+	apply
+		var statements = $file.children;
+		var length = statements.length;
+		println(length);
+		for(var child of statements){
+			println(child.type);
+		}
+		var first = statements[0];
+		var last = statements[length - 1];
+		println(last);
+		timer.time(first,"measuring time between first and last statement.",last);
+
+		
+	end
+
+
+
+end

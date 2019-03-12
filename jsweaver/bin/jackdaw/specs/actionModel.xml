@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <actions>
-	<action name="rename" class="identifier" tooltip="Rename this identifier.">
+	<action name="setName" class="identifier" tooltip="Rename this identifier.">
 		<parameter name="name" type="string" />
 	</action>
 	<action name="refactor" class="declarator" tooltip="Refactor this declarator.">

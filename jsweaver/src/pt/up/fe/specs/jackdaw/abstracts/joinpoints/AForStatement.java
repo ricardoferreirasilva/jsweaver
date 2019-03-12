@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.SelectOp;
-import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
+import pt.up.fe.specs.jackdaw.enums.LoopKind;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -17,8 +17,16 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AForStatement extends AJackdawWeaverJoinPoint {
+public abstract class AForStatement extends ALoop {
 
+    protected ALoop aLoop;
+
+    /**
+     * 
+     */
+    public AForStatement(ALoop aLoop){
+        this.aLoop = aLoop;
+    }
     /**
      * Initialization expression of this for statement.
      */
@@ -97,6 +105,41 @@ public abstract class AForStatement extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Get value on attribute kind
+     * @return the attribute's value
+     */
+    @Override
+    public LoopKind getKindImpl() {
+        return this.aLoop.getKindImpl();
+    }
+
+    /**
+     * 
+     * @param position 
+     * @param code 
+     */
+    @Override
+    public void insertImpl(String position, String code) {
+        this.aLoop.insertImpl(position, code);
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public String toString() {
+        return this.aLoop.toString();
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public Optional<? extends ALoop> getSuper() {
+        return Optional.of(this.aLoop);
+    }
+
+    /**
      * 
      */
     @Override
@@ -107,7 +150,7 @@ public abstract class AForStatement extends AJackdawWeaverJoinPoint {
         		joinPointList = selectBlockStatement();
         		break;
         	default:
-        		joinPointList = super.select(selectName);
+        		joinPointList = this.aLoop.select(selectName);
         		break;
         }
         return joinPointList;
@@ -128,7 +171,7 @@ public abstract class AForStatement extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
-        super.fillWithAttributes(attributes);
+        this.aLoop.fillWithAttributes(attributes);
         attributes.add("init");
         attributes.add("test");
         attributes.add("update");
@@ -139,7 +182,7 @@ public abstract class AForStatement extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithSelects(List<String> selects) {
-        super.fillWithSelects(selects);
+        this.aLoop.fillWithSelects(selects);
         selects.add("blockStatement");
     }
 
@@ -148,7 +191,7 @@ public abstract class AForStatement extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithActions(List<String> actions) {
-        super.fillWithActions(actions);
+        this.aLoop.fillWithActions(actions);
     }
 
     /**
@@ -159,6 +202,19 @@ public abstract class AForStatement extends AJackdawWeaverJoinPoint {
     public final String get_class() {
         return "forStatement";
     }
+
+    /**
+     * Defines if this joinpoint is an instanceof a given joinpoint class
+     * @return True if this join point is an instanceof the given class
+     */
+    @Override
+    public final boolean instanceOf(String joinpointClass) {
+        boolean isInstance = get_class().equals(joinpointClass);
+        if(isInstance) {
+        	return true;
+        }
+        return this.aLoop.instanceOf(joinpointClass);
+    }
     /**
      * 
      */
@@ -166,6 +222,7 @@ public abstract class AForStatement extends AJackdawWeaverJoinPoint {
         INIT("init"),
         TEST("test"),
         UPDATE("update"),
+        KIND("kind"),
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),

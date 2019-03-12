@@ -4,12 +4,12 @@ import org.lara.interpreter.weaver.utils.LaraResourceProvider;
 
 public enum JackdawWeaverApi implements LaraResourceProvider {
 
-	JOINPOINTS("weaver/JoinPoints.lara");;
+	JOINPOINTS("JoinPoints.lara");
 
 	private final String resource;
 
 	private static final String WEAVER_PACKAGE = "jackdaw/";
-	private static final String BASE_PACKAGE = "jackdaw/";
+	private static final String BASE_PACKAGE = "weaver/";
 
 	/**
 	 * @param resource

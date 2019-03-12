@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import javax.script.ScriptException;
 
 import org.lara.interpreter.weaver.interf.AGear;
-import org.lara.interpreter.weaver.interf.JoinPoint;
 import org.lara.interpreter.weaver.options.WeaverOption;
 import org.lara.language.specification.LanguageSpecification;
 import org.suikasoft.jOptions.Interfaces.DataStore;
@@ -17,6 +16,7 @@ import org.suikasoft.jOptions.Interfaces.DataStore;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.weaver.AJsWeaver;
 import pt.up.fe.specs.jackdaw.api.JackdawLaraApi;
 import pt.up.fe.specs.jackdaw.api.JackdawWeaverApi;
@@ -126,7 +126,7 @@ public class JackdawWeaver extends AJsWeaver {
 	 * 
 	 * @return an instance of the join point root/program
 	 */
-	public JoinPoint select() {
+	public AJackdawWeaverJoinPoint select() {
 		return JoinpointCreator.create(project);
 	}
 

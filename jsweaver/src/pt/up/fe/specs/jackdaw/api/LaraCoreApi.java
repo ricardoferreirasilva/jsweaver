@@ -5,12 +5,12 @@ import org.lara.interpreter.weaver.utils.LaraResourceProvider;
 public enum LaraCoreApi implements LaraResourceProvider {
 
 	// Code
-	LOGGER("code/Logger.lara"), TIMER("code/Timer.lara");
+	LOGGER("Logger.lara"), TIMER("Timer.lara");
 
 	private final String resource;
 
 	private static final String WEAVER_PACKAGE = "jackdaw/";
-	private static final String BASE_PACKAGE = "lara/";
+	private static final String BASE_PACKAGE = "lara/code/";
 
 	/**
 	 * @param resource

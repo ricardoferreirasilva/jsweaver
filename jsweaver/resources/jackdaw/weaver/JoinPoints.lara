@@ -1,12 +1,6 @@
 import weaver.JoinPointsBase;
 import jackdaw._JackdawAspects;
 
-/**
- * Object which provides low-level join point-related methods.
- * @constructor
- */
-function JoinPoints() {
-}
 
 /**
  * 
@@ -54,7 +48,8 @@ JoinPoints.prototype._filterNodes = function($jps, jpType) {
 	var filteredJps = [];
 	
 	for(var $jp of $jps) {
-	 	if($jp.type == jpType) {
+		if($jp.instanceOf(jpType)) {
+	 //	if($jp.type == jpType) {
           	filteredJps.push($jp);
         }
 	}

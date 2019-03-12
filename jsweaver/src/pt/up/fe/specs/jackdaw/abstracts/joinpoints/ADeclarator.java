@@ -3,9 +3,10 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
+import java.util.List;
+import org.lara.interpreter.weaver.interf.SelectOp;
 import org.lara.interpreter.exception.ActionException;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
-import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -66,6 +67,14 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select identifiers
+     * @return 
+     */
+    public List<? extends AIdentifier> selectIdentifier() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIdentifier.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * Refactor this declarator.
      * @param name 
      */
@@ -98,6 +107,9 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
+        	case "identifier": 
+        		joinPointList = selectIdentifier();
+        		break;
         	default:
         		joinPointList = super.select(selectName);
         		break;
@@ -131,6 +143,7 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
+        selects.add("identifier");
     }
 
     /**
