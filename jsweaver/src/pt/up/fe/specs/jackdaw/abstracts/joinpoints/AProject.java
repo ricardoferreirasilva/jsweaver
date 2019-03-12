@@ -94,7 +94,9 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
         AST("ast"),
         FIELD("field"),
         CHILDREN("children"),
+        LINE("line"),
         ROOT("root"),
+        COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants");
         private String name;

@@ -69,6 +69,8 @@ public abstract class AJoinPoint extends JoinPoint {
         attributes.add("ast");
         attributes.add("children");
         attributes.add("descendants");
+        attributes.add("line");
+        attributes.add("column");
     }
 
     /**
@@ -276,6 +278,52 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "descendants", e);
+        }
+    }
+
+    /**
+     * Line of this joinpoint.
+     */
+    public abstract Integer getLineImpl();
+
+    /**
+     * Line of this joinpoint.
+     */
+    public final Object getLine() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "line", Optional.empty());
+        	}
+        	Integer result = this.getLineImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "line", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "line", e);
+        }
+    }
+
+    /**
+     * Column of this joinpoint.
+     */
+    public abstract Integer getColumnImpl();
+
+    /**
+     * Column of this joinpoint.
+     */
+    public final Object getColumn() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "column", Optional.empty());
+        	}
+        	Integer result = this.getColumnImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "column", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "column", e);
         }
     }
 

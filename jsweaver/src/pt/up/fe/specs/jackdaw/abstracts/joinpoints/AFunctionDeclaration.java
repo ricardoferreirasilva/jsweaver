@@ -44,6 +44,29 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Name of this function.
+     */
+    public abstract String getNameImpl();
+
+    /**
+     * Name of this function.
+     */
+    public final Object getName() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "name", Optional.empty());
+        	}
+        	String result = this.getNameImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "name", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "name", e);
+        }
+    }
+
+    /**
      * Get value on attribute params
      * @return the attribute's value
      */
@@ -187,6 +210,7 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
         attributes.add("id");
+        attributes.add("name");
         attributes.add("params");
         attributes.add("async");
         attributes.add("generator");
@@ -223,6 +247,7 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
      */
     protected enum FunctionDeclarationAttributes {
         ID("id"),
+        NAME("name"),
         PARAMS("params"),
         ASYNC("async"),
         GENERATOR("generator"),
@@ -232,7 +257,9 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
         AST("ast"),
         FIELD("field"),
         CHILDREN("children"),
+        LINE("line"),
         ROOT("root"),
+        COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants");
         private String name;

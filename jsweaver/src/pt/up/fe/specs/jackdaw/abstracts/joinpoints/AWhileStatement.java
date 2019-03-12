@@ -198,7 +198,9 @@ public abstract class AWhileStatement extends ALoop {
         AST("ast"),
         FIELD("field"),
         CHILDREN("children"),
+        LINE("line"),
         ROOT("root"),
+        COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants");
         private String name;

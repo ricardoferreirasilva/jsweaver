@@ -43,6 +43,29 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Name of the file.
+     */
+    public abstract String getNameImpl();
+
+    /**
+     * Name of the file.
+     */
+    public final Object getName() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "name", Optional.empty());
+        	}
+        	String result = this.getNameImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "name", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "name", e);
+        }
+    }
+
+    /**
      * Default implementation of the method used by the lara interpreter to select scopes
      * @return 
      */
@@ -84,6 +107,7 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
         attributes.add("path");
+        attributes.add("name");
     }
 
     /**
@@ -116,12 +140,15 @@ public abstract class AFile extends AJackdawWeaverJoinPoint {
      */
     protected enum FileAttributes {
         PATH("path"),
+        NAME("name"),
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
         FIELD("field"),
         CHILDREN("children"),
+        LINE("line"),
         ROOT("root"),
+        COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants");
         private String name;

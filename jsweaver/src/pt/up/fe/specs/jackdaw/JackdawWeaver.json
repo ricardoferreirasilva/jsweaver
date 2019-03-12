@@ -51,6 +51,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -78,6 +87,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -220,6 +238,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -247,6 +274,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -389,6 +425,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -416,6 +461,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -531,6 +585,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -558,6 +621,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -706,6 +778,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -733,6 +814,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -857,6 +947,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -884,6 +983,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1004,6 +1112,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -1031,6 +1148,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1169,6 +1295,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -1196,6 +1331,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1325,6 +1469,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -1352,6 +1505,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1490,6 +1652,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -1517,6 +1688,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1660,6 +1840,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -1687,6 +1876,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1780,6 +1978,15 @@
          "children": [
                {
                   "type": "attribute",
+                  "tooltip": "Name of the file.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "name"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Absolute path of the program file.",
                   "children": [
                            {
@@ -1831,6 +2038,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -1858,6 +2074,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2032,6 +2257,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -2059,6 +2293,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2173,6 +2416,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Name of this function.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "name"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Parameters of this function.",
                   "children": [
                            {
@@ -2224,6 +2476,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -2251,6 +2512,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2416,6 +2686,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -2443,6 +2722,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2572,6 +2860,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -2599,6 +2896,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2737,6 +3043,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -2764,6 +3079,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2898,6 +3222,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -2925,6 +3258,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -3067,6 +3409,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -3094,6 +3445,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -3236,6 +3596,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -3263,6 +3632,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -3414,6 +3792,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -3441,6 +3828,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -3562,6 +3958,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -3589,6 +3994,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -3710,6 +4124,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -3737,6 +4160,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -3957,6 +4389,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -3984,6 +4425,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -4118,6 +4568,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -4145,6 +4604,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -4274,6 +4742,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -4301,6 +4778,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -4426,6 +4912,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -4453,6 +4948,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -4610,6 +5114,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -4637,6 +5150,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -4788,6 +5310,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
                   "children": [
                            {
@@ -4815,6 +5346,15 @@
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {

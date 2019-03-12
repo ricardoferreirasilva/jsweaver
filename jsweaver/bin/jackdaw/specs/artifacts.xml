@@ -18,6 +18,9 @@
 		<attribute name="ast" type="String" tooltip="The ast corresponding to this join point"/>
 		<attribute name="children" type="joinpoint[]" tooltip="Children (direct nodes) joinpoints of this joinpoint."/>
 		<attribute name="descendants" type="joinpoint[]" tooltip="Children joinpoints (indirect nodes) of this joinpoint."/>
+		
+		<attribute name="line" type="int" tooltip="Line of this joinpoint."/>
+		<attribute name="column" type="int" tooltip="Column of this joinpoint."/>
 	</global>
 	
 	<!-- PROGRAM -->
@@ -26,6 +29,7 @@
 	
 	<artifact class="file">
 		<attribute name="path" type="string" tooltip="Absolute path of the program file." />
+		<attribute name="name" type="string" tooltip="Name of the file." />
 	</artifact>
 	<artifact class="statement">
 	</artifact>
@@ -36,6 +40,7 @@
 	
 	<artifact class="functionDeclaration">
 		<attribute name="id" type="joinpoint" tooltip="Identifier of this function." />
+		<attribute name="name" type="string" tooltip="Name of this function." />
 		<attribute name="params" type="joinpoint[]" tooltip="Parameters of this function." />
 		<attribute name="async" type="boolean" tooltip="If the function is async." />
 		<attribute name="generator" type="boolean" tooltip="" />

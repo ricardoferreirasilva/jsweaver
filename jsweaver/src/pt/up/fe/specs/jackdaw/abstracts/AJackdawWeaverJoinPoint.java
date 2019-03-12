@@ -116,8 +116,25 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 	public AJoinPoint[] getChildrenArrayImpl() {
 		return JackdawQueryEngine.getChildren(getNode());
 	}
+
 	@Override
 	public AJoinPoint[] getDescendantsArrayImpl() {
 		return JackdawQueryEngine.getDescendants(getNode());
+	}
+
+	@Override
+	public Integer getLineImpl() {
+		if (getNode().has("loc")) {
+			return getNode().get("loc").getAsJsonObject().get("start").getAsJsonObject().get("line").getAsInt();
+		} else
+			return -1;
+	}
+
+	@Override
+	public Integer getColumnImpl() {
+		if (getNode().has("loc")) {
+			return getNode().get("loc").getAsJsonObject().get("start").getAsJsonObject().get("column").getAsInt();
+		} else
+			return -1;
 	}
 }
