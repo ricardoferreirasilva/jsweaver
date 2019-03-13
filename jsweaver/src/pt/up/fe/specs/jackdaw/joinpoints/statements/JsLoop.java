@@ -3,9 +3,14 @@ package pt.up.fe.specs.jackdaw.joinpoints.statements;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lara.interpreter.weaver.interf.JoinPoint;
+
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.JackdawQueryEngine;
+import pt.up.fe.specs.jackdaw.JoinpointCreator;
+import pt.up.fe.specs.jackdaw.ParentMapper;
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AForStatement;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ALoop;
@@ -44,7 +49,34 @@ public class JsLoop extends ALoop {
 
 	@Override
 	public Integer getNestedLevelImpl() {
-		return 1;
+		int nestedLevel =  0;
+		boolean reachedMaxParent = false;
+		JsonObject currentNode = this.node;
+		while(!reachedMaxParent) {
+			JsonObject parent = ParentMapper.getParent(currentNode);
+			AJackdawWeaverJoinPoint parentJp = JoinpointCreator.create(parent);
+			switch (parentJp.getTypeImpl()) {
+			case "FunctionDeclaration":
+				reachedMaxParent = true;
+				break;
+			case "Program":
+				reachedMaxParent = true;
+				break;
+			case "WhileStatement":
+				nestedLevel++;
+				break;
+			case "ForStatement":
+				nestedLevel++;
+				break;
+			default:
+				break;
+			}
+			currentNode = parent;
+			
+		}
+		
+		
+		return nestedLevel;
 	}
 
 }
