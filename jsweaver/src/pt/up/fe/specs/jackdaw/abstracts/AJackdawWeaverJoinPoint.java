@@ -2,6 +2,7 @@ package pt.up.fe.specs.jackdaw.abstracts;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import javax.script.ScriptException;
 
@@ -18,6 +19,7 @@ import pt.up.fe.specs.jackdaw.ParentMapper;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 import pt.up.fe.specs.jackdaw.joinpoints.JsScope;
 import pt.up.fe.specs.jsast.JackdawEngine;
+import pt.up.fe.specs.util.lazy.Lazy;
 
 /**
  * Abstract class which can be edited by the developer. This class will not be
@@ -26,6 +28,8 @@ import pt.up.fe.specs.jsast.JackdawEngine;
  * @author Lara Weaver Generator
  */
 public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
+
+	private final Lazy<String> id = Lazy.newInstance(() -> UUID.randomUUID().toString());
 
 	/**
 	 * Compares the two join points based on their node reference of the used
@@ -137,4 +141,24 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 		} else
 			return -1;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof AJackdawWeaverJoinPoint)) {
+			return false;
+		}
+
+		return getNode().equals(((AJackdawWeaverJoinPoint) obj).getNode());
+	}
+
+	@Override
+	public int hashCode() {
+		return getNode().hashCode();
+	}
+
+	@Override
+	public String getUuidImpl() {
+		return id.get();
+	}
+
 }

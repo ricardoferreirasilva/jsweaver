@@ -1,0 +1,15 @@
+aspectdef LoggerTest
+
+	println(Jackdaw.getRoot().type);
+	
+
+	var logger = new Logger();
+
+	select file.declaration end
+	apply
+		logger.append("New Hello: ").variable("i").log($declaration);
+	end
+
+
+
+end

@@ -126,6 +126,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "action",
                   "children": [
                            {
@@ -310,6 +319,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -500,6 +518,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "action",
                   "children": [
                            {
@@ -657,6 +684,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -862,6 +898,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "action",
                   "children": [
                            {
@@ -1031,6 +1076,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "blockStatement",
                   "alias": ""
@@ -1193,6 +1247,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -1379,6 +1442,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "classBody",
                   "alias": ""
@@ -1550,6 +1622,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -1733,6 +1814,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -1921,6 +2011,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -2119,6 +2218,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -2341,6 +2449,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "blockStatement",
                   "alias": ""
@@ -2560,6 +2677,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "blockStatement",
                   "alias": ""
@@ -2770,6 +2896,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "blockStatement",
                   "alias": ""
@@ -2941,6 +3076,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -3127,6 +3271,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "scope",
                   "alias": "then"
@@ -3303,6 +3456,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -3493,6 +3655,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "action",
                   "children": [
                            {
@@ -3677,6 +3848,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -3876,6 +4056,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "functionExpression",
                   "alias": ""
@@ -4042,6 +4231,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "file",
                   "alias": ""
@@ -4205,6 +4403,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -4473,6 +4680,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "blockStatement",
                   "alias": ""
@@ -4652,6 +4868,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "scope",
                   "alias": ""
@@ -4826,6 +5051,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "switchCase",
                   "alias": ""
@@ -4993,6 +5227,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -5198,6 +5441,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "action",
                   "children": [
                            {
@@ -5391,6 +5643,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {

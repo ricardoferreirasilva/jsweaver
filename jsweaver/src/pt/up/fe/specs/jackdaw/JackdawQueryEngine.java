@@ -1,6 +1,7 @@
 package pt.up.fe.specs.jackdaw;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
@@ -10,6 +11,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ABlockStatement;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADeclaration;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 
@@ -43,7 +45,6 @@ public class JackdawQueryEngine {
 		for (Entry<String, JsonElement> key : jsonObj.entrySet()) {
 			String keyName = key.getKey();
 			JsonElement keyValue = key.getValue();
-			System.out.println("key: " + keyName + " value: " + keyValue);
 		}
 
 	}
@@ -58,7 +59,6 @@ public class JackdawQueryEngine {
 		for (Entry<String, JsonElement> key : node.entrySet()) {
 			String keyName = key.getKey();
 			JsonElement keyValue = key.getValue();
-			// System.out.println("key: " + keyName + " value: " + keyValue);
 
 			if (keyValue.isJsonObject()) {
 				// if (keyValue.getAsJsonObject().get("type").getAsString().equals(type)) {
@@ -97,7 +97,8 @@ public class JackdawQueryEngine {
 
 		// JsonArray foundElements = new JsonArray();
 		for (Entry<String, JsonElement> key : node.entrySet()) {
-			foundElements.addAll(queryNodeGeneric(node, key.getKey(), joinPointClass, indirectDescendents));
+			addAllElements(foundElements, queryNodeGeneric(node, key.getKey(), joinPointClass, indirectDescendents));
+//			foundElements.addAll(queryNodeGeneric(node, key.getKey(), joinPointClass, indirectDescendents));
 		}
 
 		return foundElements;
@@ -105,8 +106,12 @@ public class JackdawQueryEngine {
 
 	public static <T extends AJoinPoint> List<T> queryNodeGeneric(JsonObject node, String fieldName,
 			Class<T> joinPointClass, Boolean indirectDescendents) {
+
+		if (joinPointClass.getSimpleName().equals(ABlockStatement.class.getSimpleName())) {
+			indirectDescendents = false;
+		}
+
 		List<T> foundElements = new ArrayList<>();
-		// System.out.println(node.get("type").getAsString());
 		JsonElement keyValue = node.get(fieldName);
 
 		if (keyValue == null) {
@@ -114,14 +119,14 @@ public class JackdawQueryEngine {
 		}
 
 		if (keyValue.isJsonObject() && validFieldName(fieldName)) {
-			// if (keyValue.getAsJsonObject().get("type").getAsString().equals(type)) {
 			AJoinPoint childNode = JoinpointCreator.create(keyValue.getAsJsonObject());
 			if (joinPointClass.isInstance(childNode)) {
-				foundElements.add(joinPointClass.cast(childNode));
+				addElement(foundElements, joinPointClass.cast(childNode));
 			}
 			if (indirectDescendents) {
-				// foundElements.addAll(queryNode(keyValue.getAsJsonObject(), type, false));
-				foundElements.addAll(queryNodeGeneric(keyValue.getAsJsonObject(), joinPointClass, indirectDescendents));
+
+				addAllElements(foundElements,
+						queryNodeGeneric(keyValue.getAsJsonObject(), joinPointClass, indirectDescendents));
 			}
 
 		} else if (keyValue.isJsonArray()) {
@@ -130,11 +135,16 @@ public class JackdawQueryEngine {
 				if (singleElement.isJsonObject()) {
 					AJoinPoint childNode = JoinpointCreator.create(singleElement.getAsJsonObject());
 					if (joinPointClass.isInstance(childNode)) {
-						foundElements.add(joinPointClass.cast(childNode));
+						T newJp = joinPointClass.cast(childNode);
+						addElement(foundElements, newJp);
 					}
 					if (indirectDescendents) {
-						foundElements.addAll(
-								queryNodeGeneric(singleElement.getAsJsonObject(), joinPointClass, indirectDescendents));
+						for (T element : queryNodeGeneric(singleElement.getAsJsonObject(), joinPointClass,
+								indirectDescendents)) {
+
+							addElement(foundElements, element);
+
+						}
 					}
 
 				}
@@ -143,6 +153,19 @@ public class JackdawQueryEngine {
 		}
 
 		return foundElements;
+	}
+
+	private static <T> void addElement(Collection<T> foundElements, T element) {
+//		if (foundElements.contains(element)) {
+//			return;
+//		}
+		foundElements.add(element);
+	}
+
+	private static <T> void addAllElements(Collection<T> foundElements, Collection<T> elements) {
+		for (T element : elements) {
+			addElement(foundElements, element);
+		}
 	}
 
 	// Checks if a node is a direct child of a parent node.

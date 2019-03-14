@@ -202,7 +202,8 @@ public abstract class AWhileStatement extends ALoop {
         ROOT("root"),
         COLUMN("column"),
         TYPE("type"),
-        DESCENDANTS("descendants");
+        DESCENDANTS("descendants"),
+        UUID("uuid");
         private String name;
 
         /**

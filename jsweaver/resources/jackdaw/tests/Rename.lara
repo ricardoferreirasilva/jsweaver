@@ -4,7 +4,7 @@ aspectdef TestAspect
 	apply
 		var id = $declarator.id;
 		println(id.ast);
-		id.rename("newName");
+		id.def name = "newName";
 		println(id.ast);	
 	end
 end

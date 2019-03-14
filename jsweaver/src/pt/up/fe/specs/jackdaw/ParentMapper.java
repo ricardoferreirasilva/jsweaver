@@ -7,42 +7,42 @@ import com.google.gson.JsonObject;
 
 public class ParentMapper {
 
-    public static Map<JsonObject, JsonObject> parentMap = new HashMap();
+	public static Map<JsonObject, JsonObject> parentMap = new HashMap();
 
-    public static void putPair(JsonObject child, JsonObject parent) {
-        parentMap.put(child, parent);
-    }
+	public static void putPair(JsonObject child, JsonObject parent) {
+		parentMap.put(child, parent);
+	}
 
-    public static JsonObject getParent(JsonObject child) {
-        return parentMap.get(child);
-    }
-    public static JsonObject getRoot(JsonObject node) {
-        Boolean foundRoot = false;
+	public static JsonObject getParent(JsonObject child) {
+		return parentMap.get(child);
+	}
 
-        // Node is already the root.
-        if (node.has("type") && node.get("type").getAsString().equals("Project")) {
-            foundRoot = true;
-            return node;
-        }
-        while (!foundRoot) {
-            JsonObject parent = getParent(node);
-            //System.out.println(node);
-            //System.out.println(parent);
-            if (parent.has("type") && parent.get("type").getAsString().equals("Project")) {
-                foundRoot = true;
-                return parent;
-            } else {
-                node = parent;
-            }
+	public static JsonObject getRoot(JsonObject node) {
+		Boolean foundRoot = false;
 
-        }
-        return null;
-    }
-    public static void printMap() {
-    	for (JsonObject key: parentMap.keySet()){
-    		System.out.println(key);
+		// Node is already the root.
+		if (node.has("type") && node.get("type").getAsString().equals("Project")) {
+			foundRoot = true;
+			return node;
+		}
+		while (!foundRoot) {
+			JsonObject parent = getParent(node);
+			if (parent.has("type") && parent.get("type").getAsString().equals("Project")) {
+				foundRoot = true;
+				return parent;
+			} else {
+				node = parent;
+			}
 
-		} 
-    	
-    }
+		}
+		return null;
+	}
+
+	public static void printMap() {
+		for (JsonObject key : parentMap.keySet()) {
+			// System.out.println(key);
+
+		}
+
+	}
 }

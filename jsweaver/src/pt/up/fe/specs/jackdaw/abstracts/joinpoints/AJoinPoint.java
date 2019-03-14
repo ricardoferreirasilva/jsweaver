@@ -71,6 +71,7 @@ public abstract class AJoinPoint extends JoinPoint {
         attributes.add("descendants");
         attributes.add("line");
         attributes.add("column");
+        attributes.add("uuid");
     }
 
     /**
@@ -324,6 +325,29 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "column", e);
+        }
+    }
+
+    /**
+     * Uniquely identifies the AST node.
+     */
+    public abstract String getUuidImpl();
+
+    /**
+     * Uniquely identifies the AST node.
+     */
+    public final Object getUuid() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "uuid", Optional.empty());
+        	}
+        	String result = this.getUuidImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "uuid", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "uuid", e);
         }
     }
 

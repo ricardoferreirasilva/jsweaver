@@ -173,7 +173,8 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
         ROOT("root"),
         COLUMN("column"),
         TYPE("type"),
-        DESCENDANTS("descendants");
+        DESCENDANTS("descendants"),
+        UUID("uuid");
         private String name;
 
         /**
