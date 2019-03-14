@@ -110,6 +110,7 @@
 	</artifact>
 	
 	<artifact class="callExpression">
+		<attribute name="name" type="string" tooltip="Name of the callee or callee type." />
 		<attribute name="callee" type="joinpoint" tooltip="Identifier of this expression call." />
 		<attribute name="arguments" type="joinpoint[]" tooltip="Arguments of this expression call." />
 	</artifact>

@@ -736,6 +736,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Name of the callee or callee type.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "name"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "children": [
                            {
                               "type": "String[]",

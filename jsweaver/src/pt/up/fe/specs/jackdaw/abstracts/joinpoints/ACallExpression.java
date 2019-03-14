@@ -20,6 +20,29 @@ import java.util.Arrays;
 public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
 
     /**
+     * Name of the callee or callee type.
+     */
+    public abstract String getNameImpl();
+
+    /**
+     * Name of the callee or callee type.
+     */
+    public final Object getName() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "name", Optional.empty());
+        	}
+        	String result = this.getNameImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "name", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "name", e);
+        }
+    }
+
+    /**
      * Identifier of this expression call.
      */
     public abstract AJoinPoint getCalleeImpl();
@@ -105,6 +128,7 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
+        attributes.add("name");
         attributes.add("callee");
         attributes.add("arguments");
     }
@@ -137,6 +161,7 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
      * 
      */
     protected enum CallExpressionAttributes {
+        NAME("name"),
         CALLEE("callee"),
         ARGUMENTS("arguments"),
         PARENT("parent"),

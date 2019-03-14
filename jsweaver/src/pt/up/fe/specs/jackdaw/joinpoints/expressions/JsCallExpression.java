@@ -39,5 +39,15 @@ public class JsCallExpression extends ACallExpression {
         AJoinPoint[] joinpointArguments = arguments.toArray(new AJoinPoint[arguments.size()]);
         return (joinpointArguments);
     }
+    @Override
+    public String getNameImpl() {
+    	JsonObject callee = this.node.get("callee").getAsJsonObject();
+    	switch (callee.get("type").getAsString()) {
+		case "Identifier":
+			return callee.get("name").getAsString();
+		default:
+			return callee.get("type").getAsString();
+		}
+    }
 
 }
