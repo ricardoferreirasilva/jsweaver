@@ -141,7 +141,7 @@ public class JackdawEngine {
         return statements;
     }
 
-    public static void exportPrograms(JsonArray programs, File outputDir) throws ScriptException {
+    public static void exportPrograms(JsonArray programs, File outputDir, String escodegenOptions) throws ScriptException {
         JsonParser parser = new JsonParser();
         // System.out.println("Outputing files to " + outputDir.getPath());
         ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
@@ -149,6 +149,7 @@ public class JackdawEngine {
             JsonObject programObject = program.getAsJsonObject();
             String programString = programObject.toString();
             javascriptEngine.put("AST_STRING", programString);
+            javascriptEngine.put("OPTIONS", escodegenOptions);
             javascriptEngine.eval(JsAstResources.GENERATE_JAVASCRIPT.read());
             String generatedText = (String) javascriptEngine.get("GENERATED_JS");
 

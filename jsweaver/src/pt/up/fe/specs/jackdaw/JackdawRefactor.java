@@ -60,13 +60,6 @@ public class JackdawRefactor {
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
 	private static void propagateNewName(JsonObject node,String oldName,String newName) {
 		if(node.has("type")) {
 			String type = node.get("type").getAsString();

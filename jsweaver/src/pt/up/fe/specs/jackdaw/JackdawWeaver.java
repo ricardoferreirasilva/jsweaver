@@ -22,6 +22,7 @@ import pt.up.fe.specs.jackdaw.api.JackdawLaraApi;
 import pt.up.fe.specs.jackdaw.api.JackdawWeaverApi;
 import pt.up.fe.specs.jackdaw.api.LaraCoreApi;
 import pt.up.fe.specs.jsast.JackdawEngine;
+import pt.up.fe.specs.util.SpecsIo;
 import pt.up.fe.specs.util.providers.ResourceProvider;
 
 /**
@@ -139,9 +140,10 @@ public class JackdawWeaver extends AJsWeaver {
 	public boolean close() {
 		JsonArray programs = this.project.get("programs").getAsJsonArray();
 		try {
-//        	System.out.println("ESCODEGEN: " + SpecsIo.read(args.get(JackdawKeys.ESCODEGEN_CONFIG)));
-
-			JackdawEngine.exportPrograms(programs, this.outputDir);
+        	String escodegenOptions = SpecsIo.read(args.get(JackdawKeys.ESCODEGEN_CONFIG));
+        	if(escodegenOptions == null) escodegenOptions = "{}";
+        	
+			JackdawEngine.exportPrograms(programs, this.outputDir,escodegenOptions);
 		} catch (ScriptException e) {
 			throw new RuntimeException("Error while outputing Javascript.", e);
 		}
