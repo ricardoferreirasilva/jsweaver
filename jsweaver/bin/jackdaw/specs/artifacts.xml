@@ -22,6 +22,7 @@
 		<attribute name="line" type="int" tooltip="Line of this joinpoint."/>
 		<attribute name="column" type="int" tooltip="Column of this joinpoint."/>
 		<attribute name="uuid" type="String" tooltip="Uniquely identifies the AST node."/>
+		<attribute name="code" type="String" tooltip="Equivalent javascript code of this joinpoint."/>
 	</global>
 	
 	<!-- PROGRAM -->

@@ -42,11 +42,16 @@ public class JsCallExpression extends ACallExpression {
     @Override
     public String getNameImpl() {
     	JsonObject callee = this.node.get("callee").getAsJsonObject();
-    	switch (callee.get("type").getAsString()) {
+    	return getNameFromCallNode(callee);
+    }
+    private String getNameFromCallNode(JsonObject node) {
+    	switch (node.get("type").getAsString()) {
 		case "Identifier":
-			return callee.get("name").getAsString();
+			return node.get("name").getAsString();
+		case "MemberExpression":
+			return (getNameFromCallNode(node.get("object").getAsJsonObject())+"."+getNameFromCallNode(node.get("property").getAsJsonObject()));
 		default:
-			return callee.get("type").getAsString();
+			return node.get("type").getAsString();
 		}
     }
 

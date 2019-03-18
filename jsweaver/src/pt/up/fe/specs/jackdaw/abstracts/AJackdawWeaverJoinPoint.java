@@ -160,5 +160,15 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 	public String getUuidImpl() {
 		return id.get();
 	}
+	@Override
+	public String getCodeImpl() {
+		String code = "";
+		try {
+			code = JackdawEngine.codeFromJSON(getNode());
+		} catch (Exception e) {
+			
+		}
+		return code;
+	}
 
 }

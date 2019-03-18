@@ -140,8 +140,11 @@ public class JackdawWeaver extends AJsWeaver {
 	public boolean close() {
 		JsonArray programs = this.project.get("programs").getAsJsonArray();
 		try {
-        	String escodegenOptions = SpecsIo.read(args.get(JackdawKeys.ESCODEGEN_CONFIG));
-        	if(escodegenOptions == null) escodegenOptions = "{}";
+			String escodegenOptions = "{}";
+			if(args.get(JackdawKeys.ESCODEGEN_CONFIG).isFile()) {
+				escodegenOptions = SpecsIo.read(args.get(JackdawKeys.ESCODEGEN_CONFIG));
+				if(escodegenOptions == null) escodegenOptions = "{}";
+			}
         	
 			JackdawEngine.exportPrograms(programs, this.outputDir,escodegenOptions);
 		} catch (ScriptException e) {

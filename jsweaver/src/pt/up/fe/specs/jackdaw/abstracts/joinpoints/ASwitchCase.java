@@ -119,6 +119,7 @@ public abstract class ASwitchCase extends AJackdawWeaverJoinPoint {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
         FIELD("field"),
         CHILDREN("children"),
         LINE("line"),

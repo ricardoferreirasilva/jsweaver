@@ -141,6 +141,9 @@
 	<joinpoint class="memberExpression">
 	</joinpoint>
 	
+	<joinpoint class="thisExpression">
+	</joinpoint>
+	
 	<joinpoint class="updateExpression">
 	</joinpoint>
 	

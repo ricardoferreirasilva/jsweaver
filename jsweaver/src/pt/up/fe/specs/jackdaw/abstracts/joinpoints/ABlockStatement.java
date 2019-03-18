@@ -162,6 +162,7 @@ public abstract class ABlockStatement extends AStatement {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
         FIELD("field"),
         CHILDREN("children"),
         LINE("line"),

@@ -72,6 +72,7 @@ public abstract class AJoinPoint extends JoinPoint {
         attributes.add("line");
         attributes.add("column");
         attributes.add("uuid");
+        attributes.add("code");
     }
 
     /**
@@ -348,6 +349,29 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "uuid", e);
+        }
+    }
+
+    /**
+     * Equivalent javascript code of this joinpoint.
+     */
+    public abstract String getCodeImpl();
+
+    /**
+     * Equivalent javascript code of this joinpoint.
+     */
+    public final Object getCode() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "code", Optional.empty());
+        	}
+        	String result = this.getCodeImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "code", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "code", e);
         }
     }
 

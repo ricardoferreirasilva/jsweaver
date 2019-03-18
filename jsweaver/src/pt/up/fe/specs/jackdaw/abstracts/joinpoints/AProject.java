@@ -92,6 +92,7 @@ public abstract class AProject extends AJackdawWeaverJoinPoint {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
         FIELD("field"),
         CHILDREN("children"),
         LINE("line"),

@@ -104,6 +104,7 @@ public abstract class AStatement extends AJackdawWeaverJoinPoint {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
         FIELD("field"),
         CHILDREN("children"),
         LINE("line"),

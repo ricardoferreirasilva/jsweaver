@@ -51,6 +51,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -243,6 +252,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -443,6 +461,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -608,6 +635,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -823,6 +859,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -1001,6 +1046,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -1171,6 +1225,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -1367,6 +1430,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -1546,6 +1618,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -1738,6 +1819,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -1935,6 +2025,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -2142,6 +2241,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -2374,6 +2482,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -2602,6 +2719,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -2821,6 +2947,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -3000,6 +3135,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -3196,6 +3340,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -3380,6 +3533,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -3580,6 +3742,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -3772,6 +3943,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -3981,6 +4161,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -4156,6 +4345,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -4327,6 +4525,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -4605,6 +4812,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -4793,6 +5009,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -4976,6 +5201,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -5108,6 +5342,184 @@
       },
       {
          "type": "joinpoint",
+         "name": "thisExpression",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
          "name": "tryStatement",
          "extends": "joinpoint"      ,
          "children": [
@@ -5151,6 +5563,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {
@@ -5366,6 +5787,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Column of this joinpoint.",
                   "children": [
                            {
@@ -5567,6 +5997,15 @@
                            {
                               "type": "joinpoint[]",
                               "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
                            }]
                },
                {

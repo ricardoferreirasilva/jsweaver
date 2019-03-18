@@ -167,7 +167,16 @@ public class JackdawEngine {
             }
         }
     }
-
+    public static String codeFromJSON(JsonObject node) throws ScriptException {
+   	 JsonParser parser = new JsonParser();
+        ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
+        String programString = node.toString();
+        javascriptEngine.put("AST_STRING", programString);
+        javascriptEngine.put("OPTIONS", "{}");
+        javascriptEngine.eval(JsAstResources.GENERATE_JAVASCRIPT.read());
+        String generatedText = (String) javascriptEngine.get("GENERATED_JS");
+        return generatedText;
+   }
     private static String getFileExtension(File file) {
         if (file == null) {
             return "";
