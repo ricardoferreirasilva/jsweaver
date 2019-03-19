@@ -19,6 +19,7 @@ import com.google.gson.JsonObject;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import pt.up.fe.specs.jackdaw.abstracts.weaver.AJsWeaver;
 import pt.up.fe.specs.jackdaw.api.JackdawLaraApi;
+import pt.up.fe.specs.jackdaw.api.JackdawObfuscationApi;
 import pt.up.fe.specs.jackdaw.api.JackdawWeaverApi;
 import pt.up.fe.specs.jackdaw.api.LaraCoreApi;
 import pt.up.fe.specs.jsast.JackdawEngine;
@@ -111,7 +112,7 @@ public class JackdawWeaver extends AJsWeaver {
 		apis.addAll(ResourceProvider.getResourcesFromEnum(LaraCoreApi.class));
 		apis.addAll(ResourceProvider.getResourcesFromEnum(JackdawLaraApi.class));
 		apis.addAll(ResourceProvider.getResourcesFromEnum(JackdawWeaverApi.class));
-
+		apis.addAll(ResourceProvider.getResourcesFromEnum(JackdawObfuscationApi.class));
 		return apis;
 
 	}

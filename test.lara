@@ -1,0 +1,5 @@
+import obfuscation.Flatted;
+aspectdef testAspect
+	println("ahah");
+	test();
+end
