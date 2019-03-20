@@ -10,6 +10,7 @@ import org.lara.interpreter.weaver.interf.JoinPoint;
 import org.lara.interpreter.weaver.interf.SelectOp;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.JackdawInserter;
@@ -88,8 +89,11 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 
 	@Override
 	public Object fieldImpl(String fieldName) {
-		getNode().get(fieldName);
-		return null;
+		JsonElement field = getNode().get(fieldName);
+		if(field.isJsonObject() && field.getAsJsonObject().has("type")) {
+			return JoinpointCreator.create(field.getAsJsonObject());
+		}
+		else return field;
 	}
 
 	/**

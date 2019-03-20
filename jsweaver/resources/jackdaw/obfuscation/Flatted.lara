@@ -1,3 +1,46 @@
-function test(){
-	println("test");
+import lara.Strings;
+function controlFlowFlattening($block){
+	var result = "";
+	result += outputDeclarations($block);
+	result += flattenBlock($block);
+	return result;
+
+}
+
+
+function flattenBlock($block){
+	var result = "";
+	var while_label = getUuid();
+	var switch_variable = getUuid();
+	var entry = getUuid();
+	var exit = getUuid();
+
+	result += "var " + switch_variable + " = " + entry + "\n";
+	result += "while ( " + switch_variable + " != " + exit + "){\n";
+	result += "\t" + "switch("+ switch_variable + "){\n";
+	result+="\t}\n";
+	result+="}";
+
+	return result;
+}
+
+function getUuid(){
+	return  Strings.uuid();
+}
+
+function outputDeclarations($block){
+	var declarations = "";
+	var blockChildren = $block.field("body").children;
+	for(var child of blockChildren){
+		if(child.type == "VariableDeclaration"){
+			for(var a of child.children){
+				if(a.type == "VariableDeclarator"){
+					a.refactor(getUuid());
+				}
+			}
+			declarations = declarations + child.code+"\n";
+		}
+	}
+	return declarations;
+
 }
