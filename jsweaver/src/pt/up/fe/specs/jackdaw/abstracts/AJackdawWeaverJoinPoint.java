@@ -1,5 +1,6 @@
 package pt.up.fe.specs.jackdaw.abstracts;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -92,6 +93,15 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 		JsonElement field = getNode().get(fieldName);
 		if(field.isJsonObject() && field.getAsJsonObject().has("type")) {
 			return JoinpointCreator.create(field.getAsJsonObject());
+		}
+		else if(field.isJsonArray()) {
+			List<JoinPoint> foundElements = new ArrayList<>();
+			for(JsonElement element : field.getAsJsonArray()) {
+				foundElements.add(JoinpointCreator.create(element.getAsJsonObject()));
+				
+			}
+			return foundElements;
+			
 		}
 		else return field;
 	}

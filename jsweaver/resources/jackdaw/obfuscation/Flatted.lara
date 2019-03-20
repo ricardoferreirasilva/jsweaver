@@ -1,4 +1,11 @@
 import lara.Strings;
+
+
+var levels = [];
+var breaks = [];
+var continues = [];
+
+
 function controlFlowFlattening($block){
 	var result = "";
 	result += outputDeclarations($block);
@@ -17,20 +24,52 @@ function flattenBlock($block){
 
 	result += "var " + switch_variable + " = " + entry + "\n";
 	result += "while ( " + switch_variable + " != " + exit + "){\n";
+	
 	result += "\t" + "switch("+ switch_variable + "){\n";
+	levels.push({variable: switch_variable,label:while_label});
+	transformBlock($block,entry,exit);
+	levels.pop();
 	result+="\t}\n";
 	result+="}";
 
 	return result;
 }
 
+function transformBlock($block, entry, exit){
+	var blockParts = getBlockParts($block);
+	for(var part of blockParts){
+		println(part.type);
+	}
+}
 function getUuid(){
 	return  Strings.uuid();
 }
 
+function getBlockParts($block){
+	var blockStatements = $block.field("body");
+
+	var sequence = {type:"Sequence",array:[]};
+	var blockParts = [];
+	
+	for(var stm of blockStatements){
+		switch(stm.type) {
+		  case "WhileStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"sequence",array:[]};
+		    break;
+		  case "VariableDeclaration":
+		    break;
+		  default:
+		    sequence.array.push(stm);
+		}
+	}
+	return blockParts;
+}
+
 function outputDeclarations($block){
 	var declarations = "";
-	var blockChildren = $block.field("body").children;
+	var blockChildren = $block.field("body");
 	for(var child of blockChildren){
 		if(child.type == "VariableDeclaration"){
 			for(var a of child.children){
@@ -42,5 +81,4 @@ function outputDeclarations($block){
 		}
 	}
 	return declarations;
-
 }

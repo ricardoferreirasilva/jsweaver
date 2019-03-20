@@ -1,9 +1,12 @@
 import obfuscation.Flatted;
 aspectdef FileTest
 
-	select file.while end
+	select file end
 	apply
-		var result = controlFlowFlattening($while);
+		var result = controlFlowFlattening($file);
+		println("");
+		println("");
+		println("");
 		println(result);
 	end
 
