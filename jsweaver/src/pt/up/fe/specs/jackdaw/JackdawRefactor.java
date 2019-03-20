@@ -52,6 +52,7 @@ public class JackdawRefactor {
 		 for (JsonElement elem : elements) {
 			 if(propagating == true) {
 				 propagateNewName(elem.getAsJsonObject(),oldName,newName);
+
 			 }
 			 if(elem.getAsJsonObject().equals(anchor)) {
 				 propagating = true;
@@ -76,6 +77,12 @@ public class JackdawRefactor {
 		 for (Entry<String, JsonElement> key : node.entrySet()) {
             JsonElement child = key.getValue();
             if(child.isJsonObject()) propagateNewName(child.getAsJsonObject(),oldName,newName);
+            else if(child.isJsonArray()) {
+            	for (JsonElement stm : child.getAsJsonArray()) {
+            		  propagateNewName(stm.getAsJsonObject(),oldName,newName);
+				}
+            	
+            }
         }
 		
 	}
