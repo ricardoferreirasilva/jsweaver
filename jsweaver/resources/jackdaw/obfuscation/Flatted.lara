@@ -19,15 +19,15 @@ function flattenBlock($block){
 	var result = "";
 	var while_label = getUuid();
 	var switch_variable = getUuid();
-	var entry = getUuid();
-	var exit = getUuid();
+	var entry = "'" + getUuid() + "'";
+	var exit = "'" + getUuid() + "'";
 
 	result += "var " + switch_variable + " = " + entry + "\n";
 	result += "while ( " + switch_variable + " != " + exit + "){\n";
 	
 	result += "\t" + "switch("+ switch_variable + "){\n";
 	levels.push({variable: switch_variable,label:while_label});
-	transformBlock($block,entry,exit);
+	result += transformBlock($block,entry,exit);
 	levels.pop();
 	result+="\t}\n";
 	result+="}";
@@ -36,10 +36,44 @@ function flattenBlock($block){
 }
 
 function transformBlock($block, entry, exit){
+	var result = "";
 	var blockParts = getBlockParts($block);
+	
+	var i = 0;
+	var partExit;
 	for(var part of blockParts){
-		println(part.type);
+		partExit = "'" + getUuid() + "'";
+		if(i == blockParts.length - 1) {
+			partExit = exit;
+		}
+		else partExit = "'" + getUuid() + "'";
+		println("ENTRY - " + entry + " EX - " + partExit);
+		switch(part.type) {
+		  case "WhileStatement":
+		    break;
+	      case "Sequence":
+	      	result += transformSequence(part,entry,partExit);
+		    break;
+		  default:
+		    break;
+		}
+		
+		i++;
+		entry = partExit;
 	}
+	return result;
+}
+
+function transformSequence(sequence, entry, exit){
+	var result = "";
+	result += "case " + entry + ":\n";
+	for(var stm of sequence.array){
+		result += stm.code + "\n";
+	}
+	result += levels[levels.length - 1].variable + " = " + exit + "\n";
+	result += "break;\n";
+	
+	return result;
 }
 function getUuid(){
 	return  Strings.uuid();
@@ -56,7 +90,7 @@ function getBlockParts($block){
 		  case "WhileStatement":
 		    blockParts.push(sequence);
 		    blockParts.push(stm);
-		    sequence = {type:"sequence",array:[]};
+		    sequence = {type:"Sequence",array:[]};
 		    break;
 		  case "VariableDeclaration":
 		    break;
@@ -64,6 +98,8 @@ function getBlockParts($block){
 		    sequence.array.push(stm);
 		}
 	}
+	//If switch ends with non compounds left to add.
+	if(sequence.array.length > 0) blockParts.push(sequence);
 	return blockParts;
 }
 
