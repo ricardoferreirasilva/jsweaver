@@ -47,7 +47,6 @@ function transformBlock($block, entry, exit){
 			partExit = exit;
 		}
 		else partExit = "'" + getUuid() + "'";
-		println("ENTRY - " + entry + " EX - " + partExit);
 		switch(part.type) {
 		  case "WhileStatement":
 		  	result += transformWhile(part,entry,partExit);
@@ -89,6 +88,13 @@ function transformWhile($while,entry,exit){
 	result += "\t"+switchVariable+ " = " + exit+"\n";
 	result += "\tbreak\n";
 
+
+	breaks.push({level:levels.length,entry:exit});
+	continues.push({level:levels.length,entry:exit});
+	var whileBody = $while.field("body").children;
+	result += transformBlock($while,bodyEntry,entry);
+	breaks.pop();
+	continues.pop();
 	return result;
 }
 
@@ -103,8 +109,12 @@ function getUuid(){
 }
 
 function getBlockParts($block){
-	var blockStatements = $block.field("body");
 
+	var blockStatements;
+	if($block.type == "Program") blockStatements = $block.field("body");
+	else if($block.type == "WhileStatement") blockStatements = $block.field("body").children;
+	
+	
 	var sequence = {type:"Sequence",array:[]};
 	var blockParts = [];
 	
