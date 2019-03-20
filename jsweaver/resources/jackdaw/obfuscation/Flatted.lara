@@ -50,6 +50,7 @@ function transformBlock($block, entry, exit){
 		println("ENTRY - " + entry + " EX - " + partExit);
 		switch(part.type) {
 		  case "WhileStatement":
+		  	result += transformWhile(part,entry,partExit);
 		    break;
 	      case "Sequence":
 	      	result += transformSequence(part,entry,partExit);
@@ -68,13 +69,35 @@ function transformSequence(sequence, entry, exit){
 	var result = "";
 	result += "case " + entry + ":\n";
 	for(var stm of sequence.array){
-		result += stm.code + "\n";
+		result += "\t" + stm.code + "\n";
 	}
-	result += levels[levels.length - 1].variable + " = " + exit + "\n";
-	result += "break;\n";
+	result += "\t" + levels[levels.length - 1].variable + " = " + exit + "\n";
+	result += "\tbreak;\n";
 	
 	return result;
 }
+
+function transformWhile($while,entry,exit){
+	var result = "";
+ 	var switchVariable = levels[levels.length - 1].variable;
+ 	var bodyEntry = "'" + getUuid() + "'";
+
+	result += "case " + entry + ":\n";
+	result += "\tif("+$while.test.code + ")\n";
+	result += "\t"+switchVariable+ " = " + bodyEntry+"\n";
+	result += "\telse\n";
+	result += "\t"+switchVariable+ " = " + exit+"\n";
+	result += "\tbreak\n";
+
+	return result;
+}
+
+
+
+
+
+
+
 function getUuid(){
 	return  Strings.uuid();
 }
