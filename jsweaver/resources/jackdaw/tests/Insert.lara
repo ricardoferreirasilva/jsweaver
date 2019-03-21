@@ -1,8 +1,0 @@
-aspectdef InsertTest
-	select file.functionDeclaration end
-	apply
-		var functionName = $functionDeclaration.id.name;
-		$functionDeclaration.insert after "let a = 2";
-		println("Inserted code");
-	end
-end

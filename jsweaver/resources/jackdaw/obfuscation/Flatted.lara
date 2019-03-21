@@ -10,6 +10,8 @@ var continues = [];
  * Function used in order to apply a Control Flow Flatenning algorithm to a block structure
  * in order to obfuscate its code.
  * @author Lara Weaver Generator
+ * @param {$jp} $block Block to flatten
+ * @return  Flattened code
  */
 function controlFlowFlattening($block){
 	var result = "";
