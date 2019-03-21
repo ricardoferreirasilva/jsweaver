@@ -191,7 +191,12 @@ function transformTry($try,entry,exit){
 	
 	
 	//missing handler for finnally
+	if($try.field("finalizer") != null){
+		result += "\tfinally{\n";
+		result += flattenBlock($try.field("finalizer"));
+		result += "\t}\n";
 	
+	}
 	
 	result += "\t" + switchVariable + " = " + exit + "\n";
 	result += "\tbreak\n";
