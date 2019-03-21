@@ -58,6 +58,9 @@ function transformBlock($block, entry, exit){
 		  case "WhileStatement":
 		  	result += transformWhile(part,entry,partExit);
 		    break;
+	      case "TryStatement":
+		  	result += transformTry(part,entry,partExit);
+		    break;
 	      case "IfStatement":
 		  	result += transformIf(part,entry,partExit);
 		    break;
@@ -171,6 +174,31 @@ function transformFor($for,entry,exit){
 	return result;
 }
 
+function transformTry($try,entry,exit){
+	var result = "";
+	var switchVariable = levels[levels.length - 1].variable;
+
+	result += "\tcase " + entry + ": \n";
+	
+	result += "\ttry{\n";
+	result += flattenBlock($try.field("block"));
+	result += "\t}\n";
+	
+	
+	result += "\tcatch(" + $try.field("handler").field("param").code + "){\n";
+	result += flattenBlock($try.field("handler").field("body"));
+	result += "\t}\n";
+	
+	
+	//missing handler for finnally
+	
+	
+	result += "\t" + switchVariable + " = " + exit + "\n";
+	result += "\tbreak\n";
+	
+	
+	return result;
+}
 
 
 
@@ -200,6 +228,11 @@ function getBlockParts($block){
 		    sequence = {type:"Sequence",array:[]};
 		    break;
 	      case "ForStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+	      case "TryStatement":
 		    blockParts.push(sequence);
 		    blockParts.push(stm);
 		    sequence = {type:"Sequence",array:[]};
