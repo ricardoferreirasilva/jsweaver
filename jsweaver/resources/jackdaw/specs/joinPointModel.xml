@@ -82,6 +82,12 @@
 		<select alias="catch" class="catchClause"/>
 	</joinpoint>
 	
+	<joinpoint class="breakStatement">
+	</joinpoint>
+	
+	<joinpoint class="continueStatement">
+	</joinpoint>
+	
 	<joinpoint class="catchClause">
 		<select class="blockStatement"/>
 	</joinpoint>

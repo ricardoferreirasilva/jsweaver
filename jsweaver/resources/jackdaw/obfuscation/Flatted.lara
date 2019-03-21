@@ -6,6 +6,11 @@ var breaks = [];
 var continues = [];
 
 
+/**
+ * Function used in order to apply a Control Flow Flatenning algorithm to a block structure
+ * in order to obfuscate its code.
+ * @author Lara Weaver Generator
+ */
 function controlFlowFlattening($block){
 	var result = "";
 	result += outputDeclarations($block);
@@ -119,10 +124,8 @@ function transformIf($if,entry,exit){
 	result += "\tbreak\n";
 	
 	result += transformBlock($if.field("consequent"),thenEntry,exit);
-	println("CONSEQUENT: " + $if.field("consequent").ast);
 	if($if.field("alternate") != null){
 		result += transformBlock($if.field("alternate"),elseEntry,exit);
-		println("ALTERNATE: " + $if.field("alternate").ast);
 	}
 	return result;
 }
@@ -136,7 +139,6 @@ function getUuid(){
 }
 
 function getBlockParts($block){
-	println($block);
 	var blockStatements;
 	if($block.type == "Program") blockStatements = $block.field("body");
 	else if($block.type == "WhileStatement") blockStatements = $block.field("body").children;
