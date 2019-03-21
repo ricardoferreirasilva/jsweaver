@@ -61,6 +61,9 @@ function transformBlock($block, entry, exit){
 	      case "IfStatement":
 		  	result += transformIf(part,entry,partExit);
 		    break;
+	      case "ForStatement":
+		  	result += transformFor(part,entry,partExit);
+		    break;
 	      case "Sequence":
 	      	result += transformSequence(part,entry,partExit);
 		    break;
@@ -132,6 +135,41 @@ function transformIf($if,entry,exit){
 	return result;
 }
 
+function transformFor($for,entry,exit){
+
+	var result = "";
+	var switchVariable = levels[levels.length - 1].variable;
+	var testEntry = "'" + getUuid() + "'";
+	var incEntry = "'" + getUuid() + "'";
+	var bodyEntry = "'" + getUuid() + "'";
+		
+	result += "\tcase " + entry + ": \n";
+	result += "\t" + $for.init.code + "\n";
+	result += "\t" + switchVariable + " = " + testEntry + "\n";
+	result += "\tbreak\n";
+	
+	result += "\tcase " + testEntry + ": \n";
+	result += "\tif(" + $for.test.code + ")\n";
+	result += "\t" + switchVariable + " = " + bodyEntry + "\n";
+	result += "\telse\n";
+	result += "\t" + switchVariable + " = " + exit + "\n";
+	result += "\tbreak\n";
+	
+	result += "\tcase " + incEntry + ": \n";
+	result += "\t" + $for.update.code + "\n";
+	result += "\t" + switchVariable + " = " + testEntry + "\n";
+	result += "\tbreak\n";
+	
+	
+	breaks.push({level:levels.length,entry:exit});
+	continues.push({level:levels.length,entry:exit});
+	result += transformBlock($for.field("body"),bodyEntry,incEntry);
+	breaks.pop();
+	continues.pop();
+	
+	
+	return result;
+}
 
 
 
@@ -157,6 +195,11 @@ function getBlockParts($block){
 		    sequence = {type:"Sequence",array:[]};
 		    break;
 	      case "IfStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+	      case "ForStatement":
 		    blockParts.push(sequence);
 		    blockParts.push(stm);
 		    sequence = {type:"Sequence",array:[]};
