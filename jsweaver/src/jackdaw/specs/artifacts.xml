@@ -82,8 +82,13 @@
 	<artifact class="ifStatement">
 		<attribute name="test" type="joinpoint" tooltip="Test expression of this if statement" />
 	</artifact>
+	
 	<artifact class="whileStatement">
 		<attribute name="test" type="joinpoint" tooltip="Test expression of this while statement." />
+	</artifact>
+	
+	<artifact class="doWhileStatement">
+		<attribute name="test" type="joinpoint" tooltip="Test expression of this do while statement." />
 	</artifact>
 	
 	<artifact class="loop">

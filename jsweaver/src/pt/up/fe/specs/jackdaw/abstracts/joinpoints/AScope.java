@@ -50,6 +50,22 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select doWhileStatements
+     * @return 
+     */
+    public List<? extends ADoWhileStatement> selectDoWhileStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADoWhileStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select dos
+     * @return 
+     */
+    public List<? extends AWhileStatement> selectDo() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AWhileStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * Default implementation of the method used by the lara interpreter to select ifStatements
      * @return 
      */
@@ -204,6 +220,12 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         	case "while": 
         		joinPointList = selectWhile();
         		break;
+        	case "doWhileStatement": 
+        		joinPointList = selectDoWhileStatement();
+        		break;
+        	case "do": 
+        		joinPointList = selectDo();
+        		break;
         	case "ifStatement": 
         		joinPointList = selectIfStatement();
         		break;
@@ -290,6 +312,8 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         selects.add("expressionStatement");
         selects.add("whileStatement");
         selects.add("while");
+        selects.add("doWhileStatement");
+        selects.add("do");
         selects.add("ifStatement");
         selects.add("if");
         selects.add("loop");

@@ -58,6 +58,9 @@ function transformBlock($block, entry, exit){
 		  case "WhileStatement":
 		  	result += transformWhile(part,entry,partExit);
 		    break;
+	      case "DoWhileStatement":
+		  	result += transformDo(part,entry,partExit);
+		    break;
 	      case "TryStatement":
 		  	result += transformTry(part,entry,partExit);
 		    break;
@@ -113,6 +116,34 @@ function transformWhile($while,entry,exit){
 	continues.pop();
 	return result;
 }
+
+function transformDo($do,entry,exit){
+	var result = "";
+ 	var switchVariable = levels[levels.length - 1].variable;
+ 	var bodyEntry = "'" + getUuid() + "'";
+ 	var testEntry = "'" + getUuid() + "'";
+
+	result += "case " + testEntry + ":\n";
+	result += "\tif("+$do.test.code + ")\n";
+	result += "\t"+switchVariable+ " = " + bodyEntry+"\n";
+	result += "\telse\n";
+	result += "\t"+switchVariable+ " = " + exit+"\n";
+	result += "\tbreak\n";
+
+	result += "case " + entry + ":\n";
+	result += "\t"+switchVariable+ " = " + bodyEntry+"\n";
+	result += "\tbreak\n";
+		
+		
+	breaks.push({level:levels.length,entry:exit});
+	continues.push({level:levels.length,entry:exit});
+	var doBody = $do.field("body");
+	result += transformBlock(doBody,bodyEntry,testEntry);
+	breaks.pop();
+	continues.pop();
+	return result;
+}
+
 
 function transformIf($if,entry,exit){
 	var result = "";
@@ -238,6 +269,11 @@ function getBlockParts($block){
 		    sequence = {type:"Sequence",array:[]};
 		    break;
 	      case "TryStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+	      case "DoWhileStatement":
 		    blockParts.push(sequence);
 		    blockParts.push(stm);
 		    sequence = {type:"Sequence",array:[]};

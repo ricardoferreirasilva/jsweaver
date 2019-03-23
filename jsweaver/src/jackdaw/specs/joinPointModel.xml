@@ -23,6 +23,9 @@
 		<select class="whileStatement"/>
 		<select alias="while" class="whileStatement"/>
 		
+		<select class="doWhileStatement"/>
+		<select alias="do" class="whileStatement"/>
+		
 		<select class="ifStatement"/>
 		<select alias="if" class="ifStatement"/>
 		
@@ -64,6 +67,10 @@
 	<joinpoint class="loop"/>
 	
 	<joinpoint class="whileStatement" extends="loop">
+			<select class="blockStatement"/>
+	</joinpoint>
+	
+	<joinpoint class="doWhileStatement" extends="loop">
 			<select class="blockStatement"/>
 	</joinpoint>
 	

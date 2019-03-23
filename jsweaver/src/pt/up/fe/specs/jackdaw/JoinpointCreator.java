@@ -29,6 +29,7 @@ import pt.up.fe.specs.jackdaw.joinpoints.statements.JsBreakStatement;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsClassDeclaration;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsContinueStatement;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsDeclaration;
+import pt.up.fe.specs.jackdaw.joinpoints.statements.JsDoWhileStatement;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsExpressionStatement;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsForStatement;
 import pt.up.fe.specs.jackdaw.joinpoints.statements.JsFunctionDeclaration;
@@ -56,6 +57,7 @@ public class JoinpointCreator {
 		MAPPINGS.put("Literal", JsLiteral::new);
 		MAPPINGS.put("ExpressionStatement", JsExpressionStatement::new);
 		MAPPINGS.put("WhileStatement", JsWhileStatement::new);
+		MAPPINGS.put("DoWhileStatement", JsDoWhileStatement::new);
 		MAPPINGS.put("SwitchStatement", JsSwitchStatement::new);
 		MAPPINGS.put("TryStatement", JsTryStatement::new);
 		MAPPINGS.put("CatchClause", JsCatchClause::new);
