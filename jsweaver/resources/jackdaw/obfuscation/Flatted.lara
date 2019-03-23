@@ -131,12 +131,13 @@ function transformSwitch($switch,entry,exit){
 	result += "\t}\n";
 	result += "\tbreak\n";
 	var i = 0;
+	breaks.push({level:levels.length,entry:exit});
 	for(var c of cases){
 		var caseEntry = caseEntries[i];
 		result += transformBlock(c,caseEntry,exit);
 		i++;
 	}
-	
+	breaks.pop();
 	return result;
 }
 

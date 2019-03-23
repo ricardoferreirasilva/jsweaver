@@ -24,7 +24,7 @@ public class JackdawRefactor {
 
 		default:
 			break;
-		}		
+		}
 		
 	}
 	private static void propagateRefactoring(JsonObject node,String oldName,String newName) {
