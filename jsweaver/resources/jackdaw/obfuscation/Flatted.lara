@@ -70,9 +70,13 @@ function transformBlock($block, entry, exit){
 	      case "ForStatement":
 		  	result += transformFor(part,entry,partExit);
 		    break;
+		  case "SwitchStatement":
+		  	result += transformSwitch(part,entry,partExit);
+		    break;
 	      case "Sequence":
 	      	result += transformSequence(part,entry,partExit);
 		    break;
+	      
 		  default:
 		    break;
 		}
@@ -85,12 +89,53 @@ function transformBlock($block, entry, exit){
 
 function transformSequence(sequence, entry, exit){
 	var result = "";
+	var specialControl = false;
 	result += "case " + entry + ":\n";
 	for(var stm of sequence.array){
-		result += "\t" + stm.code + "\n";
+		switch(stm.type){
+		    case "BreakStatement":
+		    	println(levels.length);
+		    	println(breaks.length);
+		    	println(breaks[breaks.length - 1].level);
+		    	result += "\t" + levels[breaks[breaks.length - 1].level - 1].variable + " = " + breaks[breaks.length-1].entry +"\n";
+		    	specialControl = true;
+		    	break;
+			default:
+				result += "\t" + stm.code + "\n";
+				break;
+		}
 	}
-	result += "\t" + levels[levels.length - 1].variable + " = " + exit + "\n";
+	if(!specialControl) result += "\t" + levels[levels.length - 1].variable + " = " + exit + "\n";
 	result += "\tbreak;\n";
+	
+	return result;
+}
+function transformSwitch($switch,entry,exit){
+	var result = "";
+ 	var switchVariable = levels[levels.length - 1].variable;
+ 	var bodyEntry = "'" + getUuid() + "'";
+
+	var cases = $switch.field("cases");
+	result += "case " + entry + ":\n";
+	
+	result += "\tswitch("+$switch.discriminant.code + "){\n";
+	var caseEntries = [];
+	for(var c of cases){
+		if(c.test == null) result += "\tdefault:\n";
+		else result += "\tcase " + c.test.code + ":\n";
+		var caseEntry = "'" + getUuid() + "'";
+		caseEntries.push(caseEntry);
+		result += "\t"+switchVariable+ " = " + caseEntry +"\n";
+		result += "\tbreak\n";
+	}
+	result += "\t}\n";
+	result += "\tbreak\n";
+	var i = 0;
+	for(var c of cases){
+		var caseEntry = caseEntries[i];
+		result += transformBlock(c,caseEntry,exit);
+		i++;
+	}
 	
 	return result;
 }
@@ -247,6 +292,7 @@ function getBlockParts($block){
 	if($block.type == "Program") blockStatements = $block.field("body");
 	else if($block.type == "WhileStatement") blockStatements = $block.field("body").children;
 	else if($block.type == "BlockStatement") blockStatements = $block.field("body");
+	else if($block.type == "SwitchCase") blockStatements = $block.field("consequent");
 	
 	var sequence = {type:"Sequence",array:[]};
 	var blockParts = [];
@@ -274,6 +320,11 @@ function getBlockParts($block){
 		    sequence = {type:"Sequence",array:[]};
 		    break;
 	      case "DoWhileStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+		  case "SwitchStatement":
 		    blockParts.push(sequence);
 		    blockParts.push(stm);
 		    sequence = {type:"Sequence",array:[]};
