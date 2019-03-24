@@ -11,8 +11,8 @@ import pt.up.fe.specs.util.enums.EnumHelperWithValue;
  */
 public enum LoopKind  implements NamedEnum{
     FOR("for"),
-    DO("do"),
-    WHILE("while");
+    WHILE("while"),
+	DO("do");
     private String name;
     private static final Lazy<EnumHelperWithValue<LoopKind>> ENUM_HELPER = EnumHelperWithValue.newLazyHelperWithValue(LoopKind.class);
 
