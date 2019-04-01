@@ -1,10 +1,25 @@
 import lara.Strings;
+import weaver.WeaverJps;
+
 
 
 var levels = [];
 var breaks = [];
 var continues = [];
 
+function obfuscate($block){
+	var result = "";
+	switch($block.type){
+		case "Program":
+			result = controlFlowFlattening($block);
+		case "FunctionDeclaration":
+			result = controlFlowFlattening($block);
+		default:
+			result = controlFlowFlattening($block);
+	}
+	return result;
+
+}
 
 /**
  * Function used in order to apply a Control Flow Flatenning algorithm to a block structure
@@ -20,7 +35,6 @@ function controlFlowFlattening($block){
 	return result;
 
 }
-
 
 function flattenBlock($block){
 	var result = "";
@@ -291,6 +305,7 @@ function getUuid(){
 function getBlockParts($block){
 	var blockStatements;
 	if($block.type == "Program") blockStatements = $block.field("body");
+	else if($block.type == "FunctionDeclaration") blockStatements = $block.field("body").field("body");
 	else if($block.type == "WhileStatement") blockStatements = $block.field("body").children;
 	else if($block.type == "BlockStatement") blockStatements = $block.field("body");
 	else if($block.type == "SwitchCase") blockStatements = $block.field("consequent");
@@ -343,16 +358,13 @@ function getBlockParts($block){
 
 function outputDeclarations($block){
 	var declarations = "";
-	var blockChildren = $block.field("body");
-	for(var child of blockChildren){
-		if(child.type == "VariableDeclaration"){
-			for(var a of child.children){
-				if(a.type == "VariableDeclarator"){
-					a.refactor(getUuid());
-				}
+	for(var $dec of WeaverJps.searchFrom($block, 'declaration').get()) {
+		for(var a of $dec.children){
+			if(a.type == "VariableDeclarator"){
+				a.refactor(getUuid());
 			}
-			declarations = declarations + child.code+"\n";
 		}
+		declarations = declarations + $dec.code+"\n";
 	}
 	return declarations;
 }
