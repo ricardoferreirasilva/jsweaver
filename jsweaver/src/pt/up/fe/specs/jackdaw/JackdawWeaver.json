@@ -3407,6 +3407,25 @@
                },
                {
                   "type": "action",
+                  "tooltip": "Refactor this function",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "refactorParam"
+                           },
+                           {
+                              "type": "int",
+                              "name": "index",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "name",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
                   "children": [
                            {
                               "type": "void",

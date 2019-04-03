@@ -22,7 +22,7 @@ public abstract class AJackdawWeaver extends WeaverEngine {
      */
     @Override
     public final List<String> getActions() {
-        String[] weaverActions= {"setName", "refactor", "refactor"};
+        String[] weaverActions= {"setName", "refactor", "refactor", "refactorParam"};
         return Arrays.asList(weaverActions);
     }
 

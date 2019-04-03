@@ -8,7 +8,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.JackdawRefactor;
+import pt.up.fe.specs.jackdaw.JackdawUtilities;
 import pt.up.fe.specs.jackdaw.JoinpointCreator;
+import pt.up.fe.specs.jackdaw.ParentMapper;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFunctionDeclaration;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 
@@ -64,5 +66,18 @@ public class JsFunctionDeclaration extends AFunctionDeclaration {
 	@Override
 	public void refactorImpl(String name) {
 		JackdawRefactor.refactorJoinpoint(this,name);
+	}
+	@Override
+	public void refactorParamImpl(int index, String name) {
+		JsonObject root = ParentMapper.getRoot(node);
+		JsonArray params = this.node.get("params").getAsJsonArray();
+		if(params.size() > index) {
+			JsonObject param = params.get(index).getAsJsonObject();
+			
+			String identifierName = param.get("name").getAsString();
+			node.addProperty("name", name);
+			JackdawUtilities.reformParents(root);
+			JackdawRefactor.propagateNewName(node,identifierName,name);
+		}
 	}
 }

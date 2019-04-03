@@ -204,6 +204,34 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Refactor this function
+     * @param index 
+     * @param name 
+     */
+    public void refactorParamImpl(int index, String name) {
+        throw new UnsupportedOperationException(get_class()+": Action refactorParam not implemented ");
+    }
+
+    /**
+     * Refactor this function
+     * @param index 
+     * @param name 
+     */
+    public final void refactorParam(int index, String name) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.BEGIN, "refactorParam", this, Optional.empty(), index, name);
+        	}
+        	this.refactorParamImpl(index, name);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.END, "refactorParam", this, Optional.empty(), index, name);
+        	}
+        } catch(Exception e) {
+        	throw new ActionException(get_class(), "refactorParam", e);
+        }
+    }
+
+    /**
      * 
      */
     @Override
@@ -260,6 +288,7 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     protected final void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
         actions.add("void refactor(string)");
+        actions.add("void refactorParam(int, string)");
     }
 
     /**

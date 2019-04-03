@@ -29,10 +29,7 @@ public class JackdawRefactor {
 			functionIdentifier.addProperty("name", newName);
 			JackdawUtilities.reformParents(root);
 			propagateRefactoring(node,functionName,newName);
-			
-			
 			break;
-
 		default:
 			throw new RuntimeErrorException(null, "Cannot refactor this type of joinpoint.");
 		}
@@ -41,11 +38,14 @@ public class JackdawRefactor {
 	private static void propagateRefactoring(JsonObject node,String oldName,String newName) {
 		   Boolean zoneFound = false;
 		   //When we also have to propate inside and not just bellow ex: function declaration.
-		   if (JackdawUtilities.nodeIsInsertable(node)) {
-	            propagateNewName(node, oldName, newName);
-
-	            
+		    if(node.has("body")) {
+	    	   propagateNewName(node, oldName, newName);
+		    }
+		    
+		    if (JackdawUtilities.nodeIsInsertable(node)) {
+	         //Funny case.
 	        }
+		    
 			//Finding insertable parent to propagate bellow.
 	        while (!zoneFound) {
 	           JsonObject anchor = node;
@@ -73,7 +73,7 @@ public class JackdawRefactor {
 		
 		
 	}
-	private static void propagateNewName(JsonObject node,String oldName,String newName) {
+	public static void propagateNewName(JsonObject node,String oldName,String newName) {
 		if(node.has("type")) {
 			String type = node.get("type").getAsString();
 			if(type.equals("Identifier")) {

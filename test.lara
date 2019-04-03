@@ -4,7 +4,11 @@ aspectdef FunctionRename
 	select function end
 	apply
 		$function.refactor("lol");
+		$function.refactorParam(0,"newparam");
 		println($function.code);
+
+
+		
 		var result = obfuscate($function);
 		var body = $function.field("body");
 		body.insert("replace",result);
