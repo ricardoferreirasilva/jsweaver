@@ -6,4 +6,8 @@
 	<action name="refactor" class="declarator" tooltip="Refactor this declarator.">
 		<parameter name="name" type="string" />
 	</action>
+	
+	<action name="refactor" class="functionDeclaration" tooltip="Refactor this function">
+		<parameter name="name" type="string" />
+	</action>
 </actions>

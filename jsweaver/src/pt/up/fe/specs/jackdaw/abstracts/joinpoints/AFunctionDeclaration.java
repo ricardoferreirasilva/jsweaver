@@ -6,6 +6,7 @@ import org.lara.interpreter.exception.AttributeException;
 import javax.script.Bindings;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.SelectOp;
+import org.lara.interpreter.exception.ActionException;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
@@ -177,6 +178,32 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Refactor this function
+     * @param name 
+     */
+    public void refactorImpl(String name) {
+        throw new UnsupportedOperationException(get_class()+": Action refactor not implemented ");
+    }
+
+    /**
+     * Refactor this function
+     * @param name 
+     */
+    public final void refactor(String name) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.BEGIN, "refactor", this, Optional.empty(), name);
+        	}
+        	this.refactorImpl(name);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.END, "refactor", this, Optional.empty(), name);
+        	}
+        } catch(Exception e) {
+        	throw new ActionException(get_class(), "refactor", e);
+        }
+    }
+
+    /**
      * 
      */
     @Override
@@ -232,6 +259,7 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
+        actions.add("void refactor(string)");
     }
 
     /**

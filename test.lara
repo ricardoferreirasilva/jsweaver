@@ -1,13 +1,24 @@
 import obfuscation.Flatted;
+aspectdef FunctionRename
+
+	select function end
+	apply
+		$function.refactor("lol");
+		println($function.code);
+		var result = obfuscate($function);
+		var body = $function.field("body");
+		body.insert("replace",result);
+		println("Obfuscation finished!");
+	end
+
+end
+
 aspectdef FileTest
 
 	select file end
 	apply
 		var result = controlFlowFlattening($file);
-		println("");
-		println("");
-		println("");
-		println(result);
+		$file.insert("replace",result);
 	end
 
 end

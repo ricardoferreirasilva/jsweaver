@@ -39,7 +39,7 @@ public class JackdawUtilities {
 
 		if (node.has("type")) {
 			String type = node.get("type").getAsString();
-			if (type.equals("Program") || type.equals("BlockStatement")) {
+			if (type.equals("Program") || type.equals("BlockStatement") || type.equals("FunctionDeclaration") ) {
 				return true;
 			} else
 				return false;

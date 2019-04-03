@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import pt.up.fe.specs.jackdaw.JackdawRefactor;
 import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFunctionDeclaration;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
@@ -60,5 +61,8 @@ public class JsFunctionDeclaration extends AFunctionDeclaration {
 	public String getNameImpl() {
 		return this.node.get("id").getAsJsonObject().get("name").getAsString();
 	}
-
+	@Override
+	public void refactorImpl(String name) {
+		JackdawRefactor.refactorJoinpoint(this,name);
+	}
 }

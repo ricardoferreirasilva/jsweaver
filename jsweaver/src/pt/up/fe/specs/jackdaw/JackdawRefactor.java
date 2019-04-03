@@ -3,6 +3,8 @@ package pt.up.fe.specs.jackdaw;
 
 import java.util.Map.Entry;
 
+import javax.management.RuntimeErrorException;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -21,29 +23,39 @@ public class JackdawRefactor {
 			JackdawUtilities.reformParents(root);
 			propagateRefactoring(node,oldName,newName);
 			break;
+		case "functionDeclaration":
+			JsonObject functionIdentifier = node.get("id").getAsJsonObject();
+			String functionName = functionIdentifier.get("name").getAsString();
+			functionIdentifier.addProperty("name", newName);
+			JackdawUtilities.reformParents(root);
+			propagateRefactoring(node,functionName,newName);
+			
+			
+			break;
 
 		default:
-			break;
+			throw new RuntimeErrorException(null, "Cannot refactor this type of joinpoint.");
 		}
 		
 	}
 	private static void propagateRefactoring(JsonObject node,String oldName,String newName) {
 		   Boolean zoneFound = false;
+		   //When we also have to propate inside and not just bellow ex: function declaration.
 		   if (JackdawUtilities.nodeIsInsertable(node)) {
-	            zoneFound = true;
-	            // FUNNY CASE.
+	            propagateNewName(node, oldName, newName);
+
 	            
-	        } else {
-	            while (!zoneFound) {
-	                JsonObject anchor = node;
-	                node = ParentMapper.getParent(node);
-	                if (JackdawUtilities.nodeIsInsertable(node)) {
-	                    zoneFound = true;
-	                    propagateBellowAnchor(node,anchor, oldName,  newName);
-	                    break;
-	                }
-	            }
 	        }
+			//Finding insertable parent to propagate bellow.
+	        while (!zoneFound) {
+	           JsonObject anchor = node;
+	           node = ParentMapper.getParent(node);
+	           if (JackdawUtilities.nodeIsInsertable(node)) {
+	               zoneFound = true;
+	               propagateBellowAnchor(node,anchor, oldName,  newName);
+	               break;
+	           }
+	       }
 	}
 	private static void propagateBellowAnchor(JsonObject node,JsonObject anchor,String oldName,String newName)
 	{
@@ -65,7 +77,9 @@ public class JackdawRefactor {
 		if(node.has("type")) {
 			String type = node.get("type").getAsString();
 			if(type.equals("Identifier")) {
+				
 				String name = node.get("name").getAsString();
+				
 				if(name.equals(oldName)) {
 					node.addProperty("name", newName);
 					AJackdawWeaverJoinPoint rootJoinPoint = (AJackdawWeaverJoinPoint) JackdawWeaver.getJackdawWeaver().select();

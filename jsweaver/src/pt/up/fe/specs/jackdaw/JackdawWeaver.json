@@ -3393,6 +3393,20 @@
                },
                {
                   "type": "action",
+                  "tooltip": "Refactor this function",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "refactor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "name",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
                   "children": [
                            {
                               "type": "void",
