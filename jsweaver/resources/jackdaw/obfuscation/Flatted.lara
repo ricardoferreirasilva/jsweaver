@@ -13,8 +13,13 @@ function obfuscate($block){
 		case "Program":
 			result = controlFlowFlattening($block);
 		case "FunctionDeclaration":
-			
-			result += "function " + $block.id.code +"(\n";
+			$block.refactor(getUuid());
+			var numberParams = $block.field("params").length;
+			for(i=0;i<numberParams;i++){
+				$block.refactorParam(i,getUuid());
+			}
+					
+		 	result += "function " + $block.id.code +"(\n";
 			for(var p of $block.params){
 				result+=p.code+",";
 			}
