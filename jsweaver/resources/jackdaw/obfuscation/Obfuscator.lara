@@ -14,7 +14,6 @@ function applyObfuscation($file){
 	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
 	for(var $f of functions){
 		var obfuscatedFunction = obfuscate($f);
-		println(obfuscatedFunction);
 	    $f.insert("replace",obfuscatedFunction);
 	}
 	
