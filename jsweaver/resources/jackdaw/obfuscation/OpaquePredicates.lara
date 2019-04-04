@@ -1,0 +1,20 @@
+import lara.Strings;
+import weaver.WeaverJps;
+
+
+
+
+function generateOpaquePredicate(method){
+	var text = "";
+	var functionName = Strings.uuid();
+	var value;
+	text += "function " + functionName + "(){\n";
+	switch(method){
+		default:
+			text += "return true;\n";
+			value = true;
+			break;
+	}
+	text += "}\n";
+	return {id:functionName,function:text,value:value,arguments:[]};
+}

@@ -1,16 +1,32 @@
+import weaver.WeaverJps;
 import obfuscation.Flatted;
+import obfuscation.OpaquePredicates;
+aspectdef OpaquePred
+
+	select while end
+	apply
+		var pred = generateOpaquePredicate();
+
+		var test = $while.test;
+		var newWhile = "while(" + "(" + $while.test.code + ")&&(" + pred.id+"()))\n";
+		var body = WeaverJps.searchFrom($while, 'blockStatement').get();
+		
+		for($c of body){
+			newWhile += ($c.code);
+		}
+		println(newWhile);
+	     $while.insert("replace",newWhile);
+	end
+
+end
 aspectdef FunctionRename
 
 	select function end
 	apply
 		println($function.code);
-
-
-		
 		var result = obfuscate($function);
 		var body = $function.field("body");
 		body.insert("replace",result);
-		
 		println("Obfuscation finished!");
 	end
 
