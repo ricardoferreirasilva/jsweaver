@@ -12,6 +12,7 @@ function obfuscate($block){
 	switch($block.type){
 		case "Program":
 			result = controlFlowFlattening($block);
+			break;
 		case "FunctionDeclaration":
 			$block.refactor(getUuid());
 			var numberParams = $block.field("params").length;
@@ -19,14 +20,18 @@ function obfuscate($block){
 				$block.refactorParam(i,getUuid());
 			}
 					
-		 	result += "function " + $block.id.code +"(\n";
+		 	result += "function " + $block.id.code +"(";
 			for(var p of $block.params){
 				result+=p.code+",";
 			}
-			result+="){\n";
-			result = controlFlowFlattening($block);
+			
+			result +="){\n";
+			result += controlFlowFlattening($block);
+			result += "}\n";
+			break;
 		default:
 			result = controlFlowFlattening($block);
+			break;
 	}
 	return result;
 
@@ -119,11 +124,12 @@ function transformSequence(sequence, entry, exit){
 	for(var stm of sequence.array){
 		switch(stm.type){
 		    case "BreakStatement":
-		    	println(levels.length);
-		    	println(breaks.length);
-		    	println(breaks[breaks.length - 1].level);
 		    	result += "\t" + levels[breaks[breaks.length - 1].level - 1].variable + " = " + breaks[breaks.length-1].entry +"\n";
 		    	specialControl = true;
+		    	break;
+	    	case "ReturnStatement":
+	    		result += "\t" + stm.code + "\n";
+	    		specialControl = true;
 		    	break;
 			default:
 				result += "\t" + stm.code + "\n";

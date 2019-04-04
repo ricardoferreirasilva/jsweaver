@@ -1,13 +1,14 @@
 import weaver.WeaverJps;
 import obfuscation.Flatted;
 import obfuscation.OpaquePredicates;
+import obfuscation.Obfuscator;
 aspectdef OpaquePred
 
 	select file end
 	apply
-		println($file);
-		addOpaquePredicates($file,3);
-		println(predicates.length);
+		applyObfuscation($file);
+
+	
 		
 	end
 

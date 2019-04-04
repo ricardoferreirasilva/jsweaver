@@ -5,6 +5,7 @@ import org.lara.interpreter.weaver.utils.LaraResourceProvider;
 public enum JackdawObfuscationApi implements LaraResourceProvider {
 
 	OPAQUE("OpaquePredicates.lara"),
+	OBFUSCATOR("Obfuscator.lara"),
 	FLATTED("Flatted.lara");
 
 	private final String resource;

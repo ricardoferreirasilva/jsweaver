@@ -1,7 +1,13 @@
 import lara.Strings;
 import weaver.WeaverJps;
 
+
+
 var predicates=[];
+function getRandomPredicate(){
+	var index = getRandomInt(0,predicates.length);
+	return predicates[index];
+}
 function addOpaquePredicates($file,number){
 	for(i=0;i<number;i++){
 		var predicate = generateOpaquePredicate();
@@ -10,7 +16,6 @@ function addOpaquePredicates($file,number){
 	
 	}
 }
-
 function generateOpaquePredicate(method){
 	var text = "";
 	var functionName = Strings.uuid();
@@ -24,4 +29,10 @@ function generateOpaquePredicate(method){
 	}
 	text += "}\n";
 	return {id:functionName,function:text,value:value,arguments:[]};
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 }
