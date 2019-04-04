@@ -62,6 +62,7 @@ public abstract class AJoinPoint extends JoinPoint {
     protected void fillWithAttributes(List<String> attributes) {
         //Attributes available for all join points
         attributes.add("root");
+        attributes.add("file");
         attributes.add("parent");
         attributes.add("type");
         attributes.add("field(String fieldName)");
@@ -95,6 +96,29 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "root", e);
+        }
+    }
+
+    /**
+     * Returns the 'file' joinpoint
+     */
+    public abstract AJoinPoint getFileImpl();
+
+    /**
+     * Returns the 'file' joinpoint
+     */
+    public final Object getFile() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "file", Optional.empty());
+        	}
+        	AJoinPoint result = this.getFileImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "file", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "file", e);
         }
     }
 

@@ -37,7 +37,27 @@ public class ParentMapper {
 		}
 		return null;
 	}
+	
+	public static JsonObject getFile(JsonObject node) {
+		Boolean foundRoot = false;
 
+		// Node is already the root.
+		if (node.has("type") && node.get("type").getAsString().equals("Program")) {
+			foundRoot = true;
+			return node;
+		}
+		while (!foundRoot) {
+			JsonObject parent = getParent(node);
+			if (parent.has("type") && parent.get("type").getAsString().equals("Program")) {
+				foundRoot = true;
+				return parent;
+			} else {
+				node = parent;
+			}
+
+		}
+		return null;
+	}
 	public static void printMap() {
 		for (JsonObject key : parentMap.keySet()) {
 			// System.out.println(key);

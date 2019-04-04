@@ -1,8 +1,15 @@
 import lara.Strings;
 import weaver.WeaverJps;
 
-
-
+var predicates=[];
+function addOpaquePredicates($file,number){
+	for(i=0;i<number;i++){
+		var predicate = generateOpaquePredicate();
+		predicates.push(predicate);
+		$file.children[0].insert("before",predicate.function);
+	
+	}
+}
 
 function generateOpaquePredicate(method){
 	var text = "";

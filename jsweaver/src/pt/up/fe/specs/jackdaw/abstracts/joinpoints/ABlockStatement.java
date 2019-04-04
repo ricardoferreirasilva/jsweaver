@@ -163,14 +163,15 @@ public abstract class ABlockStatement extends AStatement {
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
         CODE("code"),
-        FIELD("field"),
-        CHILDREN("children"),
         LINE("line"),
-        ROOT("root"),
         COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants"),
-        UUID("uuid");
+        UUID("uuid"),
+        FILE("file"),
+        FIELD("field"),
+        CHILDREN("children"),
+        ROOT("root");
         private String name;
 
         /**

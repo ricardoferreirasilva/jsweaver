@@ -3,19 +3,12 @@ import obfuscation.Flatted;
 import obfuscation.OpaquePredicates;
 aspectdef OpaquePred
 
-	select while end
+	select file end
 	apply
-		var pred = generateOpaquePredicate();
-
-		var test = $while.test;
-		var newWhile = "while(" + "(" + $while.test.code + ")&&(" + pred.id+"()))\n";
-		var body = WeaverJps.searchFrom($while, 'blockStatement').get();
+		println($file);
+		addOpaquePredicates($file,3);
+		println(predicates.length);
 		
-		for($c of body){
-			newWhile += ($c.code);
-		}
-		println(newWhile);
-	     $while.insert("replace",newWhile);
 	end
 
 end

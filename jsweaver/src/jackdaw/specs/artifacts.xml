@@ -6,6 +6,7 @@
 	<!-- These properties are shared by all joinpoints -->
 	<global>
 		<attribute name="root" type="joinpoint" tooltip="Returns the 'project' joinpoint" />
+		<attribute name="file" type="joinpoint" tooltip="Returns the 'file' joinpoint" />
 		<attribute name="parent" type="joinpoint" tooltip="Returns the 'parent' node of this joinpoint" />
 		<attribute name="type" type="string" tooltip="The type of the join point" />
 
@@ -158,6 +159,7 @@
 	<enum name="LoopKind">	
 		<value name="FOR"/>
 		<value name="WHILE"/>
+		<value name="DO"/>
 	</enum>
 	
 

@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.JackdawInserter;
 import pt.up.fe.specs.jackdaw.JackdawQueryEngine;
+import pt.up.fe.specs.jackdaw.JackdawUtilities;
 import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.ParentMapper;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
@@ -52,7 +53,12 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 		AJoinPoint rootJoinpoint = (AJoinPoint) JoinpointCreator.create(rootObject);
 		return rootJoinpoint;
 	}
-
+	@Override
+	public AJoinPoint getFileImpl() {
+		JsonObject fileObject = ParentMapper.getFile(this.getNode());
+		AJoinPoint fileJoinpoint = (AJoinPoint) JoinpointCreator.create(fileObject);
+		return fileJoinpoint;
+	}
 	@Override
 	public String getTypeImpl() {
 		return getNode().get("type").getAsString();
@@ -71,6 +77,7 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 	@Override
 	public void insertImpl(String position, String code) {
 
+		JsonObject root = ParentMapper.getRoot(this.getNode());
 		try {
 			JsonArray statements = JackdawEngine.parseInsertedCode(code);
 			JackdawInserter.insertStatements(this.getNode(), statements, position);
@@ -78,13 +85,15 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 		} catch (ScriptException error) {
 			throw new RuntimeException("Could not parse inserted code.", error);
 		}
+		JackdawUtilities.reformParents(root);
 	}
 
 	@Override
 	public <T extends JoinPoint> void insertImpl(String position, T JoinPoint) {
+		JsonObject root = ParentMapper.getRoot(this.getNode());
 		JsonObject joinpoint = (JsonObject) JoinPoint.getNode();
-		System.out.println(joinpoint);
 		JackdawInserter.insertJoinPoint(this.getNode(), joinpoint, position);
+		JackdawUtilities.reformParents(root);
 
 	}
 
