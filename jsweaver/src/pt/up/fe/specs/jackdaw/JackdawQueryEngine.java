@@ -119,14 +119,18 @@ public class JackdawQueryEngine {
 		}
 
 		if (keyValue.isJsonObject() && validFieldName(fieldName)) {
-			AJoinPoint childNode = JoinpointCreator.create(keyValue.getAsJsonObject());
-			if (joinPointClass.isInstance(childNode)) {
-				addElement(foundElements, joinPointClass.cast(childNode));
-			}
-			if (indirectDescendents) {
+			if (keyValue.getAsJsonObject().get("type") == null) {
+				Collections.emptyList();
+			} else {
+				AJoinPoint childNode = JoinpointCreator.create(keyValue.getAsJsonObject());
+				if (joinPointClass.isInstance(childNode)) {
+					addElement(foundElements, joinPointClass.cast(childNode));
+				}
+				if (indirectDescendents) {
 
-				addAllElements(foundElements,
-						queryNodeGeneric(keyValue.getAsJsonObject(), joinPointClass, indirectDescendents));
+					addAllElements(foundElements,
+							queryNodeGeneric(keyValue.getAsJsonObject(), joinPointClass, indirectDescendents));
+				}
 			}
 
 		} else if (keyValue.isJsonArray()) {

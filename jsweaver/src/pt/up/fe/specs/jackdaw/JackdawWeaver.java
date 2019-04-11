@@ -66,6 +66,7 @@ public class JackdawWeaver extends AJsWeaver {
 	 * @return true if the file type is valid
 	 */
 	public boolean begin(List<File> sources, File outputDir, DataStore args) {
+
 		this.args = args;
 
 		if (outputDir.isDirectory() && outputDir.isDirectory()) {
@@ -101,6 +102,7 @@ public class JackdawWeaver extends AJsWeaver {
 		root.addProperty("type", "Project");
 		root.add("programs", totalPrograms);
 		this.project = root;
+
 		JackdawUtilities.reformParents(this.project);
 		return true;
 	}
@@ -142,12 +144,13 @@ public class JackdawWeaver extends AJsWeaver {
 		JsonArray programs = this.project.get("programs").getAsJsonArray();
 		try {
 			String escodegenOptions = "{}";
-			if(args.get(JackdawKeys.ESCODEGEN_CONFIG).isFile()) {
+			if (args.get(JackdawKeys.ESCODEGEN_CONFIG).isFile()) {
 				escodegenOptions = SpecsIo.read(args.get(JackdawKeys.ESCODEGEN_CONFIG));
-				if(escodegenOptions == null) escodegenOptions = "{}";
+				if (escodegenOptions == null)
+					escodegenOptions = "{}";
 			}
-        	
-			JackdawEngine.exportPrograms(programs, this.outputDir,escodegenOptions);
+
+			JackdawEngine.exportPrograms(programs, this.outputDir, escodegenOptions);
 		} catch (ScriptException e) {
 			throw new RuntimeException("Error while outputing Javascript.", e);
 		}

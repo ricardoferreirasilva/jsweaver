@@ -10,11 +10,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -22,168 +22,172 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ast.JsAstResources;
+import pt.up.fe.specs.util.lazy.Lazy;
 
 public class JackdawEngine {
-    public static JsonObject parseSourceCode(Path folderPath) throws IOException, ScriptException {
-        JsonParser parser = new JsonParser();
-        Path esprimaPath = Paths.get("src/esprima/esprima.js");
-        Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();
 
-        // Recursively walk all javascript files in the desired folder.
-        List<File> sourceFiles = new ArrayList<File>();
-        List<JsonObject> sourceFilesJSON = new ArrayList<JsonObject>();
-        Files.walk(folderPath).filter(path -> !Files.isDirectory(path)).forEach(path -> sourceFiles.add(path.toFile()));
+	private static final Lazy<ScriptEngine> ESPRIMA_PARSER = Lazy.newInstance(JackdawEngine::initEsprima);
 
-        // Root of the AST tree of several files.
-        JsonObject root = new JsonObject();
-        root.addProperty("type", "Project");
+	private static ScriptEngine initEsprima() {
+		ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
 
-        JsonArray programs = new JsonArray();
-        for (File file : sourceFiles) {
-            String extension = getFileExtension(file);
-            if (extension.equals("js")) {
-                String text = new String(Files.readAllBytes(file.toPath()));
-                ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
-                javascriptEngine.put("code", text);
-                javascriptEngine.put("esprimaPath", esprimaAbsolutePath.toString());
+		try {
+			javascriptEngine.eval(JsAstResources.ESPRIMA.read());
+		} catch (ScriptException e) {
+			throw new RuntimeException("Could not load Esprima parser", e);
+		}
+		return javascriptEngine;
+	}
 
-                Path scriptPath = Paths.get("src/esprima/esprima.js");
-                javascriptEngine.eval(JsAstResources.ESPRIMA.read());
-                javascriptEngine.eval(JsAstResources.ESPRIMA_WALK.read());
-                javascriptEngine.eval(JsAstResources.PARSE_JAVASCRIPT.read());
-                String stringAst = (String) javascriptEngine.get("string");
+	public static JsonObject parseSourceCode(Path folderPath) throws IOException, ScriptException {
+		JsonParser parser = new JsonParser();
+		Path esprimaPath = Paths.get("src/esprima/esprima.js");
+		Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();
 
-                JsonElement jsonTree = parser.parse(stringAst);
-                JsonObject program = jsonTree.getAsJsonObject();
-                program.addProperty("path", file.getAbsolutePath());
-                programs.add(program);
-            }
-        }
-        root.add("programs", programs);
-        return root;
+		// Recursively walk all javascript files in the desired folder.
+		List<File> sourceFiles = new ArrayList<>();
+		ArrayList<JsonObject> sourceFilesJSON = new ArrayList<>();
+		Files.walk(folderPath).filter(path -> !Files.isDirectory(path)).forEach(path -> sourceFiles.add(path.toFile()));
 
-    }
+		// Root of the AST tree of several files.
+		JsonObject root = new JsonObject();
+		root.addProperty("type", "Project");
 
-    public static JsonArray parseFolder(Path folderPath) throws IOException, ScriptException {
-        JsonParser parser = new JsonParser();
-        Path esprimaPath = Paths.get("src/esprima/esprima.js");
-        Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();
+		JsonArray programs = new JsonArray();
+		for (File file : sourceFiles) {
+			String extension = getFileExtension(file);
+			if (extension.equals("js")) {
+				parseJs(parser, esprimaAbsolutePath, programs, file);
+			}
+		}
+		root.add("programs", programs);
+		return root;
 
-        // Recursively walk all javascript files in the desired folder.
-        List<File> sourceFiles = new ArrayList<File>();
-        List<JsonObject> sourceFilesJSON = new ArrayList<JsonObject>();
-        Files.walk(folderPath).filter(path -> !Files.isDirectory(path)).forEach(path -> sourceFiles.add(path.toFile()));
+	}
 
-        JsonArray programs = new JsonArray();
-        for (File file : sourceFiles) {
-            String extension = getFileExtension(file);
-            if (extension.equals("js")) {
-                String text = new String(Files.readAllBytes(file.toPath()));
-                ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
-                javascriptEngine.put("code", text);
-                javascriptEngine.put("esprimaPath", esprimaAbsolutePath.toString());
+	public static JsonArray parseFolder(Path folderPath) throws IOException, ScriptException {
+		JsonParser parser = new JsonParser();
+		Path esprimaPath = Paths.get("src/esprima/esprima.js");
+		Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();
 
-                Path scriptPath = Paths.get("src/esprima/esprima.js");
-                javascriptEngine.eval(JsAstResources.ESPRIMA.read());
-                javascriptEngine.eval(JsAstResources.ESPRIMA_WALK.read());
-                javascriptEngine.eval(JsAstResources.PARSE_JAVASCRIPT.read());
-                String stringAst = (String) javascriptEngine.get("string");
+		// Recursively walk all javascript files in the desired folder.
+		List<File> sourceFiles = new ArrayList<File>();
+		List<JsonObject> sourceFilesJSON = new ArrayList<JsonObject>();
+		Files.walk(folderPath).filter(path -> !Files.isDirectory(path)).forEach(path -> sourceFiles.add(path.toFile()));
 
-                JsonElement jsonTree = parser.parse(stringAst);
-                JsonObject program = jsonTree.getAsJsonObject();
-                program.addProperty("path", file.getAbsolutePath());
-                programs.add(program);
-            }
-        }
-        return programs;
+		JsonArray programs = new JsonArray();
+		for (File file : sourceFiles) {
+			System.out.println("FILE:" + file.getAbsolutePath());
+			String extension = getFileExtension(file);
+			if (extension.equals("js")) {
+//				SpecsIo.write(new File("read_file.js"), text);
 
-    }
+//				ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
 
-    public static JsonArray parseFile(File source) throws IOException, ScriptException {
-        JsonParser parser = new JsonParser();
-        Path esprimaPath = Paths.get("src/esprima/esprima.js");
-        Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();
+				parseJs(parser, esprimaAbsolutePath, programs, file);
+			}
+		}
+		return programs;
 
-        JsonArray programs = new JsonArray();
-        String extension = getFileExtension(source);
-        if (extension.equals("js")) {
-            String text = new String(Files.readAllBytes(source.toPath()));
-            ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
-            javascriptEngine.put("code", text);
-            javascriptEngine.put("esprimaPath", esprimaAbsolutePath.toString());
+	}
 
-            Path scriptPath = Paths.get("src/esprima/esprima.js");
-            javascriptEngine.eval(JsAstResources.ESPRIMA.read());
-            javascriptEngine.eval(JsAstResources.ESPRIMA_WALK.read());
-            javascriptEngine.eval(JsAstResources.PARSE_JAVASCRIPT.read());
-            String stringAst = (String) javascriptEngine.get("string");
+	private static void parseJs(JsonParser parser, Path esprimaAbsolutePath, JsonArray programs, File file)
+			throws IOException, ScriptException {
+		String text = new String(Files.readAllBytes(file.toPath()));
 
-            JsonElement jsonTree = parser.parse(stringAst);
-            JsonObject program = jsonTree.getAsJsonObject();
-            program.addProperty("path", source.getAbsolutePath());
-            programs.add(program);
-        }
-        return programs;
+		ScriptEngine javascriptEngine = ESPRIMA_PARSER.get();
 
-    }
+		javascriptEngine.put("code", text);
+		javascriptEngine.put("esprimaPath", esprimaAbsolutePath.toString());
 
-    public static JsonArray parseInsertedCode(String text) throws ScriptException {
-        JsonParser parser = new JsonParser();
-        ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
-        javascriptEngine.put("code", text);
-        javascriptEngine.eval(JsAstResources.ESPRIMA.read());
-        javascriptEngine.eval(JsAstResources.ESPRIMA_WALK.read());
-        javascriptEngine.eval(JsAstResources.PARSE_JAVASCRIPT.read());
-        String stringAst = (String) javascriptEngine.get("string");
-        JsonElement jsonTree = parser.parse(stringAst);
-        JsonObject program = jsonTree.getAsJsonObject();
-        JsonArray statements = program.get("body").getAsJsonArray();
-        return statements;
-    }
+//				Path scriptPath = Paths.get("src/esprima/esprima.js");
+//				javascriptEngine.eval(JsAstResources.ESPRIMA.read());
+//				javascriptEngine.eval(JsAstResources.ESPRIMA_WALK.read());
+		javascriptEngine.eval(JsAstResources.PARSE_JAVASCRIPT.read());
+		String stringAst = (String) javascriptEngine.get("string");
+		System.out.println("AST OBJECT: " + (Map<String, Object>) javascriptEngine.get("ast"));
+		JsonElement jsonTree = parser.parse(stringAst);
+		JsonObject program = jsonTree.getAsJsonObject();
+		program.addProperty("path", file.getAbsolutePath());
+		programs.add(program);
+	}
 
-    public static void exportPrograms(JsonArray programs, File outputDir, String escodegenOptions) throws ScriptException {
-        JsonParser parser = new JsonParser();
-        // System.out.println("Outputing files to " + outputDir.getPath());
-        ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
-        for (JsonElement program : programs) {
-            JsonObject programObject = program.getAsJsonObject();
-            String programString = programObject.toString();
-            javascriptEngine.put("AST_STRING", programString);
-            javascriptEngine.put("OPTIONS", escodegenOptions);
-            javascriptEngine.eval(JsAstResources.GENERATE_JAVASCRIPT.read());
-            String generatedText = (String) javascriptEngine.get("GENERATED_JS");
+	public static JsonArray parseFile(File source) throws IOException, ScriptException {
+		JsonParser parser = new JsonParser();
+		Path esprimaPath = Paths.get("src/esprima/esprima.js");
+		Path esprimaAbsolutePath = esprimaPath.toAbsolutePath();
 
-            String path = programObject.get("path").getAsString();
-            File file = new File(path);
+		JsonArray programs = new JsonArray();
+		String extension = getFileExtension(source);
+		if (extension.equals("js")) {
+//			ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
 
-            try {
-                PrintWriter writer = new PrintWriter(outputDir.getAbsolutePath() + "\\" + file.getName(), "UTF-8");
-                writer.print(generatedText);
-                writer.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    public static String codeFromJSON(JsonObject node) throws ScriptException {
-   	 JsonParser parser = new JsonParser();
-        ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
-        String programString = node.toString();
-        javascriptEngine.put("AST_STRING", programString);
-        javascriptEngine.put("OPTIONS", "{}");
-        javascriptEngine.eval(JsAstResources.GENERATE_JAVASCRIPT.read());
-        String generatedText = (String) javascriptEngine.get("GENERATED_JS");
-        return generatedText;
-   }
-    private static String getFileExtension(File file) {
-        if (file == null) {
-            return "";
-        }
-        String name = file.getName();
-        int i = name.lastIndexOf('.');
-        String ext = i > 0 ? name.substring(i + 1) : "";
-        return ext;
-    }
+			parseJs(parser, esprimaAbsolutePath, programs, source);
+		}
+		return programs;
+
+	}
+
+	public static JsonArray parseInsertedCode(String text) throws ScriptException {
+		JsonParser parser = new JsonParser();
+		ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
+		javascriptEngine.put("code", text);
+		javascriptEngine.eval(JsAstResources.ESPRIMA.read());
+		javascriptEngine.eval(JsAstResources.ESPRIMA_WALK.read());
+		javascriptEngine.eval(JsAstResources.PARSE_JAVASCRIPT.read());
+		String stringAst = (String) javascriptEngine.get("string");
+		JsonElement jsonTree = parser.parse(stringAst);
+		JsonObject program = jsonTree.getAsJsonObject();
+		JsonArray statements = program.get("body").getAsJsonArray();
+		return statements;
+	}
+
+	public static void exportPrograms(JsonArray programs, File outputDir, String escodegenOptions)
+			throws ScriptException {
+		JsonParser parser = new JsonParser();
+		// System.out.println("Outputing files to " + outputDir.getPath());
+		ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
+		for (JsonElement program : programs) {
+			JsonObject programObject = program.getAsJsonObject();
+			String programString = programObject.toString();
+			javascriptEngine.put("AST_STRING", programString);
+			javascriptEngine.put("OPTIONS", escodegenOptions);
+			javascriptEngine.eval(JsAstResources.GENERATE_JAVASCRIPT.read());
+			String generatedText = (String) javascriptEngine.get("GENERATED_JS");
+
+			String path = programObject.get("path").getAsString();
+			File file = new File(path);
+
+			try {
+				PrintWriter writer = new PrintWriter(outputDir.getAbsolutePath() + "\\" + file.getName(), "UTF-8");
+				writer.print(generatedText);
+				writer.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static String codeFromJSON(JsonObject node) throws ScriptException {
+		JsonParser parser = new JsonParser();
+		ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
+		String programString = node.toString();
+		javascriptEngine.put("AST_STRING", programString);
+		javascriptEngine.put("OPTIONS", "{}");
+		javascriptEngine.eval(JsAstResources.GENERATE_JAVASCRIPT.read());
+		String generatedText = (String) javascriptEngine.get("GENERATED_JS");
+		return generatedText;
+	}
+
+	private static String getFileExtension(File file) {
+		if (file == null) {
+			return "";
+		}
+		String name = file.getName();
+		int i = name.lastIndexOf('.');
+		String ext = i > 0 ? name.substring(i + 1) : "";
+		return ext;
+	}
 }
