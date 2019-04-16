@@ -122,6 +122,7 @@ function transformBlock($block, entry, exit){
 function transformSequence(sequence, entry, exit){
 	var result = "";
 	var specialControl = false;
+	var caughtReturn = false;
 	result += "case " + entry + ":\n";
 	for(var stm of sequence.array){
 		switch(stm.type){
@@ -132,6 +133,7 @@ function transformSequence(sequence, entry, exit){
 	    	case "ReturnStatement":
 	    		result += "\t" + stm.code + "\n";
 	    		specialControl = true;
+	    		caughtReturn = true;
 		    	break;
 			default:
 				result += "\t" + stm.code + "\n";
@@ -139,7 +141,7 @@ function transformSequence(sequence, entry, exit){
 		}
 	}
 	if(!specialControl) result += "\t" + levels[levels.length - 1].variable + " = " + exit + "\n";
-	result += "\tbreak;\n";
+	if(!caughtReturn) result += "\tbreak;\n";
 	
 	return result;
 }
