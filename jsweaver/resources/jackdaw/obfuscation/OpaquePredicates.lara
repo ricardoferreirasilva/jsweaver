@@ -7,7 +7,12 @@ var predicates=[];
 function logicalExpressionModifier(exp,addPredicate){
 	if(addPredicate){
 		var predicate = getRandomPredicate();
-		return "(" + exp + ")&&(" + getPredicateCall(predicate) + ")";
+		if(predicate.value == "true"){
+			return "(" + exp + ")&&(" + getPredicateCall(predicate) + ")";
+		}
+		else{
+			return "(" + exp + ")&&(!" + getPredicateCall(predicate) + ")";
+		}
 	}
 	else return exp;
 }
@@ -33,12 +38,16 @@ function addOpaquePredicates($file,number){
 function generateOpaquePredicate(method){
 	var text = "";
 	var functionName = Strings.uuid();
+	var randomBinary = Math.round(Math.random());
 	var value;
+	if(randomBinary == 1) value = "true";
+	else{
+		value = "false";
+	}
 	text += "function " + functionName + "(){\n";
 	switch(method){
 		default:
-			text += "return true;\n";
-			value = true;
+			text += "return " + value + ";\n";
 			break;
 	}
 	text += "}\n";

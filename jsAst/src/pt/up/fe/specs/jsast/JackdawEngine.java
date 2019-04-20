@@ -80,9 +80,7 @@ public class JackdawEngine {
 			System.out.println("FILE:" + file.getAbsolutePath());
 			String extension = getFileExtension(file);
 			if (extension.equals("js")) {
-//				SpecsIo.write(new File("read_file.js"), text);
 
-//				ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
 
 				parseJs(parser, esprimaAbsolutePath, programs, file);
 			}
@@ -100,12 +98,8 @@ public class JackdawEngine {
 		javascriptEngine.put("code", text);
 		javascriptEngine.put("esprimaPath", esprimaAbsolutePath.toString());
 
-//				Path scriptPath = Paths.get("src/esprima/esprima.js");
-//				javascriptEngine.eval(JsAstResources.ESPRIMA.read());
-//				javascriptEngine.eval(JsAstResources.ESPRIMA_WALK.read());
 		javascriptEngine.eval(JsAstResources.PARSE_JAVASCRIPT.read());
 		String stringAst = (String) javascriptEngine.get("string");
-		System.out.println("AST OBJECT: " + (Map<String, Object>) javascriptEngine.get("ast"));
 		JsonElement jsonTree = parser.parse(stringAst);
 		JsonObject program = jsonTree.getAsJsonObject();
 		program.addProperty("path", file.getAbsolutePath());
@@ -120,8 +114,6 @@ public class JackdawEngine {
 		JsonArray programs = new JsonArray();
 		String extension = getFileExtension(source);
 		if (extension.equals("js")) {
-//			ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
-
 			parseJs(parser, esprimaAbsolutePath, programs, source);
 		}
 		return programs;
