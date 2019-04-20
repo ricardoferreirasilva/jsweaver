@@ -2,6 +2,18 @@ import weaver.WeaverJps;
 import obfuscation.Flatted;
 import obfuscation.OpaquePredicates;
 import obfuscation.Obfuscator;
+
+
+
+aspectdef insertDocumentation
+
+	select function end
+	apply
+		var functionName = "var functionName = `" + $function.name + "`";
+		$function.insert("before", functionName);
+	end
+end
+
 aspectdef OpaquePred
 
 	select file end
