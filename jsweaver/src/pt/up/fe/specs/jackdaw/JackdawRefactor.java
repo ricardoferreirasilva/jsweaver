@@ -14,20 +14,22 @@ import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 public class JackdawRefactor {
 	public static void refactorJoinpoint(AJackdawWeaverJoinPoint jp,String newName) {
 		JsonObject node = jp.getNode();
-		JsonObject root = ParentMapper.getRoot(node);
+//		JsonObject root = ParentMapper.getRoot(node);
 		switch (jp.getJoinPointType()) {
 		case "declarator":
 			JsonObject identifier = node.get("id").getAsJsonObject();
 			String oldName = identifier.get("name").getAsString();
 			identifier.addProperty("name", newName);
-			JackdawUtilities.reformParents(root);
+//			JackdawUtilities.reformParents(root);
+			ParentMapper.setDirty();
 			propagateRefactoring(node,oldName,newName);
 			break;
 		case "functionDeclaration":
 			JsonObject functionIdentifier = node.get("id").getAsJsonObject();
 			String functionName = functionIdentifier.get("name").getAsString();
 			functionIdentifier.addProperty("name", newName);
-			JackdawUtilities.reformParents(root);
+//			JackdawUtilities.reformParents(root);
+			ParentMapper.setDirty();
 			propagateRefactoring(node,functionName,newName);
 			break;
 		default:
@@ -82,9 +84,10 @@ public class JackdawRefactor {
 				
 				if(name.equals(oldName)) {
 					node.addProperty("name", newName);
-					AJackdawWeaverJoinPoint rootJoinPoint = (AJackdawWeaverJoinPoint) JackdawWeaver.getJackdawWeaver().select();
-					JsonObject root = rootJoinPoint.getNode();
-					JackdawUtilities.reformParents(root);
+//					AJackdawWeaverJoinPoint rootJoinPoint = (AJackdawWeaverJoinPoint) JackdawWeaver.getJackdawWeaver().select();
+//					JsonObject root = rootJoinPoint.getNode();
+//					JackdawUtilities.reformParents(root);
+					ParentMapper.setDirty();
 				}
 			}
 		}

@@ -13,6 +13,7 @@ function obfuscateFile($file){
 	//Obfuscating all functions in the file.
 	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
 	for(var $f of functions){
+		var p =  $f.parent;
 		var obfuscatedFunction = obfuscate($f);
 	    $f.insert("replace",obfuscatedFunction);
 	}	

@@ -69,14 +69,15 @@ public class JsFunctionDeclaration extends AFunctionDeclaration {
 	}
 	@Override
 	public void refactorParamImpl(int index, String name) {
-		JsonObject root = ParentMapper.getRoot(node);
+//		JsonObject root = ParentMapper.getRoot(node);
 		JsonArray params = this.node.get("params").getAsJsonArray();
 		if(params.size() > index) {
 			JsonObject param = params.get(index).getAsJsonObject();
 			
 			String identifierName = param.get("name").getAsString();
 			node.addProperty("name", name);
-			JackdawUtilities.reformParents(root);
+//			JackdawUtilities.reformParents(root);
+			ParentMapper.setDirty();
 			JackdawRefactor.propagateNewName(node,identifierName,name);
 		}
 	}

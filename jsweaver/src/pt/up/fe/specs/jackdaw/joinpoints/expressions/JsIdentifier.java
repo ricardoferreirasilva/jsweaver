@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.JackdawUtilities;
 import pt.up.fe.specs.jackdaw.JackdawWeaver;
+import pt.up.fe.specs.jackdaw.ParentMapper;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIdentifier;
 
 public class JsIdentifier extends AIdentifier {
@@ -33,7 +34,8 @@ public class JsIdentifier extends AIdentifier {
 	public void defNameImpl(String name) {
 		String oldName = this.node.get("name").getAsString();
 		this.node.addProperty("name", name);
-		JackdawUtilities.reformParents(JackdawWeaver.getJackdawWeaver().select().getNode());
+//		JackdawUtilities.reformParents(JackdawWeaver.getJackdawWeaver().select().getNode());
+		ParentMapper.setDirty();
 		System.out.println(oldName + " -->" + name);
 	}
 

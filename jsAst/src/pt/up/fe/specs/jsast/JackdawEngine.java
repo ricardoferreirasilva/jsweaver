@@ -33,6 +33,8 @@ public class JackdawEngine {
 
 		try {
 			javascriptEngine.eval(JsAstResources.ESPRIMA.read());
+			javascriptEngine.eval(JsAstResources.ESCODEGEN.read());
+			
 		} catch (ScriptException e) {
 			throw new RuntimeException("Could not load Esprima parser", e);
 		}
@@ -121,10 +123,8 @@ public class JackdawEngine {
 
 	public static JsonArray parseInsertedCode(String text) throws ScriptException {
 		JsonParser parser = new JsonParser();
-		ScriptEngine javascriptEngine = new ScriptEngineManager().getEngineByName("nashorn");
+		ScriptEngine javascriptEngine = ESPRIMA_PARSER.get();
 		javascriptEngine.put("code", text);
-		javascriptEngine.eval(JsAstResources.ESPRIMA.read());
-		javascriptEngine.eval(JsAstResources.ESPRIMA_WALK.read());
 		javascriptEngine.eval(JsAstResources.PARSE_JAVASCRIPT.read());
 		String stringAst = (String) javascriptEngine.get("string");
 		JsonElement jsonTree = parser.parse(stringAst);
@@ -136,8 +136,7 @@ public class JackdawEngine {
 	public static void exportPrograms(JsonArray programs, File outputDir, String escodegenOptions)
 			throws ScriptException {
 		JsonParser parser = new JsonParser();
-		// System.out.println("Outputing files to " + outputDir.getPath());
-		ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
+		ScriptEngine javascriptEngine = ESPRIMA_PARSER.get();
 		for (JsonElement program : programs) {
 			JsonObject programObject = program.getAsJsonObject();
 			String programString = programObject.toString();
@@ -163,7 +162,8 @@ public class JackdawEngine {
 
 	public static String codeFromJSON(JsonObject node) throws ScriptException {
 		JsonParser parser = new JsonParser();
-		ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
+//		ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
+		ScriptEngine javascriptEngine = ESPRIMA_PARSER.get();
 		String programString = node.toString();
 		javascriptEngine.put("AST_STRING", programString);
 		javascriptEngine.put("OPTIONS", "{}");

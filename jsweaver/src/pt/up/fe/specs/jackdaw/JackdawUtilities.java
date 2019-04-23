@@ -9,7 +9,8 @@ import com.google.gson.JsonObject;
 
 public class JackdawUtilities {
 	public static void reformParents(JsonObject node) {
-		ParentMapper.parentMap = new HashMap();
+		ParentMapper.clear();
+//		ParentMapper.parentMap = new HashMap();
 		formParents(node);
 	}
 

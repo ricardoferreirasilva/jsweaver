@@ -1,6 +1,7 @@
 package pt.up.fe.specs.jackdaw;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -103,7 +104,8 @@ public class JackdawWeaver extends AJsWeaver {
 		root.add("programs", totalPrograms);
 		this.project = root;
 
-		JackdawUtilities.reformParents(this.project);
+//		JackdawUtilities.reformParents(this.project);
+		ParentMapper.setDirty();
 		return true;
 	}
 
@@ -134,6 +136,10 @@ public class JackdawWeaver extends AJsWeaver {
 		return JoinpointCreator.create(project);
 	}
 
+	public JsonObject getProject() {
+		return project;
+	}
+	
 	/**
 	 * Closes the weaver to the specified output directory location, if the weaver
 	 * generates new file(s)
@@ -154,6 +160,8 @@ public class JackdawWeaver extends AJsWeaver {
 		} catch (ScriptException e) {
 			throw new RuntimeException("Error while outputing Javascript.", e);
 		}
+		
+	
 		return true;
 	}
 

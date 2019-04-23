@@ -1,5 +1,6 @@
 package pt.up.fe.specs.jackdaw;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import org.lara.interpreter.joptions.gui.LaraLauncher;
@@ -12,9 +13,17 @@ public class JackdawLauncher {
 
 	public static void main(String[] args) {
 		SpecsSystem.programStandardInit();
-
+		System.out.println("PRESS ANY KEY");
+try {
+	System.in.read();
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 		boolean success = execute(args);
 
+
+		
 		// Only exit if GUI is not running
 		if (!LaraI.isRunningGui()) {
 			int exitValue = success ? 0 : 1;

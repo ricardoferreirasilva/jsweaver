@@ -7,14 +7,34 @@ import com.google.gson.JsonObject;
 
 public class ParentMapper {
 
-	public static Map<JsonObject, JsonObject> parentMap = new HashMap();
-
+	private static Map<JsonObject, JsonObject> PARENT_MAP = new HashMap<>();
+	private static boolean IS_DIRTY = true;
+	private static int SET_DERTY_COUNT = 0;
+	private static int GET_PARENT_COUNT = 0;
+	private static int RECONSTRUCTION_COUNT = 0;
+	public static void clear() {
+		PARENT_MAP = new HashMap<>();
+	}
+	
 	public static void putPair(JsonObject child, JsonObject parent) {
-		parentMap.put(child, parent);
+		PARENT_MAP.put(child, parent);
 	}
 
+	public static void setDirty() {
+		IS_DIRTY = true;
+		SET_DERTY_COUNT++;
+	}
+	
 	public static JsonObject getParent(JsonObject child) {
-		return parentMap.get(child);
+		GET_PARENT_COUNT++;
+		if(IS_DIRTY) {
+			RECONSTRUCTION_COUNT++;
+			ParentMapper.clear();
+			JackdawUtilities.formParents(JackdawWeaver.getJackdawWeaver().getProject());
+			IS_DIRTY = false;
+		}
+		
+		return PARENT_MAP.get(child);
 	}
 
 	public static JsonObject getRoot(JsonObject node) {
@@ -59,7 +79,7 @@ public class ParentMapper {
 		return null;
 	}
 	public static void printMap() {
-		for (JsonObject key : parentMap.keySet()) {
+		for (JsonObject key : PARENT_MAP.keySet()) {
 			// System.out.println(key);
 
 		}
