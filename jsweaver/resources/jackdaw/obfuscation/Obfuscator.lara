@@ -3,7 +3,7 @@ import weaver.WeaverJps;
 import obfuscation.Flatted;
 import obfuscation.OpaquePredicates;
 
-function applyObfuscation($file){
+function obfuscateFile($file){
 	
 	//Create predicates
 	var numberOfPredicates = getRandomInt(3, 6);
@@ -15,7 +15,36 @@ function applyObfuscation($file){
 	for(var $f of functions){
 		var obfuscatedFunction = obfuscate($f);
 	    $f.insert("replace",obfuscatedFunction);
-	}
+	}	
+}
+function obfuscateFileDebug($file){
+	var d = new Date();
+	var t = d.getTime();
+	applyObfuscationDebug($file);
+	d = new Date();
+	var n = d.getTime();
+	var difference = n - t;
+	println("[FINISHED] Obfuscation total time: " + difference + "ms");
+}
+
+function applyObfuscationDebug($file){
+	
+	//Create predicates
+	var numberOfPredicates = getRandomInt(3, 6);
+	addOpaquePredicates($file,numberOfPredicates);
 	
 	
+	//Obfuscating all functions in the file.
+	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
+	for(var $f of functions){
+		var d = new Date();
+		var t = d.getTime();
+		var name = $f.name;
+		var obfuscatedFunction = obfuscate($f);
+		var d = new Date();
+		var n = d.getTime();
+	    var difference = n - t;
+	    println("[EVENT] Obfuscated function -> " + name + " :" + difference + "ms");
+	    $f.insert("replace",obfuscatedFunction);
+	}	
 }

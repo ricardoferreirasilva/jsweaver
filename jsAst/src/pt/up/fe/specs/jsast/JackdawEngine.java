@@ -77,7 +77,6 @@ public class JackdawEngine {
 
 		JsonArray programs = new JsonArray();
 		for (File file : sourceFiles) {
-			System.out.println("FILE:" + file.getAbsolutePath());
 			String extension = getFileExtension(file);
 			if (extension.equals("js")) {
 
