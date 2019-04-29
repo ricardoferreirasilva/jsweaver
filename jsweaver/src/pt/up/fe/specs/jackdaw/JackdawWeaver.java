@@ -1,7 +1,6 @@
 package pt.up.fe.specs.jackdaw;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,10 +8,13 @@ import java.util.stream.Collectors;
 
 import javax.script.ScriptException;
 
+import org.lara.interpreter.joptions.config.interpreter.LaraiKeys;
 import org.lara.interpreter.weaver.interf.AGear;
 import org.lara.interpreter.weaver.options.WeaverOption;
 import org.lara.language.specification.LanguageSpecification;
 import org.suikasoft.jOptions.Interfaces.DataStore;
+import org.suikasoft.jOptions.storedefinition.StoreDefinition;
+import org.suikasoft.jOptions.storedefinition.StoreDefinitionBuilder;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -25,6 +27,7 @@ import pt.up.fe.specs.jackdaw.api.JackdawWeaverApi;
 import pt.up.fe.specs.jackdaw.api.LaraCoreApi;
 import pt.up.fe.specs.jsast.JackdawEngine;
 import pt.up.fe.specs.util.SpecsIo;
+import pt.up.fe.specs.util.lazy.Lazy;
 import pt.up.fe.specs.util.providers.ResourceProvider;
 
 /**
@@ -41,6 +44,26 @@ import pt.up.fe.specs.util.providers.ResourceProvider;
  */
 public class JackdawWeaver extends AJsWeaver {
 
+
+	public static LanguageSpecification getLanguageSpec() {
+		return LanguageSpecification.newInstance(() -> "jackdaw/specs/joinPointModel.xml",
+				() -> "jackdaw/specs/artifacts.xml", () -> "jackdaw/specs/actionModel.xml", true);
+	}
+	
+    /**
+     * All definitions, including default LaraI keys and Jackdaw-specific keys.
+     */
+    private static final Lazy<StoreDefinition> WEAVER_DEFINITION = Lazy.newInstance(() -> {
+        return new StoreDefinitionBuilder("Jackdaw Options")
+                .addDefinition(LaraiKeys.STORE_DEFINITION)
+                .addDefinition(JackdawKeys.STORE_DEFINITION)
+                .build();
+    });
+	
+    public static StoreDefinition getWeaverDefinition() {
+    	return WEAVER_DEFINITION.get();
+    }
+	
 	private JsonObject project;
 	private File outputDir;
 	private DataStore args;
@@ -194,9 +217,8 @@ public class JackdawWeaver extends AJsWeaver {
 
 	@Override
 	public LanguageSpecification getLanguageSpecification() {
-		return LanguageSpecification.newInstance(() -> "jackdaw/specs/joinPointModel.xml",
-				() -> "jackdaw/specs/artifacts.xml", () -> "jackdaw/specs/actionModel.xml", true);
-
+		return getLanguageSpec();
 	}
 
+	
 }

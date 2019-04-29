@@ -1,0 +1,30 @@
+import obfuscation.Obfuscator;
+import lara.util.ProcessExecutor;
+import jackdaw.Jackdaw;
+import lara.Io;
+aspectdef applyAndExecute
+
+	var outputFolder = Jackdaw.getData().getOutputFolder();
+	var files = [];
+
+	select file end
+	apply
+		obfuscateFileDebug($file);
+		println("Finished!");
+		var filepath = Io.getPath(outputFolder, $file.name);
+		files.push(filepath);
+		Io.writeFile(filepath, $file.code);
+	end
+
+	
+
+	//var basePath = Jackdaw.getData().getOutputFolder();
+	for(var file of files) {
+		//var obfuscatedFile = Io.getPath(basePath, file);
+		println("Obs file: " + file);
+
+		var executor = new ProcessExecutor();
+		var nodeOut = executor.execute(["node", file.getAbsolutePath()]);
+		//printlnObject(nodeOut);
+	}
+end

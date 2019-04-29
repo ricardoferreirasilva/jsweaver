@@ -5,7 +5,8 @@ import org.lara.interpreter.weaver.utils.LaraResourceProvider;
 public enum JackdawLaraApi implements LaraResourceProvider {
 
 	// jackdaw. package
-	JACKDAW("Jackdaw.lara"), JACKDAW_ASPECTS("_JackdawAspects.lara");
+	JACKDAW("Jackdaw.lara"), JACKDAW_ASPECTS("_JackdawAspects.lara"),
+	JACKDAW_DATA("JackdawDataStore.lara");
 
 	private final String resource;
 

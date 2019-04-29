@@ -17,10 +17,10 @@ function obfuscate($block){
 			//If function is an opaque predicate there is no need to refactor.
 			if(!isPredicate($block)){
 				$block.refactor(getUuid());
-				var numberParams = $block.field("params").length;
-				for(i=0;i<numberParams;i++){
-					$block.refactorParam(i,getUuid());
-				}
+				///var numberParams = $block.field("params").length;
+				//for(i=0;i<numberParams;i++){
+					//$block.refactorParam(i,getUuid());
+				//}
 			}
 		 	result += "function " + $block.id.code +"(";
 			for(var p of $block.params){

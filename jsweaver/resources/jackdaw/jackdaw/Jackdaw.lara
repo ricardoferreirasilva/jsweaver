@@ -1,4 +1,7 @@
 import jackdaw._JackdawAspects;
+import jackdaw.JackdawDataStore;
+import weaver.WeaverOptions;
+
 
 /**
  * @class
@@ -9,4 +12,9 @@ Jackdaw.getRoot = function() {
 	var rootOutput = call GetRoot();
 	
 	return rootOutput.rootJp;
+}
+
+
+Jackdaw.getData = function() {	
+	return new JackdawDataStore(WeaverOptions.getData());
 }

@@ -10,34 +10,33 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
+import pt.up.fe.specs.jackdaw.enums.RefactorPropagationOptions;
 
 public class JackdawRefactor {
 	public static void refactorJoinpoint(AJackdawWeaverJoinPoint jp,String newName) {
 		JsonObject node = jp.getNode();
-//		JsonObject root = ParentMapper.getRoot(node);
 		switch (jp.getJoinPointType()) {
 		case "declarator":
 			JsonObject identifier = node.get("id").getAsJsonObject();
 			String oldName = identifier.get("name").getAsString();
 			identifier.addProperty("name", newName);
-//			JackdawUtilities.reformParents(root);
 			ParentMapper.setDirty();
-			propagateRefactoring(node,oldName,newName);
+			propagateRefactoring(node,oldName,newName,RefactorPropagationOptions.BELLOW);
 			break;
 		case "functionDeclaration":
 			JsonObject functionIdentifier = node.get("id").getAsJsonObject();
 			String functionName = functionIdentifier.get("name").getAsString();
 			functionIdentifier.addProperty("name", newName);
-//			JackdawUtilities.reformParents(root);
+
 			ParentMapper.setDirty();
-			propagateRefactoring(node,functionName,newName);
+			propagateRefactoring(node,functionName,newName,RefactorPropagationOptions.ALL);
 			break;
 		default:
 			throw new RuntimeErrorException(null, "Cannot refactor this type of joinpoint.");
 		}
 		
 	}
-	private static void propagateRefactoring(JsonObject node,String oldName,String newName) {
+	private static void propagateRefactoring(JsonObject node,String oldName,String newName,RefactorPropagationOptions propagationOptions) {
 		   Boolean zoneFound = false;
 		   //When we also have to propate inside and not just bellow ex: function declaration.
 		    if(node.has("body")) {
@@ -48,13 +47,29 @@ public class JackdawRefactor {
 	         //Funny case.
 	        }
 		    
-			//Finding insertable parent to propagate bellow.
+			//Finding insertable parent to propagate according to settings.
 	        while (!zoneFound) {
 	           JsonObject anchor = node;
 	           node = ParentMapper.getParent(node);
 	           if (JackdawUtilities.nodeIsInsertable(node)) {
 	               zoneFound = true;
-	               propagateBellowAnchor(node,anchor, oldName,  newName);
+	               switch (propagationOptions) {
+					case ALL:
+						propagateAboveAnchor(node,anchor, oldName,  newName);
+						propagateBellowAnchor(node,anchor, oldName,  newName);
+						break;
+					case ABOVE:
+						break;
+					case INSIDE:
+						break;
+					case BELLOW:
+						propagateBellowAnchor(node,anchor, oldName,  newName);
+						break;
+					
+					default:
+						propagateBellowAnchor(node,anchor, oldName,  newName);
+						break;
+					}
 	               break;
 	           }
 	       }
@@ -70,6 +85,22 @@ public class JackdawRefactor {
 			 }
 			 if(elem.getAsJsonObject().equals(anchor)) {
 				 propagating = true;
+			 }
+		 }
+		
+		
+	}
+	private static void propagateAboveAnchor(JsonObject node,JsonObject anchor,String oldName,String newName)
+	{
+		 JsonArray elements = node.get("body").getAsJsonArray();
+		 Boolean propagating = true;
+		 for (JsonElement elem : elements) {
+			 if(propagating == true) {
+				 propagateNewName(elem.getAsJsonObject(),oldName,newName);
+
+			 }
+			 if(elem.getAsJsonObject().equals(anchor)) {
+				 propagating = false;
 			 }
 		 }
 		

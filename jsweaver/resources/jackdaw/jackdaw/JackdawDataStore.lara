@@ -1,0 +1,38 @@
+import weaver.util.WeaverDataStore;
+
+/**
+ * DataStore used in Jackdaw.
+ * @constructor
+ */
+function JackdawDataStore(data) {
+    // Parent constructor
+    WeaverDataStore.call(this, data, Java.type("pt.up.fe.specs.jackdaw.JackdawWeaver").getWeaverDefinition());
+	
+	// Add alias
+	//this.addAlias("Name of original option", "new name");
+	
+}
+// Inheritance
+JackdawDataStore.prototype = Object.create(WeaverDataStore.prototype);
+
+
+/*** PRIVATE OVERRIDABLE FUNCTIONS ***/
+
+
+/**
+ * Wraps a Java DataStore around a Lara DataStore.
+ */
+JackdawDataStore.prototype._dataStoreWrapper = function(javaDataStore) {
+	return new JackdawDataStore(javaDataStore, this.definition);
+}
+
+
+/*** NEW GETTER FUNCTIONS ***/
+
+/**
+ * 
+ */
+//JackdawDataStore.prototype.getFlags = function() {
+//	return this.get("Compiler Flags");
+//}
+
