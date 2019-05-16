@@ -41,9 +41,14 @@
  **/
 function runRichards() {
     var scheduler = new Scheduler();
+    var queue = new Packet(null, ID_WORKER, KIND_WORK);
+    var msg =
+            "Error during execution: queueCount = " + scheduler.queueCount +
+            ", holdCount = " + scheduler.holdCount + ".";
+
+
     scheduler.addIdleTask(ID_IDLE, 0, null, COUNT);
 
-    var queue = new Packet(null, ID_WORKER, KIND_WORK);
     queue = new Packet(queue, ID_WORKER, KIND_WORK);
     scheduler.addWorkerTask(ID_WORKER, 1000, queue);
 
@@ -65,9 +70,6 @@ function runRichards() {
 
     if (scheduler.queueCount != EXPECTED_QUEUE_COUNT ||
         scheduler.holdCount != EXPECTED_HOLD_COUNT) {
-        var msg =
-            "Error during execution: queueCount = " + scheduler.queueCount +
-            ", holdCount = " + scheduler.holdCount + ".";
         throw new Error(msg);
     }
 }
@@ -536,7 +538,7 @@ Packet.prototype.toString = function () {
 
 class Benchmark {
     runIteration() {
-        let iterations = 10;
+        let iterations = 100000;
         console.log("Running richards.js for " + iterations + " iterations.");
         for (let i = 0; i < iterations; ++i)
             runRichards();
