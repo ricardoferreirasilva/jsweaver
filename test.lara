@@ -11,40 +11,10 @@ aspectdef OpaquePred
 
 	select file end
 	apply
-		applyObfuscation($file);
+		applyObfuscationDebug($file);
 		println("Obfuscation done!");
 	
 		
-	end
-
-end
-aspectdef insertDocumentation
-
-	select function end
-	apply
-		var functionName = "var functionName = `" + $function.name + "`";
-		$function.insert("before", functionName);
-	end
-end
-aspectdef FunctionRename
-
-	select function end
-	apply
-		println($function.code);
-		var result = obfuscate($function);
-		var body = $function.field("body");
-		body.insert("replace",result);
-		println("Obfuscation finished!");
-	end
-
-end
-
-aspectdef FileTest
-
-	select file end
-	apply
-		var result = controlFlowFlattening($file);
-		$file.insert("replace",result);
 	end
 
 end

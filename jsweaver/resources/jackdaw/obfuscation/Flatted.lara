@@ -243,7 +243,13 @@ function transformIf($if,entry,exit){
 	result += "\tbreak\n";
 	
 	result += transformBlock($if.field("consequent"),thenEntry,exit);
-	if($if.field("alternate") != null){
+	println($if.field("alternate"));
+	if($if.field("alternate") == "null"){
+		result += "case " + elseEntry + ":\n";
+		result += "\t" + switchVariable + " = " + exit + "\n";
+		result += "\tbreak\n";
+	}
+	else{
 		result += transformBlock($if.field("alternate"),elseEntry,exit);
 	}
 	return result;

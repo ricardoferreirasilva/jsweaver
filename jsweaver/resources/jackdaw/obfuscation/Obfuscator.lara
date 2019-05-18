@@ -30,16 +30,12 @@ function obfuscateFileDebug($file){
 }
 
 function applyObfuscationDebug($file){
-	
 	//Create predicates
 	var numberOfPredicates = getRandomInt(3, 6);
 	addOpaquePredicates($file,numberOfPredicates);
-	
-	
 	//Obfuscating all functions in the file.
 	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
 	for(var $f of functions){
-	if($f.name == "DeviceTask"){
 		var d = new Date();
 		var t = d.getTime();
 		var name = $f.name;
@@ -49,6 +45,5 @@ function applyObfuscationDebug($file){
 	    var difference = n - t;
 	    println("[EVENT] Obfuscated function -> " + name + " :" + difference + "ms");
 	    $f.insert("replace",obfuscatedFunction);			
-	  }
 	}	
 }
