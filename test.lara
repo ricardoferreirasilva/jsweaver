@@ -15,9 +15,34 @@ aspectdef getObfuscableFunctions
 	select file end
 	
 	var outputFolder = Jackdaw.getData().getOutputFolder();
-	var configuration = {predicates:{min:3,max:6},functions:[{name:"runRichards", algorithms:["opaque","flat"]}]};
+	var configuration = {predicates:{min:3,max:6},functions:[{name:"", algorithms:["opaque","flat"]}]};
 	apply
-		applyCustomObfuscation($file,configuration);
+		var configFunctions = [];
+		var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
+		for(var $f of functions){
+			var d = new Date();
+			var t = d.getTime();
+			var name = $f.name;
+			var obfuscatedFunction = obfuscate($f);
+			var d = new Date();
+			var n = d.getTime();
+		     var difference = n - t;
+		     println("[EVENT] Obfuscated function -> " + name + " :" + difference + "ms");
+		     $f.insert("replace",obfuscatedFunction);
+
+		     var filepath = Io.getPath(outputFolder, $file.name);
+			Io.writeFile(filepath, $file.code);     
+			var executor = new ProcessExecutor();
+			executor.setTimeout(1).setTimeUnit("SECONDS");
+			var nodeOut = executor.execute(["node", filepath.getAbsolutePath()]);
+			println(executor.getReturnValue());
+			if(executor.getReturnValue() != 0){
+				println("Problem obfuscating file on function: " + $f.name);
+				break;
+			}else{
+				configFunctions.push({name:$f.name, algorithms:["opaque","flat"]});
+			}	
+		 }	
 	end
 
 end
