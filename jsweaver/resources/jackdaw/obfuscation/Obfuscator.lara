@@ -47,3 +47,8 @@ function applyObfuscationDebug($file){
 	    $f.insert("replace",obfuscatedFunction);			
 	}	
 }
+function applyCustomObfuscation($file,configuration){
+
+
+
+}
