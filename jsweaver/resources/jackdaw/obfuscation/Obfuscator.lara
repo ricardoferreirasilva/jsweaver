@@ -48,7 +48,22 @@ function applyObfuscationDebug($file){
 	}	
 }
 function applyCustomObfuscation($file,configuration){
-
-
+	// Adding opaque predicates.
+	var numberOfPredicates = getRandomInt(configuration.predicates.min, configuration.predicates.max);
+	addOpaquePredicates($file,numberOfPredicates);
+	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
+	for(var $f of functions){
+		if(functionInConfiguration($f,configuration)){
+			println("Obfuscating -> " + $f.name);
+			var obfuscatedFunction = obfuscate($f);
+			$f.insert("replace",obfuscatedFunction);		
+		}
+	}	
+}
+function functionInConfiguration($f,configuration){
+	for(var cf of configuration.functions){
+		if(cf.name == $f.name) return true;
+	}
+	return false;
 
 }
