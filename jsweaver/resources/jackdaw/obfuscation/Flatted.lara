@@ -181,7 +181,9 @@ function transformWhile($while,entry,exit){
  	var switchVariable = levels[levels.length - 1].variable;
  	var bodyEntry = "'" + getUuid() + "'";
 	result += "case " + entry + ":\n";
+	
 	result += "\tif("+ logicalExpressionModifier($while.test.code,true) + ")\n";
+
 	result += "\t"+switchVariable+ " = " + bodyEntry+"\n";
 	result += "\telse\n";
 	result += "\t"+switchVariable+ " = " + exit+"\n";

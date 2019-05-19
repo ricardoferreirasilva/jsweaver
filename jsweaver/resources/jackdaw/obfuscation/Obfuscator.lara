@@ -65,5 +65,4 @@ function functionInConfiguration($f,configuration){
 		if(cf.name == $f.name) return true;
 	}
 	return false;
-
 }

@@ -16,33 +16,56 @@ aspectdef getObfuscableFunctions
 	
 	var outputFolder = Jackdaw.getData().getOutputFolder();
 	var configuration = {predicates:{min:3,max:6},functions:[{name:"", algorithms:["opaque","flat"]}]};
+	var excludedFunctions = ["sc_number2jsstring","sc_list","sc_dualAppend"];
+	
 	apply
+		var numberOfPredicates = getRandomInt(3, 6);
+		addOpaquePredicates($file,numberOfPredicates);
 		var configFunctions = [];
 		var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
-		for(var $f of functions){
-			var d = new Date();
-			var t = d.getTime();
-			var name = $f.name;
-			var obfuscatedFunction = obfuscate($f);
-			var d = new Date();
-			var n = d.getTime();
-		     var difference = n - t;
-		     println("[EVENT] Obfuscated function -> " + name + " :" + difference + "ms");
-		     $f.insert("replace",obfuscatedFunction);
-
-		     var filepath = Io.getPath(outputFolder, $file.name);
-			Io.writeFile(filepath, $file.code);     
-			var executor = new ProcessExecutor();
-			executor.setTimeout(1).setTimeUnit("SECONDS");
-			var nodeOut = executor.execute(["node", filepath.getAbsolutePath()]);
-			println(executor.getReturnValue());
-			if(executor.getReturnValue() != 0){
-				println("Problem obfuscating file on function: " + $f.name);
-				break;
-			}else{
-				configFunctions.push({name:$f.name, algorithms:["opaque","flat"]});
-			}	
-		 }	
+		for(var i=0;i<functions.length;i++){
+			var $f = functions[i];
+			var nonObfuscatedName = $f.name;
+			if(!excludedFunction($f,excludedFunctions)){
+				var previousFileCode = $file.code;
+				var d = new Date();
+				var t = d.getTime();
+				var name = $f.name;
+				println("[EVENT] Obfuscating function -> " + name );
+				var obfuscatedFunction = obfuscate($f);
+				var d = new Date();
+				var n = d.getTime();
+			     var difference = n - t;
+			     println("[EVENT] Obfuscated function -> " + name + " :" + difference + "ms");
+			     $f.insert("replace",obfuscatedFunction);
+	
+			     var filepath = Io.getPath(outputFolder, $file.name);
+				Io.writeFile(filepath, $file.code);     
+				var executor = new ProcessExecutor();
+				executor.setTimeout(1).setTimeUnit("SECONDS");
+				var nodeOut = executor.execute(["node", filepath.getAbsolutePath()]);
+				if(executor.getReturnValue() != 0){
+					excludedFunctions.push(nonObfuscatedName);
+					println("Problem obfuscating file on function: " + nonObfuscatedName);
+					break;
+					//$f.insert("replace",previousObfuscationCode);
+				}
+				else{
+					configFunctions.push({name:$f.name, algorithms:["opaque","flat"]});
+				}
+			}
+			else{
+				println("[EVENT] Excluding function -> " + nonObfuscatedName);
+			}
+			println();
+		 }
+		 println("Excluded Functions: " + excludedFunctions);
+		 	
 	end
-
 end
+function excludedFunction($f,excludedFunctions){
+	for(var functionName of excludedFunctions){
+		if(functionName == $f.name) return true;
+	}
+	return false;
+}

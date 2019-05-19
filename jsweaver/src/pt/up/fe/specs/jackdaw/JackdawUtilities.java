@@ -37,16 +37,21 @@ public class JackdawUtilities {
 	}
 
 	public static boolean nodeIsInsertable(JsonObject node) {
-
-		if (node.has("type")) {
-			String type = node.get("type").getAsString();
-			if (type.equals("Program") || type.equals("BlockStatement")) {
-				return true;
-			} else
-				return false;
-		} else {
-			return false;
+		if(node == null) {
+			throw new RuntimeException("Checking if a null node is insertable.");
 		}
+		else {
+			if (node.has("type")) {
+				String type = node.get("type").getAsString();
+				if (type.equals("Program") || type.equals("BlockStatement")) {
+					return true;
+				} else
+					return false;
+			} else {
+				return false;
+			}
+		}	
+		
 	}
 
 }

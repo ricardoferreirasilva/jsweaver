@@ -9,7 +9,7 @@ public class ParentMapper {
 
 	private static Map<JsonObject, JsonObject> PARENT_MAP = new HashMap<>();
 	private static boolean IS_DIRTY = true;
-	private static int SET_DERTY_COUNT = 0;
+	private static int SET_DIRTY_COUNT = 0;
 	private static int GET_PARENT_COUNT = 0;
 	private static int RECONSTRUCTION_COUNT = 0;
 	public static void clear() {
@@ -22,19 +22,21 @@ public class ParentMapper {
 
 	public static void setDirty() {
 		IS_DIRTY = true;
-		SET_DERTY_COUNT++;
+		SET_DIRTY_COUNT++;
 	}
 	
 	public static JsonObject getParent(JsonObject child) {
 		GET_PARENT_COUNT++;
 		if(IS_DIRTY) {
-			RECONSTRUCTION_COUNT++;
 			ParentMapper.clear();
 			JackdawUtilities.formParents(JackdawWeaver.getJackdawWeaver().getProject());
 			IS_DIRTY = false;
 		}
-		
-		return PARENT_MAP.get(child);
+		JsonObject node = PARENT_MAP.get(child);
+		if(node != null) return node;
+		else {
+			throw new RuntimeException("Parent node is null.");
+		}
 	}
 
 	public static JsonObject getRoot(JsonObject node) {
