@@ -15,7 +15,6 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -142,7 +141,7 @@ public class JackdawEngine {
     }
 
     public static void exportPrograms(JsonArray programs, File outputDir) throws ScriptException {
-        JsonParser parser = new JsonParser();
+        // JsonParser parser = new JsonParser();
         // System.out.println("Outputing files to " + outputDir.getPath());
         ScriptEngine javascriptEngine = JackdawEngineUtilities.createJavascriptEngine();
         for (JsonElement program : programs) {
@@ -154,9 +153,9 @@ public class JackdawEngine {
 
             String path = programObject.get("path").getAsString();
             File file = new File(path);
-
+            File outputFile = new File(outputDir.getAbsolutePath(), file.getName());
             try {
-                PrintWriter writer = new PrintWriter(outputDir.getAbsolutePath() + "\\" + file.getName(), "UTF-8");
+                PrintWriter writer = new PrintWriter(outputFile, "UTF-8");
                 writer.print(generatedText);
                 writer.close();
             } catch (FileNotFoundException e) {
