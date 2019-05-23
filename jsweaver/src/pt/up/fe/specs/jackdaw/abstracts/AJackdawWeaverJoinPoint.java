@@ -76,16 +76,22 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 
 	@Override
 	public void insertImpl(String position, String code) {
-		System.out.println("Inserting");
+		List<JoinPoint> stmts = new ArrayList<>();
 		try {
 			JsonArray statements = JackdawEngine.parseInsertedCode(code);
 			JackdawInserter.insertStatements(this.getNode(), statements, position);
+			/*
+			for(JsonElement element : statements) {
+				stmts.add(JoinpointCreator.create(element.getAsJsonObject()));
+
+			}
+			*/
 
 		} catch (ScriptException error) {
 			throw new RuntimeException("Could not parse inserted code.", error);
 		}
+		//return (JoinPoint[]) stmts.toArray();
 		ParentMapper.setDirty();
-		System.out.println("Inserting Done");
 	}
 
 	@Override

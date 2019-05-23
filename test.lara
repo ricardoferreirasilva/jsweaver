@@ -10,29 +10,25 @@ import lara.Io;
 
 
 // Iteratively obfuscates the functions in a file.
-aspectdef getObfuscableFunctions
+aspectdef getObfuscableFunctionsAndExecute
 
 	select file end
 	
 	var outputFolder = Jackdaw.getData().getOutputFolder();
-	var configuration = {predicates:{min:3,max:6},functions:[{name:"", algorithms:["opaque","flat"]}]};
-	var excludedFunctions = ["sc_number2jsstring","sc_list","sc_dualAppend"];
+	var configuration = {predicates:{min:3,max:6},functions:[]};
+	var excludedFunctions = ["sc_number2jsstring","sc_list","sc_dualAppend","sc_append","sc_member","sc_assq","sc_assv","sc_assoc",
+	"sc_makeVector","sc_vector2list","sc_vectorFillBang","sc_dynamicWind","sc_EOF","sc_Port","sc_InputPort","sc_ErrorInputPort",
+	"matchesPeer","withInputFromPort","withInputFromPort","sc_withInputFromPort","sc_withOutputToPort"];
 	
 	apply
-		var configFunctions = [];
-		var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
-		for(var i=0;i<functions.length;i++){
-			var $f = functions[i];
-			println($f.code);
-			$f.insert("replace","var ahah=1");
-			println($f.code);
+		var configFunctions = discoverObfuscableFunctions($file,excludedFunctions);
+		for(var f of configFunctions){
+			println('{name:"'+f.name+'",algorithms:["opaque","flat"]},');
 		}
+		configuration.functions = configFunctions;
+		println("Obfuscating file ->");
+		applyCustomObfuscation($file,configuration);
+		
 		 	
 	end
 end
-function excludedFunction($f,excludedFunctions){
-	for(var functionName of excludedFunctions){
-		if(functionName == $f.name) return true;
-	}
-	return false;
-}
