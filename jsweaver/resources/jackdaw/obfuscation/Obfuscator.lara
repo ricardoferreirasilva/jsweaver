@@ -110,3 +110,11 @@ function discoverObfuscableFunctions($file,excludedFunctions){
 		 println("Excluded Functions: " + excludedFunctions);
 		 return configFunctions;
  }
+ function excludedFunction($f,excludedFunctions){
+ 	for(fun of excludedFunctions){
+ 		if($f.name == fun){
+ 			return true;
+		}
+ 	}
+ 	return false;
+ }
