@@ -3,6 +3,7 @@ package pt.up.fe.specs.jackdaw.abstracts.weaver;
 import org.lara.interpreter.weaver.interf.WeaverEngine;
 import java.util.Arrays;
 import java.util.List;
+import pt.up.fe.specs.jackdaw.enums.LoopKind;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +22,7 @@ public abstract class AJackdawWeaver extends WeaverEngine {
      */
     @Override
     public final List<String> getActions() {
-        String[] weaverActions= {};
+        String[] weaverActions= {"setName", "refactor", "refactor", "refactorParam"};
         return Arrays.asList(weaverActions);
     }
 
@@ -42,7 +43,7 @@ public abstract class AJackdawWeaver extends WeaverEngine {
      */
     @Override
     public final List<Class<?>> getAllImportableClasses() {
-        Class<?>[] defaultClasses = {};
+        Class<?>[] defaultClasses = {LoopKind.class};
         List<Class<?>> otherClasses = this.getImportableClasses();
         List<Class<?>> allClasses = new ArrayList<>(Arrays.asList(defaultClasses));
         allClasses.addAll(otherClasses);

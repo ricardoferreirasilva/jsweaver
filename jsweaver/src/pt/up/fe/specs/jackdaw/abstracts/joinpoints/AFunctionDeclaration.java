@@ -6,6 +6,7 @@ import org.lara.interpreter.exception.AttributeException;
 import javax.script.Bindings;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.SelectOp;
+import org.lara.interpreter.exception.ActionException;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
@@ -40,6 +41,29 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "id", e);
+        }
+    }
+
+    /**
+     * Name of this function.
+     */
+    public abstract String getNameImpl();
+
+    /**
+     * Name of this function.
+     */
+    public final Object getName() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "name", Optional.empty());
+        	}
+        	String result = this.getNameImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "name", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "name", e);
         }
     }
 
@@ -154,6 +178,60 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Refactor this function
+     * @param name 
+     */
+    public void refactorImpl(String name) {
+        throw new UnsupportedOperationException(get_class()+": Action refactor not implemented ");
+    }
+
+    /**
+     * Refactor this function
+     * @param name 
+     */
+    public final void refactor(String name) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.BEGIN, "refactor", this, Optional.empty(), name);
+        	}
+        	this.refactorImpl(name);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.END, "refactor", this, Optional.empty(), name);
+        	}
+        } catch(Exception e) {
+        	throw new ActionException(get_class(), "refactor", e);
+        }
+    }
+
+    /**
+     * Refactor this function
+     * @param index 
+     * @param name 
+     */
+    public void refactorParamImpl(int index, String name) {
+        throw new UnsupportedOperationException(get_class()+": Action refactorParam not implemented ");
+    }
+
+    /**
+     * Refactor this function
+     * @param index 
+     * @param name 
+     */
+    public final void refactorParam(int index, String name) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.BEGIN, "refactorParam", this, Optional.empty(), index, name);
+        	}
+        	this.refactorParamImpl(index, name);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.END, "refactorParam", this, Optional.empty(), index, name);
+        	}
+        } catch(Exception e) {
+        	throw new ActionException(get_class(), "refactorParam", e);
+        }
+    }
+
+    /**
      * 
      */
     @Override
@@ -187,6 +265,7 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     protected final void fillWithAttributes(List<String> attributes) {
         super.fillWithAttributes(attributes);
         attributes.add("id");
+        attributes.add("name");
         attributes.add("params");
         attributes.add("async");
         attributes.add("generator");
@@ -208,6 +287,8 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
+        actions.add("void refactor(string)");
+        actions.add("void refactorParam(int, string)");
     }
 
     /**
@@ -223,6 +304,7 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
      */
     protected enum FunctionDeclarationAttributes {
         ID("id"),
+        NAME("name"),
         PARAMS("params"),
         ASYNC("async"),
         GENERATOR("generator"),
@@ -230,8 +312,15 @@ public abstract class AFunctionDeclaration extends AJackdawWeaverJoinPoint {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
+        LINE("line"),
+        COLUMN("column"),
         TYPE("type"),
+        DESCENDANTS("descendants"),
+        UUID("uuid"),
+        FILE("file"),
         FIELD("field"),
+        CHILDREN("children"),
         ROOT("root");
         private String name;
 

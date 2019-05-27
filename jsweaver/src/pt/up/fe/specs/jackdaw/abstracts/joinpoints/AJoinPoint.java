@@ -6,6 +6,7 @@ import java.util.List;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
+import javax.script.Bindings;
 import pt.up.fe.specs.jackdaw.JackdawWeaver;
 import org.lara.interpreter.weaver.interf.SelectOp;
 
@@ -61,11 +62,18 @@ public abstract class AJoinPoint extends JoinPoint {
     protected void fillWithAttributes(List<String> attributes) {
         //Attributes available for all join points
         attributes.add("root");
+        attributes.add("file");
         attributes.add("parent");
         attributes.add("type");
         attributes.add("field(String fieldName)");
         attributes.add("joinPointName");
         attributes.add("ast");
+        attributes.add("children");
+        attributes.add("descendants");
+        attributes.add("line");
+        attributes.add("column");
+        attributes.add("uuid");
+        attributes.add("code");
     }
 
     /**
@@ -88,6 +96,29 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "root", e);
+        }
+    }
+
+    /**
+     * Returns the 'file' joinpoint
+     */
+    public abstract AJoinPoint getFileImpl();
+
+    /**
+     * Returns the 'file' joinpoint
+     */
+    public final Object getFile() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "file", Optional.empty());
+        	}
+        	AJoinPoint result = this.getFileImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "file", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "file", e);
         }
     }
 
@@ -207,6 +238,164 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "ast", e);
+        }
+    }
+
+    /**
+     * Get value on attribute children
+     * @return the attribute's value
+     */
+    public abstract AJoinPoint[] getChildrenArrayImpl();
+
+    /**
+     * Children (direct nodes) joinpoints of this joinpoint.
+     */
+    public Bindings getChildrenImpl() {
+        AJoinPoint[] aJoinPointArrayImpl0 = getChildrenArrayImpl();
+        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
+        return nativeArray0;
+    }
+
+    /**
+     * Children (direct nodes) joinpoints of this joinpoint.
+     */
+    public final Object getChildren() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "children", Optional.empty());
+        	}
+        	Bindings result = this.getChildrenImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "children", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "children", e);
+        }
+    }
+
+    /**
+     * Get value on attribute descendants
+     * @return the attribute's value
+     */
+    public abstract AJoinPoint[] getDescendantsArrayImpl();
+
+    /**
+     * Children joinpoints (indirect nodes) of this joinpoint.
+     */
+    public Bindings getDescendantsImpl() {
+        AJoinPoint[] aJoinPointArrayImpl0 = getDescendantsArrayImpl();
+        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
+        return nativeArray0;
+    }
+
+    /**
+     * Children joinpoints (indirect nodes) of this joinpoint.
+     */
+    public final Object getDescendants() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "descendants", Optional.empty());
+        	}
+        	Bindings result = this.getDescendantsImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "descendants", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "descendants", e);
+        }
+    }
+
+    /**
+     * Line of this joinpoint.
+     */
+    public abstract Integer getLineImpl();
+
+    /**
+     * Line of this joinpoint.
+     */
+    public final Object getLine() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "line", Optional.empty());
+        	}
+        	Integer result = this.getLineImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "line", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "line", e);
+        }
+    }
+
+    /**
+     * Column of this joinpoint.
+     */
+    public abstract Integer getColumnImpl();
+
+    /**
+     * Column of this joinpoint.
+     */
+    public final Object getColumn() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "column", Optional.empty());
+        	}
+        	Integer result = this.getColumnImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "column", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "column", e);
+        }
+    }
+
+    /**
+     * Uniquely identifies the AST node.
+     */
+    public abstract String getUuidImpl();
+
+    /**
+     * Uniquely identifies the AST node.
+     */
+    public final Object getUuid() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "uuid", Optional.empty());
+        	}
+        	String result = this.getUuidImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "uuid", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "uuid", e);
+        }
+    }
+
+    /**
+     * Equivalent javascript code of this joinpoint.
+     */
+    public abstract String getCodeImpl();
+
+    /**
+     * Equivalent javascript code of this joinpoint.
+     */
+    public final Object getCode() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "code", Optional.empty());
+        	}
+        	String result = this.getCodeImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "code", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "code", e);
         }
     }
 

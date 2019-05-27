@@ -10,13 +10,11 @@ import com.google.gson.JsonObject;
 import pt.up.fe.specs.jackdaw.JoinpointCreator;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.ACallExpression;
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
-import pt.up.fe.specs.jackdaw.joinpoints.JsExpression;
 
 public class JsCallExpression extends ACallExpression {
     private final JsonObject node;
 
     public JsCallExpression(JsonObject node) {
-        super(new JsExpression(node));
         this.node = node;
     }
 
@@ -40,6 +38,21 @@ public class JsCallExpression extends ACallExpression {
         }
         AJoinPoint[] joinpointArguments = arguments.toArray(new AJoinPoint[arguments.size()]);
         return (joinpointArguments);
+    }
+    @Override
+    public String getNameImpl() {
+    	JsonObject callee = this.node.get("callee").getAsJsonObject();
+    	return getNameFromCallNode(callee);
+    }
+    private String getNameFromCallNode(JsonObject node) {
+    	switch (node.get("type").getAsString()) {
+		case "Identifier":
+			return node.get("name").getAsString();
+		case "MemberExpression":
+			return (getNameFromCallNode(node.get("object").getAsJsonObject())+"."+getNameFromCallNode(node.get("property").getAsJsonObject()));
+		default:
+			return node.get("type").getAsString();
+		}
     }
 
 }

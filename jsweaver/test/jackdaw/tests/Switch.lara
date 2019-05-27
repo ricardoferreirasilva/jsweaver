@@ -1,0 +1,16 @@
+aspectdef FileTest
+
+	select file.switch.case end
+	apply
+		var test = $case.test;
+		if(test==null){
+			println("Case: default");
+		}
+		else{
+			if(test.instanceOf("identifier")){
+				println("Case: " + test.name);
+			}
+		}	
+	end
+
+end

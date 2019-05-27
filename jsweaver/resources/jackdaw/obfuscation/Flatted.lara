@@ -1,0 +1,397 @@
+import lara.Strings;
+import weaver.WeaverJps;
+
+
+
+var levels = [];
+var breaks = [];
+var continues = [];
+
+function obfuscate($block){
+	var result = "";
+	switch($block.type){
+		case "Program":
+			result = controlFlowFlattening($block);
+			break;
+		case "FunctionDeclaration":
+			//If function is an opaque predicate there is no need to refactor.
+			if(!isPredicate($block)){
+				$block.refactor(getUuid());
+				///var numberParams = $block.field("params").length;
+				//for(i=0;i<numberParams;i++){
+					//$block.refactorParam(i,getUuid());
+				//}
+			}
+		 	result += "function " + $block.id.code +"(";
+			for(var p of $block.params){
+				result+=p.code+",";
+			}
+			
+			result +="){\n";
+			result += controlFlowFlattening($block);
+			result += "}\n";
+			break;
+		default:
+			result = controlFlowFlattening($block);
+			break;
+	}
+	return result;
+
+}
+
+/**
+ * Function used in order to apply a Control Flow Flatenning algorithm to a block structure
+ * in order to obfuscate its code.
+ * @author Lara Weaver Generator
+ * @param {$jp} $block Block to flatten
+ * @return  Flattened code
+ */
+function controlFlowFlattening($block){
+	var result = "";
+	result += outputDeclarations($block);
+	result += flattenBlock($block);
+	return result;
+
+}
+
+function flattenBlock($block){
+	var result = "";
+	var while_label = getUuid();
+	var switch_variable = getUuid();
+	var entry = "'" + getUuid() + "'";
+	var exit = "'" + getUuid() + "'";
+
+	result += "var " + switch_variable + " = " + entry + "\n";
+	result += "while ( " + switch_variable + " != " + exit + "){\n";
+	
+	result += "\t" + "switch("+ switch_variable + "){\n";
+	levels.push({variable: switch_variable,label:while_label});
+	result += transformBlock($block,entry,exit);
+	levels.pop();
+	result+="\t}\n";
+	result+="}";
+
+	return result;
+}
+
+function transformBlock($block, entry, exit){
+	var result = "";
+	var blockParts = getBlockParts($block);
+	
+	var i = 0;
+	var partExit;
+	for(var part of blockParts){
+		partExit = "'" + getUuid() + "'";
+		if(i == blockParts.length - 1) {
+			partExit = exit;
+		}
+		else partExit = "'" + getUuid() + "'";
+		switch(part.type) {
+		  case "WhileStatement":
+		  	result += transformWhile(part,entry,partExit);
+		    break;
+	      case "DoWhileStatement":
+		  	result += transformDo(part,entry,partExit);
+		    break;
+	      case "TryStatement":
+		  	result += transformTry(part,entry,partExit);
+		    break;
+	      case "IfStatement":
+		  	result += transformIf(part,entry,partExit);
+		    break;
+	      case "ForStatement":
+		  	result += transformFor(part,entry,partExit);
+		    break;
+		  case "SwitchStatement":
+		  	result += transformSwitch(part,entry,partExit);
+		    break;
+	      case "Sequence":
+	      	result += transformSequence(part,entry,partExit);
+		    break;
+	      
+		  default:
+		    break;
+		}
+		
+		i++;
+		entry = partExit;
+	}
+	return result;
+}
+
+function transformSequence(sequence, entry, exit){
+	var result = "";
+	var specialControl = false;
+	var caughtReturn = false;
+	result += "case " + entry + ":\n";
+	for(var stm of sequence.array){
+		switch(stm.type){
+		    case "BreakStatement":
+		    	result += "\t" + levels[breaks[breaks.length - 1].level - 1].variable + " = " + breaks[breaks.length-1].entry +"\n";
+		    	specialControl = true;
+		    	break;
+	    	case "ReturnStatement":
+	    		result += "\t" + stm.code + "\n";
+	    		specialControl = true;
+	    		caughtReturn = true;
+		    	break;
+			default:
+				result += "\t" + stm.code + "\n";
+				break;
+		}
+	}
+	if(!specialControl) result += "\t" + levels[levels.length - 1].variable + " = " + exit + "\n";
+	if(!caughtReturn) result += "\tbreak;\n";
+	
+	return result;
+}
+function transformSwitch($switch,entry,exit){
+	var result = "";
+ 	var switchVariable = levels[levels.length - 1].variable;
+ 	var bodyEntry = "'" + getUuid() + "'";
+
+	var cases = $switch.field("cases");
+	result += "case " + entry + ":\n";
+	
+	result += "\tswitch("+$switch.discriminant.code + "){\n";
+	var caseEntries = [];
+	for(var c of cases){
+		if(c.test == null) result += "\tdefault:\n";
+		else result += "\tcase " + c.test.code + ":\n";
+		var caseEntry = "'" + getUuid() + "'";
+		caseEntries.push(caseEntry);
+		result += "\t"+switchVariable+ " = " + caseEntry +"\n";
+		result += "\tbreak\n";
+	}
+	result += "\t}\n";
+	result += "\tbreak\n";
+	var i = 0;
+	breaks.push({level:levels.length,entry:exit});
+	for(var c of cases){
+		var caseEntry = caseEntries[i];
+		result += transformBlock(c,caseEntry,exit);
+		i++;
+	}
+	breaks.pop();
+	return result;
+}
+
+function transformWhile($while,entry,exit){
+	var result = "";
+ 	var switchVariable = levels[levels.length - 1].variable;
+ 	var bodyEntry = "'" + getUuid() + "'";
+	result += "case " + entry + ":\n";
+	
+	result += "\tif("+ logicalExpressionModifier($while.test.code,true) + ")\n";
+
+	result += "\t"+switchVariable+ " = " + bodyEntry+"\n";
+	result += "\telse\n";
+	result += "\t"+switchVariable+ " = " + exit+"\n";
+	result += "\tbreak\n";
+
+
+	breaks.push({level:levels.length,entry:exit});
+	continues.push({level:levels.length,entry:exit});
+	var whileBody = $while.field("body").children;
+	result += transformBlock($while,bodyEntry,entry);
+	breaks.pop();
+	continues.pop();
+	return result;
+}
+
+function transformDo($do,entry,exit){
+	var result = "";
+ 	var switchVariable = levels[levels.length - 1].variable;
+ 	var bodyEntry = "'" + getUuid() + "'";
+ 	var testEntry = "'" + getUuid() + "'";
+
+	result += "case " + testEntry + ":\n";
+	result += "\tif("+$do.test.code + ")\n";
+	result += "\t"+switchVariable+ " = " + bodyEntry+"\n";
+	result += "\telse\n";
+	result += "\t"+switchVariable+ " = " + exit+"\n";
+	result += "\tbreak\n";
+
+	result += "case " + entry + ":\n";
+	result += "\t"+switchVariable+ " = " + bodyEntry+"\n";
+	result += "\tbreak\n";
+		
+		
+	breaks.push({level:levels.length,entry:exit});
+	continues.push({level:levels.length,entry:exit});
+	var doBody = $do.field("body");
+	result += transformBlock(doBody,bodyEntry,testEntry);
+	breaks.pop();
+	continues.pop();
+	return result;
+}
+
+
+function transformIf($if,entry,exit){
+	var result = "";
+	var switchVariable = levels[levels.length - 1].variable;
+	var thenEntry = "'" + getUuid() + "'";
+	var elseEntry;
+	if($if.field("alternate") == null){
+		elseEntry = exit;
+	}
+	else elseEntry = "'" + getUuid() + "'";
+	
+	result += "case " + entry + ":\n";
+	result += "\tif(" + $if.test.code + ")\n";
+	result += "\t" + switchVariable + " = " + thenEntry + "\n";
+	result += "\telse\n";
+	result += "\t" + switchVariable + " = " + elseEntry + "\n";
+	result += "\tbreak\n";
+	
+	result += transformBlock($if.field("consequent"),thenEntry,exit);
+	if($if.field("alternate") == "null"){
+		result += "case " + elseEntry + ":\n";
+		result += "\t" + switchVariable + " = " + exit + "\n";
+		result += "\tbreak\n";
+	}
+	else{
+		result += transformBlock($if.field("alternate"),elseEntry,exit);
+	}
+	return result;
+}
+
+function transformFor($for,entry,exit){
+
+	var result = "";
+	var switchVariable = levels[levels.length - 1].variable;
+	var testEntry = "'" + getUuid() + "'";
+	var incEntry = "'" + getUuid() + "'";
+	var bodyEntry = "'" + getUuid() + "'";
+		
+	result += "\tcase " + entry + ": \n";
+	result += "\t" + $for.init.code + "\n";
+	result += "\t" + switchVariable + " = " + testEntry + "\n";
+	result += "\tbreak\n";
+	
+	result += "\tcase " + testEntry + ": \n";
+	result += "\tif(" + $for.test.code + ")\n";
+	result += "\t" + switchVariable + " = " + bodyEntry + "\n";
+	result += "\telse\n";
+	result += "\t" + switchVariable + " = " + exit + "\n";
+	result += "\tbreak\n";
+	
+	result += "\tcase " + incEntry + ": \n";
+	result += "\t" + $for.update.code + "\n";
+	result += "\t" + switchVariable + " = " + testEntry + "\n";
+	result += "\tbreak\n";
+	
+	
+	breaks.push({level:levels.length,entry:exit});
+	continues.push({level:levels.length,entry:exit});
+	result += transformBlock($for.field("body"),bodyEntry,incEntry);
+	breaks.pop();
+	continues.pop();
+	
+	
+	return result;
+}
+
+function transformTry($try,entry,exit){
+	var result = "";
+	var switchVariable = levels[levels.length - 1].variable;
+
+	result += "\tcase " + entry + ": \n";
+	
+	result += "\ttry{\n";
+	result += flattenBlock($try.field("block"));
+	result += "\t}\n";
+	
+	
+	result += "\tcatch(" + $try.field("handler").field("param").code + "){\n";
+	result += flattenBlock($try.field("handler").field("body"));
+	result += "\t}\n";
+	
+	
+	//missing handler for finnally
+	if($try.field("finalizer") != null){
+		result += "\tfinally{\n";
+		result += flattenBlock($try.field("finalizer"));
+		result += "\t}\n";
+	
+	}
+	
+	result += "\t" + switchVariable + " = " + exit + "\n";
+	result += "\tbreak\n";
+	
+	
+	return result;
+}
+
+
+
+function getUuid(){
+	return  Strings.uuid();
+}
+
+function getBlockParts($block){
+	var blockStatements;
+	if($block.type == "Program") blockStatements = $block.field("body");
+	else if($block.type == "FunctionDeclaration") blockStatements = $block.field("body").field("body");
+	else if($block.type == "WhileStatement") blockStatements = $block.field("body").children;
+	else if($block.type == "BlockStatement") blockStatements = $block.field("body");
+	else if($block.type == "SwitchCase") blockStatements = $block.field("consequent");
+	
+	var sequence = {type:"Sequence",array:[]};
+	var blockParts = [];
+	
+	for(var stm of blockStatements){
+		switch(stm.type) {
+		  case "WhileStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+	      case "IfStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+	      case "ForStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+	      case "TryStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+	      case "DoWhileStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+		  case "SwitchStatement":
+		    blockParts.push(sequence);
+		    blockParts.push(stm);
+		    sequence = {type:"Sequence",array:[]};
+		    break;
+		  case "VariableDeclaration":
+		    break;
+		  default:
+		    sequence.array.push(stm);
+		}
+	}
+	//If switch ends with non compounds left to add.
+	if(sequence.array.length > 0) blockParts.push(sequence);
+	return blockParts;
+}
+
+function outputDeclarations($block){
+	var declarations = "";
+	for(var $dec of WeaverJps.searchFrom($block, 'declaration').get()) {
+		for(var a of $dec.children){
+			if(a.type == "VariableDeclarator"){
+				a.refactor(getUuid());
+			}
+		}
+		declarations = declarations + $dec.code+"\n";
+	}
+	return declarations;
+}

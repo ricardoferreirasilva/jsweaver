@@ -26,19 +26,51 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
-     * Default implementation of the method used by the lara interpreter to select ifStatements
-     * @return 
-     */
-    public List<? extends AIfStatement> selectIfStatement() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIfStatement.class, SelectOp.DESCENDANTS);
-    }
-
-    /**
      * Default implementation of the method used by the lara interpreter to select expressionStatements
      * @return 
      */
     public List<? extends AExpressionStatement> selectExpressionStatement() {
         return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpressionStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select whileStatements
+     * @return 
+     */
+    public List<? extends AWhileStatement> selectWhileStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AWhileStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select whiles
+     * @return 
+     */
+    public List<? extends AWhileStatement> selectWhile() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AWhileStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select doWhileStatements
+     * @return 
+     */
+    public List<? extends ADoWhileStatement> selectDoWhileStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ADoWhileStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select dos
+     * @return 
+     */
+    public List<? extends AWhileStatement> selectDo() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AWhileStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select ifStatements
+     * @return 
+     */
+    public List<? extends AIfStatement> selectIfStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIfStatement.class, SelectOp.DESCENDANTS);
     }
 
     /**
@@ -50,10 +82,74 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select loops
+     * @return 
+     */
+    public List<? extends ALoop> selectLoop() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ALoop.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select forStatements
+     * @return 
+     */
+    public List<? extends AForStatement> selectForStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AForStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select fors
+     * @return 
+     */
+    public List<? extends AForStatement> selectFor() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AForStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select tryStatements
+     * @return 
+     */
+    public List<? extends ATryStatement> selectTryStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ATryStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select trys
+     * @return 
+     */
+    public List<? extends ATryStatement> selectTry() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ATryStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select switchStatements
+     * @return 
+     */
+    public List<? extends ASwitchStatement> selectSwitchStatement() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ASwitchStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select switchs
+     * @return 
+     */
+    public List<? extends ASwitchStatement> selectSwitch() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ASwitchStatement.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * Default implementation of the method used by the lara interpreter to select functionDeclarations
      * @return 
      */
     public List<? extends AFunctionDeclaration> selectFunctionDeclaration() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFunctionDeclaration.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Default implementation of the method used by the lara interpreter to select functions
+     * @return 
+     */
+    public List<? extends AFunctionDeclaration> selectFunction() {
         return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFunctionDeclaration.class, SelectOp.DESCENDANTS);
     }
 
@@ -115,17 +211,53 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         	case "statement": 
         		joinPointList = selectStatement();
         		break;
-        	case "ifStatement": 
-        		joinPointList = selectIfStatement();
-        		break;
         	case "expressionStatement": 
         		joinPointList = selectExpressionStatement();
+        		break;
+        	case "whileStatement": 
+        		joinPointList = selectWhileStatement();
+        		break;
+        	case "while": 
+        		joinPointList = selectWhile();
+        		break;
+        	case "doWhileStatement": 
+        		joinPointList = selectDoWhileStatement();
+        		break;
+        	case "do": 
+        		joinPointList = selectDo();
+        		break;
+        	case "ifStatement": 
+        		joinPointList = selectIfStatement();
         		break;
         	case "if": 
         		joinPointList = selectIf();
         		break;
+        	case "loop": 
+        		joinPointList = selectLoop();
+        		break;
+        	case "forStatement": 
+        		joinPointList = selectForStatement();
+        		break;
+        	case "for": 
+        		joinPointList = selectFor();
+        		break;
+        	case "tryStatement": 
+        		joinPointList = selectTryStatement();
+        		break;
+        	case "try": 
+        		joinPointList = selectTry();
+        		break;
+        	case "switchStatement": 
+        		joinPointList = selectSwitchStatement();
+        		break;
+        	case "switch": 
+        		joinPointList = selectSwitch();
+        		break;
         	case "functionDeclaration": 
         		joinPointList = selectFunctionDeclaration();
+        		break;
+        	case "function": 
+        		joinPointList = selectFunction();
         		break;
         	case "classDeclaration": 
         		joinPointList = selectClassDeclaration();
@@ -177,10 +309,22 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
         selects.add("statement");
-        selects.add("ifStatement");
         selects.add("expressionStatement");
+        selects.add("whileStatement");
+        selects.add("while");
+        selects.add("doWhileStatement");
+        selects.add("do");
+        selects.add("ifStatement");
         selects.add("if");
+        selects.add("loop");
+        selects.add("forStatement");
+        selects.add("for");
+        selects.add("tryStatement");
+        selects.add("try");
+        selects.add("switchStatement");
+        selects.add("switch");
         selects.add("functionDeclaration");
+        selects.add("function");
         selects.add("classDeclaration");
         selects.add("class");
         selects.add("blockStatement");
@@ -212,8 +356,15 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
+        LINE("line"),
+        COLUMN("column"),
         TYPE("type"),
+        DESCENDANTS("descendants"),
+        UUID("uuid"),
+        FILE("file"),
         FIELD("field"),
+        CHILDREN("children"),
         ROOT("root");
         private String name;
 

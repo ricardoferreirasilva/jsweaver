@@ -8,34 +8,36 @@ public class JackdawInserter {
 
     public static void insertStatements(JsonObject node, JsonArray newElements, String position) {
         // First find insertable zone
+    	JsonObject parentNode = node;
         Boolean zoneFound = false;
-        if (nodeIsInsertable(node)) {
+        if (JackdawUtilities.nodeIsInsertable(node)) {
             zoneFound = true;
             insertIntoBody(node, newElements, position);
         } else {
             while (!zoneFound) {
-                JsonObject anchorNode = node;
-                node = ParentMapper.getParent(node);
-                if (nodeIsInsertable(node)) {
+                JsonObject anchorNode = parentNode;
+                parentNode = ParentMapper.getParent(node);
+                if (JackdawUtilities.nodeIsInsertable(parentNode)) {
                     zoneFound = true;
-                    insertIntoBody(node, anchorNode, newElements, position);
+                    insertIntoBody(parentNode, anchorNode, newElements, position);
                     break;
                 }
             }
         }
+        ParentMapper.setDirty();
     }
 
     public static void insertJoinPoint(JsonObject node, JsonObject newNode, String position) {
         // First find insertable zone
         Boolean zoneFound = false;
-        if (nodeIsInsertable(node)) {
+        if (JackdawUtilities.nodeIsInsertable(node)) {
             zoneFound = true;
             insertIntoBody(node, newNode, position);
         } else {
             while (!zoneFound) {
                 JsonObject anchorNode = node;
                 node = ParentMapper.getParent(node);
-                if (nodeIsInsertable(node)) {
+                if (JackdawUtilities.nodeIsInsertable(node)) {
                     zoneFound = true;
                     insertIntoBody(node, anchorNode, newNode, position);
                     break;
@@ -64,6 +66,7 @@ public class JackdawInserter {
             newElements.addAll(elems);
         }
         insertNode.add("body", newElements);
+        ParentMapper.setDirty();
     }
 
     // Insert into a body of statements with no anchor.
@@ -86,6 +89,7 @@ public class JackdawInserter {
             newElements.add(newNode);
         }
         insertNode.add("body", newElements);
+        ParentMapper.setDirty();
     }
 
     // Insert a list of statements into a body of statements with an anchor
@@ -107,8 +111,10 @@ public class JackdawInserter {
             } else {
                 newElements.add(elem);
             }
+            
         }
         insertNode.add("body", newElements);
+        ParentMapper.setDirty();
 
     }
 
@@ -134,15 +140,10 @@ public class JackdawInserter {
             }
         }
         insertNode.add("body", newElements);
+        ParentMapper.setDirty();
 
     }
 
-    private static boolean nodeIsInsertable(JsonObject node) {
-        String type = node.get("type").getAsString();
-        if (type.equals("Program") || type.equals("Program")) {
-            return true;
-        } else
-            return false;
-    }
+
 
 }

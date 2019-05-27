@@ -4,6 +4,7 @@ import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
 import javax.script.Bindings;
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
@@ -16,16 +17,31 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class ACallExpression extends AExpression {
-
-    protected AExpression aExpression;
+public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
 
     /**
-     * 
+     * Name of the callee or callee type.
      */
-    public ACallExpression(AExpression aExpression){
-        this.aExpression = aExpression;
+    public abstract String getNameImpl();
+
+    /**
+     * Name of the callee or callee type.
+     */
+    public final Object getName() {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "name", Optional.empty());
+        	}
+        	String result = this.getNameImpl();
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "name", Optional.ofNullable(result));
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "name", e);
+        }
     }
+
     /**
      * Identifier of this expression call.
      */
@@ -83,52 +99,14 @@ public abstract class ACallExpression extends AExpression {
     }
 
     /**
-     * Method used by the lara interpreter to select callExpressions
-     * @return 
-     */
-    @Override
-    public List<? extends ACallExpression> selectCallExpression() {
-        return this.aExpression.selectCallExpression();
-    }
-
-    /**
-     * 
-     * @param position 
-     * @param code 
-     */
-    @Override
-    public void insertImpl(String position, String code) {
-        this.aExpression.insertImpl(position, code);
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public String toString() {
-        return this.aExpression.toString();
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public Optional<? extends AExpression> getSuper() {
-        return Optional.of(this.aExpression);
-    }
-
-    /**
      * 
      */
     @Override
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "callExpression": 
-        		joinPointList = selectCallExpression();
-        		break;
         	default:
-        		joinPointList = this.aExpression.select(selectName);
+        		joinPointList = super.select(selectName);
         		break;
         }
         return joinPointList;
@@ -149,7 +127,8 @@ public abstract class ACallExpression extends AExpression {
      */
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
-        this.aExpression.fillWithAttributes(attributes);
+        super.fillWithAttributes(attributes);
+        attributes.add("name");
         attributes.add("callee");
         attributes.add("arguments");
     }
@@ -159,7 +138,7 @@ public abstract class ACallExpression extends AExpression {
      */
     @Override
     protected final void fillWithSelects(List<String> selects) {
-        this.aExpression.fillWithSelects(selects);
+        super.fillWithSelects(selects);
     }
 
     /**
@@ -167,7 +146,7 @@ public abstract class ACallExpression extends AExpression {
      */
     @Override
     protected final void fillWithActions(List<String> actions) {
-        this.aExpression.fillWithActions(actions);
+        super.fillWithActions(actions);
     }
 
     /**
@@ -178,30 +157,25 @@ public abstract class ACallExpression extends AExpression {
     public final String get_class() {
         return "callExpression";
     }
-
-    /**
-     * Defines if this joinpoint is an instanceof a given joinpoint class
-     * @return True if this join point is an instanceof the given class
-     */
-    @Override
-    public final boolean instanceOf(String joinpointClass) {
-        boolean isInstance = get_class().equals(joinpointClass);
-        if(isInstance) {
-        	return true;
-        }
-        return this.aExpression.instanceOf(joinpointClass);
-    }
     /**
      * 
      */
     protected enum CallExpressionAttributes {
+        NAME("name"),
         CALLEE("callee"),
         ARGUMENTS("arguments"),
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
+        LINE("line"),
+        COLUMN("column"),
         TYPE("type"),
+        DESCENDANTS("descendants"),
+        UUID("uuid"),
+        FILE("file"),
         FIELD("field"),
+        CHILDREN("children"),
         ROOT("root");
         private String name;
 

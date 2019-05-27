@@ -27,5 +27,7 @@
 	
 	<dependencies>
 		<dependency org="com.google.code.gson" name="gson" rev="2.8.5"/>
+		<!--<dependency org="org.graalvm.js" name="js" rev="1.0.0-rc15"/>-->
+
 	</dependencies>
 </ivy-module>

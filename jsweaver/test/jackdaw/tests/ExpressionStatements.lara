@@ -1,0 +1,10 @@
+aspectdef FileTest
+
+	select file.expressionStatement end
+	apply
+		var children = $expressionStatement.children;
+		for(var child of children){
+			println(child.type);
+		}
+	end
+end

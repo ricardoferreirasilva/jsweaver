@@ -1,0 +1,23 @@
+import weaver.WeaverJps;
+import jackdaw.Jackdaw;
+import obfuscation.Flatted;
+import obfuscation.OpaquePredicates;
+import obfuscation.Obfuscator;
+
+import lara.util.ProcessExecutor;
+import lara.Io;
+
+
+
+// Iteratively obfuscates the functions in a file.
+aspectdef getObfuscableFunctions
+
+	select file end
+	
+	var outputFolder = Jackdaw.getData().getOutputFolder();
+	var configuration = {predicates:{min:3,max:6},functions:[{name:"runRichards", algorithms:["opaque","flat"]}]};
+	apply
+		applyCustomObfuscation($file,configuration);
+	end
+
+end

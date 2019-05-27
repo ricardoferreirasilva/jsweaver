@@ -1,0 +1,12 @@
+aspectdef FileTest
+
+	select file.tryStatement.catchClause end
+	apply
+		var param = $catchClause.param;
+		println("Try-catch.");
+		if(param.instanceOf("identifier")){
+			println("Catch param: " + param.name);
+		}
+	end
+
+end

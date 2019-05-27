@@ -1,0 +1,34 @@
+import weaver.WeaverJps;
+import jackdaw.Jackdaw;
+import obfuscation.Flatted;
+import obfuscation.OpaquePredicates;
+import obfuscation.Obfuscator;
+
+import lara.util.ProcessExecutor;
+import lara.Io;
+
+
+
+// Iteratively obfuscates the functions in a file.
+aspectdef getObfuscableFunctionsAndExecute
+
+	select file end
+	
+	var outputFolder = Jackdaw.getData().getOutputFolder();
+	var configuration = {predicates:{min:3,max:6},functions:[]};
+	var excludedFunctions = ["sc_number2jsstring","sc_list","sc_dualAppend","sc_append","sc_member","sc_assq","sc_assv","sc_assoc",
+	"sc_makeVector","sc_vector2list","sc_vectorFillBang","sc_dynamicWind","sc_EOF","sc_Port","sc_InputPort","sc_ErrorInputPort",
+	"matchesPeer","withInputFromPort","withInputFromPort","sc_withInputFromPort","sc_withOutputToPort"];
+	
+	apply
+		var configFunctions = discoverObfuscableFunctions($file,excludedFunctions);
+		for(var f of configFunctions){
+			println('{name:"'+f.name+'",algorithms:["opaque","flat"]},');
+		}
+		configuration.functions = configFunctions;
+		println("Obfuscating file ->");
+		applyCustomObfuscation($file,configuration);
+		
+		 	
+	end
+end

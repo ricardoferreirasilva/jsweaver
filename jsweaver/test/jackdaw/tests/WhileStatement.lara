@@ -1,0 +1,12 @@
+import lara.Io;
+aspectdef FileTest
+
+	select file.while end
+	apply
+		var testExpression = $while.test;
+		if(testExpression.instanceOf("literal")){
+			println("While expression: " + testExpression.raw);
+		}
+	end
+
+end

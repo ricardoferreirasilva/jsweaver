@@ -42,6 +42,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -55,11 +91,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -87,6 +141,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -193,6 +256,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -206,11 +305,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -238,6 +355,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -344,6 +470,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -357,11 +519,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -389,6 +569,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -468,6 +657,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -481,11 +706,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -513,6 +756,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -569,8 +821,195 @@
       },
       {
          "type": "joinpoint",
+         "name": "breakStatement",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
          "name": "callExpression",
-         "extends": "expression"      ,
+         "extends": "joinpoint"      ,
          "children": [
                {
                   "type": "attribute",
@@ -588,6 +1027,15 @@
                            {
                               "type": "joinpoint",
                               "name": "callee"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Name of the callee or callee type.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "name"
                            }]
                },
                {
@@ -625,6 +1073,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -638,11 +1122,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -673,8 +1175,213 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "catchClause",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Parameter of this catch clause.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "param"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
-                  "clazz": "callExpression",
+                  "clazz": "blockStatement",
                   "alias": ""
                },
                {
@@ -754,6 +1461,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -767,11 +1510,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -799,6 +1560,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -901,6 +1671,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -914,11 +1720,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -949,9 +1773,205 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "classBody",
                   "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "continueStatement",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
                },
                {
                   "type": "action",
@@ -1039,6 +2059,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1052,11 +2108,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1084,6 +2158,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -1186,6 +2269,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1199,11 +2318,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1231,6 +2368,34 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "identifier",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "tooltip": "Refactor this declarator.",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "refactor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "name",
+                              "defaultValue": ""
                            }]
                },
                {
@@ -1272,9 +2437,45 @@
       },
       {
          "type": "joinpoint",
-         "name": "expression",
-         "extends": "joinpoint"      ,
+         "name": "doWhileStatement",
+         "extends": "loop"      ,
          "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Test expression of this do while statement.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "test"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "If the loop is innermost.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "isInnermost"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The kind of the loop",
+                  "children": [
+                           {
+                              "type": "LoopKind",
+                              "name": "kind"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Loop nest nevel.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "nestedLevel"
+                           }]
+               },
                {
                   "type": "attribute",
                   "children": [
@@ -1310,6 +2511,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1323,11 +2560,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1358,8 +2613,17 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
-                  "clazz": "callExpression",
+                  "clazz": "blockStatement",
                   "alias": ""
                },
                {
@@ -1448,6 +2712,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1461,11 +2761,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1496,6 +2814,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "assignmentExpression",
                   "alias": ""
@@ -1503,6 +2830,16 @@
                {
                   "type": "select",
                   "clazz": "callExpression",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "callExpression",
+                  "alias": "call"
+               },
+               {
+                  "type": "select",
+                  "clazz": "updateExpression",
                   "alias": ""
                },
                {
@@ -1549,6 +2886,15 @@
          "children": [
                {
                   "type": "attribute",
+                  "tooltip": "Name of the file.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "name"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Absolute path of the program file.",
                   "children": [
                            {
@@ -1591,6 +2937,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1604,11 +2986,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1639,8 +3039,263 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "scope",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "forStatement",
+         "extends": "loop"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Initialization expression of this for statement.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "init"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Test expression of this for statement.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "test"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Update expression of this for statement.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "update"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "If the loop is innermost.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "isInnermost"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The kind of the loop",
+                  "children": [
+                           {
+                              "type": "LoopKind",
+                              "name": "kind"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Loop nest nevel.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "nestedLevel"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "blockStatement",
                   "alias": ""
                },
                {
@@ -1723,6 +3378,15 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Name of this function.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "name"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Parameters of this function.",
                   "children": [
                            {
@@ -1765,6 +3429,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1778,11 +3478,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1813,9 +3531,51 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "blockStatement",
                   "alias": ""
+               },
+               {
+                  "type": "action",
+                  "tooltip": "Refactor this function",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "refactor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "name",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "tooltip": "Refactor this function",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "refactorParam"
+                           },
+                           {
+                              "type": "int",
+                              "name": "index",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "name",
+                              "defaultValue": ""
+                           }]
                },
                {
                   "type": "action",
@@ -1939,6 +3699,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -1952,11 +3748,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -1984,6 +3798,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -2077,6 +3900,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2090,11 +3949,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2122,6 +3999,29 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "tooltip": "Rename this identifier.",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "setName"
+                           },
+                           {
+                              "type": "String",
+                              "name": "name",
+                              "defaultValue": ""
                            }]
                },
                {
@@ -2210,6 +4110,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2223,11 +4159,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2255,6 +4209,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -2353,6 +4316,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2366,11 +4365,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2398,6 +4415,229 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "loop",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "If the loop is innermost.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "isInnermost"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The kind of the loop",
+                  "children": [
+                           {
+                              "type": "LoopKind",
+                              "name": "kind"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Loop nest nevel.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "nestedLevel"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -2504,6 +4744,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2517,11 +4793,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2549,6 +4843,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -2664,6 +4967,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2677,11 +5016,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2709,6 +5066,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -2794,6 +5160,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2807,11 +5209,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2839,6 +5259,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -2924,6 +5353,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -2937,11 +5402,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -2972,6 +5455,15 @@
                            }]
                },
                {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
                   "type": "select",
                   "clazz": "assignmentExpression",
                   "alias": ""
@@ -2998,13 +5490,33 @@
                },
                {
                   "type": "select",
+                  "clazz": "doWhileStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
                   "clazz": "expressionStatement",
                   "alias": ""
                },
                {
                   "type": "select",
+                  "clazz": "forStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "forStatement",
+                  "alias": "for"
+               },
+               {
+                  "type": "select",
                   "clazz": "functionDeclaration",
                   "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "functionDeclaration",
+                  "alias": "function"
                },
                {
                   "type": "select",
@@ -3018,6 +5530,11 @@
                },
                {
                   "type": "select",
+                  "clazz": "loop",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
                   "clazz": "methodDefinition",
                   "alias": ""
                },
@@ -3025,6 +5542,41 @@
                   "type": "select",
                   "clazz": "statement",
                   "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "switchStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "switchStatement",
+                  "alias": "switch"
+               },
+               {
+                  "type": "select",
+                  "clazz": "tryStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "tryStatement",
+                  "alias": "try"
+               },
+               {
+                  "type": "select",
+                  "clazz": "whileStatement",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "whileStatement",
+                  "alias": "while"
+               },
+               {
+                  "type": "select",
+                  "clazz": "whileStatement",
+                  "alias": "do"
                },
                {
                   "type": "action",
@@ -3103,6 +5655,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -3116,11 +5704,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -3148,6 +5754,15 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -3199,12 +5814,12 @@
       },
       {
          "type": "joinpoint",
-         "name": "whileStatement",
+         "name": "switchCase",
          "extends": "joinpoint"      ,
          "children": [
                {
                   "type": "attribute",
-                  "tooltip": "Test expression of this while statement.",
+                  "tooltip": "Test value of this switch case.",
                   "children": [
                            {
                               "type": "joinpoint",
@@ -3246,6 +5861,42 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "Returns the value of the given field",
                   "children": [
                            {
@@ -3259,11 +5910,29 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The name of the join point.",
                   "children": [
                            {
                               "type": "String",
                               "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
                            }]
                },
                {
@@ -3291,6 +5960,1052 @@
                            {
                               "type": "String",
                               "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "scope",
+                  "alias": ""
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "switchStatement",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Discriminant value of this switch statement.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "discriminant"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "switchCase",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "switchCase",
+                  "alias": "case"
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "thisExpression",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "tryStatement",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "select",
+                  "clazz": "catchClause",
+                  "alias": ""
+               },
+               {
+                  "type": "select",
+                  "clazz": "catchClause",
+                  "alias": "catch"
+               },
+               {
+                  "type": "select",
+                  "clazz": "scope",
+                  "alias": "block"
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "updateExpression",
+         "extends": "joinpoint"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Argument of this update expression.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "argument"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Operator of this update expression.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "operator"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "If the operator of this update expression is a prefix.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "prefix"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "insert"
+                           },
+                           {
+                              "type": "[before| after| replace]",
+                              "name": "position",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "String",
+                              "name": "code",
+                              "defaultValue": ""
+                           }]
+               },
+               {
+                  "type": "action",
+                  "children": [
+                           {
+                              "type": "void",
+                              "name": "def"
+                           },
+                           {
+                              "type": "String",
+                              "name": "attribute",
+                              "defaultValue": ""
+                           },
+                           {
+                              "type": "Object",
+                              "name": "value",
+                              "defaultValue": ""
+                           }]
+               }]
+      },
+      {
+         "type": "joinpoint",
+         "name": "whileStatement",
+         "extends": "loop"      ,
+         "children": [
+               {
+                  "type": "attribute",
+                  "tooltip": "Test expression of this while statement.",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "test"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "If the loop is innermost.",
+                  "children": [
+                           {
+                              "type": "boolean",
+                              "name": "isInnermost"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The kind of the loop",
+                  "children": [
+                           {
+                              "type": "LoopKind",
+                              "name": "kind"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Loop nest nevel.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "nestedLevel"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "attributes"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "selects"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "children": [
+                           {
+                              "type": "String[]",
+                              "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The ast corresponding to this join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "ast"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children (direct nodes) joinpoints of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "children"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Equivalent javascript code of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "code"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Column of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "column"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Children joinpoints (indirect nodes) of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "joinpoint[]",
+                              "name": "descendants"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the value of the given field",
+                  "children": [
+                           {
+                              "type": "Object",
+                              "name": "field"
+                           },
+                           {
+                              "type": "String",
+                              "name": "fieldName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'file' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "file"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The name of the join point.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "joinPointName"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Line of this joinpoint.",
+                  "children": [
+                           {
+                              "type": "int",
+                              "name": "line"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'parent' node of this joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "parent"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the 'project' joinpoint",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "root"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "The type of the join point",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "type"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Uniquely identifies the AST node.",
+                  "children": [
+                           {
+                              "type": "String",
+                              "name": "uuid"
                            }]
                },
                {
@@ -3333,6 +7048,24 @@
                               "name": "value",
                               "defaultValue": ""
                            }]
+               }]
+      },
+      {
+         "type": "enum",
+         "name": "LoopKind"
+         ,
+         "children": [
+               {
+                  "string": "null",
+                  "value": "DO"
+               },
+               {
+                  "string": "null",
+                  "value": "FOR"
+               },
+               {
+                  "string": "null",
+                  "value": "WHILE"
                }]
       }]
 }

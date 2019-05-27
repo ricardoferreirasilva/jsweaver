@@ -1,0 +1,19 @@
+aspectdef OpaquePred
+
+	select while end
+	apply
+		var pred = generateOpaquePredicate();
+		$while.file.children[0].insert("before",pred.function);
+		
+		var test = $while.test;
+		var newWhile = "while(" + "(" + $while.test.code + ")&&(" + pred.id+"()))\n";
+		var body = WeaverJps.searchFrom($while, 'blockStatement').get();
+		
+		for($c of body){
+			newWhile += ($c.code);
+		}
+		//println(newWhile);
+	     $while.insert("replace",newWhile);
+	end
+
+end

@@ -1,0 +1,66 @@
+import lara.Strings;
+import weaver.WeaverJps;
+
+
+
+var predicates=[];
+function logicalExpressionModifier(exp,addPredicate){
+	if(addPredicate){
+		var predicate = getRandomPredicate();
+		if(predicate.value == "true"){
+			return "(" + exp + ")&&(" + getPredicateCall(predicate) + ")";
+		}
+		else{
+			return "(" + exp + ")&&(!" + getPredicateCall(predicate) + ")";
+		}
+	}
+	else return exp;
+}
+function getPredicateCall(pred){
+	var text = pred.id + "(";
+	text += ")";
+	return text;
+
+}
+function getRandomPredicate(){
+	var index = getRandomInt(0,predicates.length - 1);
+	return predicates[index];
+}
+function addOpaquePredicates($file,number){
+	predicates = [];
+	for(i=0;i<number;i++){
+		var predicate = generateOpaquePredicate();
+		predicates.push(predicate);
+		$file.children[0].insert("before",predicate.function);
+	
+	}
+}
+function generateOpaquePredicate(method){
+	var text = "";
+	var functionName = Strings.uuid();
+	var randomBinary = Math.round(Math.random());
+	var value;
+	if(randomBinary == 1) value = "true";
+	else{
+		value = "false";
+	}
+	text += "function " + functionName + "(){\n";
+	switch(method){
+		default:
+			text += "return " + value + ";\n";
+			break;
+	}
+	text += "}\n";
+	return {id:functionName,function:text,value:value,arguments:[]};
+}
+function isPredicate($function){
+	for(var p of predicates){
+		if($function.field("id").name == p.id) return true;
+	}
+	return false;
+}
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}

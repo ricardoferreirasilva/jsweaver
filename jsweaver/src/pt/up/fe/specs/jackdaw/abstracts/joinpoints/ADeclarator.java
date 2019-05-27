@@ -3,8 +3,10 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
-import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import java.util.List;
+import org.lara.interpreter.weaver.interf.SelectOp;
+import org.lara.interpreter.exception.ActionException;
+import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -65,12 +67,49 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select identifiers
+     * @return 
+     */
+    public List<? extends AIdentifier> selectIdentifier() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AIdentifier.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
+     * Refactor this declarator.
+     * @param name 
+     */
+    public void refactorImpl(String name) {
+        throw new UnsupportedOperationException(get_class()+": Action refactor not implemented ");
+    }
+
+    /**
+     * Refactor this declarator.
+     * @param name 
+     */
+    public final void refactor(String name) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.BEGIN, "refactor", this, Optional.empty(), name);
+        	}
+        	this.refactorImpl(name);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAction(Stage.END, "refactor", this, Optional.empty(), name);
+        	}
+        } catch(Exception e) {
+        	throw new ActionException(get_class(), "refactor", e);
+        }
+    }
+
+    /**
      * 
      */
     @Override
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
+        	case "identifier": 
+        		joinPointList = selectIdentifier();
+        		break;
         	default:
         		joinPointList = super.select(selectName);
         		break;
@@ -104,6 +143,7 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
+        selects.add("identifier");
     }
 
     /**
@@ -112,6 +152,7 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
     @Override
     protected final void fillWithActions(List<String> actions) {
         super.fillWithActions(actions);
+        actions.add("void refactor(string)");
     }
 
     /**
@@ -131,8 +172,15 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
+        LINE("line"),
+        COLUMN("column"),
         TYPE("type"),
+        DESCENDANTS("descendants"),
+        UUID("uuid"),
+        FILE("file"),
         FIELD("field"),
+        CHILDREN("children"),
         ROOT("root");
         private String name;
 

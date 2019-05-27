@@ -1,0 +1,10 @@
+
+aspectdef TestAspect
+	select project.declarator end
+	apply
+		var id = $declarator.id;
+		println(id.ast);
+		id.def name = "newName";
+		println(id.ast);	
+	end
+end

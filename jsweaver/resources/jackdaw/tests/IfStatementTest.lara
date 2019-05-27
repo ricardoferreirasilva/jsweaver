@@ -1,9 +1,0 @@
-aspectdef Test
-	select file.ifStatement end
-	apply
-		if($ifStatement.test.instanceOf("literal")){
-			println("Test expression: " + $ifStatement.test.raw);
-		}
-		
-	end
-end
