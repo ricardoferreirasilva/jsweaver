@@ -8,6 +8,9 @@
 		<attribute name="root" type="joinpoint" tooltip="Returns the 'project' joinpoint" />
 		<attribute name="file" type="joinpoint" tooltip="Returns the 'file' joinpoint" />
 		<attribute name="parent" type="joinpoint" tooltip="Returns the 'parent' node of this joinpoint" />
+		<attribute name="ancestor" type="joinpoint" tooltip="Returns the first ancestor of the given type">
+			<parameter name="joinPointType" type="String" />
+		</attribute>
 		<attribute name="type" type="string" tooltip="The type of the join point" />
 
 		<attribute name="field" type="Object"

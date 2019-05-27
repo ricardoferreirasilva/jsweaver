@@ -33,6 +33,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -243,6 +256,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -461,6 +487,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -644,6 +683,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -846,6 +898,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -1064,6 +1129,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -1260,6 +1338,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -1448,6 +1539,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -1662,6 +1766,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -1850,6 +1967,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -2046,6 +2176,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -2256,6 +2399,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -2502,6 +2658,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -2699,6 +2868,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -2924,6 +3106,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -3174,6 +3369,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -3416,6 +3624,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -3690,6 +3911,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -3887,6 +4121,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -4101,6 +4348,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -4303,6 +4563,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -4521,6 +4794,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -4731,6 +5017,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -4958,6 +5257,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -5151,6 +5463,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -5340,6 +5665,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -5646,6 +5984,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -5852,6 +6203,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -6053,6 +6417,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -6250,6 +6627,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -6433,6 +6823,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {
@@ -6666,6 +7069,19 @@
                },
                {
                   "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
+                           }]
+               },
+               {
+                  "type": "attribute",
                   "tooltip": "The ast corresponding to this join point",
                   "children": [
                            {
@@ -6885,6 +7301,19 @@
                            {
                               "type": "String[]",
                               "name": "actions"
+                           }]
+               },
+               {
+                  "type": "attribute",
+                  "tooltip": "Returns the first ancestor of the given type",
+                  "children": [
+                           {
+                              "type": "joinpoint",
+                              "name": "ancestor"
+                           },
+                           {
+                              "type": "String",
+                              "name": "joinPointType"
                            }]
                },
                {

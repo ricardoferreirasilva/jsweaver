@@ -91,8 +91,8 @@ public abstract class ADoWhileStatement extends ALoop {
      * @param code 
      */
     @Override
-    public void insertImpl(String position, String code) {
-        this.aLoop.insertImpl(position, code);
+    public AJoinPoint[] insertImpl(String position, String code) {
+        return this.aLoop.insertImpl(position, code);
     }
 
     /**
@@ -198,6 +198,7 @@ public abstract class ADoWhileStatement extends ALoop {
         AST("ast"),
         CODE("code"),
         LINE("line"),
+        ANCESTOR("ancestor"),
         COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants"),

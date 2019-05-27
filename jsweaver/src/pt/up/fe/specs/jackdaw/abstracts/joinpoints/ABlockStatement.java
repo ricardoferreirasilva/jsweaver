@@ -56,8 +56,8 @@ public abstract class ABlockStatement extends AStatement {
      * @param code 
      */
     @Override
-    public void insertImpl(String position, String code) {
-        this.aStatement.insertImpl(position, code);
+    public AJoinPoint[] insertImpl(String position, String code) {
+        return this.aStatement.insertImpl(position, code);
     }
 
     /**
@@ -164,6 +164,7 @@ public abstract class ABlockStatement extends AStatement {
         AST("ast"),
         CODE("code"),
         LINE("line"),
+        ANCESTOR("ancestor"),
         COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants"),

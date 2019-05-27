@@ -2,6 +2,7 @@ package pt.up.fe.specs.jackdaw.abstracts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -73,33 +74,46 @@ public abstract class AJackdawWeaverJoinPoint extends AJoinPoint {
 		AJoinPoint parentJoinpoint = (AJoinPoint) JoinpointCreator.create(parentNode);
 		return parentJoinpoint;
 	}
+	
+	@Override
+	public AJoinPoint ancestorImpl(String joinPointType) {
+		AJoinPoint currentParent = getParentImpl();
+		while(currentParent != null) {
+			if(currentParent.instanceOf(joinPointType)) {
+				return currentParent;
+			}
+			
+			currentParent = currentParent.getParentImpl();
+		}
+		
+		return null;
+	}
 
 	@Override
-	public void insertImpl(String position, String code) {
-		List<JoinPoint> stmts = new ArrayList<>();
+	public AJoinPoint[] insertImpl(String position, String code) {
+		List<AJoinPoint> stmts = new ArrayList<>();
 		try {
 			JsonArray statements = JackdawEngine.parseInsertedCode(code);
-			JackdawInserter.insertStatements(this.getNode(), statements, position);
-			/*
+			JackdawInserter.insertStatements(this.getNode(), statements, position);	
 			for(JsonElement element : statements) {
 				stmts.add(JoinpointCreator.create(element.getAsJsonObject()));
-
 			}
-			*/
+			ParentMapper.setDirty();
+			return stmts.toArray(new AJoinPoint[0]);
+			
 
 		} catch (ScriptException error) {
 			throw new RuntimeException("Could not parse inserted code.", error);
 		}
 		//return (JoinPoint[]) stmts.toArray();
-		ParentMapper.setDirty();
 	}
 
 	@Override
-	public <T extends JoinPoint> void insertImpl(String position, T JoinPoint) {
+	public <T extends JoinPoint> AJoinPoint[] insertImpl(String position, T JoinPoint) {
 		JsonObject joinpoint = (JsonObject) JoinPoint.getNode();
 		JackdawInserter.insertJoinPoint(this.getNode(), joinpoint, position);
 		ParentMapper.setDirty();
-
+		return new AJoinPoint[] {(AJoinPoint) JoinPoint};
 	}
 
 	@Override

@@ -2,9 +2,12 @@ package pt.up.fe.specs.jackdaw.joinpoints;
 
 import java.io.File;
 
+import org.lara.interpreter.weaver.interf.JoinPoint;
+
 import com.google.gson.JsonObject;
 
 import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AFile;
+import pt.up.fe.specs.jackdaw.abstracts.joinpoints.AJoinPoint;
 
 public class JsFile extends AFile {
 
@@ -31,4 +34,6 @@ public class JsFile extends AFile {
 		File f = new File(path);
 		return f.getName();
 	}
+	
+
 }

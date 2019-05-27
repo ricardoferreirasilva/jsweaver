@@ -64,6 +64,7 @@ public abstract class AJoinPoint extends JoinPoint {
         attributes.add("root");
         attributes.add("file");
         attributes.add("parent");
+        attributes.add("ancestor(String joinPointType)");
         attributes.add("type");
         attributes.add("field(String fieldName)");
         attributes.add("joinPointName");
@@ -142,6 +143,33 @@ public abstract class AJoinPoint extends JoinPoint {
         	return result!=null?result:getUndefinedValue();
         } catch(Exception e) {
         	throw new AttributeException(get_class(), "parent", e);
+        }
+    }
+
+    /**
+     * 
+     * @param joinPointType
+     * @return 
+     */
+    public abstract AJoinPoint ancestorImpl(String joinPointType);
+
+    /**
+     * 
+     * @param joinPointType
+     * @return 
+     */
+    public final Object ancestor(String joinPointType) {
+        try {
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.BEGIN, this, "ancestor", Optional.empty(), joinPointType);
+        	}
+        	AJoinPoint result = this.ancestorImpl(joinPointType);
+        	if(hasListeners()) {
+        		eventTrigger().triggerAttribute(Stage.END, this, "ancestor", Optional.ofNullable(result), joinPointType);
+        	}
+        	return result!=null?result:getUndefinedValue();
+        } catch(Exception e) {
+        	throw new AttributeException(get_class(), "ancestor", e);
         }
     }
 

@@ -174,6 +174,7 @@ public abstract class ADeclarator extends AJackdawWeaverJoinPoint {
         AST("ast"),
         CODE("code"),
         LINE("line"),
+        ANCESTOR("ancestor"),
         COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants"),
