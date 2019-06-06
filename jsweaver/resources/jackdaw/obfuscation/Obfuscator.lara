@@ -171,11 +171,11 @@ function discoverObfuscableFunctions($file,excludedFunctions){
 			executor.setTimeout(1).setTimeUnit("SECONDS");
 			var nodeOut = executor.execute(["node", filepath.getAbsolutePath()]);
 			if(executor.getReturnValue() != 0){
+				println("[ERROR] Obfuscating function -> " + functionName );
 				excludedFunctions.push(name);
 				var fileArray = $file["insert"]("replace",previousCode);
 				$file = fileArray[0];
 				if(!$file.instanceOf('file')) {
-					println($file);
 					$file = $file.ancestor('file');
 				}
 				
@@ -188,7 +188,7 @@ function discoverObfuscableFunctions($file,excludedFunctions){
 				ofuscableFunctions.push({name:name, algorithms:["opaque","flat"]});
 			}
 			
-			Io.writeJson(Io.getPath(configFolder, filename + "_obfuscation_config.json"), ({ofuscableFunctions:ofuscableFunctions,excludedFunctions:excludedFunctions }));
+			Io.writeJson(Io.getPath(configFolder, filename + "_obfuscation_config.json"), ({predicates:{min:3,max:6},functions:ofuscableFunctions,excluded:excludedFunctions }));
 			
 		}
 		println("");
@@ -197,7 +197,7 @@ function discoverObfuscableFunctions($file,excludedFunctions){
 		println("Sucessfully obfuscated " + ofuscableFunctions.length + " functions.");
 		println("Excluded " + excludedFunctions.length + " functions.");
 		
-		var configuration = {predicates:{min:3,max:6},functions:ofuscableFunctions};
+		var configuration = {predicates:{min:3,max:6},functions:ofuscableFunctions,excluded:excludedFunctions};
 		return configuration;
 	
  }
