@@ -403,12 +403,29 @@ function FluidField(canvas) {
     this.setResolution(64, 64);
 }
 
+
+setupNavierStokes();
+
 class Benchmark {
+    constructor() {
+        this.iterations = 1;
+        this.benchmarkName = "navier-stokes.js";
+    }
     runIteration() {
         runNavierStokes();
     }
-}
+    runBenchmark() {
+        let iterations = this.iterations;
+        console.log("Running " + this.benchmarkName + " for " + iterations + " iterations.");
+        for (let i = 0; i < iterations; ++i)
+            this.runIteration();
 
-setupNavierStokes();
+        console.time(this.benchmarkName)
+        for (let i = 0; i < iterations; ++i)
+            this.runIteration();
+        console.timeEnd(this.benchmarkName)
+        console.log(this.benchmarkName + " finished running.");
+    }
+}
 let bench = new Benchmark();
-bench.runIteration();
+bench.runBenchmark();

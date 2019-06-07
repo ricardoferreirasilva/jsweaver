@@ -317,26 +317,30 @@ function playHands(players)
 
 
 
+
+
 class Benchmark {
+    constructor() {
+        this.iterations = 1;
+        this.benchmarkName = "poker.js";
+    }
     runIteration() {
-        let iterations = 10;
         let p1 = new Player("Player 1");
         let p2 = new Player("Player 2");
-        console.log("Running poker.js for " + iterations + " iterations.");
-        for (let i = 0; i < iterations; ++i){
-            let p1 = new Player("Player 1");
-            let p2 = new Player("Player 2");
-            playHands([p1,p2])
-        }
+        playHands([p1,p2])
+    }
+    runBenchmark() {
+        let iterations = this.iterations;
+        console.log("Running " + this.benchmarkName + " for " + iterations + " iterations.");
+        for (let i = 0; i < iterations; ++i)
+            this.runIteration();
 
-        console.time("poker")
-        for (let i = 0; i < iterations; ++i){
-            
-        }
-           
-        console.timeEnd("poker")
-        console.log("poker.js finished running")
+        console.time(this.benchmarkName)
+        for (let i = 0; i < iterations; ++i)
+            this.runIteration();
+        console.timeEnd(this.benchmarkName)
+        console.log(this.benchmarkName + " finished running.");
     }
 }
 let bench = new Benchmark();
-bench.runIteration();
+bench.runBenchmark();

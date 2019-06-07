@@ -535,18 +535,25 @@ Packet.prototype.toString = function () {
 
 
 class Benchmark {
+    constructor(){
+        this.iterations = 1;
+        this.benchmarkName = "richards.js";
+    }
     runIteration() {
-        let iterations = 10;
-        console.log("Running richards.js for " + iterations + " iterations.");
+        runRichards();
+    }
+    runBenchmark(){
+        let iterations = this.iterations;
+        console.log("Running " + this.benchmarkName + " for " + iterations + " iterations.");
         for (let i = 0; i < iterations; ++i)
-            runRichards();
+           this.runIteration();
 
-        console.time("richards")
+        console.time(this.benchmarkName)
         for (let i = 0; i < iterations; ++i)
-            runRichards();
-        console.timeEnd("richards")
-        console.log("richards.js finished running")
+            this.runIteration();
+        console.timeEnd(this.benchmarkName)
+        console.log(this.benchmarkName + " finished running.");
     }
 }
 let bench = new Benchmark();
-bench.runIteration();
+bench.runBenchmark();

@@ -900,18 +900,25 @@ function renderScene(){
 }
 
 class Benchmark {
-  runIteration() {
-      let iterations = 10;
-      console.log("Running raytrace.js for " + iterations + " iterations.");
-      for (let i = 0; i < iterations; ++i)
+    constructor() {
+        this.iterations = 1;
+        this.benchmarkName = "raytrace.js";
+    }
+    runIteration() {
         renderScene();
+    }
+    runBenchmark() {
+        let iterations = this.iterations;
+        console.log("Running " + this.benchmarkName + " for " + iterations + " iterations.");
+        for (let i = 0; i < iterations; ++i)
+            this.runIteration();
 
-      console.time("raytrace")
-      for (let i = 0; i < iterations; ++i)
-        renderScene();
-      console.timeEnd("raytrace")
-      console.log("raytrace.js finished running")
-  }
+        console.time(this.benchmarkName)
+        for (let i = 0; i < iterations; ++i)
+            this.runIteration();
+        console.timeEnd(this.benchmarkName)
+        console.log(this.benchmarkName + " finished running.");
+    }
 }
 let bench = new Benchmark();
-bench.runIteration();
+bench.runBenchmark();

@@ -138,11 +138,25 @@ function run() {
 
 
 class Benchmark {
-    runIteration() {
-        for (let i = 0; i < 8; ++i)
-            run();
+    constructor() {
+        this.iterations = 1;
+        this.benchmarkName = "base64.js";
     }
-}
-
-let bench = new Benchmark();
-bench.runIteration();
+    runIteration() {
+        run();
+    }
+    runBenchmark() {
+        let iterations = this.iterations;
+        console.log("Running " + this.benchmarkName + " for " + iterations + " iterations.");
+        for (let i = 0; i < iterations; ++i)
+            this.runIteration();
+  
+        console.time(this.benchmarkName)
+        for (let i = 0; i < iterations; ++i)
+            this.runIteration();
+        console.timeEnd(this.benchmarkName)
+        console.log(this.benchmarkName + " finished running.");
+    }
+  }
+  let bench = new Benchmark();
+  bench.runBenchmark();

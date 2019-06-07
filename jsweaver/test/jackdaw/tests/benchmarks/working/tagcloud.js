@@ -273,20 +273,26 @@ function run() {
 }
 
 
-
 class Benchmark {
+    constructor(){
+        this.iterations = 1;
+        this.benchmarkName = "tagcloud.js";
+    }
     runIteration() {
-        let iterations = 10;
-        console.log("Running tagcloud.js for " + iterations + " iterations.");
+        run();
+    }
+    runBenchmark(){
+        let iterations = this.iterations;
+        console.log("Running " + this.benchmarkName + " for " + iterations + " iterations.");
         for (let i = 0; i < iterations; ++i)
-            run();
+           this.runIteration();
 
-        console.time("tagcloud")
+        console.time(this.benchmarkName)
         for (let i = 0; i < iterations; ++i)
-            run();
-        console.timeEnd("tagcloud")
-        console.log("tagcloud.js finished running")
+            this.runIteration();
+        console.timeEnd(this.benchmarkName)
+        console.log(this.benchmarkName + " finished running.");
     }
 }
 let bench = new Benchmark();
-bench.runIteration();
+bench.runBenchmark();

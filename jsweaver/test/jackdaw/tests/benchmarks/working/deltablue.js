@@ -879,10 +879,25 @@ function deltaBlue() {
 }
 
 class Benchmark {
-    runIteration() {
-        for (let i = 0; i < 20; ++i)
-            deltaBlue();
-    }
+  constructor() {
+      this.iterations = 1;
+      this.benchmarkName = "delta-blue.js";
+  }
+  runIteration() {
+      deltaBlue();
+  }
+  runBenchmark() {
+      let iterations = this.iterations;
+      console.log("Running " + this.benchmarkName + " for " + iterations + " iterations.");
+      for (let i = 0; i < iterations; ++i)
+          this.runIteration();
+
+      console.time(this.benchmarkName)
+      for (let i = 0; i < iterations; ++i)
+          this.runIteration();
+      console.timeEnd(this.benchmarkName)
+      console.log(this.benchmarkName + " finished running.");
+  }
 }
 let bench = new Benchmark();
-bench.runIteration();
+bench.runBenchmark();

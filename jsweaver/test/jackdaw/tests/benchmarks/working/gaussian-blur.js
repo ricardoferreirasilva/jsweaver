@@ -222,6 +222,8 @@ function blurRGBA(src, width, height, radius) {
 
 class Benchmark {
     constructor() {
+        this.iterations = 1;
+        this.benchmarkName = "gaussian-blur.js";
         this.width = 800;
         this.height = 450;
         this.radius = 15;
@@ -250,6 +252,18 @@ class Benchmark {
     runIteration() {
          blurRGBA(this.buffer, this.width, this.height, this.radius);
     }
+    runBenchmark() {
+      let iterations = this.iterations;
+      console.log("Running " + this.benchmarkName + " for " + iterations + " iterations.");
+      for (let i = 0; i < iterations; ++i)
+          this.runIteration();
+
+      console.time(this.benchmarkName)
+      for (let i = 0; i < iterations; ++i)
+          this.runIteration();
+      console.timeEnd(this.benchmarkName)
+      console.log(this.benchmarkName + " finished running.");
+  }
 }
 let bench = new Benchmark();
-bench.runIteration();
+bench.runBenchmark();
