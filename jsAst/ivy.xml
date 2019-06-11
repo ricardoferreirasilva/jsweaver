@@ -26,6 +26,7 @@
 	</info>
 	
 	<dependencies>
+		<dependency org="pt.up.fe.specs" name="lara-framework" rev="201906101921"/>
 		<dependency org="com.google.code.gson" name="gson" rev="2.8.5"/>
 		<!--<dependency org="org.graalvm.js" name="js" rev="1.0.0-rc15"/>-->
 
