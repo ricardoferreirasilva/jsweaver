@@ -26,6 +26,11 @@
 	</info>
 	
 	<dependencies>
-		<dependency org="pt.up.fe.specs" name="lara-framework" rev="201906101921"/>
+		<!-- Needed for lara framework version 201909101509 and before -->
+		<dependency org="com.sun.xml.bind" name="jaxb-core" rev="2.3.0.1"/>
+		<!--<dependency org="com.sun.xml.bind" name="jaxb-impl" rev="2.2.11"/>  -->
+
+		<!-- <dependency org="pt.up.fe.specs" name="lara-framework" rev="201906101921"/> -->
+		<dependency org="pt.up.fe.specs" name="lara-framework" rev="201909101509"/>
 	</dependencies>
 </ivy-module>

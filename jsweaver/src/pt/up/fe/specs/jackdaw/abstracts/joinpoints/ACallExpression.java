@@ -3,7 +3,6 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
-import javax.script.Bindings;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
@@ -74,9 +73,9 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
     /**
      * Arguments of this expression call.
      */
-    public Bindings getArgumentsImpl() {
+    public Object getArgumentsImpl() {
         AJoinPoint[] aJoinPointArrayImpl0 = getArgumentsArrayImpl();
-        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
+        Object nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
         return nativeArray0;
     }
 
@@ -88,7 +87,7 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
         	if(hasListeners()) {
         		eventTrigger().triggerAttribute(Stage.BEGIN, this, "arguments", Optional.empty());
         	}
-        	Bindings result = this.getArgumentsImpl();
+        	Object result = this.getArgumentsImpl();
         	if(hasListeners()) {
         		eventTrigger().triggerAttribute(Stage.END, this, "arguments", Optional.ofNullable(result));
         	}

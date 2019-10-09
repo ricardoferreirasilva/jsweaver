@@ -6,7 +6,6 @@ import java.util.List;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
-import javax.script.Bindings;
 import pt.up.fe.specs.jackdaw.JackdawWeaver;
 import org.lara.interpreter.weaver.interf.SelectOp;
 
@@ -278,9 +277,9 @@ public abstract class AJoinPoint extends JoinPoint {
     /**
      * Children (direct nodes) joinpoints of this joinpoint.
      */
-    public Bindings getChildrenImpl() {
+    public Object getChildrenImpl() {
         AJoinPoint[] aJoinPointArrayImpl0 = getChildrenArrayImpl();
-        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
+        Object nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
         return nativeArray0;
     }
 
@@ -292,7 +291,7 @@ public abstract class AJoinPoint extends JoinPoint {
         	if(hasListeners()) {
         		eventTrigger().triggerAttribute(Stage.BEGIN, this, "children", Optional.empty());
         	}
-        	Bindings result = this.getChildrenImpl();
+        	Object result = this.getChildrenImpl();
         	if(hasListeners()) {
         		eventTrigger().triggerAttribute(Stage.END, this, "children", Optional.ofNullable(result));
         	}
@@ -311,9 +310,9 @@ public abstract class AJoinPoint extends JoinPoint {
     /**
      * Children joinpoints (indirect nodes) of this joinpoint.
      */
-    public Bindings getDescendantsImpl() {
+    public Object getDescendantsImpl() {
         AJoinPoint[] aJoinPointArrayImpl0 = getDescendantsArrayImpl();
-        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
+        Object nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
         return nativeArray0;
     }
 
@@ -325,7 +324,7 @@ public abstract class AJoinPoint extends JoinPoint {
         	if(hasListeners()) {
         		eventTrigger().triggerAttribute(Stage.BEGIN, this, "descendants", Optional.empty());
         	}
-        	Bindings result = this.getDescendantsImpl();
+        	Object result = this.getDescendantsImpl();
         	if(hasListeners()) {
         		eventTrigger().triggerAttribute(Stage.END, this, "descendants", Optional.ofNullable(result));
         	}
