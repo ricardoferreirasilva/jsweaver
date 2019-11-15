@@ -11,6 +11,7 @@ public class JsMemberExpression extends AMemberExpression {
     private final JsonObject node;
 
     public JsMemberExpression(JsonObject node) {
+        super(new JsExpression(node));
         this.node = node;
     }
 

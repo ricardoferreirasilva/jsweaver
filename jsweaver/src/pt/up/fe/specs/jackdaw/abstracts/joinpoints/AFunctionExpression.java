@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.SelectOp;
-import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -17,8 +16,16 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class AFunctionExpression extends AJackdawWeaverJoinPoint {
+public abstract class AFunctionExpression extends AExpression {
 
+    protected AExpression aExpression;
+
+    /**
+     * 
+     */
+    public AFunctionExpression(AExpression aExpression){
+        this.aExpression = aExpression;
+    }
     /**
      * Identifier of this function.
      */
@@ -154,6 +161,32 @@ public abstract class AFunctionExpression extends AJackdawWeaverJoinPoint {
 
     /**
      * 
+     * @param position 
+     * @param code 
+     */
+    @Override
+    public AJoinPoint[] insertImpl(String position, String code) {
+        return this.aExpression.insertImpl(position, code);
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public String toString() {
+        return this.aExpression.toString();
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public Optional<? extends AExpression> getSuper() {
+        return Optional.of(this.aExpression);
+    }
+
+    /**
+     * 
      */
     @Override
     public final List<? extends JoinPoint> select(String selectName) {
@@ -163,7 +196,7 @@ public abstract class AFunctionExpression extends AJackdawWeaverJoinPoint {
         		joinPointList = selectBlockStatement();
         		break;
         	default:
-        		joinPointList = super.select(selectName);
+        		joinPointList = this.aExpression.select(selectName);
         		break;
         }
         return joinPointList;
@@ -184,7 +217,7 @@ public abstract class AFunctionExpression extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
-        super.fillWithAttributes(attributes);
+        this.aExpression.fillWithAttributes(attributes);
         attributes.add("id");
         attributes.add("params");
         attributes.add("async");
@@ -197,7 +230,7 @@ public abstract class AFunctionExpression extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithSelects(List<String> selects) {
-        super.fillWithSelects(selects);
+        this.aExpression.fillWithSelects(selects);
         selects.add("blockStatement");
     }
 
@@ -206,7 +239,7 @@ public abstract class AFunctionExpression extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithActions(List<String> actions) {
-        super.fillWithActions(actions);
+        this.aExpression.fillWithActions(actions);
     }
 
     /**
@@ -216,6 +249,19 @@ public abstract class AFunctionExpression extends AJackdawWeaverJoinPoint {
     @Override
     public final String get_class() {
         return "functionExpression";
+    }
+
+    /**
+     * Defines if this joinpoint is an instanceof a given joinpoint class
+     * @return True if this join point is an instanceof the given class
+     */
+    @Override
+    public final boolean instanceOf(String joinpointClass) {
+        boolean isInstance = get_class().equals(joinpointClass);
+        if(isInstance) {
+        	return true;
+        }
+        return this.aExpression.instanceOf(joinpointClass);
     }
     /**
      * 

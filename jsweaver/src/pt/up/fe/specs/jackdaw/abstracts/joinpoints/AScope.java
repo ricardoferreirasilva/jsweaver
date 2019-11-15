@@ -194,6 +194,14 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
     }
 
     /**
+     * Default implementation of the method used by the lara interpreter to select expressions
+     * @return 
+     */
+    public List<? extends AExpression> selectExpression() {
+        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.AExpression.class, SelectOp.DESCENDANTS);
+    }
+
+    /**
      * Default implementation of the method used by the lara interpreter to select assignmentExpressions
      * @return 
      */
@@ -274,6 +282,9 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         	case "methodDefinition": 
         		joinPointList = selectMethodDefinition();
         		break;
+        	case "expression": 
+        		joinPointList = selectExpression();
+        		break;
         	case "assignmentExpression": 
         		joinPointList = selectAssignmentExpression();
         		break;
@@ -330,6 +341,7 @@ public abstract class AScope extends AJackdawWeaverJoinPoint {
         selects.add("blockStatement");
         selects.add("declaration");
         selects.add("methodDefinition");
+        selects.add("expression");
         selects.add("assignmentExpression");
     }
 

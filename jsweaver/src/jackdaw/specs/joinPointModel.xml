@@ -50,10 +50,15 @@
 		<select class="declaration"/>
 		<select class="methodDefinition"/>
 		<!-- Expressions -->
+		<select class="expression"/>
 		<select class="assignmentExpression"/>
+				
 	</joinpoint>
 
 	 
+	<joinpoint class="expression"> 
+	</joinpoint>	
+		 
 	<joinpoint class="statement">
 		<select class="blockStatement"/>
 		<select class="classBody"/>
@@ -148,26 +153,26 @@
 	<joinpoint class="literal">
 	</joinpoint>
 	
-	<joinpoint class="callExpression">
+	<joinpoint class="callExpression" extends="expression">
 	</joinpoint>
 	
-	<joinpoint class="memberExpression">
+	<joinpoint class="memberExpression" extends="expression">
 	</joinpoint>
 	
-	<joinpoint class="thisExpression">
+	<joinpoint class="thisExpression" extends="expression">
 	</joinpoint>
 	
-	<joinpoint class="updateExpression">
+	<joinpoint class="updateExpression" extends="expression">
 	</joinpoint>
 	
-	<joinpoint class="functionExpression">
+	<joinpoint class="functionExpression" extends="expression">
 		<select class="blockStatement"/>
 	</joinpoint>
 	
-	<joinpoint class="binaryExpression">
+	<joinpoint class="binaryExpression" extends="expression">
 	</joinpoint>
 	
-	<joinpoint class="assignmentExpression">
+	<joinpoint class="assignmentExpression" extends="expression">
 	</joinpoint>
 	
 	

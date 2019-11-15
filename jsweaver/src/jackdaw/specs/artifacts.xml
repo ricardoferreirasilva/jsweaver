@@ -37,7 +37,11 @@
 		<attribute name="path" type="string" tooltip="Absolute path of the program file." />
 		<attribute name="name" type="string" tooltip="Name of the file." />
 	</artifact>
+
 	<artifact class="statement">
+	</artifact>
+
+	<artifact class="expression">
 	</artifact>
 
 	<artifact class="declaration">

@@ -16,6 +16,7 @@ public class JsFunctionExpression extends AFunctionExpression {
     private final JsonObject node;
 
     public JsFunctionExpression(JsonObject node) {
+        super(new JsExpression(node));
         this.node = node;
     }
 

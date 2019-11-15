@@ -11,6 +11,7 @@ public class JsBinaryExpression extends ABinaryExpression {
     private final JsonObject node;
 
     public JsBinaryExpression(JsonObject node) {
+        super(new JsExpression(node));
         this.node = node;
     }
 
