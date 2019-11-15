@@ -29,7 +29,7 @@ public class JackdawLauncher {
 
     }
 
-    private static boolean execute(String[] args) {
+    public static boolean execute(String[] args) {
         return LaraLauncher.launch(args, new JackdawWeaver());
 
     }
