@@ -7,7 +7,7 @@ import org.junit.Test;
 import pt.up.fe.specs.jackdaw.JackdawTester;
 import pt.up.fe.specs.util.SpecsSystem;
 
-public class JackdawMainTestBattery {
+public class JackdawMainTest {
 
     @BeforeClass
     public static void setupOnce() {
