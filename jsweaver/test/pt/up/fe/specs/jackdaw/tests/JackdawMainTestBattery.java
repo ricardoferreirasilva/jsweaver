@@ -79,4 +79,9 @@ public class JackdawMainTestBattery {
         newTester().test("Rename.lara", "rename.js");
     }
 
+    @Test
+    public void testExpression() {
+        newTester().test("Expression.lara", "expressions.js");
+    }
+
 }
