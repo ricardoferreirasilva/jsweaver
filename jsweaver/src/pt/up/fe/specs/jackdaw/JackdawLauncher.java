@@ -22,7 +22,7 @@ public class JackdawLauncher {
         // Only exit if GUI is not running
         if (!LaraI.isRunningGui()) {
             int exitValue = success ? 0 : 1;
-            SpecsLogs.debug("Calling System.exit() on ClavaWeaverLauncher, no running GUI detected");
+            SpecsLogs.debug("Calling System.exit() on JackdawLauncher, no running GUI detected");
             System.exit(exitValue);
             // UUID uuid = UUID.randomUUID();
         }
