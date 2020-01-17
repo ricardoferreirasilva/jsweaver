@@ -6,6 +6,12 @@ import javax.script.ScriptException;
 
 import ast.JsAstResources;
 
+/**
+ * @deprecated use JackdawEngine instead
+ * @author JoaoBispo
+ *
+ */
+@Deprecated
 public class JackdawEngineUtilities {
     public static ScriptEngine createJavascriptEngine() throws ScriptException {
         ScriptEngine javascriptEngine = loadEngineResources(new ScriptEngineManager().getEngineByName("nashorn"));
