@@ -1,0 +1,7 @@
+aspectdef FileTest
+
+	select expression end
+    apply
+        println($expression.code +": " + $expression.type);
+    end
+end

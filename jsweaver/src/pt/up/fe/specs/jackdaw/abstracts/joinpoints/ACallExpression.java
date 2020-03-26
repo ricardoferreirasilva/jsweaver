@@ -3,8 +3,6 @@ package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 import org.lara.interpreter.weaver.interf.events.Stage;
 import java.util.Optional;
 import org.lara.interpreter.exception.AttributeException;
-import javax.script.Bindings;
-import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
 import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.stream.Collectors;
@@ -17,8 +15,16 @@ import java.util.Arrays;
  * 
  * @author Lara Weaver Generator
  */
-public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
+public abstract class ACallExpression extends AExpression {
 
+    protected AExpression aExpression;
+
+    /**
+     * 
+     */
+    public ACallExpression(AExpression aExpression){
+        this.aExpression = aExpression;
+    }
     /**
      * Name of the callee or callee type.
      */
@@ -74,9 +80,9 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
     /**
      * Arguments of this expression call.
      */
-    public Bindings getArgumentsImpl() {
+    public Object getArgumentsImpl() {
         AJoinPoint[] aJoinPointArrayImpl0 = getArgumentsArrayImpl();
-        Bindings nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
+        Object nativeArray0 = getWeaverEngine().getScriptEngine().toNativeArray(aJoinPointArrayImpl0);
         return nativeArray0;
     }
 
@@ -88,7 +94,7 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
         	if(hasListeners()) {
         		eventTrigger().triggerAttribute(Stage.BEGIN, this, "arguments", Optional.empty());
         	}
-        	Bindings result = this.getArgumentsImpl();
+        	Object result = this.getArgumentsImpl();
         	if(hasListeners()) {
         		eventTrigger().triggerAttribute(Stage.END, this, "arguments", Optional.ofNullable(result));
         	}
@@ -100,13 +106,39 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
 
     /**
      * 
+     * @param position 
+     * @param code 
+     */
+    @Override
+    public AJoinPoint[] insertImpl(String position, String code) {
+        return this.aExpression.insertImpl(position, code);
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public String toString() {
+        return this.aExpression.toString();
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public Optional<? extends AExpression> getSuper() {
+        return Optional.of(this.aExpression);
+    }
+
+    /**
+     * 
      */
     @Override
     public final List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
         	default:
-        		joinPointList = super.select(selectName);
+        		joinPointList = this.aExpression.select(selectName);
         		break;
         }
         return joinPointList;
@@ -127,7 +159,7 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithAttributes(List<String> attributes) {
-        super.fillWithAttributes(attributes);
+        this.aExpression.fillWithAttributes(attributes);
         attributes.add("name");
         attributes.add("callee");
         attributes.add("arguments");
@@ -138,7 +170,7 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithSelects(List<String> selects) {
-        super.fillWithSelects(selects);
+        this.aExpression.fillWithSelects(selects);
     }
 
     /**
@@ -146,7 +178,7 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
      */
     @Override
     protected final void fillWithActions(List<String> actions) {
-        super.fillWithActions(actions);
+        this.aExpression.fillWithActions(actions);
     }
 
     /**
@@ -156,6 +188,19 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
     @Override
     public final String get_class() {
         return "callExpression";
+    }
+
+    /**
+     * Defines if this joinpoint is an instanceof a given joinpoint class
+     * @return True if this join point is an instanceof the given class
+     */
+    @Override
+    public final boolean instanceOf(String joinpointClass) {
+        boolean isInstance = get_class().equals(joinpointClass);
+        if(isInstance) {
+        	return true;
+        }
+        return this.aExpression.instanceOf(joinpointClass);
     }
     /**
      * 
@@ -169,6 +214,7 @@ public abstract class ACallExpression extends AJackdawWeaverJoinPoint {
         AST("ast"),
         CODE("code"),
         LINE("line"),
+        ANCESTOR("ancestor"),
         COLUMN("column"),
         TYPE("type"),
         DESCENDANTS("descendants"),

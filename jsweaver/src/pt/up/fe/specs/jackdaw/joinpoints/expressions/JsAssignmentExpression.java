@@ -11,6 +11,7 @@ public class JsAssignmentExpression extends AAssignmentExpression {
     private final JsonObject node;
 
     public JsAssignmentExpression(JsonObject node) {
+        super(new JsExpression(node));
         this.node = node;
     }
 

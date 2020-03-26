@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
-<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/jsAst/clava.jar"/>
-</listAttribute>
-<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
-<listEntry value="1"/>
-</listAttribute>
-<booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="pt.up.fe.specs.lara.doc.LaraDocLauncher"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="--output &quot;${project_loc:jsweaver}/run/doc&quot;&#13;&#10;--clean&#13;&#10;--exclude _&#13;&#10;--weaver pt.up.fe.specs.jackdaw.JackdawWeaver&#13;&#10;--packages &quot;{'Jackdaw API':['${workspace_loc:jsweaver}/resources/jackdaw']}&quot;"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="jsweaver"/>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/LaraDoc/src/pt/up/fe/specs/lara/doc/LaraDocLauncher.java"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="1"/>
+    </listAttribute>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="pt.up.fe.specs.lara.doc.LaraDocLauncher"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="--output &quot;${project_loc:jsweaver}/run/doc&quot;&#13;&#10;--clean&#13;&#10;--exclude _&#13;&#10;--weaver pt.up.fe.specs.jackdaw.JackdawWeaver&#13;&#10;--packages &quot;{'Jackdaw API':['${workspace_loc:jsweaver}/lara-jackdaw/jackdaw'],&#13;&#10;'LARA API': ['${project_loc:LaraApi}/src-lara-base','${project_loc:LaraApi}/src-lara','${project_loc:LARAI}/src-lara','${project_loc:jsweaver}/lara-lara']&#13;&#10;}&quot;"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="jsweaver"/>
 </launchConfiguration>

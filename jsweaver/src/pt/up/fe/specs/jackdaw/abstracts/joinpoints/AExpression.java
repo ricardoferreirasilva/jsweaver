@@ -1,8 +1,7 @@
 package pt.up.fe.specs.jackdaw.abstracts.joinpoints;
 
-import java.util.List;
-import org.lara.interpreter.weaver.interf.SelectOp;
 import pt.up.fe.specs.jackdaw.abstracts.AJackdawWeaverJoinPoint;
+import java.util.List;
 import org.lara.interpreter.weaver.interf.JoinPoint;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,23 +17,12 @@ import java.util.Arrays;
 public abstract class AExpression extends AJackdawWeaverJoinPoint {
 
     /**
-     * Default implementation of the method used by the lara interpreter to select callExpressions
-     * @return 
-     */
-    public List<? extends ACallExpression> selectCallExpression() {
-        return select(pt.up.fe.specs.jackdaw.abstracts.joinpoints.ACallExpression.class, SelectOp.DESCENDANTS);
-    }
-
-    /**
      * 
      */
     @Override
     public List<? extends JoinPoint> select(String selectName) {
         List<? extends JoinPoint> joinPointList;
         switch(selectName) {
-        	case "callExpression": 
-        		joinPointList = selectCallExpression();
-        		break;
         	default:
         		joinPointList = super.select(selectName);
         		break;
@@ -66,7 +54,6 @@ public abstract class AExpression extends AJackdawWeaverJoinPoint {
     @Override
     protected void fillWithSelects(List<String> selects) {
         super.fillWithSelects(selects);
-        selects.add("callExpression");
     }
 
     /**
@@ -92,8 +79,16 @@ public abstract class AExpression extends AJackdawWeaverJoinPoint {
         PARENT("parent"),
         JOINPOINTNAME("joinPointName"),
         AST("ast"),
+        CODE("code"),
+        LINE("line"),
+        ANCESTOR("ancestor"),
+        COLUMN("column"),
         TYPE("type"),
+        DESCENDANTS("descendants"),
+        UUID("uuid"),
+        FILE("file"),
         FIELD("field"),
+        CHILDREN("children"),
         ROOT("root");
         private String name;
 

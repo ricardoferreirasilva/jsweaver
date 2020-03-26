@@ -1,0 +1,13 @@
+sep=;
+File;LoC;Aspects;Comments;Functions
+../../../Desktop/Jackdaw/aspect.lara;15;1;1;0
+resources/jackdaw/jackdaw/Jackdaw.lara;6;0;3;2
+resources/jackdaw/jackdaw/JackdawDataStore.lara;5;0;10;2
+resources/jackdaw/jackdaw/_JackdawAspects.lara;5;1;0;0
+resources/jackdaw/lara/code/Logger.lara;18;0;11;5
+resources/jackdaw/lara/code/Timer.lara;14;0;8;1
+resources/jackdaw/obfuscation/Flatted.lara;270;0;7;14
+resources/jackdaw/obfuscation/Obfuscator.lara;31;0;4;3
+resources/jackdaw/obfuscation/OpaquePredicates.lara;44;0;0;7
+resources/jackdaw/weaver/JoinPoints.lara;19;0;13;4
+Total;427;2;57;38

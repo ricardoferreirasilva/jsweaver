@@ -8,6 +8,9 @@
 		<attribute name="root" type="joinpoint" tooltip="Returns the 'project' joinpoint" />
 		<attribute name="file" type="joinpoint" tooltip="Returns the 'file' joinpoint" />
 		<attribute name="parent" type="joinpoint" tooltip="Returns the 'parent' node of this joinpoint" />
+		<attribute name="ancestor" type="joinpoint" tooltip="Returns the first ancestor of the given type">
+			<parameter name="joinPointType" type="String" />
+		</attribute>
 		<attribute name="type" type="string" tooltip="The type of the join point" />
 
 		<attribute name="field" type="Object"
@@ -34,7 +37,11 @@
 		<attribute name="path" type="string" tooltip="Absolute path of the program file." />
 		<attribute name="name" type="string" tooltip="Name of the file." />
 	</artifact>
+
 	<artifact class="statement">
+	</artifact>
+
+	<artifact class="expression">
 	</artifact>
 
 	<artifact class="declaration">

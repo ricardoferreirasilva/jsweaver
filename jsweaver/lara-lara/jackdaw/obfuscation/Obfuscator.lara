@@ -1,0 +1,212 @@
+import lara.Strings;
+import weaver.WeaverJps;
+import obfuscation.Flatted;
+import obfuscation.OpaquePredicates;
+
+function obfuscateFile($file){
+	
+	//Create predicates
+	var numberOfPredicates = getRandomInt(3, 6);
+	addOpaquePredicates($file,numberOfPredicates);
+	
+	
+	//Obfuscating all functions in the file.
+	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
+	for(var $f of functions){
+	
+		var p =  $f.parent;
+		var obfuscatedFunction = obfuscate($f);
+	    $f.insert("replace",obfuscatedFunction);
+	}	
+}
+function obfuscateFileDebug($file){
+	var d = new Date();
+	var t = d.getTime();
+	applyObfuscationDebug($file);
+	d = new Date();
+	var n = d.getTime();
+	var difference = n - t;
+	println("[FINISHED] Obfuscation total time: " + difference + "ms");
+}
+
+function applyObfuscationDebug($file){
+	//Create predicates
+	var numberOfPredicates = getRandomInt(3, 6);
+	addOpaquePredicates($file,numberOfPredicates);
+	//Obfuscating all functions in the file.
+	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
+	for(var $f of functions){
+		var d = new Date();
+		var t = d.getTime();
+		var name = $f.name;
+		var obfuscatedFunction = obfuscate($f);
+		var d = new Date();
+		var n = d.getTime();
+	    var difference = n - t;
+	    println("[EVENT] Obfuscated function -> " + name + " :" + difference + "ms");
+	    $f.insert("replace",obfuscatedFunction);			
+	}	
+}
+function applyCustomObfuscation($file,configuration){
+	// Adding opaque predicates.
+	var numberOfPredicates = getRandomInt(configuration.predicates.min, configuration.predicates.max);
+	addOpaquePredicates($file,numberOfPredicates);
+	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
+	for(var $f of functions){
+		if(functionInConfiguration($f,configuration)){
+			println("Obfuscating -> " + $f.name);
+			var obfuscatedFunction = obfuscate($f);
+			$f.insert("replace",obfuscatedFunction);		
+		}
+	}	
+}
+function functionInConfiguration($f,configuration){
+	for(var cf of configuration.functions){
+		if(cf.name == $f.name) return true;
+	}
+	return false;
+}
+function discoverObfuscableFunctions($file,excludedFunctions){
+		var outputFolder = Jackdaw.getData().getOutputFolder();
+		var numberOfPredicates = getRandomInt(3, 6);
+		addOpaquePredicates($file,numberOfPredicates);
+		var configFunctions = [];
+		var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
+		for(var i=0;i<functions.length;i++){
+			var $f = functions[i];
+			var nonObfuscatedName = $f.name;
+			if(!excludedFunction($f,excludedFunctions)){
+				var previousFileCode = $file.code;
+				var d = new Date();
+				var t = d.getTime();
+				var name = $f.name;
+				println("[EVENT] Obfuscating function -> " + name );
+				var obfuscatedFunction = obfuscate($f);
+				var d = new Date();
+				var n = d.getTime();
+			     var difference = n - t;
+			     println("[EVENT] Obfuscated function -> " + name + " :" + difference + "ms");
+			     $f.insert("replace",obfuscatedFunction);
+	
+			    var filepath = Io.getPath(outputFolder, $file.name);
+				Io.writeFile(filepath, $file.code);     
+				var executor = new ProcessExecutor();
+				executor.setTimeout(1).setTimeUnit("SECONDS");
+				var nodeOut = executor.execute(["node", filepath.getAbsolutePath()]);
+				if(executor.getReturnValue() != 0){
+					excludedFunctions.push(nonObfuscatedName);
+					println("Problem obfuscating file on function: " + nonObfuscatedName);
+					break;
+					//$f.insert("replace",previousObfuscationCode);
+				}
+				else{
+					configFunctions.push({name:name, algorithms:["opaque","flat"]});
+				}
+			}
+			else{
+				println("[EVENT] Excluding function -> " + nonObfuscatedName);
+			}
+		 }
+		 println("Excluded Functions: " + excludedFunctions);
+		 return configFunctions;
+ }
+ function excludedFunction($f,excludedFunctions){
+ 	for(fun of excludedFunctions){
+ 		if($f.name == fun){
+ 			return true;
+		}
+ 	}
+ 	return false;
+ }
+ 
+ function discoverObfuscableFunctions2($file){
+ 		var excludedFunctions = [];
+ 		var ofuscableFunctions = [];
+ 		
+
+		var outputFolder = Jackdaw.getData().getOutputFolder();
+		var filepath = Io.getPath(outputFolder, $file.name);
+		var filename = Io.removeExtension($file.name);
+
+		var configFolder = Io.mkdir(outputFolder.getParentFile(), "configurations");		
+		
+		var numberOfPredicates = getRandomInt(3, 6);
+		addOpaquePredicates($file,numberOfPredicates);
+
+		
+		var configFunctions = [];
+		var functionNames = getFunctionNames($file);
+		
+		for(functionName of functionNames){
+			println("[EVENT] Obfuscating function -> " + functionName );
+			
+			var functions = WeaverJps.searchFrom($file, 'functionDeclaration', {'name': functionName}).get();
+			var $function = functions[0];
+			var previousCode = $file.code;
+
+			var name = $function.name;
+			var obfuscatedFunction;
+			try{
+				obfuscatedFunction = obfuscate($function);
+			}
+			catch(error){
+				println("Error during obfuscation.");
+				println(error);
+				excludedFunctions.push(name);
+				var fileArray = $file["insert"]("replace",previousCode);
+				$file = fileArray[0];
+				if(!$file.instanceOf('file')) {
+					$file = $file.ancestor('file');
+				}
+				
+				if($file === undefined) {
+					throw "Could not obtain file from inserted code";
+				}
+				continue;
+			}
+			$function["insert"]("replace",obfuscatedFunction);
+			
+			Io.writeFile(filepath, $file.code);     
+			var executor = new ProcessExecutor();
+			executor.setTimeout(1).setTimeUnit("SECONDS");
+			var nodeOut = executor.execute(["node", filepath.getAbsolutePath()]);
+			if(executor.getReturnValue() != 0){
+				println("[ERROR] Obfuscating function -> " + functionName );
+				excludedFunctions.push(name);
+				var fileArray = $file["insert"]("replace",previousCode);
+				$file = fileArray[0];
+				if(!$file.instanceOf('file')) {
+					$file = $file.ancestor('file');
+				}
+				
+				if($file === undefined) {
+					throw "Could not obtain file from inserted code";
+				}
+				continue;
+			}
+			else{
+				ofuscableFunctions.push({name:name, algorithms:["opaque","flat"]});
+			}
+			
+			Io.writeJson(Io.getPath(configFolder, filename + "_obfuscation_config.json"), ({predicates:{min:3,max:6},functions:ofuscableFunctions,excluded:excludedFunctions }));
+			
+		}
+		println("");
+		println("__________________");
+		println("Finished discovering obfuscable functions.");
+		println("Sucessfully obfuscated " + ofuscableFunctions.length + " functions.");
+		println("Excluded " + excludedFunctions.length + " functions.");
+		
+		var configuration = {predicates:{min:3,max:6},functions:ofuscableFunctions,excluded:excludedFunctions};
+		return configuration;
+	
+ }
+ 
+ function getFunctionNames($file){
+ 	var functions = WeaverJps.searchFrom($file, 'functionDeclaration').get();
+	var functionNames = [];
+	for(var i=0;i<functions.length;i++){
+	   functionNames.push(functions[i].name);
+	}
+	return functionNames;
+ }

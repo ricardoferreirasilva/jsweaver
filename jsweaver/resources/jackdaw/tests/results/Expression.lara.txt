@@ -1,0 +1,4 @@
+console.log(x()()): CallExpression
+console.log: MemberExpression
+x()(): CallExpression
+x(): CallExpression

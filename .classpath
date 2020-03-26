@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="jsAst/src"/>
-	<classpathentry kind="src" path="jsweaver/src"/>
-	<classpathentry kind="src" path="jsweaver/test"/>
-	<classpathentry kind="lib" path="jsAst/clava.jar"/>
-	<classpathentry kind="output" path="jsAst/bin"/>
-</classpath>
