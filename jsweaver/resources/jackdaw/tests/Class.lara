@@ -1,6 +1,6 @@
 aspectdef ClassAspect
 
-	select file.class.methodDefinition.functionExpression.expressionStatement.assignmentExpression end
+	select file.class.methodDefinition.functionExpression.blockStatement.scope.expressionStatement.assignmentExpression end
 	apply
 		println("Class: " + $class.id.name);
 		println($methodDefinition.key.name);
