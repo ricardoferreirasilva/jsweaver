@@ -27,7 +27,7 @@
 	
 	<dependencies>
 		<!-- For JsEngine -->
-		<dependency org="pt.up.fe.specs" name="lara-framework" rev="201909101509"/>
+		<dependency org="pt.up.fe.specs" name="lara-framework" rev="202003061350"/>
 		<dependency org="com.google.code.gson" name="gson" rev="2.8.5"/>
 		<!--<dependency org="org.graalvm.js" name="js" rev="1.0.0-rc15"/>-->
 		

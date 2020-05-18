@@ -31,6 +31,5 @@ public class JackdawLauncher {
 
     public static boolean execute(String[] args) {
         return LaraLauncher.launch(args, new JackdawWeaver());
-
     }
 }
